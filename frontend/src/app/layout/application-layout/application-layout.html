@@ -1,17 +1,48 @@
-<div class="application">
-  <app-top-bar />
+<div
+  class="application"
+  [style.--left-panel-width.px]="leftPanelWidth() || null"
+  [style.--right-panel-width.px]="rightPanelWidth() || null"
+  [style.--bottom-panel-height.px]="bottomPanelHeight() || null"
+>
+  <app-top-bar class="top-bar" />
 
   <main class="application--main">
-    <app-activity-bar />
-    <app-left-panel />
+    <app-activity-bar class="activity-bar" />
+
+    <app-resizable-container
+      class="left-panel"
+      handles="right"
+      [minWidth]="leftPanelMinWidth"
+      [maxWidth]="getLeftPanelMaxWidth()"
+      (resize)="resizeLeftPanel($event)"
+    >
+      <app-left-panel />
+    </app-resizable-container>
 
     <div class="application--center">
-      <app-work-area />
-      <app-bottom-panel />
+      <app-work-area class="work-area" />
+
+      <app-resizable-container
+        class="bottom-panel"
+        handles="top"
+        [minHeight]="bottomPanelMinHeight"
+        [maxHeight]="getBottomPanelMaxHeight()"
+        (resize)="resizeBottomPanel($event)"
+      >
+        <app-bottom-panel />
+      </app-resizable-container>
     </div>
 
-    <app-right-panel />
+    <app-resizable-container
+      class="right-panel"
+      handles="left"
+      [minWidth]="rightPanelMinWidth"
+      [maxWidth]="getRightPanelMaxWidth()"
+      (resize)="resizeRightPanel($event)"
+    >
+      <app-right-panel />
+    </app-resizable-container>
   </main>
 
-  <app-status-bar />
+  <app-status-bar class="status-bar" />
 </div>

@@ -41,7 +41,6 @@
     var(--left-panel-width)
     minmax(var(--work-area-min-width), 1fr)
     var(--right-panel-width);
-
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -57,13 +56,13 @@
   overflow: hidden;
 }
 
-app-top-bar,
-app-activity-bar,
-app-left-panel,
-app-work-area,
-app-bottom-panel,
-app-right-panel,
-app-status-bar {
+.top-bar,
+.activity-bar,
+.left-panel,
+.work-area,
+.bottom-panel,
+.right-panel,
+.status-bar {
   min-width: 0;
   min-height: 0;
   overflow: hidden;
