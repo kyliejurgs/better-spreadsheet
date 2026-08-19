@@ -1,3 +1,7 @@
+:root {
+  --accent-color: #dc2626;
+}
+
 html,
 body {
   width: 100%;

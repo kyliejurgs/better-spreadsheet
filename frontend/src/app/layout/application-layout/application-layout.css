@@ -58,12 +58,17 @@
 
 .top-bar,
 .activity-bar,
-.left-panel,
 .work-area,
-.bottom-panel,
-.right-panel,
 .status-bar {
   min-width: 0;
   min-height: 0;
   overflow: hidden;
+}
+
+.left-panel,
+.bottom-panel,
+.right-panel {
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
 }
