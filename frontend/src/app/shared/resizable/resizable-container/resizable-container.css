@@ -48,11 +48,6 @@
   transition: opacity 100ms ease 150ms;
 }
 
-.resize-handle.edge.top:hover::after,
-.resize-handle.edge.bottom:hover::after {
-  opacity: 1;
-}
-
 .resize-handle.edge.left,
 .resize-handle.edge.right {
   top: 0;
@@ -75,8 +70,7 @@
   transition: opacity 100ms ease 150ms;
 }
 
-.resize-handle.edge.left:hover::after,
-.resize-handle.edge.right:hover::after {
+.resize-handle.edge:hover::after {
   opacity: 1;
 }
 

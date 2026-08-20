@@ -20,8 +20,8 @@ export type ResizeEvent = {
 })
 export class ResizableContainer {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
-  readonly handles = input<ResizeHandles>();
 
+  readonly handles = input<ResizeHandles>();
   readonly minWidth = input<number>();
   readonly maxWidth = input<number>();
   readonly minHeight = input<number>();
@@ -66,14 +66,6 @@ export class ResizableContainer {
     (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
   }
 
-  protected stopResize(event: PointerEvent): void {
-    this.activeHandle = undefined;
-    const handle = event.currentTarget as HTMLElement;
-    if (handle.hasPointerCapture(event.pointerId)) {
-      handle.releasePointerCapture(event.pointerId);
-    }
-  }
-
   protected resizeToPointer(event: PointerEvent): void {
     if (!this.activeHandle) {
       return;
@@ -82,35 +74,43 @@ export class ResizableContainer {
     const deltaX = event.clientX - this.startX;
     const deltaY = event.clientY - this.startY;
 
-    const resizeEvent: ResizeEvent = {
-      handle: this.activeHandle,
-    };
+    const resizeEvent: ResizeEvent = { handle: this.activeHandle };
 
     if (this.activeHandle.includes('right')) {
-      const dragWidth = this.startWidth + deltaX;
-      resizeEvent.dragWidth = dragWidth;
-      resizeEvent.width = this.constrainSize(dragWidth, this.minWidth(), this.maxWidth());
+      this.setWidth(resizeEvent, this.startWidth + deltaX);
     }
 
     if (this.activeHandle.includes('left')) {
-      const dragWidth = this.startWidth - deltaX;
-      resizeEvent.dragWidth = dragWidth;
-      resizeEvent.width = this.constrainSize(dragWidth, this.minWidth(), this.maxWidth());
+      this.setWidth(resizeEvent, this.startWidth - deltaX);
     }
 
     if (this.activeHandle.includes('bottom')) {
-      const dragHeight = this.startHeight + deltaY;
-      resizeEvent.dragHeight = dragHeight;
-      resizeEvent.height = this.constrainSize(dragHeight, this.minHeight(), this.maxHeight());
+      this.setHeight(resizeEvent, this.startHeight + deltaY);
     }
 
     if (this.activeHandle.includes('top')) {
-      const dragHeight = this.startHeight - deltaY;
-      resizeEvent.dragHeight = dragHeight;
-      resizeEvent.height = this.constrainSize(dragHeight, this.minHeight(), this.maxHeight());
+      this.setHeight(resizeEvent, this.startHeight - deltaY);
     }
 
     this.resize.emit(resizeEvent);
+  }
+
+  protected stopResize(event: PointerEvent): void {
+    this.activeHandle = undefined;
+    const handle = event.currentTarget as HTMLElement;
+    if (handle.hasPointerCapture(event.pointerId)) {
+      handle.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  private setWidth(event: ResizeEvent, dragWidth: number): void {
+    event.dragWidth = dragWidth;
+    event.width = this.constrainSize(dragWidth, this.minWidth(), this.maxWidth());
+  }
+
+  private setHeight(event: ResizeEvent, dragHeight: number): void {
+    event.dragHeight = dragHeight;
+    event.height = this.constrainSize(dragHeight, this.minHeight(), this.maxHeight());
   }
 
   private constrainSize(size: number, min = 0, max = Number.POSITIVE_INFINITY): number {
