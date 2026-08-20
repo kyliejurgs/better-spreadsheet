@@ -8,6 +8,8 @@ export type ResizeHandles = ResizeHandle | ResizeHandle[] | 'all';
 export type ResizeEvent = {
   width?: number;
   height?: number;
+  dragWidth?: number;
+  dragHeight?: number;
   handle: ResizeHandle;
 };
 
@@ -85,35 +87,27 @@ export class ResizableContainer {
     };
 
     if (this.activeHandle.includes('right')) {
-      resizeEvent.width = this.constrainSize(
-        this.startWidth + deltaX,
-        this.minWidth(),
-        this.maxWidth(),
-      );
+      const dragWidth = this.startWidth + deltaX;
+      resizeEvent.dragWidth = dragWidth;
+      resizeEvent.width = this.constrainSize(dragWidth, this.minWidth(), this.maxWidth());
     }
 
     if (this.activeHandle.includes('left')) {
-      resizeEvent.width = this.constrainSize(
-        this.startWidth - deltaX,
-        this.minWidth(),
-        this.maxWidth(),
-      );
+      const dragWidth = this.startWidth - deltaX;
+      resizeEvent.dragWidth = dragWidth;
+      resizeEvent.width = this.constrainSize(dragWidth, this.minWidth(), this.maxWidth());
     }
 
     if (this.activeHandle.includes('bottom')) {
-      resizeEvent.height = this.constrainSize(
-        this.startHeight + deltaY,
-        this.minHeight(),
-        this.maxHeight(),
-      );
+      const dragHeight = this.startHeight + deltaY;
+      resizeEvent.dragHeight = dragHeight;
+      resizeEvent.height = this.constrainSize(dragHeight, this.minHeight(), this.maxHeight());
     }
 
     if (this.activeHandle.includes('top')) {
-      resizeEvent.height = this.constrainSize(
-        this.startHeight - deltaY,
-        this.minHeight(),
-        this.maxHeight(),
-      );
+      const dragHeight = this.startHeight - deltaY;
+      resizeEvent.dragHeight = dragHeight;
+      resizeEvent.height = this.constrainSize(dragHeight, this.minHeight(), this.maxHeight());
     }
 
     this.resize.emit(resizeEvent);

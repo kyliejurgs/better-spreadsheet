@@ -28,12 +28,21 @@ import {
 })
 export class ApplicationLayout implements AfterViewInit, OnDestroy {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly panelCollapseThreshold = 60;
   private readonly applicationWidth = signal(0);
   private readonly applicationHeight = signal(0);
 
   protected readonly leftPanelWidth = signal(0);
   protected readonly rightPanelWidth = signal(0);
   protected readonly bottomPanelHeight = signal(0);
+
+  protected readonly leftPanelCollapsed = signal(false);
+  protected readonly rightPanelCollapsed = signal(false);
+  protected readonly bottomPanelCollapsed = signal(false);
+
+  private leftPanelExpandedWidth = 0;
+  private rightPanelExpandedWidth = 0;
+  private bottomPanelExpandedHeight = 0;
 
   protected leftPanelMinWidth = 0;
   protected rightPanelMinWidth = 0;
@@ -89,24 +98,54 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   }
 
   protected resizeLeftPanel(event: ResizeEvent): void {
-    if (event.width === undefined) {
+    if (event.width === undefined || event.dragWidth === undefined) {
       return;
     }
+
+    const collapseWidth = this.leftPanelMinWidth - this.panelCollapseThreshold;
+    if (event.dragWidth <= collapseWidth) {
+      this.leftPanelWidth.set(0);
+      this.leftPanelCollapsed.set(true);
+      return;
+    }
+
+    this.leftPanelCollapsed.set(false);
     this.leftPanelWidth.set(event.width);
+    this.leftPanelExpandedWidth = event.width;
   }
 
   protected resizeRightPanel(event: ResizeEvent): void {
-    if (event.width === undefined) {
+    if (event.width === undefined || event.dragWidth === undefined) {
       return;
     }
+
+    const collapseWidth = this.rightPanelMinWidth - this.panelCollapseThreshold;
+    if (event.dragWidth <= collapseWidth) {
+      this.rightPanelWidth.set(0);
+      this.rightPanelCollapsed.set(true);
+      return;
+    }
+
+    this.rightPanelCollapsed.set(false);
     this.rightPanelWidth.set(event.width);
+    this.rightPanelExpandedWidth = event.width;
   }
 
   protected resizeBottomPanel(event: ResizeEvent): void {
-    if (event.height === undefined) {
+    if (event.height === undefined || event.dragHeight === undefined) {
       return;
     }
+
+    const collapseHeight = this.bottomPanelMinHeight - this.panelCollapseThreshold;
+    if (event.dragHeight <= collapseHeight) {
+      this.bottomPanelHeight.set(0);
+      this.bottomPanelCollapsed.set(true);
+      return;
+    }
+
+    this.bottomPanelCollapsed.set(false);
     this.bottomPanelHeight.set(event.height);
+    this.bottomPanelExpandedHeight = event.height;
   }
 
   private initializeLayoutConfiguration(): void {
@@ -118,9 +157,18 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     this.workAreaMinHeight = this.readConfiguredPixels('--work-area-min-height');
     this.topBarHeight = this.readConfiguredPixels('--top-bar-height');
     this.statusBarHeight = this.readConfiguredPixels('--status-bar-height');
-    this.leftPanelWidth.set(this.readConfiguredPixels('--left-panel-width'));
-    this.rightPanelWidth.set(this.readConfiguredPixels('--right-panel-width'));
-    this.bottomPanelHeight.set(this.readConfiguredPixels('--bottom-panel-height'));
+
+    const leftPanelWidth = this.readConfiguredPixels('--left-panel-width');
+    const rightPanelWidth = this.readConfiguredPixels('--right-panel-width');
+    const bottomPanelHeight = this.readConfiguredPixels('--bottom-panel-height');
+
+    this.leftPanelWidth.set(leftPanelWidth);
+    this.rightPanelWidth.set(rightPanelWidth);
+    this.bottomPanelHeight.set(bottomPanelHeight);
+
+    this.leftPanelExpandedWidth = leftPanelWidth;
+    this.rightPanelExpandedWidth = rightPanelWidth;
+    this.bottomPanelExpandedHeight = bottomPanelHeight;
   }
 
   private updateApplicationSize(): void {
@@ -133,5 +181,41 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     const styles = getComputedStyle(this.elementRef.nativeElement);
     const value = styles.getPropertyValue(property);
     return Number.parseFloat(value);
+  }
+
+  protected toggleLeftPanel(): void {
+    if (this.leftPanelCollapsed()) {
+      this.leftPanelWidth.set(this.leftPanelExpandedWidth);
+      this.leftPanelCollapsed.set(false);
+      return;
+    }
+
+    this.leftPanelExpandedWidth = this.leftPanelWidth();
+    this.leftPanelWidth.set(0);
+    this.leftPanelCollapsed.set(true);
+  }
+
+  protected toggleRightPanel(): void {
+    if (this.rightPanelCollapsed()) {
+      this.rightPanelWidth.set(this.rightPanelExpandedWidth);
+      this.rightPanelCollapsed.set(false);
+      return;
+    }
+
+    this.rightPanelExpandedWidth = this.rightPanelWidth();
+    this.rightPanelWidth.set(0);
+    this.rightPanelCollapsed.set(true);
+  }
+
+  protected toggleBottomPanel(): void {
+    if (this.bottomPanelCollapsed()) {
+      this.bottomPanelHeight.set(this.bottomPanelExpandedHeight);
+      this.bottomPanelCollapsed.set(false);
+      return;
+    }
+
+    this.bottomPanelExpandedHeight = this.bottomPanelHeight();
+    this.bottomPanelHeight.set(0);
+    this.bottomPanelCollapsed.set(true);
   }
 }
