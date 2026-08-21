@@ -1,0 +1,48 @@
+<div
+  class="application"
+  [style.--left-panel-width.px]="leftPanelWidth()"
+  [style.--right-panel-width.px]="rightPanelWidth()"
+  [style.--bottom-panel-height.px]="bottomPanelHeight()"
+>
+  <app-top-bar class="top-bar" />
+
+  <main #applicationMain class="application--main">
+    <app-activity-bar class="activity-bar" />
+
+    <app-resizable-container
+      class="left-panel"
+      handles="right"
+      [minWidth]="leftPanelMinWidth"
+      [maxWidth]="getSidePanelMaxWidth()"
+      (resize)="resizeLeftPanel($event)"
+    >
+      <app-left-panel />
+    </app-resizable-container>
+
+    <div class="application--center">
+      <app-work-area class="work-area" />
+
+      <app-resizable-container
+        class="bottom-panel"
+        handles="top"
+        [minHeight]="bottomPanelMinHeight"
+        [maxHeight]="getBottomPanelMaxHeight()"
+        (resize)="resizeBottomPanel($event)"
+      >
+        <app-bottom-panel />
+      </app-resizable-container>
+    </div>
+
+    <app-resizable-container
+      class="right-panel"
+      handles="left"
+      [minWidth]="rightPanelMinWidth"
+      [maxWidth]="getSidePanelMaxWidth()"
+      (resize)="resizeRightPanel($event)"
+    >
+      <app-right-panel />
+    </app-resizable-container>
+  </main>
+
+  <app-status-bar class="status-bar" />
+</div>
