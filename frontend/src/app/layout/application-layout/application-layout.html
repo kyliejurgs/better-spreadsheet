@@ -6,14 +6,14 @@
 >
   <app-top-bar class="top-bar" />
 
-  <main class="application--main">
+  <main #applicationMain class="application--main">
     <app-activity-bar class="activity-bar" />
 
     <app-resizable-container
       class="left-panel"
       handles="right"
       [minWidth]="leftPanelMinWidth"
-      [maxWidth]="getLeftPanelMaxWidth()"
+      [maxWidth]="getSidePanelMaxWidth()"
       (resize)="resizeLeftPanel($event)"
     >
       <app-left-panel />
@@ -37,7 +37,7 @@
       class="right-panel"
       handles="left"
       [minWidth]="rightPanelMinWidth"
-      [maxWidth]="getRightPanelMaxWidth()"
+      [maxWidth]="getSidePanelMaxWidth()"
       (resize)="resizeRightPanel($event)"
     >
       <app-right-panel />

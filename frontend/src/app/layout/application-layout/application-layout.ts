@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { ActivityBar } from '../activity-bar/activity-bar';
 import { BottomPanel } from '../bottom-panel/bottom-panel';
 import { LeftPanel } from '../left-panel/left-panel';
@@ -10,6 +18,7 @@ import {
   ResizableContainer,
   ResizeEvent,
 } from '../../shared/resizable/resizable-container/resizable-container';
+import { APPLICATION_LAYOUT } from '../../config/application-layout.config';
 
 @Component({
   selector: 'app-application-layout',
@@ -28,63 +37,33 @@ import {
 })
 export class ApplicationLayout implements AfterViewInit, OnDestroy {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
-  private readonly panelCollapseThreshold = 60;
   private readonly applicationWidth = signal(0);
   private readonly applicationHeight = signal(0);
 
-  protected readonly leftPanelWidth = signal(0);
-  protected readonly rightPanelWidth = signal(0);
-  protected readonly bottomPanelHeight = signal(0);
+  protected readonly config = APPLICATION_LAYOUT;
+
+  protected readonly leftPanelWidth = signal<number>(this.config.leftPanel.defaultWidth);
+  protected readonly rightPanelWidth = signal<number>(this.config.rightPanel.defaultWidth);
+  protected readonly bottomPanelHeight = signal<number>(this.config.bottomPanel.defaultHeight);
 
   protected readonly leftPanelCollapsed = signal(false);
   protected readonly rightPanelCollapsed = signal(false);
   protected readonly bottomPanelCollapsed = signal(false);
 
-  private leftPanelExpandedWidth = 0;
-  private rightPanelExpandedWidth = 0;
-  private bottomPanelExpandedHeight = 0;
+  protected readonly leftPanelMinWidth = this.config.leftPanel.minWidth;
+  protected readonly rightPanelMinWidth = this.config.rightPanel.minWidth;
+  protected readonly bottomPanelMinHeight = this.config.bottomPanel.minHeight;
 
-  protected leftPanelMinWidth = 0;
-  protected rightPanelMinWidth = 0;
-  protected bottomPanelMinHeight = 0;
-
-  private activityBarWidth = 0;
-  private workAreaMinWidth = 0;
-  private workAreaMinHeight = 0;
-  private topBarHeight = 0;
-  private statusBarHeight = 0;
+  private readonly topBarHeight = this.config.topBar.height;
+  private readonly activityBarWidth = this.config.activityBar.width;
+  private readonly statusBarHeight = this.config.statusBar.height;
+  private readonly workAreaMinWidth = this.config.workArea.minWidth;
+  private readonly workAreaMinHeight = this.config.workArea.minHeight;
+  private readonly panelCollapseThreshold = this.config.resize.collapseThreshold;
 
   private resizeObserver: ResizeObserver | undefined;
 
-  protected getLeftPanelMaxWidth(): number {
-    return Math.max(
-      this.leftPanelMinWidth,
-      this.applicationWidth() -
-        this.activityBarWidth -
-        this.rightPanelWidth() -
-        this.workAreaMinWidth,
-    );
-  }
-
-  protected getRightPanelMaxWidth(): number {
-    return Math.max(
-      this.rightPanelMinWidth,
-      this.applicationWidth() -
-        this.activityBarWidth -
-        this.leftPanelWidth() -
-        this.workAreaMinWidth,
-    );
-  }
-
-  protected getBottomPanelMaxHeight(): number {
-    return Math.max(
-      this.bottomPanelMinHeight,
-      this.applicationHeight() - this.topBarHeight - this.statusBarHeight - this.workAreaMinHeight,
-    );
-  }
-
   ngAfterViewInit(): void {
-    this.initializeLayoutConfiguration();
     this.resizeObserver = new ResizeObserver(() => {
       this.updateApplicationSize();
     });
@@ -97,38 +76,39 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     this.resizeObserver?.disconnect();
   }
 
+  protected getSidePanelMaxWidth(): number {
+    return this.applicationWidth() - this.activityBarWidth - this.workAreaMinWidth;
+  }
+
+  protected getBottomPanelMaxHeight(): number {
+    return Math.max(
+      this.bottomPanelMinHeight,
+      this.applicationHeight() - this.topBarHeight - this.statusBarHeight - this.workAreaMinHeight,
+    );
+  }
+
   protected resizeLeftPanel(event: ResizeEvent): void {
-    if (event.width === undefined || event.dragWidth === undefined) {
-      return;
-    }
-
-    const collapseWidth = this.leftPanelMinWidth - this.panelCollapseThreshold;
-    if (event.dragWidth <= collapseWidth) {
-      this.leftPanelWidth.set(0);
-      this.leftPanelCollapsed.set(true);
-      return;
-    }
-
-    this.leftPanelCollapsed.set(false);
-    this.leftPanelWidth.set(event.width);
-    this.leftPanelExpandedWidth = event.width;
+    this.resizeSidePanel(
+      event,
+      this.leftPanelWidth,
+      this.leftPanelCollapsed,
+      this.leftPanelMinWidth,
+      this.rightPanelWidth,
+      this.rightPanelCollapsed,
+      this.rightPanelMinWidth,
+    );
   }
 
   protected resizeRightPanel(event: ResizeEvent): void {
-    if (event.width === undefined || event.dragWidth === undefined) {
-      return;
-    }
-
-    const collapseWidth = this.rightPanelMinWidth - this.panelCollapseThreshold;
-    if (event.dragWidth <= collapseWidth) {
-      this.rightPanelWidth.set(0);
-      this.rightPanelCollapsed.set(true);
-      return;
-    }
-
-    this.rightPanelCollapsed.set(false);
-    this.rightPanelWidth.set(event.width);
-    this.rightPanelExpandedWidth = event.width;
+    this.resizeSidePanel(
+      event,
+      this.rightPanelWidth,
+      this.rightPanelCollapsed,
+      this.rightPanelMinWidth,
+      this.leftPanelWidth,
+      this.leftPanelCollapsed,
+      this.leftPanelMinWidth,
+    );
   }
 
   protected resizeBottomPanel(event: ResizeEvent): void {
@@ -136,86 +116,98 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       return;
     }
 
-    const collapseHeight = this.bottomPanelMinHeight - this.panelCollapseThreshold;
-    if (event.dragHeight <= collapseHeight) {
+    if (this.shouldCollapse(event.dragHeight, this.bottomPanelMinHeight)) {
       this.bottomPanelHeight.set(0);
       this.bottomPanelCollapsed.set(true);
       return;
     }
 
-    this.bottomPanelCollapsed.set(false);
     this.bottomPanelHeight.set(event.height);
-    this.bottomPanelExpandedHeight = event.height;
+    this.bottomPanelCollapsed.set(false);
   }
 
-  private initializeLayoutConfiguration(): void {
-    this.activityBarWidth = this.readConfiguredPixels('--activity-bar-width');
-    this.leftPanelMinWidth = this.readConfiguredPixels('--left-panel-min-width');
-    this.rightPanelMinWidth = this.readConfiguredPixels('--right-panel-min-width');
-    this.bottomPanelMinHeight = this.readConfiguredPixels('--bottom-panel-min-height');
-    this.workAreaMinWidth = this.readConfiguredPixels('--work-area-min-width');
-    this.workAreaMinHeight = this.readConfiguredPixels('--work-area-min-height');
-    this.topBarHeight = this.readConfiguredPixels('--top-bar-height');
-    this.statusBarHeight = this.readConfiguredPixels('--status-bar-height');
+  private resizeSidePanel(
+    event: ResizeEvent,
+    panelWidth: WritableSignal<number>,
+    panelCollapsed: WritableSignal<boolean>,
+    panelMinWidth: number,
+    oppositePanelWidth: WritableSignal<number>,
+    oppositePanelCollapsed: WritableSignal<boolean>,
+    oppositePanelMinWidth: number,
+  ) {
+    if (event.width === undefined || event.dragWidth === undefined) {
+      return;
+    }
 
-    const leftPanelWidth = this.readConfiguredPixels('--left-panel-width');
-    const rightPanelWidth = this.readConfiguredPixels('--right-panel-width');
-    const bottomPanelHeight = this.readConfiguredPixels('--bottom-panel-height');
+    if (this.shouldCollapse(event.dragWidth, panelMinWidth)) {
+      panelWidth.set(0);
+      panelCollapsed.set(true);
+      return;
+    }
 
-    this.leftPanelWidth.set(leftPanelWidth);
-    this.rightPanelWidth.set(rightPanelWidth);
-    this.bottomPanelHeight.set(bottomPanelHeight);
+    const currentWidth = panelWidth();
+    const widthChange = event.width - currentWidth;
+    if (widthChange <= 0) {
+      panelWidth.set(event.width);
+      panelCollapsed.set(false);
+      return;
+    }
 
-    this.leftPanelExpandedWidth = leftPanelWidth;
-    this.rightPanelExpandedWidth = rightPanelWidth;
-    this.bottomPanelExpandedHeight = bottomPanelHeight;
+    const availableWorkAreaWidth = Math.max(0, this.getWorkAreaWidth() - this.workAreaMinWidth);
+    const widthNeededFromOpposite = Math.max(0, widthChange - availableWorkAreaWidth);
+    const widthFreedFromOpposite = this.shrinkPanel(
+      widthNeededFromOpposite,
+      oppositePanelWidth,
+      oppositePanelCollapsed,
+      oppositePanelMinWidth,
+    );
+    const allowedWidthChange = availableWorkAreaWidth + widthFreedFromOpposite;
+
+    panelWidth.set(Math.min(event.width, currentWidth + allowedWidthChange));
+    panelCollapsed.set(false);
+  }
+
+  private shrinkPanel(
+    amount: number,
+    panelWidth: WritableSignal<number>,
+    panelCollapsed: WritableSignal<boolean>,
+    panelMinWidth: number,
+  ): number {
+    const currentWidth = panelWidth();
+    if (amount <= 0 || currentWidth === 0) {
+      return 0;
+    }
+
+    const dragWidth = currentWidth - amount;
+    if (this.shouldCollapse(dragWidth, panelMinWidth)) {
+      panelWidth.set(0);
+      panelCollapsed.set(true);
+      return currentWidth;
+    }
+
+    const newWidth = Math.max(panelMinWidth, dragWidth);
+    panelWidth.set(newWidth);
+    panelCollapsed.set(false);
+
+    return currentWidth - newWidth;
+  }
+
+  private shouldCollapse(size: number, minSize: number): boolean {
+    return size <= minSize - this.panelCollapseThreshold;
+  }
+
+  private getWorkAreaWidth(): number {
+    return (
+      this.applicationWidth() -
+      this.activityBarWidth -
+      this.leftPanelWidth() -
+      this.rightPanelWidth()
+    );
   }
 
   private updateApplicationSize(): void {
     const bounds = this.elementRef.nativeElement.getBoundingClientRect();
     this.applicationWidth.set(bounds.width);
     this.applicationHeight.set(bounds.height);
-  }
-
-  private readConfiguredPixels(property: string): number {
-    const styles = getComputedStyle(this.elementRef.nativeElement);
-    const value = styles.getPropertyValue(property);
-    return Number.parseFloat(value);
-  }
-
-  protected toggleLeftPanel(): void {
-    if (this.leftPanelCollapsed()) {
-      this.leftPanelWidth.set(this.leftPanelExpandedWidth);
-      this.leftPanelCollapsed.set(false);
-      return;
-    }
-
-    this.leftPanelExpandedWidth = this.leftPanelWidth();
-    this.leftPanelWidth.set(0);
-    this.leftPanelCollapsed.set(true);
-  }
-
-  protected toggleRightPanel(): void {
-    if (this.rightPanelCollapsed()) {
-      this.rightPanelWidth.set(this.rightPanelExpandedWidth);
-      this.rightPanelCollapsed.set(false);
-      return;
-    }
-
-    this.rightPanelExpandedWidth = this.rightPanelWidth();
-    this.rightPanelWidth.set(0);
-    this.rightPanelCollapsed.set(true);
-  }
-
-  protected toggleBottomPanel(): void {
-    if (this.bottomPanelCollapsed()) {
-      this.bottomPanelHeight.set(this.bottomPanelExpandedHeight);
-      this.bottomPanelCollapsed.set(false);
-      return;
-    }
-
-    this.bottomPanelExpandedHeight = this.bottomPanelHeight();
-    this.bottomPanelHeight.set(0);
-    this.bottomPanelCollapsed.set(true);
   }
 }
