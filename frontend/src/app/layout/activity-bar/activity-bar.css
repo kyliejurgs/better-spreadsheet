@@ -2,5 +2,48 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: #d7a36f;
+}
+
+.activity-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.activity-bar__primary,
+.activity-bar__secondary {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-bar__secondary {
+  margin-top: auto;
+}
+
+.activity-bar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.activity-bar__item .codicon {
+  font-size: 24px;
+}
+
+.activity-bar__item--active::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background-color: var(--accent-color);
+  content: '';
 }
