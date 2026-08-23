@@ -1,7 +1,18 @@
 @import '@vscode/codicons/dist/codicon.css';
+@import '@fontsource-variable/inter';
 
 :root {
   --accent-color: #dc2626;
+  --font-family: 'Inter Variable', 'Inter', sans-serif;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-family);
 }
 
 html,
