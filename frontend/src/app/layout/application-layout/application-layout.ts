@@ -19,6 +19,7 @@ import {
   ResizeEvent,
 } from '../../shared/resizable/resizable-container/resizable-container';
 import { APPLICATION_LAYOUT } from '../../config/application-layout.config';
+import { MenuBar } from '../menu-bar/menu-bar';
 
 @Component({
   selector: 'app-application-layout',
@@ -26,6 +27,7 @@ import { APPLICATION_LAYOUT } from '../../config/application-layout.config';
     ActivityBar,
     BottomPanel,
     LeftPanel,
+    MenuBar,
     ResizableContainer,
     RightPanel,
     StatusBar,
@@ -55,6 +57,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected readonly bottomPanelMinHeight = this.config.bottomPanel.minHeight;
 
   private readonly topBarHeight = this.config.topBar.height;
+  private readonly menuBarHeight = this.config.menuBar.height;
   private readonly activityBarWidth = this.config.activityBar.width;
   private readonly statusBarHeight = this.config.statusBar.height;
   private readonly workAreaMinWidth = this.config.workArea.minWidth;
@@ -83,7 +86,11 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected getBottomPanelMaxHeight(): number {
     return Math.max(
       this.bottomPanelMinHeight,
-      this.applicationHeight() - this.topBarHeight - this.statusBarHeight - this.workAreaMinHeight,
+      this.applicationHeight() -
+        this.topBarHeight -
+        this.menuBarHeight -
+        this.statusBarHeight -
+        this.workAreaMinHeight,
     );
   }
 

@@ -3,6 +3,10 @@ export const APPLICATION_LAYOUT = {
     height: 40,
   },
 
+  menuBar: {
+    height: 28,
+  },
+
   activityBar: {
     width: 48,
   },
