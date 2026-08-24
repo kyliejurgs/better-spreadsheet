@@ -5,7 +5,7 @@
     "name": "Item",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-001-002",
@@ -13,15 +13,15 @@
     "name": "Quantity",
     "dataType": "number",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-001-003",
     "tableId": "table-001",
     "name": "Category",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": false,
+    "validation": { "required": false },
     "options": [
       { "id": "option-001-003-001", "label": "Produce" },
       { "id": "option-001-003-002", "label": "Meat" },
@@ -36,7 +36,7 @@
     "name": "Needed By",
     "dataType": "date",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-001-005",
@@ -44,7 +44,7 @@
     "name": "Purchased",
     "dataType": "boolean",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
 
   {
@@ -53,15 +53,15 @@
     "name": "Expense",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-002-002",
     "tableId": "table-002",
     "name": "Category",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-002-002-001", "label": "Housing" },
       { "id": "option-002-002-002", "label": "Utilities" },
@@ -77,7 +77,7 @@
     "name": "Budgeted",
     "dataType": "currency",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "currency": "USD"
   },
   {
@@ -86,7 +86,7 @@
     "name": "Actual",
     "dataType": "currency",
     "valueModel": "normal",
-    "required": false,
+    "validation": { "required": false },
     "currency": "USD"
   },
   {
@@ -95,7 +95,7 @@
     "name": "Remaining",
     "dataType": "currency",
     "valueModel": "calculated",
-    "required": false,
+    "validation": { "required": false },
     "currency": "USD"
   },
 
@@ -105,15 +105,15 @@
     "name": "Task",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-003-002",
     "tableId": "table-003",
     "name": "Area",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-003-002-001", "label": "Frontend" },
       { "id": "option-003-002-002", "label": "Backend" },
@@ -126,9 +126,9 @@
     "id": "field-003-003",
     "tableId": "table-003",
     "name": "Status",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-003-003-001", "label": "Backlog" },
       { "id": "option-003-003-002", "label": "Ready" },
@@ -141,9 +141,9 @@
     "id": "field-003-004",
     "tableId": "table-003",
     "name": "Priority",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": false,
+    "validation": { "required": false },
     "options": [
       { "id": "option-003-004-001", "label": "Low" },
       { "id": "option-003-004-002", "label": "Normal" },
@@ -157,7 +157,7 @@
     "name": "Due Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
 
   {
@@ -166,15 +166,15 @@
     "name": "Project",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-004-002",
     "tableId": "table-004",
     "name": "Status",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-004-002-001", "label": "Planned" },
       { "id": "option-004-002-002", "label": "In Progress" },
@@ -188,7 +188,7 @@
     "name": "Estimated Cost",
     "dataType": "currency",
     "valueModel": "normal",
-    "required": false,
+    "validation": { "required": false },
     "currency": "USD"
   },
   {
@@ -197,7 +197,7 @@
     "name": "Start Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-004-005",
@@ -205,7 +205,7 @@
     "name": "Complete",
     "dataType": "boolean",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
 
   {
@@ -214,8 +214,14 @@
     "name": "ID",
     "dataType": "text",
     "valueModel": "generated",
-    "required": true,
-    "generator": "sequence"
+    "validation": { "required": true },
+    "generator": {
+      "type": "sequence",
+      "start": 1,
+      "increment": 1,
+      "prefix": "IN-",
+      "padding": 3
+    }
   },
   {
     "id": "field-005-002",
@@ -223,15 +229,15 @@
     "name": "Title",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-005-003",
     "tableId": "table-005",
     "name": "Type",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": false,
+    "validation": { "required": false },
     "options": [
       { "id": "option-005-003-001", "label": "Task" },
       { "id": "option-005-003-002", "label": "Idea" },
@@ -245,8 +251,8 @@
     "name": "Created",
     "dataType": "datetime",
     "valueModel": "generated",
-    "required": true,
-    "generator": "created"
+    "validation": { "required": true },
+    "generator": { "type": "created" }
   },
   {
     "id": "field-005-005",
@@ -254,7 +260,15 @@
     "name": "Processed",
     "dataType": "boolean",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
+  },
+  {
+    "id": "field-005-006",
+    "tableId": "table-005",
+    "name": "Sort Order",
+    "dataType": "integer",
+    "valueModel": "normal",
+    "validation": { "required": false }
   },
 
   {
@@ -263,7 +277,7 @@
     "name": "Milestone",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-006-002",
@@ -271,7 +285,7 @@
     "name": "Owner",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-006-003",
@@ -279,7 +293,7 @@
     "name": "Start Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-006-004",
@@ -287,7 +301,7 @@
     "name": "Due Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-006-005",
@@ -295,7 +309,15 @@
     "name": "Progress",
     "dataType": "percentage",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
+  },
+  {
+    "id": "field-006-006",
+    "tableId": "table-006",
+    "name": "Review Time",
+    "dataType": "time",
+    "valueModel": "normal",
+    "validation": { "required": false }
   },
 
   {
@@ -304,15 +326,15 @@
     "name": "Feature",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-007-002",
     "tableId": "table-007",
     "name": "Quarter",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-007-002-001", "label": "Q1" },
       { "id": "option-007-002-002", "label": "Q2" },
@@ -326,15 +348,15 @@
     "name": "Priority",
     "dataType": "rating",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-007-004",
     "tableId": "table-007",
     "name": "Status",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-007-004-001", "label": "Planned" },
       { "id": "option-007-004-002", "label": "Committed" },
@@ -348,7 +370,24 @@
     "name": "Target Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
+  },
+  {
+    "id": "field-007-006",
+    "tableId": "table-007",
+    "name": "Platforms",
+    "dataType": "multi-select",
+    "valueModel": "normal",
+    "validation": {
+      "required": false,
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "options": [
+      { "id": "option-007-006-001", "label": "Web" },
+      { "id": "option-007-006-002", "label": "Desktop" },
+      { "id": "option-007-006-003", "label": "Mobile" }
+    ]
   },
 
   {
@@ -357,15 +396,15 @@
     "name": "Issue",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-008-002",
     "tableId": "table-008",
     "name": "Severity",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-008-002-001", "label": "Low" },
       { "id": "option-008-002-002", "label": "Medium" },
@@ -377,9 +416,9 @@
     "id": "field-008-003",
     "tableId": "table-008",
     "name": "Status",
-    "dataType": "select",
+    "dataType": "single-select",
     "valueModel": "normal",
-    "required": true,
+    "validation": { "required": true },
     "options": [
       { "id": "option-008-003-001", "label": "Open" },
       { "id": "option-008-003-002", "label": "In Progress" },
@@ -393,8 +432,8 @@
     "name": "Reported",
     "dataType": "datetime",
     "valueModel": "generated",
-    "required": true,
-    "generator": "created"
+    "validation": { "required": true },
+    "generator": { "type": "created" }
   },
   {
     "id": "field-008-005",
@@ -402,7 +441,19 @@
     "name": "Description",
     "dataType": "text",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
+  },
+  {
+    "id": "field-008-006",
+    "tableId": "table-008",
+    "name": "Related Roadmap Item",
+    "dataType": "reference",
+    "valueModel": "normal",
+    "validation": { "required": false },
+    "reference": {
+      "tableId": "table-007",
+      "multiple": false
+    }
   },
 
   {
@@ -411,7 +462,7 @@
     "name": "Date",
     "dataType": "date",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-009-002",
@@ -419,7 +470,7 @@
     "name": "Project",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-009-003",
@@ -427,7 +478,7 @@
     "name": "Hours",
     "dataType": "number",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-009-004",
@@ -435,7 +486,7 @@
     "name": "Billable",
     "dataType": "boolean",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-009-005",
@@ -443,7 +494,7 @@
     "name": "Notes",
     "dataType": "text",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
 
   {
@@ -452,29 +503,28 @@
     "name": "Title",
     "dataType": "text",
     "valueModel": "normal",
-    "required": true
+    "validation": { "required": true }
   },
   {
     "id": "field-010-002",
     "tableId": "table-010",
-    "name": "Content",
+    "name": "Body",
     "dataType": "text",
     "valueModel": "normal",
-    "required": false
+    "validation": { "required": false }
   },
   {
     "id": "field-010-003",
     "tableId": "table-010",
     "name": "Tags",
-    "dataType": "select",
+    "dataType": "multi-select",
     "valueModel": "normal",
-    "required": false,
-    "multiple": true,
+    "validation": { "required": false },
     "options": [
-      { "id": "option-010-003-001", "label": "Meeting" },
+      { "id": "option-010-003-001", "label": "Planning" },
       { "id": "option-010-003-002", "label": "Research" },
       { "id": "option-010-003-003", "label": "Idea" },
-      { "id": "option-010-003-004", "label": "Reference" }
+      { "id": "option-010-003-004", "label": "Technical" }
     ]
   },
   {
@@ -483,8 +533,8 @@
     "name": "Created",
     "dataType": "datetime",
     "valueModel": "generated",
-    "required": true,
-    "generator": "created"
+    "validation": { "required": true },
+    "generator": { "type": "created" }
   },
   {
     "id": "field-010-005",
@@ -492,7 +542,27 @@
     "name": "Last Modified",
     "dataType": "datetime",
     "valueModel": "generated",
-    "required": true,
-    "generator": "modified"
+    "validation": { "required": true },
+    "generator": { "type": "modified" }
+  },
+  {
+    "id": "field-010-006",
+    "tableId": "table-010",
+    "name": "Attachments",
+    "dataType": "attachment",
+    "valueModel": "normal",
+    "validation": {
+      "required": false,
+      "maxItems": 5
+    }
+  },
+  {
+    "id": "field-010-007",
+    "tableId": "table-010",
+    "name": "Note ID",
+    "dataType": "text",
+    "valueModel": "generated",
+    "validation": { "required": true },
+    "generator": { "type": "uuid" }
   }
 ]
