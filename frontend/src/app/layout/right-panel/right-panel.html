@@ -1,1 +1,72 @@
-Right Panel
+<aside class="properties-panel">
+  <header class="properties-panel__header">
+    <span class="properties-panel__title">Properties</span>
+
+    <div class="properties-panel__actions">
+      <button
+        class="properties-panel__action"
+        type="button"
+        aria-label="More actions"
+        title="More Actions"
+      >
+        <i class="codicon codicon-ellipsis" aria-hidden="true"></i>
+      </button>
+
+      <button
+        class="properties-panel__action"
+        type="button"
+        aria-label="Close panel"
+        title="Close Panel"
+      >
+        <i class="codicon codicon-close" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="properties-panel__content">
+    <section class="properties-panel__section">
+      <div class="properties-panel__section-title">
+        <i class="codicon codicon-symbol-field" aria-hidden="true"></i>
+        <span>Field</span>
+      </div>
+
+      <div class="properties-panel__field">
+        <span class="properties-panel__label">Name</span>
+        <div class="properties-panel__input">Employee Name</div>
+      </div>
+
+      <div class="properties-panel__field">
+        <span class="properties-panel__label">Type</span>
+
+        <div class="properties-panel__input properties-panel__input--select">
+          <div class="properties-panel__type">
+            <i class="codicon codicon-symbol-string" aria-hidden="true"></i>
+            <span>Text</span>
+          </div>
+
+          <i class="codicon codicon-chevron-down" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <div class="properties-panel__options">
+        <div class="properties-panel__option">
+          <i class="codicon codicon-check" aria-hidden="true"></i>
+          <span>Required</span>
+        </div>
+
+        <div class="properties-panel__option">
+          <span class="properties-panel__checkbox"></span>
+          <span>Read Only</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="properties-panel__section">
+      <div class="properties-panel__section-title">
+        <span>Description</span>
+      </div>
+
+      <div class="properties-panel__textarea">Employee's full name</div>
+    </section>
+  </div>
+</aside>
