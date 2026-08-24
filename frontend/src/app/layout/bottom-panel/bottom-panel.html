@@ -1,1 +1,70 @@
-Bottom Panel
+<section class="bottom-panel">
+  <header class="bottom-panel__header">
+    <nav class="bottom-panel__tabs" aria-label="Bottom Panel">
+      <button class="bottom-panel__tab bottom-panel__tab--active" type="button">
+        <span>Problems</span>
+        <span class="bottom-panel__badge">3</span>
+      </button>
+
+      <button class="bottom-panel__tab" type="button">
+        <span>Output</span>
+      </button>
+
+      <button class="bottom-panel__tab" type="button">
+        <span>Logs</span>
+      </button>
+    </nav>
+
+    <div class="bottom-panel__actions">
+      <button
+        class="bottom-panel__action"
+        type="button"
+        aria-label="Minimize panel"
+        title="Minimize Panel"
+      >
+        <i class="codicon codicon-chevron-down" aria-hidden="true"></i>
+      </button>
+
+      <button
+        class="bottom-panel__action"
+        type="button"
+        aria-label="Maximize panel"
+        title="Maximize Panel"
+      >
+        <i class="codicon codicon-chevron-up" aria-hidden="true"></i>
+      </button>
+
+      <button
+        class="bottom-panel__action"
+        type="button"
+        aria-label="Close panel"
+        title="Close Panel"
+      >
+        <i class="codicon codicon-close" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="bottom-panel__content">
+    <div class="bottom-panel__problem">
+      <i class="codicon codicon-error" aria-hidden="true"></i>
+      <span class="bottom-panel__severity">Error</span>
+      <span class="bottom-panel__source">Employees</span>
+      <span class="bottom-panel__message">Invalid reference in Department</span>
+    </div>
+
+    <div class="bottom-panel__problem">
+      <i class="codicon codicon-warning" aria-hidden="true"></i>
+      <span class="bottom-panel__severity">Warning</span>
+      <span class="bottom-panel__source">Projects</span>
+      <span class="bottom-panel__message">Due Date contains 2 invalid values</span>
+    </div>
+
+    <div class="bottom-panel__problem">
+      <i class="codicon codicon-warning" aria-hidden="true"></i>
+      <span class="bottom-panel__severity">Warning</span>
+      <span class="bottom-panel__source">Employees</span>
+      <span class="bottom-panel__message">Employee ID is missing</span>
+    </div>
+  </div>
+</section>
