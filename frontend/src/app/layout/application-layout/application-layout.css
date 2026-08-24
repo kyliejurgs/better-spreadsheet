@@ -33,6 +33,8 @@
   width: var(--activity-bar-width);
   height: calc(var(--top-bar-height) + var(--menu-bar-height));
   overflow: hidden;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-default);
 }
 
 .application-logo app-logo {

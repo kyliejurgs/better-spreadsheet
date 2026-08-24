@@ -11,6 +11,7 @@
   height: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  background: var(--surface-work);
 }
 
 .work-area__header {
