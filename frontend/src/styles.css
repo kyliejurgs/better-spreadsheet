@@ -6,7 +6,6 @@
 @import './appearance/accent.css';
 
 :root {
-  --accent-color: #dc2626;
   --font-family: 'Inter Variable', 'Inter', sans-serif;
 }
 
