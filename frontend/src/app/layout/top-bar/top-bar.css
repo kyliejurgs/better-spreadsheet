@@ -12,6 +12,7 @@
   height: 100%;
   padding: 0 8px 0 12px;
   box-sizing: border-box;
+  background: var(--surface-app);
 }
 
 .top-bar__left {

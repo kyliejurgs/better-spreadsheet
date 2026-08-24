@@ -10,6 +10,8 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  background: var(--surface-panel);
+  border-right: 1px solid var(--border-default);
 }
 
 .explorer__header {

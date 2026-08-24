@@ -11,6 +11,8 @@
   height: 100%;
   padding: 0 8px;
   box-sizing: border-box;
+  background: var(--surface-app);
+  border-bottom: 1px solid var(--border-default);
 }
 
 .menu-bar__item {
