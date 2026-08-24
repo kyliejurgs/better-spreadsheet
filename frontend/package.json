@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "seed:copy": "mkdir -p public/seed && cp ../development/seed/data/*.json public/seed/",
+    "prestart": "npm run seed:copy",
+    "prebuild": "npm run seed:copy"
   },
   "private": true,
   "packageManager": "npm@11.17.0",
