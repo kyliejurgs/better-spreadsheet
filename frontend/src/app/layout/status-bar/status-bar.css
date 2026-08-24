@@ -2,5 +2,65 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: #bc7fa5;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.status-bar__left,
+.status-bar__sync,
+.status-bar__problems,
+.status-bar__problem,
+.status-bar__context {
+  display: flex;
+  align-items: center;
+}
+
+.status-bar__left {
+  height: 100%;
+}
+
+.status-bar__sync {
+  gap: 4px;
+}
+
+.status-bar__separator {
+  margin: 0 6px;
+}
+
+.status-bar__problems {
+  gap: 8px;
+  height: 100%;
+  margin-left: 16px;
+}
+
+.status-bar__problem {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.status-bar__context {
+  gap: 16px;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.status-bar .codicon {
+  font-size: 14px;
 }

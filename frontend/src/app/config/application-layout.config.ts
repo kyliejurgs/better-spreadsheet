@@ -1,10 +1,14 @@
 export const APPLICATION_LAYOUT = {
   topBar: {
-    height: 40,
+    height: 32,
+  },
+
+  menuBar: {
+    height: 24,
   },
 
   activityBar: {
-    width: 48,
+    width: 56,
   },
 
   leftPanel: {
