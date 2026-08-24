@@ -1,0 +1,92 @@
+[
+  {
+    "id": "table-001",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-001",
+    "name": "Grocery List",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-07T14:00:00Z",
+    "updatedAt": "2026-08-20T17:30:00Z"
+  },
+  {
+    "id": "table-002",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-001",
+    "name": "Household Budget",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-08T14:00:00Z",
+    "updatedAt": "2026-08-21T18:15:00Z"
+  },
+  {
+    "id": "table-003",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-002",
+    "name": "Better Spreadsheet",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-09T14:00:00Z",
+    "updatedAt": "2026-08-23T18:30:00Z"
+  },
+  {
+    "id": "table-004",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-002",
+    "name": "Home Projects",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-10T14:00:00Z",
+    "updatedAt": "2026-08-19T16:20:00Z"
+  },
+  {
+    "id": "table-005",
+    "workspaceId": "workspace-001",
+    "collectionId": null,
+    "name": "Inbox",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-11T14:00:00Z",
+    "updatedAt": "2026-08-22T15:10:00Z"
+  },
+  {
+    "id": "table-006",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-003",
+    "name": "Project Plan",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-12T13:00:00Z",
+    "updatedAt": "2026-08-22T19:30:00Z"
+  },
+  {
+    "id": "table-007",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-003",
+    "name": "Roadmap",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-13T13:00:00Z",
+    "updatedAt": "2026-08-23T14:45:00Z"
+  },
+  {
+    "id": "table-008",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-004",
+    "name": "Issue Tracker",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-14T13:00:00Z",
+    "updatedAt": "2026-08-23T21:15:00Z"
+  },
+  {
+    "id": "table-009",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-004",
+    "name": "Time Tracking",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-15T13:00:00Z",
+    "updatedAt": "2026-08-22T20:10:00Z"
+  },
+  {
+    "id": "table-010",
+    "workspaceId": "workspace-002",
+    "collectionId": null,
+    "name": "Notes",
+    "lifecycleState": "active",
+    "createdAt": "2026-08-16T13:00:00Z",
+    "updatedAt": "2026-08-23T17:25:00Z"
+  }
+]
