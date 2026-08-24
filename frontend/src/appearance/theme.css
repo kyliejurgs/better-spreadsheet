@@ -1,0 +1,21 @@
+:root,
+[data-theme='light'] {
+  --surface-app: #f3f3f3;
+  --surface-panel: #f3f3f3;
+  --surface-activity-bar: #f8f8f8;
+  --surface-work: #ffffff;
+  --surface-hover: #e8e8e8;
+  --surface-selected: #e4e6f1;
+  --surface-input: #ffffff;
+
+  --border-default: #d4d4d4;
+  --border-subtle: #e5e5e5;
+
+  --text-primary: #181818;
+  --text-secondary: #616161;
+  --text-muted: #8a8a8a;
+
+  --focus-border: var(--accent-color);
+
+  color-scheme: light;
+}

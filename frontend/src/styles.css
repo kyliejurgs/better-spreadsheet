@@ -1,6 +1,10 @@
 @import '@vscode/codicons/dist/codicon.css';
 @import '@fontsource-variable/inter';
 
+@import './appearance/variables.css';
+@import './appearance/theme.css';
+@import './appearance/accent.css';
+
 :root {
   --accent-color: #dc2626;
   --font-family: 'Inter Variable', 'Inter', sans-serif;
@@ -24,4 +28,6 @@ body {
 
 body {
   overflow: hidden;
+  color: var(--text-primary);
+  background: var(--surface-app);
 }
