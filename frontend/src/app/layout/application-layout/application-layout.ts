@@ -20,6 +20,7 @@ import {
 } from '../../shared/resizable/resizable-container/resizable-container';
 import { APPLICATION_LAYOUT } from '../../config/application-layout.config';
 import { MenuBar } from '../menu-bar/menu-bar';
+import { Logo } from '../../shared/logo/logo';
 
 @Component({
   selector: 'app-application-layout',
@@ -27,6 +28,7 @@ import { MenuBar } from '../menu-bar/menu-bar';
     ActivityBar,
     BottomPanel,
     LeftPanel,
+    Logo,
     MenuBar,
     ResizableContainer,
     RightPanel,
