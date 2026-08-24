@@ -6,37 +6,25 @@
 
 .top-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  padding: 0 8px;
+  padding: 0 8px 0 12px;
   box-sizing: border-box;
 }
 
 .top-bar__left {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   min-width: 0;
-}
-
-.top-bar__brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-
-.top-bar__logo {
-  flex: 0 0 32px;
-  width: 32px;
-  height: 32px;
+  height: 100%;
 }
 
 .top-bar__title {
   overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: inherit;
+  font-size: 28px;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
@@ -45,17 +33,34 @@
 
 .top-bar__history {
   display: flex;
+  align-items: flex-end;
+  margin-left: 8px;
+}
+
+.top-bar__action {
+  display: flex;
   align-items: center;
-  margin-left: 16px;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.top-bar__action .codicon {
+  font-size: 18px;
 }
 
 .top-bar__profile {
   display: flex;
   align-items: center;
+  align-self: center;
   justify-content: flex-end;
 }
 
-.top-bar__action {
+.top-bar__profile-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,6 +72,6 @@
   cursor: pointer;
 }
 
-.top-bar__action .codicon {
-  font-size: 18px;
+.top-bar__profile-button .codicon {
+  font-size: 26px;
 }
