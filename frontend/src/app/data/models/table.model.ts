@@ -1,4 +1,4 @@
-import { LifecycleState } from './collection.model';
+import { LifecycleState } from './shared.model';
 
 export interface Table {
   id: string;

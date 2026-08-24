@@ -1,4 +1,4 @@
-export type LifecycleState = 'active' | 'archived';
+import { LifecycleState } from './shared.model';
 
 export interface Collection {
   id: string;
