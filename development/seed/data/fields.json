@@ -1,0 +1,498 @@
+[
+  {
+    "id": "field-001-001",
+    "tableId": "table-001",
+    "name": "Item",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-001-002",
+    "tableId": "table-001",
+    "name": "Quantity",
+    "dataType": "number",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-001-003",
+    "tableId": "table-001",
+    "name": "Category",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": false,
+    "options": [
+      { "id": "option-001-003-001", "label": "Produce" },
+      { "id": "option-001-003-002", "label": "Meat" },
+      { "id": "option-001-003-003", "label": "Dairy" },
+      { "id": "option-001-003-004", "label": "Pantry" },
+      { "id": "option-001-003-005", "label": "Household" }
+    ]
+  },
+  {
+    "id": "field-001-004",
+    "tableId": "table-001",
+    "name": "Needed By",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-001-005",
+    "tableId": "table-001",
+    "name": "Purchased",
+    "dataType": "boolean",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-002-001",
+    "tableId": "table-002",
+    "name": "Expense",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-002-002",
+    "tableId": "table-002",
+    "name": "Category",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-002-002-001", "label": "Housing" },
+      { "id": "option-002-002-002", "label": "Utilities" },
+      { "id": "option-002-002-003", "label": "Food" },
+      { "id": "option-002-002-004", "label": "Transportation" },
+      { "id": "option-002-002-005", "label": "Entertainment" },
+      { "id": "option-002-002-006", "label": "Other" }
+    ]
+  },
+  {
+    "id": "field-002-003",
+    "tableId": "table-002",
+    "name": "Budgeted",
+    "dataType": "currency",
+    "valueModel": "normal",
+    "required": true,
+    "currency": "USD"
+  },
+  {
+    "id": "field-002-004",
+    "tableId": "table-002",
+    "name": "Actual",
+    "dataType": "currency",
+    "valueModel": "normal",
+    "required": false,
+    "currency": "USD"
+  },
+  {
+    "id": "field-002-005",
+    "tableId": "table-002",
+    "name": "Remaining",
+    "dataType": "currency",
+    "valueModel": "calculated",
+    "required": false,
+    "currency": "USD"
+  },
+
+  {
+    "id": "field-003-001",
+    "tableId": "table-003",
+    "name": "Task",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-003-002",
+    "tableId": "table-003",
+    "name": "Area",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-003-002-001", "label": "Frontend" },
+      { "id": "option-003-002-002", "label": "Backend" },
+      { "id": "option-003-002-003", "label": "Data" },
+      { "id": "option-003-002-004", "label": "Infrastructure" },
+      { "id": "option-003-002-005", "label": "Design" }
+    ]
+  },
+  {
+    "id": "field-003-003",
+    "tableId": "table-003",
+    "name": "Status",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-003-003-001", "label": "Backlog" },
+      { "id": "option-003-003-002", "label": "Ready" },
+      { "id": "option-003-003-003", "label": "In Progress" },
+      { "id": "option-003-003-004", "label": "Blocked" },
+      { "id": "option-003-003-005", "label": "Done" }
+    ]
+  },
+  {
+    "id": "field-003-004",
+    "tableId": "table-003",
+    "name": "Priority",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": false,
+    "options": [
+      { "id": "option-003-004-001", "label": "Low" },
+      { "id": "option-003-004-002", "label": "Normal" },
+      { "id": "option-003-004-003", "label": "High" },
+      { "id": "option-003-004-004", "label": "Critical" }
+    ]
+  },
+  {
+    "id": "field-003-005",
+    "tableId": "table-003",
+    "name": "Due Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-004-001",
+    "tableId": "table-004",
+    "name": "Project",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-004-002",
+    "tableId": "table-004",
+    "name": "Status",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-004-002-001", "label": "Planned" },
+      { "id": "option-004-002-002", "label": "In Progress" },
+      { "id": "option-004-002-003", "label": "Complete" },
+      { "id": "option-004-002-004", "label": "On Hold" }
+    ]
+  },
+  {
+    "id": "field-004-003",
+    "tableId": "table-004",
+    "name": "Estimated Cost",
+    "dataType": "currency",
+    "valueModel": "normal",
+    "required": false,
+    "currency": "USD"
+  },
+  {
+    "id": "field-004-004",
+    "tableId": "table-004",
+    "name": "Start Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-004-005",
+    "tableId": "table-004",
+    "name": "Complete",
+    "dataType": "boolean",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-005-001",
+    "tableId": "table-005",
+    "name": "ID",
+    "dataType": "text",
+    "valueModel": "generated",
+    "required": true,
+    "generator": "sequence"
+  },
+  {
+    "id": "field-005-002",
+    "tableId": "table-005",
+    "name": "Title",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-005-003",
+    "tableId": "table-005",
+    "name": "Type",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": false,
+    "options": [
+      { "id": "option-005-003-001", "label": "Task" },
+      { "id": "option-005-003-002", "label": "Idea" },
+      { "id": "option-005-003-003", "label": "Reminder" },
+      { "id": "option-005-003-004", "label": "Note" }
+    ]
+  },
+  {
+    "id": "field-005-004",
+    "tableId": "table-005",
+    "name": "Created",
+    "dataType": "datetime",
+    "valueModel": "generated",
+    "required": true,
+    "generator": "created"
+  },
+  {
+    "id": "field-005-005",
+    "tableId": "table-005",
+    "name": "Processed",
+    "dataType": "boolean",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-006-001",
+    "tableId": "table-006",
+    "name": "Milestone",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-006-002",
+    "tableId": "table-006",
+    "name": "Owner",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-006-003",
+    "tableId": "table-006",
+    "name": "Start Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-006-004",
+    "tableId": "table-006",
+    "name": "Due Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-006-005",
+    "tableId": "table-006",
+    "name": "Progress",
+    "dataType": "percentage",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-007-001",
+    "tableId": "table-007",
+    "name": "Feature",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-007-002",
+    "tableId": "table-007",
+    "name": "Quarter",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-007-002-001", "label": "Q1" },
+      { "id": "option-007-002-002", "label": "Q2" },
+      { "id": "option-007-002-003", "label": "Q3" },
+      { "id": "option-007-002-004", "label": "Q4" }
+    ]
+  },
+  {
+    "id": "field-007-003",
+    "tableId": "table-007",
+    "name": "Priority",
+    "dataType": "rating",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-007-004",
+    "tableId": "table-007",
+    "name": "Status",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-007-004-001", "label": "Planned" },
+      { "id": "option-007-004-002", "label": "Committed" },
+      { "id": "option-007-004-003", "label": "In Progress" },
+      { "id": "option-007-004-004", "label": "Released" }
+    ]
+  },
+  {
+    "id": "field-007-005",
+    "tableId": "table-007",
+    "name": "Target Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-008-001",
+    "tableId": "table-008",
+    "name": "Issue",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-008-002",
+    "tableId": "table-008",
+    "name": "Severity",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-008-002-001", "label": "Low" },
+      { "id": "option-008-002-002", "label": "Medium" },
+      { "id": "option-008-002-003", "label": "High" },
+      { "id": "option-008-002-004", "label": "Critical" }
+    ]
+  },
+  {
+    "id": "field-008-003",
+    "tableId": "table-008",
+    "name": "Status",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": true,
+    "options": [
+      { "id": "option-008-003-001", "label": "Open" },
+      { "id": "option-008-003-002", "label": "In Progress" },
+      { "id": "option-008-003-003", "label": "Resolved" },
+      { "id": "option-008-003-004", "label": "Closed" }
+    ]
+  },
+  {
+    "id": "field-008-004",
+    "tableId": "table-008",
+    "name": "Reported",
+    "dataType": "datetime",
+    "valueModel": "generated",
+    "required": true,
+    "generator": "created"
+  },
+  {
+    "id": "field-008-005",
+    "tableId": "table-008",
+    "name": "Description",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-009-001",
+    "tableId": "table-009",
+    "name": "Date",
+    "dataType": "date",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-009-002",
+    "tableId": "table-009",
+    "name": "Project",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-009-003",
+    "tableId": "table-009",
+    "name": "Hours",
+    "dataType": "number",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-009-004",
+    "tableId": "table-009",
+    "name": "Billable",
+    "dataType": "boolean",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-009-005",
+    "tableId": "table-009",
+    "name": "Notes",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": false
+  },
+
+  {
+    "id": "field-010-001",
+    "tableId": "table-010",
+    "name": "Title",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": true
+  },
+  {
+    "id": "field-010-002",
+    "tableId": "table-010",
+    "name": "Content",
+    "dataType": "text",
+    "valueModel": "normal",
+    "required": false
+  },
+  {
+    "id": "field-010-003",
+    "tableId": "table-010",
+    "name": "Tags",
+    "dataType": "select",
+    "valueModel": "normal",
+    "required": false,
+    "multiple": true,
+    "options": [
+      { "id": "option-010-003-001", "label": "Meeting" },
+      { "id": "option-010-003-002", "label": "Research" },
+      { "id": "option-010-003-003", "label": "Idea" },
+      { "id": "option-010-003-004", "label": "Reference" }
+    ]
+  },
+  {
+    "id": "field-010-004",
+    "tableId": "table-010",
+    "name": "Created",
+    "dataType": "datetime",
+    "valueModel": "generated",
+    "required": true,
+    "generator": "created"
+  },
+  {
+    "id": "field-010-005",
+    "tableId": "table-010",
+    "name": "Last Modified",
+    "dataType": "datetime",
+    "valueModel": "generated",
+    "required": true,
+    "generator": "modified"
+  }
+]
