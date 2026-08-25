@@ -1,15 +1,24 @@
 <nav class="activity-bar" aria-label="Application Navigation">
   <div class="activity-bar__primary">
     <button
-      class="activity-bar__item activity-bar__item--active"
+      class="activity-bar__item"
+      [class.activity-bar__item--active]="activePanelContent() === 'explorer'"
       type="button"
       aria-label="Explorer"
       title="Explorer"
+      (click)="selectContent('explorer')"
     >
       <i class="codicon codicon-library" aria-hidden="true"></i>
     </button>
 
-    <button class="activity-bar__item" type="button" aria-label="Search" title="Search">
+    <button
+      class="activity-bar__item"
+      [class.activity-bar__item--active]="activePanelContent() === 'search'"
+      type="button"
+      aria-label="Search"
+      title="Search"
+      (click)="selectContent('search')"
+    >
       <i class="codicon codicon-search" aria-hidden="true"></i>
     </button>
   </div>

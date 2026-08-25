@@ -37,16 +37,41 @@
   cursor: pointer;
 }
 
+.activity-bar__item:hover {
+  background: var(--surface-hover);
+}
+
+.activity-bar__item:focus-visible {
+  outline: 1px solid var(--focus-border);
+  outline-offset: -2px;
+}
+
 .activity-bar__item .codicon {
   font-size: 24px;
 }
 
+.activity-bar__item:hover .codicon {
+  font-size: 26px;
+}
+
+.activity-bar__item--active {
+  background: var(--surface-hover);
+  color: var(--accent-color);
+}
+
 .activity-bar__item--active::before {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 5px;
-  background-color: var(--accent-color);
+  inset: 9px;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
   content: '';
+  pointer-events: none;
+}
+
+.activity-bar__item--active:hover {
+  background: var(--surface-selected);
+}
+
+.activity-bar__item--active .codicon {
+  font-size: 26px;
 }
