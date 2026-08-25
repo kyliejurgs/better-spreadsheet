@@ -20,7 +20,7 @@
       [maxWidth]="getSidePanelMaxWidth()"
       (resize)="resizeLeftPanel($event)"
     >
-      <app-left-panel />
+      <app-left-panel [activeContent]="leftPanelContent()" />
     </app-resizable-container>
 
     <div class="application--center">

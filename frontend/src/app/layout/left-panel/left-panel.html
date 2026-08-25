@@ -1,79 +1,9 @@
-<aside class="explorer">
-  <header class="explorer__header">
-    <span class="explorer__title">Explorer</span>
-  </header>
+@switch (activeContent()) {
+  @case ('explorer') {
+    <app-explorer />
+  }
 
-  <div class="explorer__workspace">
-    <div class="explorer__workspace-header">
-      <div class="explorer__workspace-name">
-        <i class="codicon codicon-window" aria-hidden="true"></i>
-        <span>My Workspace</span>
-      </div>
-
-      <div class="explorer__actions">
-        <button
-          class="explorer__action"
-          type="button"
-          aria-label="New collection"
-          title="New Collection"
-        >
-          <i class="codicon codicon-new-collection" aria-hidden="true"></i>
-        </button>
-
-        <button
-          class="explorer__action"
-          type="button"
-          aria-label="Collapse all"
-          title="Collapse All"
-        >
-          <i class="codicon codicon-collapse-all" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="explorer__tree">
-      <div class="explorer__tree-item explorer__tree-item--collection">
-        <i class="codicon codicon-chevron-down" aria-hidden="true"></i>
-        <i class="codicon codicon-collection" aria-hidden="true"></i>
-        <span>Personal</span>
-      </div>
-
-      <div class="explorer__tree-item explorer__tree-item--child">
-        <span class="explorer__tree-spacer"></span>
-        <i class="codicon codicon-table" aria-hidden="true"></i>
-        <span>Tasks</span>
-      </div>
-
-      <div class="explorer__tree-item explorer__tree-item--child">
-        <span class="explorer__tree-spacer"></span>
-        <i class="codicon codicon-eye" aria-hidden="true"></i>
-        <span>All Tasks</span>
-      </div>
-
-      <div class="explorer__tree-item explorer__tree-item--child">
-        <span class="explorer__tree-spacer"></span>
-        <i class="codicon codicon-dashboard" aria-hidden="true"></i>
-        <span>Overview</span>
-      </div>
-
-      <div class="explorer__tree-item explorer__tree-item--collection">
-        <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
-        <i class="codicon codicon-collection" aria-hidden="true"></i>
-        <span>Projects</span>
-      </div>
-
-      <div class="explorer__tree-item explorer__tree-item--collection">
-        <i class="codicon codicon-chevron-right" aria-hidden="true"></i>
-        <i class="codicon codicon-collection" aria-hidden="true"></i>
-        <span>Finances</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="explorer__footer">
-    <button class="explorer__switch" type="button">
-      <i class="codicon codicon-arrow-swap" aria-hidden="true"></i>
-      <span>Switch Workspace</span>
-    </button>
-  </div>
-</aside>
+  @case ('search') {
+    <app-search />
+  }
+}

@@ -21,6 +21,7 @@ import {
 import { APPLICATION_LAYOUT } from '../../config/application-layout.config';
 import { MenuBar } from '../menu-bar/menu-bar';
 import { Logo } from '../../shared/logo/logo';
+import { LeftPanelContent } from '../navigation/left-panel-content.model';
 
 @Component({
   selector: 'app-application-layout',
@@ -45,6 +46,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   private readonly applicationHeight = signal(0);
 
   protected readonly config = APPLICATION_LAYOUT;
+  protected readonly leftPanelContent = signal<LeftPanelContent>('explorer');
 
   protected readonly leftPanelWidth = signal<number>(this.config.leftPanel.defaultWidth);
   protected readonly rightPanelWidth = signal<number>(this.config.rightPanel.defaultWidth);
@@ -79,6 +81,10 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.resizeObserver?.disconnect();
+  }
+
+  protected setLeftPanelContent(content: LeftPanelContent): void {
+    this.leftPanelContent.set(content);
   }
 
   protected getSidePanelMaxWidth(): number {
