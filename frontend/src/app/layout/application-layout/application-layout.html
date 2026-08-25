@@ -11,7 +11,11 @@
   <app-menu-bar class="menu-bar" />
 
   <main #applicationMain class="application--main">
-    <app-activity-bar class="activity-bar" />
+    <app-activity-bar
+      class="activity-bar"
+      [activePanelContent]="leftPanelContent()"
+      (viewContent)="setLeftPanelContent($event)"
+    />
 
     <app-resizable-container
       class="left-panel"
