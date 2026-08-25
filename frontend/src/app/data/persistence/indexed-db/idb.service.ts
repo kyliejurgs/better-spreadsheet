@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { INDEXED_DB_CONFIG } from './indexed-db.config';
+import { IDB_CONFIG } from './idb.config';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IndexedDbService {
+export class IdbService {
   private databasePromise: Promise<IDBDatabase> | undefined;
 
   getDatabase(): Promise<IDBDatabase> {
@@ -14,7 +14,7 @@ export class IndexedDbService {
 
   private openDatabase(): Promise<IDBDatabase> {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(INDEXED_DB_CONFIG.name, INDEXED_DB_CONFIG.version);
+      const request = indexedDB.open(IDB_CONFIG.name, IDB_CONFIG.version);
 
       request.onupgradeneeded = () => {
         this.createSchema(request.result);
@@ -31,29 +31,29 @@ export class IndexedDbService {
   }
 
   private createSchema(database: IDBDatabase): void {
-    const { stores } = INDEXED_DB_CONFIG;
+    const { stores } = IDB_CONFIG;
     if (!database.objectStoreNames.contains(stores.workspaces)) {
       database.createObjectStore(stores.workspaces, { keyPath: 'id' });
     }
 
     if (!database.objectStoreNames.contains(stores.collections)) {
       const store = database.createObjectStore(stores.collections, { keyPath: 'id' });
-      store.createIndex(INDEXED_DB_CONFIG.indexes.workspaceId, 'workspaceId', { unique: false });
+      store.createIndex(IDB_CONFIG.indexes.workspaceId, 'workspaceId', { unique: false });
     }
 
     if (!database.objectStoreNames.contains(stores.tables)) {
       const store = database.createObjectStore(stores.tables, { keyPath: 'id' });
-      store.createIndex(INDEXED_DB_CONFIG.indexes.workspaceId, 'workspaceId', { unique: false });
-      store.createIndex(INDEXED_DB_CONFIG.indexes.collectionId, 'collectionId', { unique: false });
+      store.createIndex(IDB_CONFIG.indexes.workspaceId, 'workspaceId', { unique: false });
+      store.createIndex(IDB_CONFIG.indexes.collectionId, 'collectionId', { unique: false });
     }
     if (!database.objectStoreNames.contains(stores.fields)) {
       const store = database.createObjectStore(stores.fields, { keyPath: 'id' });
-      store.createIndex(INDEXED_DB_CONFIG.indexes.tableId, 'tableId', { unique: false });
+      store.createIndex(IDB_CONFIG.indexes.tableId, 'tableId', { unique: false });
     }
 
     if (!database.objectStoreNames.contains(stores.records)) {
       const store = database.createObjectStore(stores.records, { keyPath: 'id' });
-      store.createIndex(INDEXED_DB_CONFIG.indexes.tableId, 'tableId', { unique: false });
+      store.createIndex(IDB_CONFIG.indexes.tableId, 'tableId', { unique: false });
     }
 
     if (!database.objectStoreNames.contains(stores.metadata)) {

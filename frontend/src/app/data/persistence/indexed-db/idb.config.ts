@@ -1,4 +1,4 @@
-export const INDEXED_DB_CONFIG = {
+export const IDB_CONFIG = {
   name: 'better-spreadsheet',
   version: 1,
 
