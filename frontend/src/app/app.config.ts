@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer } from '@angular/core';
 import { WorkspaceRepository } from './data/repositories/workspace.repository';
 import { IdbWorkspaceRepository } from './data/persistence/indexed-db/repositories/idb-workspace.repository';
 import { CollectionRepository } from './data/repositories/collection.repository';
@@ -9,6 +9,7 @@ import { FieldRepository } from './data/repositories/field.repository';
 import { IdbFieldRepository } from './data/persistence/indexed-db/repositories/idb-field.repository';
 import { RecordRepository } from './data/repositories/record.repository';
 import { IdbRecordRepository } from './data/persistence/indexed-db/repositories/idb-record.repository';
+import { SeedService } from './data/seed/seed.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +18,9 @@ export const appConfig: ApplicationConfig = {
     { provide: TableRepository, useClass: IdbTableRepository },
     { provide: FieldRepository, useClass: IdbFieldRepository },
     { provide: RecordRepository, useClass: IdbRecordRepository },
+
+    provideAppInitializer(() => {
+      return inject(SeedService).initialize();
+    }),
   ],
 };
