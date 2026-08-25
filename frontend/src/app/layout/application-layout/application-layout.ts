@@ -60,6 +60,8 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected readonly rightPanelMinWidth = this.config.rightPanel.minWidth;
   protected readonly bottomPanelMinHeight = this.config.bottomPanel.minHeight;
 
+  private readonly lastLeftPanelWidth = signal<number>(this.config.leftPanel.defaultWidth);
+
   private readonly topBarHeight = this.config.topBar.height;
   private readonly menuBarHeight = this.config.menuBar.height;
   private readonly activityBarWidth = this.config.activityBar.width;
@@ -84,7 +86,13 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   }
 
   protected setLeftPanelContent(content: LeftPanelContent): void {
+    if (content === this.leftPanelContent()) {
+      this.toggleLeftPanel();
+      return;
+    }
+
     this.leftPanelContent.set(content);
+    this.openLeftPanel();
   }
 
   protected getSidePanelMaxWidth(): number {
@@ -112,6 +120,10 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       this.rightPanelCollapsed,
       this.rightPanelMinWidth,
     );
+
+    if (!this.leftPanelCollapsed()) {
+      this.lastLeftPanelWidth.set(this.leftPanelWidth());
+    }
   }
 
   protected resizeRightPanel(event: ResizeEvent): void {
@@ -180,6 +192,25 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
     panelWidth.set(Math.min(event.width, currentWidth + allowedWidthChange));
     panelCollapsed.set(false);
+  }
+
+  private toggleLeftPanel(): void {
+    if (this.leftPanelCollapsed()) {
+      this.openLeftPanel();
+      return;
+    }
+    this.collapseLeftPanel();
+  }
+
+  private openLeftPanel(): void {
+    this.leftPanelWidth.set(this.lastLeftPanelWidth());
+    this.leftPanelCollapsed.set(false);
+  }
+
+  private collapseLeftPanel(): void {
+    this.lastLeftPanelWidth.set(this.leftPanelWidth());
+    this.leftPanelWidth.set(0);
+    this.leftPanelCollapsed.set(true);
   }
 
   private shrinkPanel(
