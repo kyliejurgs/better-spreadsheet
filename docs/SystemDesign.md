@@ -55,13 +55,17 @@ This version is the final system-design baseline before implementation and wire-
 - [Part II - Frontend and Local Application](#part-ii---frontend-and-local-application)
   - [5. Frontend Architecture](#5-frontend-architecture)
     - [5.1 Framework](#51-framework)
-    - [5.2 State Management](#52-state-management)
-    - [5.3 Application Services](#53-application-services)
-  - [6. Spreadsheet Grid and Interaction Model](#6-spreadsheet-grid-and-interaction-model)
-    - [6.1 Canvas-First Hybrid Grid](#61-canvas-first-hybrid-grid)
-    - [6.2 Application-Owned Interaction](#62-application-owned-interaction)
-    - [6.3 Virtualization](#63-virtualization)
-    - [6.4 Heavy Client Computation](#64-heavy-client-computation)
+    - [5.2 UI Component Architecture](#52-ui-component-architecture)
+    - [5.3 Application Shell](#53-application-shell)
+    - [5.4 Theming and Design Tokens](#54-theming-and-design-tokens)
+    - [5.5 State Management](#55-state-management)
+    - [5.6 Application Services](#56-application-services)
+  - [6. Spreadsheet Grid and Interaction Architecture](#6-spreadsheet-grid-and-interaction-architecture)
+    - [6.1 Hybrid Spreadsheet Rendering](#61-hybrid-spreadsheet-rendering)
+    - [6.2 Spreadsheet Ownership](#62-spreadsheet-ownership)
+    - [6.3 Canvas and DOM Interaction Boundary](#63-canvas-and-dom-interaction-boundary)
+    - [6.4 Virtualization](#64-virtualization)
+    - [6.5 Heavy Client Computation](#65-heavy-client-computation)
   - [7. Client State and Local Persistence](#7-client-state-and-local-persistence)
     - [7.1 IndexedDB Repository](#71-indexeddb-repository)
     - [7.2 Local Schema Versioning](#72-local-schema-versioning)
@@ -192,7 +196,7 @@ This version is the final system-design baseline before implementation and wire-
     - [32.2 Execution Placement](#322-execution-placement)
     - [32.3 Scale-Driven Infrastructure](#323-scale-driven-infrastructure)
   - [33. Dependency Philosophy](#33-dependency-philosophy)
-  - [34. Explicitly Excluded Infrastructure](#34-explicitly-excluded-infrastructure)
+  - [34. Intentionally Excluded Dependencies](#34-intentionally-excluded-dependencies)
 - [Part VII - Implementation Reference](#part-vii---implementation-reference)
   - [35. Architecture Decision Summary](#35-architecture-decision-summary)
   - [36. Remaining Implementation Contracts](#36-remaining-implementation-contracts)
@@ -350,9 +354,13 @@ Better Spreadsheet consists of a browser application, a Spring Boot server appli
 
 ```text
 Browser / Installed PWA
-├── Angular application shell
-├── Canvas-first spreadsheet grid
-├── DOM editor and accessibility overlays
+├── Angular application architecture
+├── PrimeNG general-purpose UI components
+├── Better Spreadsheet application shell and feature UI
+├── Hybrid spreadsheet rendering system
+│   ├── Canvas high-density rendering
+│   └── Angular / PrimeNG DOM interaction overlays
+├── Accessible DOM companion representation
 ├── Application-owned domain and expression engine
 ├── Query engine
 ├── Dashboard and Widget runtime
@@ -459,58 +467,252 @@ Keycloak provides identity and authentication but does not replace Better Spread
 
 ### 5.1 Framework
 
-The frontend uses **Angular + TypeScript**.
+The frontend is implemented using Angular and TypeScript.
 
-Angular's dependency injection and service model fit a long-lived desktop-style application with persistent repositories, synchronization services, domain services, expression and query engines, and application-scoped managers.
+Angular owns application composition, dependency injection, routing, lifecycle management, and integration between application features.
 
-### 5.2 State Management
+The frontend should prefer modern Angular capabilities, including standalone components, Signals, and framework-provided dependency injection and routing facilities.
 
-Use Angular services with Signals and computed Signals for live application and interface state, without introducing NgRx or Redux initially.
+### 5.2 UI Component Architecture
 
-Signals represent reactive state. They are not the durable source of truth.
-Durable local state belongs in IndexedDB.
+PrimeNG is the standard general-purpose UI component library for the Better Spreadsheet Angular frontend.
 
-### 5.3 Application Services
+PrimeNG should be used for conventional application controls and interaction patterns when an appropriate component exists. This includes:
 
-Application services coordinate domain behavior, persistence, synchronization, and interface state.
+- Buttons
+- Menus
+- Context menus
+- Form controls
+- Selects and dropdowns
+- Data and time controls
+- Dialogs
+- Confirmation dialogs
+- Popovers
+- Tooltips
+- Tabs
+- Trees
+- Notification
+- Progress indicators
+- Other conventional application UI primitives
 
-Persistence-specific behavior should remain behind repository boundaries rather than leaking raw IndexedDB operations into components or unrelated services.
+Better Spreadsheet owns components that represent application-specific structure, behavior, interactions, or domain concepts.
+
+Application-owned components may compose PrimeNG components internally without exposing PrimeNG component models as part of the better Better Spreadsheet domain model.
+
+PrimeNG does **NOT** own:
+
+- Application architecture
+- Domain models
+- Application state
+- Persistence
+- Synchronization
+- Spreadsheet semantics
+- Spreadsheet interaction behavior
+- High-density spreadsheet rendering
+
+PrimeNG components may be used directly where appropriate. Application-owner wrapper components should not be created solely to abstract PrimeNG behind a second general-purpose component API.
+
+A Better Spreadsheet component should be introduced when application-specific behavior, composition, semantics, or reuse provides a meaningful reason for the abstraction.
+
+### 5.3 Application Shell
+
+Better Spreadsheet owns its application shell, workspace composition, and application-level navigation behavior.
+
+The application shell provides the persistent structure through which users navigate and interact with application features and workspace content. Application-owned shell responsibilities include:
+
+- Top-level application navigation
+- Workspace and feature navigation
+- Primary work-area composition
+- Contextual and supporting application surfaces
+- Application-level status and feedback surfaces
+- Resizing, visibility, and layout behavior where applicable
+- Coordination between shell surfaces and application state
+
+The exact arrangement, presence, and visual presentation of shell surfaces are user-experience decisions and are not fixed by the system architecture.
+
+PrimeNG components may be composed within application shell surfaces for conventional controls, menus, trees, buttons, tooltips, overlays, panels, and similar interaction elements.
+
+PrimeNG may provide the implementation mechanism for individual shell surfaces where appropriate, but Better Spreadsheet retains ownership of their application semantics, composition, state, and behavior.
+
+The application shell must not depend on PrimeNG-specific models as representations of Better Spreadsheet domain or application state.
+
+### 5.4 Theming and Design Tokens
+
+PrimeNG's theming and design-token system provides the foundation for styling general-purpose UI components. Better Spreadsheet defines application-specific semantic design tokens for application-owned surfaces and behaviors.
+
+The combined theme architecture supports:
+
+- Light appearance
+- Dark appearance
+- Application accent colors
+- Consistent typography
+- Surface hierarchy
+- Borders and separators
+- Hover states
+- Active states
+- Focus states
+- Disabled states
+- Application-specific semantic states
+
+Application styling should prefer supported PrimeNG theming and token mechanisms over global CSS rules that depend on PrimeNG implementation details.
+
+Better Spreadsheet-specific design tokens should describe semantic application concepts rather than unnecessarily duplicating PrimeNG's component-level token system.
+
+Theme and accent color selections are presentation concerns and must not impact the domain state.
+
+### 5.5 State Management
+
+Angular Signals and application services are the default frontend state-management mechanisms.
+
+State should be placed according to ownership and lifecycle. Local component state should remain local when it does not need to be shared. Shared application state should be exposed through application-owned services or other explicitly
+defined state boundaries.
+
+PrimeNG component state must not become the canonical source of Better Spreadsheet domain state.
+
+### 5.6 Application Services
+
+Application services coordinate frontend behavior that spans components or application features. Services may own responsibilities such as:
+
+- Persistence coordination
+- Synchronization
+- Workspace state
+- Application preferences
+- Command execution
+- Undo and redo
+- Notifications
+- Background operations
+- Other cross-feature application behavior
+
+Services should expose application concepts rather than PrimeNG-specific component models.
 
 ---
 
-## 6. Spreadsheet Grid and Interaction Model
+## 6. Spreadsheet Grid and Interaction Architecture
 
-### 6.1 Canvas-First Hybrid Grid
+### 6.1 Hybrid Spreadsheet Rendering
 
-The primary spreadsheet grid uses an application-owned Canvas-first hybrid architecture.
+The actual spreadsheet uses an application-owned hybrid rendering architecture optimized for high-density spreadsheet interaction.
 
-Canvas handles high-density rendering and spreadsheet interaction visuals while DOM overlays provide elements that require native browser interaction or accessibility behavior.
+Canvas is the preferred rendering mechanism for high-volume visual surfaces where DOM-based rendering would create unacceptable performance, memory, or interaction overhead.
 
-DOM overlays include:
+Angular and DOM-based controls are used where native browser interaction, accessibility, or component-library integration provides greater value.
 
-- Active cell editor
-- Selection and accessibility surfaces
-- Menus and popovers
-- Drag handles where appropriate
-- Focusable controls
-- Assistive-technology representation
+The rendering architecture may therefore combine:
 
-### 6.2 Application-Owned Interaction
+- Canvas-rendered cells, grid lines, selections, ranges, and high-volume visual state
+- DOM-based editors, interactive controls, and accessibility representations
+- PrimeNG-powered interaction overlays
+- Other rendering mechanisms when profiling demonstrates a meaningful benefit
 
-Better Spreadsheet owns its spreadsheet interaction model rather than depending on a full third-party spreadsheet or grid product.
-This allows the grid to follow the application's structured-data semantics rather than inheriting assumptions from a traditional coordinate-based spreadsheet engine.
+The system design does not require every spreadsheet visual element to use canvas. Implementation decisions such as whether row and column headers, drag handles, frozen-region controls, or similar surfaces use Canvas or DOM rendering may be made according to performance, accessibility, interaction complexity, and maintainability.
 
-### 6.3 Virtualization
+The spreadsheet rendering system must preserve the ability to support large datasets and high-density visible regions without creating one Angular component or DOM subtree per cell.
 
-The grid should render only the content needed for the visible working area and appropriate surrounding buffer.
+### 6.2 Spreadsheet Ownership
 
-Large tables must not require a DOM element for every visible or non-visible cell.
+Better Spreadsheet owns the spreadsheet interaction model rather than delegating spreadsheet behavior to a third-party spreadsheet or grid product. Application-owned spreadsheet responsibilities include:
 
-### 6.4 Heavy Client Computation
+- Cell and range selection
+- Active cell behavior
+- Keyboard navigation
+- Editing lifecycle
+- Row and column operations
+- Clipboard behavior
+- Fill behavior
+- Undo and redo integration
+- Field semantics
+- Validation integration
+- Formula and expression integration
+- Spreadsheet commands
+- Rendering coordination
+- Interaction between spreadsheet state and application state
 
-CPU-intensive client operations may run in Web Workers when doing so materially protects interface responsiveness.
+PrimeNG does not replace Better Spreadsheet's spreadsheet engine. General-purpose PrimeNG components may be used to implement conventional controls presented by the spreadsheet system.
 
-Candidate workloads include:
+### 6.3 Canvas and DOM Interaction Boundary
+
+High-density spreadsheet rendering and conventional interactive controls have different requirements and should use the rendering mechanism best suited to each responsibility.
+
+The preferred responsibility boundary is:
+
+```text
+High-density visual rendering
+    -> Canvas preferred
+
+Application controls
+    -> Angular / PrimeNG
+
+Cell editors
+    -> Angular / PrimeNG DOM overlays
+
+Menus and popovers
+    -> PrimeNG where appropriate
+
+Accessibility representation
+    -> DOM companion representation
+
+Spreadsheet behavior and semantics
+    -> Better Spreadsheet engine
+```
+
+DOM-based spreadsheet interaction overlays may include:
+
+- Text editors
+- Numeric editors
+- Choice selectors
+- Date and time controls
+- Context menus
+- Tooltips
+- Popovers
+- Validation messages
+- Dialogs
+- Other controls requiring conventional browser interaction
+
+Spreadsheet interaction overlays are positioned and coordinated by the Better Spreadsheet spreadsheet system.
+
+For example:
+
+    Rendered cell
+          |
+          | edit requested
+          v
+    Spreadsheet interaction model
+          |
+          | determines field and editor semantics
+          v
+    Angular overlay
+          |
+          v
+    PrimeNG or native DOM control
+          |
+          | value committed
+          v
+    Domain / spreadsheet state
+          |
+          v
+    Grid redraw
+
+The interactive control provides the appropriate user interface but does not become the canonical owner of the cell value, field semantics, validation rules, or editing lifecycle.
+
+### 6.4 Virtualization
+
+The grid should render only the content needed for the visible working area and appropriate surrounding buffer. Large tables must not require a DOM element for every visible or non-visible cell.
+
+Virtualization applies independently of the specific rendering mechanism used for an individual spreadsheet surface. The renderer may use techniques such as:
+
+- Viewport virtualization
+- Selective rendering
+- Dirty-region redraws
+- Cached text measurement
+- Cached layout calculations
+- Batched rendering
+- Efficient hit testing
+
+Rendering optimizations should be introduced based on profiling and measured performance requirements.
+
+### 6.5 Heavy Client Computation
+
+CPU-intensive client operations may run in Web Workers when doing so materially protects interface responsiveness.Candidate workloads include:
 
 - Large formula recalculation
 - Query evaluation
@@ -775,20 +977,22 @@ The exact demo reset and retention behavior remains an implementation contract.
 
 Better Spreadsheet targets WCAG 2.2 AA.
 
-The Canvas-first grid requires an accessible DOM companion representation.
+The hybrid spreadsheet rendering system must provide an accessible interaction model independent of its high-density visual rendering mechanism.
 
-Accessibility behavior includes:
+Canvas-rendered information must not be the sole representation of information required for accessible operation. The spreadsheet must provide appropriate DOM-based accessibility support for:
 
 - Keyboard navigation
 - Focus semantics
-- Screen-reader labels and state
-- Editing announcements
-- Selection context
+- Active cell identification
+- Row and column context
+- Cell values
+- Editing, validation, and selection states
+- Screen-reader announcements
 - Non-pointer operation
 
-Accessibility validation is part of normal release testing.
+An accessible DOM companion representation may be maintained independently from the visual canvas representation. Angular and PrimeNG controls used as spreadsheet interaction overlays must participate correctly in the spreadsheet focus and keyboard model.
 
-The Canvas implementation must not make core spreadsheet functionality available only through visual rendering or pointer interaction.
+Accessibility requirements take precedence over rendering convenience.
 
 ---
 
@@ -1705,48 +1909,66 @@ Measured performance should drive decisions such as:
 
 ## 33. Dependency Philosophy
 
-Prefer platform capabilities, framework capabilities, and application-owned implementations when practical.
+Better Spreadsheet uses dependencies according to the responsibility being solved.
 
-Current major dependencies and infrastructure include:
+Depending on which option provides the strongest combination of maintainability, accessibility, interoperability, performance, security, and implementation value, preferences could be:
+
+- Browser platform capabilities
+- Angular framework capabilities
+- Mature general-purpose dependencies
+- Application-owned implementations
+
+Product-specific behavior should remain application-owned when practical.
+
+Standardized infrastructure and general-purpose UI may use mature dependencies when those dependencies provide meaningful capability or reduce unnecessary maintenance burden.
+
+Major intended dependencies include:
 
 - Angular
+- PrimeNG
 - Spring Boot
-- Spring Security
-- Keycloak
 - PostgreSQL
-- Liquibase
 - RabbitMQ
-- SeaweedFS
-- Apache POI
-- Kubernetes / k3s
-- Helm
-- Traefik
+- Keycloak
+- SeaweedFS or another S3-compatible object storage implementation
+- Other explicitly selected infrastructure dependencies
 
-A dependency should provide enough unique value to justify its long-term architectural ownership.
+Application-owned systems include:
 
-Avoid adding dependencies merely to save modest implementation work when the same behavior can reasonably remain application-owned.
+- Better Spreadsheet domain behavior
+- Spreadsheet interaction engine
+- Hybrid spreadsheet rendering system
+- Formula and expression engine
+- IndexedDB abstraction
+- Synchronization operation model
+- Better Spreadsheet-specific composite UI and interaction systems
+
+PrimeNG is the standard general-purpose Angular UI component library, but it does not define the Better Spreadsheet application architecture or domain model.
+
+Application-owned wrappers around third-party components should only be introduced when they add meaningful Better Spreadsheet behavior, semantics, composition, or reuse. Wrappers should not be created solely to hide the identity of a dependency.
 
 ---
 
-## 34. Explicitly Excluded Infrastructure
+## 34. Intentionally Excluded Dependencies
 
-The following are not part of the initial architecture unless later evidence justifies them:
+The following dependency categories are intentionally excluded unless a future architecture decision explicitly revisits them:
 
-- Microservices
-- Redis
-- PgBouncer
-- Read replicas
-- Dedicated distributed cache
-- Dedicated feature-flag platform
-- Third-party full spreadsheet or grid engine
-- Raw user-authored SQL as the query product model
-- Query-to-query composition
-- Dedicated BI or query-product dependency when the application-owned query layer is sufficient
-- Platform-specific native wrappers as a requirement for sharing the application
+- Third-party full spreadsheet or grid engines that replace the Better Spreadsheet spreadsheet interaction or rendering architecture
+- Dependencies that duplicate capabilities already adequately provided by Angular, PrimeNG, the browser platform, or existing application infrastructure without providing meaningful additional value
+- Dependencies that require Better Spreadsheet domain models to conform to library-specific representations without a compelling architectural reason
 
-These are not permanently forbidden.
+These exclusions do not prohibit the use of focused libraries that solve specific technical problems without taking ownership of Better Spreadsheet domain behavior or application architecture.
 
-They are intentionally excluded until a concrete requirement or measured problem makes them worthwhile.
+A new dependency should be evaluated based on whether it:
+
+- Solves a meaningful problem that would otherwise require substantial application-owned implementation or maintenance
+- Has a clear and limited architectural responsibility
+- Integrates without becoming the canonical owner of Better Spreadsheet domain concepts
+- Provides sufficient accessibility, maintainability, security, performance, or interoperability value
+- Does not unnecessarily duplicate an existing platform, Angular, PrimeNG, or application capability
+- Can be replaced or removed without requiring fundamental changes to the Better Spreadsheet domain model
+
+The goal is not to minimize dependency count for its own sake. The goal is to maintain clear ownership boundaries while using mature dependencies where they provide meaningful value.
 
 ---
 
@@ -1754,44 +1976,44 @@ They are intentionally excluded until a concrete requirement or measured problem
 
 ## 35. Architecture Decision Summary
 
-| Area | Decision | Defined In |
-| --- | --- | --- |
-| Frontend | Angular + TypeScript | [Section 5](#5-frontend-architecture) |
-| Grid | Application-owned Canvas-first hybrid | [Section 6](#6-spreadsheet-grid-and-interaction-model) |
-| Client state | Angular services + Signals | [Section 5.2](#52-state-management) |
-| Local persistence | Native IndexedDB behind application-owned repository | [Section 7](#7-client-state-and-local-persistence) |
-| Local-first model | Durable local commit followed by asynchronous synchronization | [Section 10](#10-local-first-operations-and-synchronization) |
-| Backend | Java Spring Boot modular monolith | [Section 13](#13-backend-architecture) |
-| Server database | PostgreSQL | [Section 16](#16-postgresql-persistence) |
-| Database migration | Liquibase | [Section 16](#16-postgresql-persistence) |
-| Identity | Keycloak OAuth2/OIDC | [Section 15](#15-authentication-and-authorization) |
-| Authorization | Spring Security + application domain grants | [Section 15](#15-authentication-and-authorization) |
-| API | REST authoritative mutations | [Section 14](#14-api-and-realtime-communication) |
-| Realtime | WebSocket coordination and notifications | [Section 14.2](#142-websocket-responsibilities) |
-| API documentation | OpenAPI + Swagger UI | [Section 14.3](#143-openapi) |
-| Expressions | Application-owned shared typed expression engine | [Section 8](#8-application-owned-domain-and-expression-engine) |
-| Query model | Application-owned typed Query Plan | [Section 20](#20-query-architecture) |
-| Query sources | Table and View initially | [Section 20.1](#201-query-sources) |
-| Query outputs | Stable Query Output Field identities | [Section 20.3](#203-query-output-fields) |
-| Query placement | Automatic local/server execution | [Section 20.5](#205-execution-placement) |
-| Numeric semantics | Decimal arithmetic | [Sections 9.2](#92-decimal-safe-evaluation) and [16.1](#161-numeric-semantics) |
-| Cell persistence | Relational hybrid typed scalar storage with purpose-built multi-value storage | [Section 16.2](#162-typed-cell-persistence) |
-| Dependency model | Source-owned dependencies + derived rebuildable index | [Section 21](#21-dependency-tracking) |
-| Search | PostgreSQL server search + application-owned IndexedDB local search | [Section 25](#25-search) |
-| File storage | SeaweedFS binary storage + PostgreSQL metadata | [Section 19](#19-files-and-object-storage) |
-| Templates | Application-scoped Template Library | [Section 22](#22-templates) |
-| History | Durable user-facing recovery; physical storage strategy deferred | [Section 23](#23-history-undo-and-lifecycle) |
-| Native recovery | Versioned Native Package | [Section 24](#24-import-export-and-native-packages) |
-| Workspace restore | New workspace; packaged child identities preserved where safe | [Section 24.5](#245-workspace-restore) |
-| Attachment package behavior | Configurable binary include/exclude | [Section 24.7](#247-attachment-content) |
-| Async jobs | RabbitMQ + Worker | [Section 18](#18-background-jobs-and-asynchronous-processing) |
-| Async consistency | Transactional outbox + at-least-once retry-safe processing | [Sections 18.1](#181-transactional-outbox) and [18.2](#182-delivery-semantics) |
-| Server transactions | One logical synchronous domain operation is atomic across applicable PostgreSQL state | [Section 13.3](#133-server-transaction-boundary) |
-| Deployment | k3s + Helm | [Section 27](#27-deployment-and-networking) |
-| Ingress | Traefik | [Section 27.2](#272-ingress) |
-| Hosting | Oracle Cloud Infrastructure (OCI), while preserving deployment portability | [Section 27.5](#275-hosting) |
-| Accessibility | WCAG 2.2 AA | [Section 12](#12-accessibility) |
-| Spreadsheet interoperability | Standard clipboard + CSV/XLSX; Apache POI server-side | [Sections 24.2](#242-xlsx) and [26](#26-spreadsheet-and-clipboard-interoperability) |
+| Area                         | Decision                                                                              | Defined In                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Frontend                     | Angular + TypeScript                                                                  | [Section 5](#5-frontend-architecture)                                               |
+| Grid                         | Application-owned Canvas-first hybrid                                                 | [Section 6](#6-spreadsheet-grid-and-interaction-model)                              |
+| Client state                 | Angular services + Signals                                                            | [Section 5.2](#52-state-management)                                                 |
+| Local persistence            | Native IndexedDB behind application-owned repository                                  | [Section 7](#7-client-state-and-local-persistence)                                  |
+| Local-first model            | Durable local commit followed by asynchronous synchronization                         | [Section 10](#10-local-first-operations-and-synchronization)                        |
+| Backend                      | Java Spring Boot modular monolith                                                     | [Section 13](#13-backend-architecture)                                              |
+| Server database              | PostgreSQL                                                                            | [Section 16](#16-postgresql-persistence)                                            |
+| Database migration           | Liquibase                                                                             | [Section 16](#16-postgresql-persistence)                                            |
+| Identity                     | Keycloak OAuth2/OIDC                                                                  | [Section 15](#15-authentication-and-authorization)                                  |
+| Authorization                | Spring Security + application domain grants                                           | [Section 15](#15-authentication-and-authorization)                                  |
+| API                          | REST authoritative mutations                                                          | [Section 14](#14-api-and-realtime-communication)                                    |
+| Realtime                     | WebSocket coordination and notifications                                              | [Section 14.2](#142-websocket-responsibilities)                                     |
+| API documentation            | OpenAPI + Swagger UI                                                                  | [Section 14.3](#143-openapi)                                                        |
+| Expressions                  | Application-owned shared typed expression engine                                      | [Section 8](#8-application-owned-domain-and-expression-engine)                      |
+| Query model                  | Application-owned typed Query Plan                                                    | [Section 20](#20-query-architecture)                                                |
+| Query sources                | Table and View initially                                                              | [Section 20.1](#201-query-sources)                                                  |
+| Query outputs                | Stable Query Output Field identities                                                  | [Section 20.3](#203-query-output-fields)                                            |
+| Query placement              | Automatic local/server execution                                                      | [Section 20.5](#205-execution-placement)                                            |
+| Numeric semantics            | Decimal arithmetic                                                                    | [Sections 9.2](#92-decimal-safe-evaluation) and [16.1](#161-numeric-semantics)      |
+| Cell persistence             | Relational hybrid typed scalar storage with purpose-built multi-value storage         | [Section 16.2](#162-typed-cell-persistence)                                         |
+| Dependency model             | Source-owned dependencies + derived rebuildable index                                 | [Section 21](#21-dependency-tracking)                                               |
+| Search                       | PostgreSQL server search + application-owned IndexedDB local search                   | [Section 25](#25-search)                                                            |
+| File storage                 | SeaweedFS binary storage + PostgreSQL metadata                                        | [Section 19](#19-files-and-object-storage)                                          |
+| Templates                    | Application-scoped Template Library                                                   | [Section 22](#22-templates)                                                         |
+| History                      | Durable user-facing recovery; physical storage strategy deferred                      | [Section 23](#23-history-undo-and-lifecycle)                                        |
+| Native recovery              | Versioned Native Package                                                              | [Section 24](#24-import-export-and-native-packages)                                 |
+| Workspace restore            | New workspace; packaged child identities preserved where safe                         | [Section 24.5](#245-workspace-restore)                                              |
+| Attachment package behavior  | Configurable binary include/exclude                                                   | [Section 24.7](#247-attachment-content)                                             |
+| Async jobs                   | RabbitMQ + Worker                                                                     | [Section 18](#18-background-jobs-and-asynchronous-processing)                       |
+| Async consistency            | Transactional outbox + at-least-once retry-safe processing                            | [Sections 18.1](#181-transactional-outbox) and [18.2](#182-delivery-semantics)      |
+| Server transactions          | One logical synchronous domain operation is atomic across applicable PostgreSQL state | [Section 13.3](#133-server-transaction-boundary)                                    |
+| Deployment                   | k3s + Helm                                                                            | [Section 27](#27-deployment-and-networking)                                         |
+| Ingress                      | Traefik                                                                               | [Section 27.2](#272-ingress)                                                        |
+| Hosting                      | Oracle Cloud Infrastructure (OCI), while preserving deployment portability            | [Section 27.5](#275-hosting)                                                        |
+| Accessibility                | WCAG 2.2 AA                                                                           | [Section 12](#12-accessibility)                                                     |
+| Spreadsheet interoperability | Standard clipboard + CSV/XLSX; Apache POI server-side                                 | [Sections 24.2](#242-xlsx) and [26](#26-spreadsheet-and-clipboard-interoperability) |
 
 ---
 
@@ -1958,3 +2180,7 @@ The following implementation boundaries should remain true unless the architectu
 - **Worker** - [4.3](#43-worker-responsibilities), [18](#18-background-jobs-and-asynchronous-processing)
 - **Workspace restore** - [24.5](#245-workspace-restore)
 - **XLSX** - [24.2](#242-xlsx), [26.3](#263-spreadsheet-semantics)
+
+```
+
+```
