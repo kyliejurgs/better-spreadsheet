@@ -74,25 +74,37 @@ Use current Angular capabilities for new application code when they improve clar
 
 Use standalone components for application development. NgModules should not be introduced for ordinary application organization unless a framework, integration, or other technical requirement justifies them.
 
-## 3.3 Component Responsibility
+## 3.3 UI Ownership
+
+Angular owns application composition and integration between frontend features.
+
+PrimeNG is the standard general-purpose UI component library. Use PrimeNG for conventional application controls and interaction patterns when an appropriate component exists and it meets the application's requirements.
+
+Better Spreadsheet owns application-specific UI concepts, composition, behavior, and semantics.
+
+Do not create application-owned components solely to hide or rename PrimeNG components behind another general-purpose component API. Create an application-owned component when it provides meaningful Better Spreadsheet behavior, composition, semantics, reuse, or an intentional application-level contract.
+
+PrimeNG-specific models and component state must not become canonical Better Spreadsheet domain or application state.Application and domain models should remain independent from PrimeNG-specific representations unless a PrimeNG type is confined to a presentation boundary where that coupling is intentional.
+
+## 3.4 Component Responsibility
 
 Components should primarily own presentation, user interaction, and component-local UI behavior and must not directly access IndexedDB or other persistence implementations.
 
 Domain behavior, persistence, synchronization, and other application responsibilities should remain behind the appropriate application, state, service, or repository boundary.
 
-## 3.4 Dependency Injection
+## 3.5 Dependency Injection
 
 Use Angular dependency injection for application services and dependencies. Constructor injection and `inject()` are both acceptable.
 
 Choose the form that provides the clearest implementation for the class or Angular construct being written. Use `inject()` where Angular APIs or composition patterns make it advantageous. Maintain consistency within a class.
 
-## 3.5 Inputs and Outputs
+## 3.6 Inputs and Outputs
 
 Prefer modern `input()` and `output()` APIs for new components when appropriate. Component inputs and outputs should form intentional component contracts.
 
 Children should not reach into parent implementation state when the required interaction can be represented through an input, output, shared state owner, or application operation.
 
-## 3.6 DOM Access
+## 3.7 DOM Access
 
 Prefer Angular templates, bindings, directives, and browser/CSS capabilities over direct DOM manipulation.
 
@@ -129,13 +141,23 @@ Use `core` for frontend infrastructure and application-wide capabilities with cl
 
 ## 4.4 Shared
 
-Use `shared` for frontend code that genuinely serves multiple independent features. Reusable visual components, directives, pipes, or similarly cross-cutting frontend constructs may belong here. Do not move code into `shared` because it might eventually be reused.
+Use `shared` for frontend code that genuinely serves multiple independent features. Reusable visual components, directives, pipes, or similarly cross-cutting frontend constructs may belong here.
+
+Do not move code into `shared` because it might eventually be reused. Do not create a shared wrapper around a PrimeNG component solely because the PrimeNG component is used by multiple features. Direct use of the same PrimeNG component by multiple features is not application-code duplication.
 
 ## 4.5 Imports and Boundaries
 
 Features should interact through intentional public contracts rather than importing another feature's internal implementation details.
 
 Avoid circular feature dependencies. When multiple features require the same behavior, determine its actual owner rather than resolving the problem through arbitrary cross-imports.
+
+## 4.6 Third-Party UI Organization
+
+Do not create a parallel application component hierarchy that mirrors PrimeNG.
+
+PrimeNG imports should remain close to the components or features that use them unless a genuine application-owned composition or shared configuration provides a reason to centralize behavior.
+
+Application source organization should reflect Better Spreadsheet concepts rather than the internal organization of PrimeNG or another dependency.
 
 # 5. Angular State and Reactivity
 
@@ -167,6 +189,10 @@ Keep state at the narrowest reasonable owner. Component-local state should remai
 
 Avoid global state merely for convenience.
 
+PrimeNG component state may represent temporary presentation state owned by that component, such as whether an overlay is currently visible and must not become the canonical source of Better Spreadsheet domain or application state.
+
+When a PrimeNG component presents application-owned state, convert between the application representation and the component representation at the presentation boundary rather than changing the domain model to match the component library.
+
 ## 5.6 Multiple Representations
 
 Reactive state, IndexedDB, and server persistence may represent the same underlying application data for different purposes. Their authority and synchronization behavior must follow the local-first architecture defined by the SDD. Do not introduce additional independent sources of truth without a defined ownership and reconciliation model.
@@ -175,27 +201,65 @@ Reactive state, IndexedDB, and server persistence may represent the same underly
 
 ## 6.1 Component Boundaries
 
-Create components around meaningful UI concepts, responsibilities, or reusable behavior.
+Create application-owned components around meaningful Better Spreadsheet UI concepts, responsibilities, compositions, or reusable behavior.
 
 Do not split templates into components solely to reduce file size. Avoid components that combine unrelated UI responsibilities merely to avoid creating additional components.
 
-## 6.2 Templates
+Do not create an application-owned component solely to wrap a PrimeNG component without adding meaningful application behavior or semantics.
+
+## 6.2 PrimeNG Components
+
+Use PrimeNG directly for conventional UI controls when the PrimeNG component satisfies the required behavior, accessibility, interaction, and theming requirements. Examples may include:
+
+- Buttons
+- Menus
+- Context menus
+- Form controls
+- Selects
+- Date and time controls
+- Dialogs
+- Popovers
+- Tooltips
+- Tabs
+- Trees
+- Notifications
+- Progress indicators
+
+Using PrimeNG does not transfer ownership of application behavior or state to the component library. Configure PrimeNG components through their supported APIs rather than depending on undocumented internal implementation details.
+
+## 6.3 Application-Owned Components
+
+Create a Better Spreadsheet component when the UI represents an application-specific concept or provides meaningful application-specific behavior.
+
+Application-owned components may compose one or more PrimeNG components, native elements, Angular constructs, Canvas surfaces, or other presentation mechanisms.
+
+Their public APIs should represent Better Spreadsheet concepts rather than unnecessarily exposing PrimeNG-specific implementation details.
+
+Do not create application abstractions merely to make replacement of PrimeNG theoretically easier. Introduce abstraction when it provides value to the application today.
+
+## 6.4 Templates
 
 Keep templates readable and focused on presentation. Use Angular's built-in template control flow such as `@if`, `@for`, and `@switch` for new code.
 
 Move complex calculations and domain logic out of templates. Simple presentation expressions may remain inline when they are easier to understand there.
 
-## 6.3 Event Handling
+## 6.5 Event Handling
 
-Template event handlers should delegate meaningful operations to clearly named component methods or application operations. Small and immediately understandable assignments or state changes may remain inline. Avoid complex multi-step expressions in templates.
+Template event handlers should delegate meaningful operations to clearly named component methods or application operations. Small and immediately understandable assignments or state changes may remain inline.
 
-## 6.4 Component Communication
+Avoid complex multi-step expressions in templates.
+
+PrimeNG events should be translated into application operations when they represent meaningful Better Spreadsheet behavior rather than allowing library event semantics to propagate unnecessarily through the application.
+
+## 6.6 Component Communication
 
 Prefer explicit inputs, outputs, or owned shared state for component communication. Avoid tightly coupling components through direct access to one another's implementation details.
 
-## 6.5 Reusable Components
+## 6.7 Reusable Components
 
-Reusable components should expose APIs based on their intended behavior rather than assumptions about one current caller. Do not prematurely generalize feature-specific components into reusable framework components.
+Reusable application-owned components should expose APIs based on their intended behavior rather than assumptions about one current caller.
+
+Do not prematurely generalize feature-specific components into reusable framework components. Do not build an application-owned general-purpose component library that duplicates PrimeNG.
 
 # 7. Async Operations and Data Access
 
@@ -237,41 +301,69 @@ Frontend errors must follow the master error-handling standards. Preserve recove
 
 ## 8.1 Component Styling
 
-Prefer component-scoped styles for component-specific presentation. Use global styles for genuinely application-wide concerns.
+Prefer component-scoped styles for application-owned component-specific presentation. Use global styles for genuinely application-wide concerns, theme configuration, and other styling that intentionally applies across component boundaries.
+
+Do not add application CSS that reproduces styling already provided adequately by PrimeNG.
 
 ## 8.2 Design Tokens and Themes
 
-Use CSS custom properties or the established design-token mechanism for themeable values.
+PrimeNG's supported theming and design-token mechanisms provide the foundation for styling PrimeNG components.
 
-Colors, spacing, typography, and other values that participate in application themes should not be independently hard-coded throughout components.
+Better Spreadsheet may define application-specific semantic design tokens for application-owned surfaces, states, and behaviors.
 
-Support light, dark, and custom theme behavior through shared theme primitives.
+Use Better Spreadsheet tokens for concepts owned by the application rather than duplicating PrimeNG component-level tokens.
 
-## 8.3 Layout
+Colors, spacing, typography, borders, states, and other values that participate in application themes should not be independently hard-coded throughout components.
 
-Prefer CSS layout capabilities such as Grid, Flex-Box, intrinsic sizing, media queries, and container queries for visual layout. Do not reproduce browser layout behavior in TypeScript without a functional reason.
+Support light, dark, and accent-color behavior through the established theme and token mechanisms.
 
-## 8.4 Responsive Behavior
+## 8.3 PrimeNG Styling
 
-Use CSS for visual responses to available space.
+Customize PrimeNG components through supported PrimeNG theming, design-token, configuration, template, and styling mechanisms where practical.
 
-Use Angular state when responsive behavior changes application semantics, interaction, persisted user preferences, or meaningful component behavior.
+Do not depend on undocumented PrimeNG DOM structure, generated class names, or internal implementation details for ordinary customization.
+
+Avoid deep or brittle CSS selectors that couple application styling to PrimeNG internals.
+
+When the required application behavior or presentation cannot be achieved cleanly through supported PrimeNG mechanisms, determine whether an application-owned composition or component is more appropriate before introducing fragile overrides.
+
+## 8.4 Layout
+
+Prefer CSS layout capabilities such as Grid, FlexBox, intrinsic sizing, media queries, and container queries for visual layout. Do not reproduce browser layout behavior in TypeScript without a functional reason.
+
+PrimeNG layout-oriented components may be used when they provide meaningful behavior, but the application should not use a component merely to replace straightforward CSS layout.
+
+## 8.5 Responsive Behavior
+
+Use CSS for visual responses to available space. Use Angular state when responsive behavior changes application semantics, interaction, persisted user preferences, or meaningful component behavior.
 
 Do not duplicate in TypeScript behavior that CSS can express directly.
 
-## 8.5 User-Controlled Layout
+## 8.6 User-Controlled Layout
 
-Resizable, collapsible, docked, or otherwise user-controlled workspace regions are application state when their configuration affects user interaction or persisted preferences. Keep this behavior distinct from purely visual CSS responsiveness.
+Resizable, collapsible, docked, or otherwise user-controlled workspace regions are application state when their configuration affects user interaction or persisted preferences.
 
-## 8.6 Accessibility
+Keep this behavior distinct from purely visual CSS responsiveness.
+
+A PrimeNG component may provide the presentation mechanism for a workspace surface without becoming the owner of the Better Spreadsheet layout model.
+
+## 8.7 Accessibility
 
 Accessibility is part of component correctness. Prefer semantic HTML and native browser behavior before introducing ARIA. Use ARIA when native semantics are insufficient.
 
 Interactive elements must support appropriate keyboard interaction and focus behavior. Do not communicate important state through visual presentation alone.
 
-## 8.7 CSS Overrides
+PrimeNG's built-in accessibility behavior should be preserved when using PrimeNG components. Application customization must not remove or degrade supported keyboard, focus, semantic, or assistive-technology behavior.
 
-Avoid `!important` unless an exceptional cascade or integration constraint makes it appropriate. Prefer correcting ownership, specificity, or structure rather than escalating CSS specificity unnecessarily.
+Application-owned composite interactions remain responsible for their overall accessibility even when individual controls are provided by PrimeNG.
+
+## 8.8 CSS Overrides
+
+Avoid `!important` unless an exceptional cascade or integration constraint makes it appropriate.
+
+Prefer correcting ownership, supported theme configuration, specificity, or structure rather than escalating CSS specificity unnecessarily.
+
+Overrides targeting third-party component internals should be exceptional, narrowly scoped, and documented when their reason is not apparent.
 
 # 9. Frontend Performance
 
@@ -281,15 +373,25 @@ Prefer readable implementations unless expected scale, architectural requirement
 
 ## 9.2 Known Performance-Critical Areas
 
-Known performance-sensitive systems may be designed for scale from the beginning when the expected workload already justifies it. For Better Spreadsheet, these include the primary spreadsheet grid, large-table operations, expression evaluation, query execution, and other workloads identified by the SDD.
+Known performance-sensitive systems may be designed for scale from the beginning when the expected workload already justifies it.
 
-## 9.3 Canvas
+For Better Spreadsheet, these include the spreadsheet rendering system, large-table operations, expression evaluation, query execution, and other workloads identified by the SDD. General-purpose application UI should not adopt spreadsheet-specific performance techniques without a demonstrated need.
 
-Use the Canvas-based rendering architecture established by the SDD for the primary spreadsheet grid. Keep Canvas-specific rendering and interaction concerns localized rather than allowing them to spread through unrelated application components.
+## 9.3 Hybrid Spreadsheet Rendering
+
+Use the hybrid spreadsheet rendering architecture established by the SDD.
+
+Canvas is preferred for high-density spreadsheet surfaces where it provides meaningful performance or scalability benefits. Angular, PrimeNG, and native DOM elements may be used for spreadsheet surfaces and interaction controls where native browser behavior, accessibility, maintainability, or component-library integration provides greater value.
+
+Do not require Canvas for a spreadsheet surface solely because it is part of the spreadsheet. Keep Canvas-specific rendering and interaction concerns localized rather than allowing them to spread through unrelated application components.
+
+Do not create one Angular component or persistent DOM subtree per cell when doing so would undermine the spreadsheet's required scale.
 
 ## 9.4 Virtualization
 
-Use virtualization where rendering or retaining the complete visual representation of large datasets would be impractical. Virtualization must not change the underlying data semantics.
+Use virtualization where rendering or retaining the complete visual representation of large datasets would be impractical.
+
+Virtualization may be applied independently of whether a particular surface uses Canvas or DOM rendering and must not change the underlying data semantics.
 
 ## 9.5 Web Workers
 
@@ -335,6 +437,14 @@ Do not add suffixes such as `.component` solely because an element is an Angular
 ## 10.4 Test Files
 
 Test-file naming and organization are defined by the Testing Standards.
+
+### PrimeNG Integration
+
+Tests should verify Better Spreadsheet behavior and application contracts rather than duplicating tests of PrimeNG's internal implementation.
+
+When application behavior depends on PrimeNG integration, test the observable application behavior, configuration, event translation, accessibility expectations, or application state changes that the integration is responsible for.
+
+Do not write tests that depend unnecessarily on undocumented PrimeNG DOM structure, internal classes, or implementation details.
 
 # 11. Frontend Tooling
 

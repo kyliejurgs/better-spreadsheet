@@ -59,7 +59,7 @@ TODO and FIXME comments must provide enough context to understand the outstandin
 
 ## 2.7 Dependencies
 
-Choose dependencies according to the value they provide rather than the amount of code they eliminate. Prefer language, platform, framework, and application-owned capabilities when they solve the problem cleanly.
+Choose dependencies according to the value they provide rather than the amount of code they eliminate. Prefer language, platform, framework, mature general-purpose dependencies, and application-owned capabilities according to the responsibility being solved.
 
 Dependencies are appropriate when they provide meaningful value through capability, correctness, interoperability, security, maintainability, or significant implementation cost.
 
