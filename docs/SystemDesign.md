@@ -4,7 +4,7 @@
 
 **Author:** Kylie Jurgensen
 
-**Last Updated:** 08/12/2026
+**Last Updated:** 08/26/2026
 
 ---
 
@@ -1977,10 +1977,11 @@ The goal is not to minimize dependency count for its own sake. The goal is to ma
 ## 35. Architecture Decision Summary
 
 | Area                         | Decision                                                                              | Defined In                                                                          |
-| ---------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --- |
 | Frontend                     | Angular + TypeScript                                                                  | [Section 5](#5-frontend-architecture)                                               |
-| Grid                         | Application-owned Canvas-first hybrid                                                 | [Section 6](#6-spreadsheet-grid-and-interaction-model)                              |
-| Client state                 | Angular services + Signals                                                            | [Section 5.2](#52-state-management)                                                 |
+| UI component library         | PrimeNG for general-purpose application UI                                            | [Section 5.2](#52-ui-component-architecture)                                        |
+| Client state                 | Angular services + Signals                                                            | [Section 5.5](#55-state-management)                                                 |     |
+| Spreadsheet rendering        | Application-owned hybrid rendering with Canvas preferred for high-density surfaces    | [Section 6](#6-spreadsheet-grid-and-interaction-architecture)                       |
 | Local persistence            | Native IndexedDB behind application-owned repository                                  | [Section 7](#7-client-state-and-local-persistence)                                  |
 | Local-first model            | Durable local commit followed by asynchronous synchronization                         | [Section 10](#10-local-first-operations-and-synchronization)                        |
 | Backend                      | Java Spring Boot modular monolith                                                     | [Section 13](#13-backend-architecture)                                              |
@@ -2060,7 +2061,7 @@ The following implementation boundaries should remain true unless the architectu
 3. IndexedDB access remains behind application-owned persistence boundaries.
 4. Signals are reactive state and are not the durable local source of truth.
 5. Unsynced and local-only user work is never silently discarded.
-6. The spreadsheet grid remains application-owned rather than delegating product semantics to a third-party spreadsheet engine.
+6. The spreadsheet interaction and rendering architecture remains application-owned rather than delegating product semantics to a third-party spreadsheet or grid engine.
 7. Local and server expression/query execution follow the same application-defined semantic contract.
 8. Canonical numeric semantics use decimal-safe behavior.
 9. PostgreSQL is authoritative for synchronized relational server state.
@@ -2099,7 +2100,8 @@ The following implementation boundaries should remain true unless the architectu
 - **Angular** - [5](#5-frontend-architecture)
 - **API** - [14](#14-api-and-realtime-communication)
 - **Apache POI** - [24.2](#242-xlsx)
-- **Application services** - [5.3](#53-application-services)
+- **Application services** - [5.6](#56-application-services)
+- **Application shell** - [5.3](#53-application-shell)
 - **Archive** - [23.5](#235-archive)
 - **Authentication** - [15](#15-authentication-and-authorization)
 - **Authorization** - [15](#15-authentication-and-authorization)
@@ -2107,7 +2109,7 @@ The following implementation boundaries should remain true unless the architectu
 - **Background jobs** - [18](#18-background-jobs-and-asynchronous-processing)
 - **Backup** - [28](#28-backup-and-disaster-recovery)
 - **Browser support** - [11.5](#115-browser-support)
-- **Canvas grid** - [6](#6-spreadsheet-grid-and-interaction-model)
+- **Canvas** - [6.1](#61-hybrid-spreadsheet-rendering), [6.3](#63-canvas-and-dom-interaction-boundary)
 - **Cell persistence** - [16.2](#162-typed-cell-persistence)
 - **Clipboard** - [26](#26-spreadsheet-and-clipboard-interoperability)
 - **Cloud synchronization** - [10](#10-local-first-operations-and-synchronization)
@@ -2117,7 +2119,7 @@ The following implementation boundaries should remain true unless the architectu
 - **Core process** - [4.2](#42-core-responsibilities), [13.2](#132-core-process)
 - **Decimal arithmetic** - [9.2](#92-decimal-safe-evaluation), [16.1](#161-numeric-semantics)
 - **Demo mode** - [11.6](#116-demo-mode)
-- **Dependencies** - [21](#21-dependency-tracking)
+- **Dependencies** - [21](#21-dependency-tracking), [33](#33-dependency-philosophy)
 - **Dependency Index** - [21.3](#213-dependency-index)
 - **Deployment** - [27](#27-deployment-and-networking)
 - **Disaster recovery** - [28](#28-backup-and-disaster-recovery)
@@ -2126,9 +2128,10 @@ The following implementation boundaries should remain true unless the architectu
 - **Helm** - [27.1](#271-kubernetes)
 - **History** - [23](#23-history-undo-and-lifecycle)
 - **Hosting** - [27.5](#275-hosting)
+- **Hybrid spreadsheet rendering** - [6](#6-spreadsheet-grid-and-interaction-architecture)
 - **IndexedDB** - [7](#7-client-state-and-local-persistence)
 - **IndexedDB migration** - [7.2](#72-local-schema-versioning), [7.3](#73-migration-failure)
-- **Infrastructure exclusions** - [34](#34-explicitly-excluded-infrastructure)
+- **Intentionally excluded dependencies** - [34](#34-intentionally-excluded-dependencies)
 - **Interoperability** - [24](#24-import-export-and-native-packages), [26](#26-spreadsheet-and-clipboard-interoperability)
 - **Keycloak** - [15](#15-authentication-and-authorization)
 - **k3s** - [27.1](#271-kubernetes)
@@ -2137,10 +2140,9 @@ The following implementation boundaries should remain true unless the architectu
 - **Local persistence** - [7](#7-client-state-and-local-persistence)
 - **Local query execution** - [9](#9-local-query-execution)
 - **Logging** - [29](#29-logging-and-diagnostics)
-- **Microservices** - [2.4](#24-modular-monolith-before-microservices), [34](#34-explicitly-excluded-infrastructure)
+- **Microservices** - [2.4](#24-modular-monolith-before-microservices), [34](#34-intentionally-excluded-dependencies)
 - **Native Package** - [24](#24-import-export-and-native-packages)
 - **Native Package compatibility** - [24.4](#244-native-package-compatibility)
-- **NgRx / Redux** - [5.2](#52-state-management)
 - **Numeric semantics** - [9.2](#92-decimal-safe-evaluation), [16.1](#161-numeric-semantics)
 - **OAuth2 / OIDC** - [15](#15-authentication-and-authorization)
 - **Offline availability** - [11.3](#113-offline-availability)
@@ -2148,39 +2150,39 @@ The following implementation boundaries should remain true unless the architectu
 - **Operation model** - [10.2](#102-operation-model)
 - **Pending operations** - [10](#10-local-first-operations-and-synchronization)
 - **Performance** - [32](#32-performance-and-scalability)
-- **PgBouncer** - [16.4](#164-connection-management), [34](#34-explicitly-excluded-infrastructure)
+- **PgBouncer** - [16.4](#164-connection-management), [34](#34-intentionally-excluded-dependencies)
 - **PostgreSQL** - [16](#16-postgresql-persistence)
+- **PrimeNG** - [5.2](#52-ui-component-architecture), [5.4](#54-theming-and-design-tokens), [33](#33-dependency-philosophy)
 - **PWA** - [11](#11-pwa-offline-and-browser-behavior)
 - **Query architecture** - [20](#20-query-architecture)
 - **Query execution placement** - [20.5](#205-execution-placement)
 - **Query Output Fields** - [20.3](#203-query-output-fields)
 - **Query Plan** - [20.2](#202-query-plan)
-- **Query-to-Query composition** - [20.1](#201-query-sources), [34](#34-explicitly-excluded-infrastructure)
+- **Query-to-Query composition** - [20.1](#201-query-sources), [34](#34-intentionally-excluded-dependencies)
 - **RabbitMQ** - [18](#18-background-jobs-and-asynchronous-processing)
-- **Redis** - [16.5](#165-server-caching), [34](#34-explicitly-excluded-infrastructure)
+- **Redis** - [16.5](#165-server-caching), [34](#34-intentionally-excluded-dependencies)
 - **Repositories** - [7.1](#71-indexeddb-repository)
 - **REST** - [14.1](#141-rest-is-the-authoritative-mutation-path)
 - **Search** - [25](#25-search)
 - **SeaweedFS** - [19](#19-files-and-object-storage)
 - **Server query execution** - [17](#17-server-query-execution)
 - **Server transactions** - [13.3](#133-server-transaction-boundary)
-- **Signals** - [5.2](#52-state-management)
+- **Signals** - [5.5](#55-state-management)
+- **Spreadsheet rendering** - [6](#6-spreadsheet-grid-and-interaction-architecture)
 - **Spring Boot** - [13](#13-backend-architecture)
 - **Spring Security** - [15](#15-authentication-and-authorization)
 - **Swagger UI** - [14.3](#143-openapi)
 - **Synchronization** - [10](#10-local-first-operations-and-synchronization)
 - **Templates** - [22](#22-templates)
 - **Testing** - [31](#31-testing-strategy)
+- **Theming** - [5.4](#54-theming-and-design-tokens)
 - **Transactional outbox** - [18.1](#181-transactional-outbox)
 - **Traefik** - [27.2](#272-ingress)
 - **Trash** - [23.6](#236-trash)
+- **UI component architecture** - [5.2](#52-ui-component-architecture)
 - **Undo and redo** - [23.1](#231-undo-and-redo)
 - **WebSocket** - [14.2](#142-websocket-responsibilities)
-- **Web Workers** - [6.4](#64-heavy-client-computation), [9.3](#93-local-query-workloads)
+- **Web Workers** - [6.5](#65-heavy-client-computation), [9.3](#93-local-query-workloads)
 - **Worker** - [4.3](#43-worker-responsibilities), [18](#18-background-jobs-and-asynchronous-processing)
 - **Workspace restore** - [24.5](#245-workspace-restore)
 - **XLSX** - [24.2](#242-xlsx), [26.3](#263-spreadsheet-semantics)
-
-```
-
-```
