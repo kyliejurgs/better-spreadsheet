@@ -139,7 +139,13 @@ Prefer assertions based on meaningful content, roles, labels, state, and interac
 
 Canvas-based spreadsheet behavior should be separated into testable logical concerns where practical. Test coordinate calculations, selection behavior, virtualization, hit testing, editing state, and similar logic independently from pixel rendering when possible. Use visual or rendering-specific tests only where visual output itself is the behavior being verified.
 
-## 5.6 Accessibility
+## 5.6 PrimeNG Integration
+
+Tests should verify Better Spreadsheet behavior and application contracts rather than duplicating tests of PrimeNG's internal implementation. When application behavior depends on PrimeNG integration, test the observable application behavior, configuration, event translation, accessibility expectations, or application state changes that the integration is responsible for.
+
+Do not write tests that depend unnecessarily on undocumented PrimeNG DOM structure, internal classes, or implementation details.
+
+## 5.7 Accessibility
 
 Important interactive components should have automated accessibility coverage where practical. Automated accessibility testing supplements rather than replaces keyboard and interaction testing.
 
