@@ -99,7 +99,7 @@ export class ResizableContainer {
 
     if (startSize.width !== undefined && this.resizableWidth(direction)) {
       const widthChange = direction.includes('left') ? -deltaX : deltaX;
-      newSize.width = startSize.width - widthChange;
+      newSize.width = startSize.width + widthChange;
     }
 
     if (startSize.height !== undefined && this.resizableHeight(direction)) {
