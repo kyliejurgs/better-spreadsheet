@@ -1,0 +1,46 @@
+.application-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.application-header {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.application-header app-header {
+  flex: 1 1 auto;
+}
+
+.application-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.main-workspace {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+app-center-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.resize-handle-horizontal {
+  flex: 0 0 4px;
+  cursor: ew-resize;
+}
+
+.resize-handle-horizontal:hover {
+  background: #0078d4;
+}

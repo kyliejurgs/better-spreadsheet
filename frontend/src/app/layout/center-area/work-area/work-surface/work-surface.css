@@ -1,0 +1,6 @@
+.work-surface {
+  height: 100%;
+  padding: 8px;
+  background: indigo;
+  box-sizing: border-box;
+}

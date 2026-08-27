@@ -1,0 +1,7 @@
+.title-bar {
+  height: 32px;
+  padding: 0 8px;
+  background: red;
+  display: flex;
+  align-items: center;
+}

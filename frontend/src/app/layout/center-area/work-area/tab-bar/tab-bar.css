@@ -1,0 +1,7 @@
+.tab-bar {
+  height: 36px;
+  padding: 0 8px;
+  background: blue;
+  display: flex;
+  align-items: center;
+}

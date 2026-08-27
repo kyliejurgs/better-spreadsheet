@@ -1,0 +1,7 @@
+.menu-bar {
+  height: 28px;
+  padding: 0 8px;
+  background: orange;
+  display: flex;
+  align-items: center;
+}
