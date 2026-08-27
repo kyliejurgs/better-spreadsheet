@@ -1,0 +1,25 @@
+.application-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.application-header {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.application-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+app-center-area {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
