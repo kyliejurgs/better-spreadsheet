@@ -13,22 +13,10 @@ app-work-area {
 }
 
 .resize-handle-vertical {
-  position: relative;
   flex: 0 0 4px;
   cursor: ns-resize;
 }
 
-.resize-handle-vertical::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: transparent;
-  transform: translateY(-50%);
-}
-
-.resize-handle-vertical:hover::after {
+.resize-handle-vertical:hover {
   background: #0078d4;
 }

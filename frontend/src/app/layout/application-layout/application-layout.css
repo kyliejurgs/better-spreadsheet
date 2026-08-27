@@ -37,22 +37,10 @@ app-center-area {
 }
 
 .resize-handle-horizontal {
-  position: relative;
   flex: 0 0 4px;
   cursor: ew-resize;
 }
 
-.resize-handle-horizontal::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: transparent;
-  transform: translateX(-50%);
-}
-
-.resize-handle-horizontal:hover::after {
+.resize-handle-horizontal:hover {
   background: #0078d4;
 }
