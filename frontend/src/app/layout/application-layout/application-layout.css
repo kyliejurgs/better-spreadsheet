@@ -21,6 +21,12 @@
   min-width: 0;
 }
 
+.main-workspace {
+  display: flex;
+  flex: 1 1 auto;
+  margin: 4px;
+}
+
 app-center-area {
   flex: 1 1 auto;
   min-height: 0;

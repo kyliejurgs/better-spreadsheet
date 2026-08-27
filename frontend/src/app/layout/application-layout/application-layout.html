@@ -6,15 +6,18 @@
 
   <div class="application-body">
     <app-activity-bar />
-    <app-left-panel />
 
-    <div class="resize-handle resize-handle-horizontal"></div>
+    <div class="main-workspace">
+      <app-left-panel />
 
-    <app-center-area />
+      <div class="resize-handle resize-handle-horizontal"></div>
 
-    <div class="resize-handle resize-handle-horizontal"></div>
+      <app-center-area />
 
-    <app-right-panel />
+      <div class="resize-handle resize-handle-horizontal"></div>
+
+      <app-right-panel />
+    </div>
   </div>
 
   <app-status-bar />
