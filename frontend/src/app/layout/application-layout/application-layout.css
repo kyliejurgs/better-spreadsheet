@@ -24,7 +24,10 @@
 .main-workspace {
   display: flex;
   flex: 1 1 auto;
-  margin: 4px;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 4px;
 }
 
 app-center-area {

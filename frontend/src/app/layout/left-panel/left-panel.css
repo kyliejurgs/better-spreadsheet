@@ -1,6 +1,7 @@
 .left-panel {
   width: 240px;
   height: 100%;
+  box-sizing: border-box;
   padding: 8px;
   background: pink;
   border: 1px solid #c9b98f;
