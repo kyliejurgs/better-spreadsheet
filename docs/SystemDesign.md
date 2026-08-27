@@ -4,7 +4,7 @@
 
 **Author:** Kylie Jurgensen
 
-**Last Updated:** 08/12/2026
+**Last Updated:** 08/27/2026
 
 ---
 
@@ -55,10 +55,11 @@ This version is the final system-design baseline before implementation and wire-
 - [Part II - Frontend and Local Application](#part-ii---frontend-and-local-application)
   - [5. Frontend Architecture](#5-frontend-architecture)
     - [5.1 Framework](#51-framework)
-    - [5.2 State Management](#52-state-management)
-    - [5.3 Application Services](#53-application-services)
+    - [5.2 User Interface Components](#52-user-interface-components)
+    - [5.3 State Management](#53-state-management)
+    - [5.4 Application Services](#54-application-services)
   - [6. Spreadsheet Grid and Interaction Model](#6-spreadsheet-grid-and-interaction-model)
-    - [6.1 Canvas-First Hybrid Grid](#61-canvas-first-hybrid-grid)
+    - [6.1 Spreadsheet Grid Architecture](#61-spreadsheet-grid-architecture)
     - [6.2 Application-Owned Interaction](#62-application-owned-interaction)
     - [6.3 Virtualization](#63-virtualization)
     - [6.4 Heavy Client Computation](#64-heavy-client-computation)
@@ -298,6 +299,10 @@ Product-specific behavior should be implemented within Better Spreadsheet when p
 
 External dependencies should provide substantial value through standards compatibility, security maturity, infrastructure capability, interoperability, or functionality that would be unnecessarily expensive or risky to reproduce.
 
+General-purpose libraries may provide commodity application capabilities when doing so reduces unnecessary implementation and maintenance work without constraining Better Spreadsheet's product-specific behavior, interaction models, or visual design.
+
+Application-specific behavior and product semantics remain application-owned regardless of the libraries used to implement their interfaces.
+
 ### 2.6 Add Infrastructure When It Solves a Real Problem
 
 Infrastructure should not be introduced simply because it is common in larger systems.
@@ -463,14 +468,24 @@ The frontend uses **Angular + TypeScript**.
 
 Angular's dependency injection and service model fit a long-lived desktop-style application with persistent repositories, synchronization services, domain services, expression and query engines, and application-scoped managers.
 
-### 5.2 State Management
+### 5.2 User Interface Components
+
+General-purpose UI component libraries may provide reusable interface primitives such as controls, forms, menus, overlays, dialogs, tooltips, and other common application interface elements.
+
+Library components should be preferred when they reduce implementation and maintenance effort while remaining compatible with Better Spreadsheet's interaction requirements, accessibility requirements, and visual design.
+
+Application-specific interfaces may compose, extend, style, or replace library-provided components as needed. A component library must not define domain behavior, application state, or product semantics.
+
+The selection of a particular UI component library is an implementation decision and may change without requiring an architectural redesign.
+
+### 5.3 State Management
 
 Use Angular services with Signals and computed Signals for live application and interface state, without introducing NgRx or Redux initially.
 
 Signals represent reactive state. They are not the durable source of truth.
 Durable local state belongs in IndexedDB.
 
-### 5.3 Application Services
+### 5.4 Application Services
 
 Application services coordinate domain behavior, persistence, synchronization, and interface state.
 
@@ -480,20 +495,13 @@ Persistence-specific behavior should remain behind repository boundaries rather 
 
 ## 6. Spreadsheet Grid and Interaction Model
 
-### 6.1 Canvas-First Hybrid Grid
+### 6.1 Spreadsheet Grid Architecture
 
-The primary spreadsheet grid uses an application-owned Canvas-first hybrid architecture.
+The primary spreadsheet grid uses an application-owned interaction and data model designed for high-density, spreadsheet-style editing.
 
-Canvas handles high-density rendering and spreadsheet interaction visuals while DOM overlays provide elements that require native browser interaction or accessibility behavior.
+The rendering architecture may use DOM rendering, Canvas rendering, virtualization, or a hybrid approach as appropriate to meet interaction, accessibility, and performance requirements.
 
-DOM overlays include:
-
-- Active cell editor
-- Selection and accessibility surfaces
-- Menus and popovers
-- Drag handles where appropriate
-- Focusable controls
-- Assistive-technology representation
+Rendering technology must not dictate Better Spreadsheet's structured-data semantics or spreadsheet interaction model. The selected implementation should prioritize maintainability and native browser behavior while meeting measured performance requirements for expected table sizes.
 
 ### 6.2 Application-Owned Interaction
 
@@ -786,9 +794,9 @@ Accessibility behavior includes:
 - Selection context
 - Non-pointer operation
 
-Accessibility validation is part of normal release testing.
+Accessibility validation is part of normal release testing. The Canvas implementation must not make core spreadsheet functionality available only through visual rendering or pointer interaction.
 
-The Canvas implementation must not make core spreadsheet functionality available only through visual rendering or pointer interaction.
+Accessibility capabilities provided by general-purpose UI libraries should be reused where appropriate, but library-provided accessibility does not replace application-level accessibility validation or the accessibility requirements of application-specific interfaces.
 
 ---
 
@@ -1705,7 +1713,9 @@ Measured performance should drive decisions such as:
 
 ## 33. Dependency Philosophy
 
-Prefer platform capabilities, framework capabilities, and application-owned implementations when practical.
+Prefer platform capabilities, framework capabilities, established general-purpose libraries, and application-owned implementations according to the needs of the capability being implemented.
+
+Dependencies are appropriate when they meaningfully reduce implementation or maintenance cost, provide mature or specialized functionality, improve standards compatibility or interoperability, or reduce technical risk without unnecessarily constraining Better Spreadsheet's architecture or product design.
 
 Current major dependencies and infrastructure include:
 
@@ -1722,9 +1732,7 @@ Current major dependencies and infrastructure include:
 - Helm
 - Traefik
 
-A dependency should provide enough unique value to justify its long-term architectural ownership.
-
-Avoid adding dependencies merely to save modest implementation work when the same behavior can reasonably remain application-owned.
+Architecturally significant dependencies should provide enough unique value to justify their long-term ownership. Avoid adding dependencies merely to save modest implementation work when the same behavior can reasonably remain application-owned.
 
 ---
 
@@ -1754,44 +1762,44 @@ They are intentionally excluded until a concrete requirement or measured problem
 
 ## 35. Architecture Decision Summary
 
-| Area | Decision | Defined In |
-| --- | --- | --- |
-| Frontend | Angular + TypeScript | [Section 5](#5-frontend-architecture) |
-| Grid | Application-owned Canvas-first hybrid | [Section 6](#6-spreadsheet-grid-and-interaction-model) |
-| Client state | Angular services + Signals | [Section 5.2](#52-state-management) |
-| Local persistence | Native IndexedDB behind application-owned repository | [Section 7](#7-client-state-and-local-persistence) |
-| Local-first model | Durable local commit followed by asynchronous synchronization | [Section 10](#10-local-first-operations-and-synchronization) |
-| Backend | Java Spring Boot modular monolith | [Section 13](#13-backend-architecture) |
-| Server database | PostgreSQL | [Section 16](#16-postgresql-persistence) |
-| Database migration | Liquibase | [Section 16](#16-postgresql-persistence) |
-| Identity | Keycloak OAuth2/OIDC | [Section 15](#15-authentication-and-authorization) |
-| Authorization | Spring Security + application domain grants | [Section 15](#15-authentication-and-authorization) |
-| API | REST authoritative mutations | [Section 14](#14-api-and-realtime-communication) |
-| Realtime | WebSocket coordination and notifications | [Section 14.2](#142-websocket-responsibilities) |
-| API documentation | OpenAPI + Swagger UI | [Section 14.3](#143-openapi) |
-| Expressions | Application-owned shared typed expression engine | [Section 8](#8-application-owned-domain-and-expression-engine) |
-| Query model | Application-owned typed Query Plan | [Section 20](#20-query-architecture) |
-| Query sources | Table and View initially | [Section 20.1](#201-query-sources) |
-| Query outputs | Stable Query Output Field identities | [Section 20.3](#203-query-output-fields) |
-| Query placement | Automatic local/server execution | [Section 20.5](#205-execution-placement) |
-| Numeric semantics | Decimal arithmetic | [Sections 9.2](#92-decimal-safe-evaluation) and [16.1](#161-numeric-semantics) |
-| Cell persistence | Relational hybrid typed scalar storage with purpose-built multi-value storage | [Section 16.2](#162-typed-cell-persistence) |
-| Dependency model | Source-owned dependencies + derived rebuildable index | [Section 21](#21-dependency-tracking) |
-| Search | PostgreSQL server search + application-owned IndexedDB local search | [Section 25](#25-search) |
-| File storage | SeaweedFS binary storage + PostgreSQL metadata | [Section 19](#19-files-and-object-storage) |
-| Templates | Application-scoped Template Library | [Section 22](#22-templates) |
-| History | Durable user-facing recovery; physical storage strategy deferred | [Section 23](#23-history-undo-and-lifecycle) |
-| Native recovery | Versioned Native Package | [Section 24](#24-import-export-and-native-packages) |
-| Workspace restore | New workspace; packaged child identities preserved where safe | [Section 24.5](#245-workspace-restore) |
-| Attachment package behavior | Configurable binary include/exclude | [Section 24.7](#247-attachment-content) |
-| Async jobs | RabbitMQ + Worker | [Section 18](#18-background-jobs-and-asynchronous-processing) |
-| Async consistency | Transactional outbox + at-least-once retry-safe processing | [Sections 18.1](#181-transactional-outbox) and [18.2](#182-delivery-semantics) |
-| Server transactions | One logical synchronous domain operation is atomic across applicable PostgreSQL state | [Section 13.3](#133-server-transaction-boundary) |
-| Deployment | k3s + Helm | [Section 27](#27-deployment-and-networking) |
-| Ingress | Traefik | [Section 27.2](#272-ingress) |
-| Hosting | Oracle Cloud Infrastructure (OCI), while preserving deployment portability | [Section 27.5](#275-hosting) |
-| Accessibility | WCAG 2.2 AA | [Section 12](#12-accessibility) |
-| Spreadsheet interoperability | Standard clipboard + CSV/XLSX; Apache POI server-side | [Sections 24.2](#242-xlsx) and [26](#26-spreadsheet-and-clipboard-interoperability) |
+| Area                         | Decision                                                                              | Defined In                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Frontend                     | Angular + TypeScript                                                                  | [Section 5](#5-frontend-architecture)                                               |
+| Grid                         | Application-owned Canvas-first hybrid                                                 | [Section 6](#6-spreadsheet-grid-and-interaction-model)                              |
+| Client state                 | Angular services + Signals                                                            | [Section 5.2](#52-state-management)                                                 |
+| Local persistence            | Native IndexedDB behind application-owned repository                                  | [Section 7](#7-client-state-and-local-persistence)                                  |
+| Local-first model            | Durable local commit followed by asynchronous synchronization                         | [Section 10](#10-local-first-operations-and-synchronization)                        |
+| Backend                      | Java Spring Boot modular monolith                                                     | [Section 13](#13-backend-architecture)                                              |
+| Server database              | PostgreSQL                                                                            | [Section 16](#16-postgresql-persistence)                                            |
+| Database migration           | Liquibase                                                                             | [Section 16](#16-postgresql-persistence)                                            |
+| Identity                     | Keycloak OAuth2/OIDC                                                                  | [Section 15](#15-authentication-and-authorization)                                  |
+| Authorization                | Spring Security + application domain grants                                           | [Section 15](#15-authentication-and-authorization)                                  |
+| API                          | REST authoritative mutations                                                          | [Section 14](#14-api-and-realtime-communication)                                    |
+| Realtime                     | WebSocket coordination and notifications                                              | [Section 14.2](#142-websocket-responsibilities)                                     |
+| API documentation            | OpenAPI + Swagger UI                                                                  | [Section 14.3](#143-openapi)                                                        |
+| Expressions                  | Application-owned shared typed expression engine                                      | [Section 8](#8-application-owned-domain-and-expression-engine)                      |
+| Query model                  | Application-owned typed Query Plan                                                    | [Section 20](#20-query-architecture)                                                |
+| Query sources                | Table and View initially                                                              | [Section 20.1](#201-query-sources)                                                  |
+| Query outputs                | Stable Query Output Field identities                                                  | [Section 20.3](#203-query-output-fields)                                            |
+| Query placement              | Automatic local/server execution                                                      | [Section 20.5](#205-execution-placement)                                            |
+| Numeric semantics            | Decimal arithmetic                                                                    | [Sections 9.2](#92-decimal-safe-evaluation) and [16.1](#161-numeric-semantics)      |
+| Cell persistence             | Relational hybrid typed scalar storage with purpose-built multi-value storage         | [Section 16.2](#162-typed-cell-persistence)                                         |
+| Dependency model             | Source-owned dependencies + derived rebuildable index                                 | [Section 21](#21-dependency-tracking)                                               |
+| Search                       | PostgreSQL server search + application-owned IndexedDB local search                   | [Section 25](#25-search)                                                            |
+| File storage                 | SeaweedFS binary storage + PostgreSQL metadata                                        | [Section 19](#19-files-and-object-storage)                                          |
+| Templates                    | Application-scoped Template Library                                                   | [Section 22](#22-templates)                                                         |
+| History                      | Durable user-facing recovery; physical storage strategy deferred                      | [Section 23](#23-history-undo-and-lifecycle)                                        |
+| Native recovery              | Versioned Native Package                                                              | [Section 24](#24-import-export-and-native-packages)                                 |
+| Workspace restore            | New workspace; packaged child identities preserved where safe                         | [Section 24.5](#245-workspace-restore)                                              |
+| Attachment package behavior  | Configurable binary include/exclude                                                   | [Section 24.7](#247-attachment-content)                                             |
+| Async jobs                   | RabbitMQ + Worker                                                                     | [Section 18](#18-background-jobs-and-asynchronous-processing)                       |
+| Async consistency            | Transactional outbox + at-least-once retry-safe processing                            | [Sections 18.1](#181-transactional-outbox) and [18.2](#182-delivery-semantics)      |
+| Server transactions          | One logical synchronous domain operation is atomic across applicable PostgreSQL state | [Section 13.3](#133-server-transaction-boundary)                                    |
+| Deployment                   | k3s + Helm                                                                            | [Section 27](#27-deployment-and-networking)                                         |
+| Ingress                      | Traefik                                                                               | [Section 27.2](#272-ingress)                                                        |
+| Hosting                      | Oracle Cloud Infrastructure (OCI), while preserving deployment portability            | [Section 27.5](#275-hosting)                                                        |
+| Accessibility                | WCAG 2.2 AA                                                                           | [Section 12](#12-accessibility)                                                     |
+| Spreadsheet interoperability | Standard clipboard + CSV/XLSX; Apache POI server-side                                 | [Sections 24.2](#242-xlsx) and [26](#26-spreadsheet-and-clipboard-interoperability) |
 
 ---
 
