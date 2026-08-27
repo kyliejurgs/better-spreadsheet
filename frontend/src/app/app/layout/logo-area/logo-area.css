@@ -1,0 +1,8 @@
+.logo-area {
+  width: 48px;
+  height: 60px;
+  background: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,6 @@
+.work-surface {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 8px;
+  background: indigo;
+}
