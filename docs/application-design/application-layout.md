@@ -186,7 +186,7 @@ The following primary application surfaces use subtle, lightly contrasting, roun
 
 These outlines visually distinguish major application surfaces without creating heavy separation between regions.
 
-The following shell regions are treated as application chrome rather than outlined panel surfaces:
+The following shell regions are treated as application shell rather than outlined panel surfaces:
 
 - Logo Area
 - Application Header

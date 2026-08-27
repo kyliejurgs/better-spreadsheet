@@ -47,7 +47,7 @@ The interface distinguishes between application shell areas and primary applicat
 
 ### 3.1 Application Shell
 
-Application shell areas includes structural interface regions such as:
+Application shell areas include structural interface regions such as:
 
 - Logo Area
 - Application Header
