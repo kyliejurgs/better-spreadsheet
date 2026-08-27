@@ -5,3 +5,8 @@
   min-height: 0;
   border: 1px solid #b8b8b8;
 }
+
+app-work-surface {
+  flex: 1 1 auto;
+  min-height: 0;
+}
