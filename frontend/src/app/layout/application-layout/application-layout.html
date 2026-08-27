@@ -8,15 +8,19 @@
     <app-activity-bar />
 
     <div class="main-workspace">
-      <app-left-panel />
+      @if (leftPanelActualWidth() > 0) {
+        <app-left-panel [style.width.px]="leftPanelActualWidth()" />
 
-      <div class="resize-handle resize-handle-horizontal"></div>
+        <div class="resize-handle resize-handle-horizontal"></div>
+      }
 
       <app-center-area />
 
-      <div class="resize-handle resize-handle-horizontal"></div>
+      @if (rightPanelActualWidth() > 0) {
+        <div class="resize-handle resize-handle-horizontal"></div>
 
-      <app-right-panel />
+        <app-right-panel [style.width.px]="rightPanelActualWidth()" />
+      }
     </div>
   </div>
 
