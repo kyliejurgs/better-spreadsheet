@@ -197,6 +197,18 @@ Prefer explicit inputs, outputs, or owned shared state for component communicati
 
 Reusable components should expose APIs based on their intended behavior rather than assumptions about one current caller. Do not prematurely generalize feature-specific components into reusable framework components.
 
+## 6.6 UI Component Libraries
+
+Use the project's selected general-purpose UI component library for common interface primitives when it provides the required behavior without unnecessarily constraining application-specific interaction or visual design.
+
+Prefer established library components over application-owned equivalents for commodity interface elements such as buttons, inputs, form controls, menus, dialogs, tooltips, overlays, and similar general-purpose controls.
+
+Do not wrap library components solely to hide the library or create an application-specific abstraction. Create application-owned components when they represent meaningful Better Spreadsheet concepts, provide reusable application-specific behavior, or adapt library behavior that does not directly meet application requirements.
+
+Library components may be styled, composed, extended, or replaced when necessary to preserve Better Spreadsheet's interaction requirements and visual design.
+
+The currently selected general-purpose UI component library is **Taiga UI**. Its selection is an implementation decision rather than an architectural requirement.
+
 # 7. Async Operations and Data Access
 
 ## 7.1 Data Boundaries
@@ -241,11 +253,15 @@ Prefer component-scoped styles for component-specific presentation. Use global s
 
 ## 8.2 Design Tokens and Themes
 
-Use CSS custom properties or the established design-token mechanism for themeable values.
+Use the project's established theme and design-token mechanisms for themeable values.
+
+Prefer capabilities provided by the selected UI component library when they satisfy application requirements. Application-owned design tokens may extend or override library-provided theming where Better Spreadsheet requires application-specific visual behavior.
 
 Colors, spacing, typography, and other values that participate in application themes should not be independently hard-coded throughout components.
 
-Support light, dark, and custom theme behavior through shared theme primitives.
+Support light, dark, accent, and other application-defined theme behavior through shared theme primitives rather than component-specific theme logic.
+
+The component library's default visual design does not take precedence over Better Spreadsheet's application design.
 
 ## 8.3 Layout
 
@@ -283,9 +299,13 @@ Prefer readable implementations unless expected scale, architectural requirement
 
 Known performance-sensitive systems may be designed for scale from the beginning when the expected workload already justifies it. For Better Spreadsheet, these include the primary spreadsheet grid, large-table operations, expression evaluation, query execution, and other workloads identified by the SDD.
 
-## 9.3 Canvas
+## 9.3 Grid Rendering
 
-Use the Canvas-based rendering architecture established by the SDD for the primary spreadsheet grid. Keep Canvas-specific rendering and interaction concerns localized rather than allowing them to spread through unrelated application components.
+Keep rendering-specific implementation concerns localized within the primary spreadsheet grid rather than allowing them to spread through unrelated application components.
+
+The grid may use DOM rendering, Canvas rendering, virtualization, or a hybrid approach according to measured performance, accessibility, interaction, and maintainability requirements.
+
+Rendering technology must not determine application data semantics or spreadsheet interaction behavior.
 
 ## 9.4 Virtualization
 
