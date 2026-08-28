@@ -1,22 +1,12 @@
 import { Component, input, output } from '@angular/core';
 
 export type ResizeDirection =
-  | 'top'
-  | 'bottom'
-  | 'left'
-  | 'right'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
-  | 'all';
+  'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 export interface ContainerSize {
   width?: number;
   height?: number;
 }
-
-type ActiveResizeDirection = Exclude<ResizeDirection, 'all'>;
 
 interface ResizeState {
   handle: HTMLElement;
@@ -24,7 +14,7 @@ interface ResizeState {
   startX: number;
   startY: number;
   startSize: ContainerSize;
-  direction: ActiveResizeDirection;
+  direction: ResizeDirection;
 }
 
 @Component({
@@ -34,18 +24,13 @@ interface ResizeState {
   templateUrl: './resizable-container.html',
 })
 export class ResizableContainer {
-  readonly resizeDirection = input<ResizeDirection>('all');
   readonly size = input.required<ContainerSize>();
 
   readonly sizeChange = output<ContainerSize>();
 
   private resizeState: ResizeState | null = null;
 
-  protected hasDirection(direction: ActiveResizeDirection): boolean {
-    return this.resizeDirection() === 'all' || this.resizeDirection() === direction;
-  }
-
-  protected startResize(event: PointerEvent, direction: ActiveResizeDirection): void {
+  startResize(event: PointerEvent, direction: ResizeDirection): void {
     const handle = event.currentTarget as HTMLElement;
     this.resizeState = {
       handle,
@@ -93,7 +78,7 @@ export class ResizableContainer {
     startSize: ContainerSize,
     deltaX: number,
     deltaY: number,
-    direction: ActiveResizeDirection,
+    direction: ResizeDirection,
   ): ContainerSize {
     const newSize: ContainerSize = {};
 
@@ -110,11 +95,11 @@ export class ResizableContainer {
     return newSize;
   }
 
-  private resizableWidth(direction: ActiveResizeDirection): boolean {
+  private resizableWidth(direction: ResizeDirection): boolean {
     return direction.includes('left') || direction.includes('right');
   }
 
-  private resizableHeight(direction: ActiveResizeDirection): boolean {
+  private resizableHeight(direction: ResizeDirection): boolean {
     return direction.includes('top') || direction.includes('bottom');
   }
 }

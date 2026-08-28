@@ -1,50 +1,5 @@
 <div class="resizable-content">
-  <ng-content />
+  <ng-content select=":not([resizeHandle])" />
 </div>
 
-@if (hasDirection('top')) {
-  <div class="resize-handle resize-handle-top" (pointerdown)="startResize($event, 'top')"></div>
-}
-
-@if (hasDirection('bottom')) {
-  <div
-    class="resize-handle resize-handle-bottom"
-    (pointerdown)="startResize($event, 'bottom')"
-  ></div>
-}
-
-@if (hasDirection('left')) {
-  <div class="resize-handle resize-handle-left" (pointerdown)="startResize($event, 'left')"></div>
-}
-
-@if (hasDirection('right')) {
-  <div class="resize-handle resize-handle-right" (pointerdown)="startResize($event, 'right')"></div>
-}
-
-@if (hasDirection('top-left')) {
-  <div
-    class="resize-handle resize-handle-top-left"
-    (pointerdown)="startResize($event, 'top-left')"
-  ></div>
-}
-
-@if (hasDirection('top-right')) {
-  <div
-    class="resize-handle resize-handle-top-right"
-    (pointerdown)="startResize($event, 'top-right')"
-  ></div>
-}
-
-@if (hasDirection('bottom-left')) {
-  <div
-    class="resize-handle resize-handle-bottom-left"
-    (pointerdown)="startResize($event, 'bottom-left')"
-  ></div>
-}
-
-@if (hasDirection('bottom-right')) {
-  <div
-    class="resize-handle resize-handle-bottom-right"
-    (pointerdown)="startResize($event, 'bottom-right')"
-  ></div>
-}
+<ng-content select="[resizeHandle]" />
