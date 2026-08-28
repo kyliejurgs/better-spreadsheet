@@ -41,6 +41,8 @@ export class ResizableContainer {
       direction,
     };
 
+    handle.classList.add('resize-handle-active');
+
     handle.setPointerCapture(event.pointerId);
     handle.addEventListener('pointermove', this.resize);
     handle.addEventListener('pointerup', this.stopResize);
@@ -66,6 +68,8 @@ export class ResizableContainer {
     if (!state || event.pointerId !== state.pointerId) {
       return;
     }
+
+    state.handle.classList.remove('resize-handle-active');
 
     state.handle.removeEventListener('pointermove', this.resize);
     state.handle.removeEventListener('pointerup', this.stopResize);

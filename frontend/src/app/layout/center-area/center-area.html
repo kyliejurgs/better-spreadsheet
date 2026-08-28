@@ -1,7 +1,15 @@
 <div class="center-area">
   <app-work-area />
 
-  <div class="resize-handle resize-handle-vertical"></div>
+  <div class="panel-gap"></div>
 
-  <app-bottom-panel />
+  <app-resizable-container
+    class="bottom-panel-resizable-container"
+    [size]="{ height: bottomPanelHeight() }"
+    [style.height.px]="bottomPanelHeight()"
+    (sizeChange)="bottomPanelHeightChange.emit($event)"
+  >
+    <app-bottom-panel />
+    <div resizeHandle="top" class="panel-resize-handle panel-resize-handle-top"></div>
+  </app-resizable-container>
 </div>

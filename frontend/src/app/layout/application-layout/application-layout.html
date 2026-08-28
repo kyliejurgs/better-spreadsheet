@@ -21,7 +21,10 @@
         <div class="panel-gap"></div>
       }
 
-      <app-center-area />
+      <app-center-area
+        [bottomPanelHeight]="bottomPanelActualHeight()"
+        (bottomPanelHeightChange)="resizeBottomPanel($event)"
+      />
 
       @if (rightPanelActualWidth() > 0) {
         <div class="panel-gap"></div>

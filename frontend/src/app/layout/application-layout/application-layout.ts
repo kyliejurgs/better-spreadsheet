@@ -34,15 +34,20 @@ export class ApplicationLayout {
 
   protected readonly leftPanelLastWidth = signal<number>(this.config.leftPanel.defaultWidth);
   protected readonly rightPanelLastWidth = signal<number>(this.config.rightPanel.defaultWidth);
+  protected readonly bottomPanelLastHeight = signal<number>(this.config.bottomPanel.defaultHeight);
 
   protected readonly leftPanelCollapsed = signal(false);
   protected readonly rightPanelCollapsed = signal(false);
+  protected readonly bottomPanelCollapsed = signal(false);
 
   protected readonly leftPanelActualWidth = computed(() =>
     this.leftPanelCollapsed() ? 0 : this.leftPanelLastWidth(),
   );
   protected readonly rightPanelActualWidth = computed(() =>
     this.rightPanelCollapsed() ? 0 : this.rightPanelLastWidth(),
+  );
+  protected readonly bottomPanelActualHeight = computed(() =>
+    this.bottomPanelCollapsed() ? 0 : this.bottomPanelLastHeight(),
   );
 
   protected resizeLeftPanel(size: ContainerSize): void {
@@ -57,5 +62,13 @@ export class ApplicationLayout {
       return;
     }
     this.rightPanelLastWidth.set(Math.max(this.config.rightPanel.minWidth, size.width));
+  }
+
+  protected resizeBottomPanel(size: ContainerSize): void {
+    if (size.height === undefined) {
+      return;
+    }
+
+    this.bottomPanelLastHeight.set(Math.max(this.config.bottomPanel.minHeight, size.height));
   }
 }
