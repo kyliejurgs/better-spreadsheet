@@ -189,8 +189,17 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.bottomPanelActualHeight.set(Math.min(requestedHeight, this.workspaceHeight()));
-    this.workAreaCollapsed.set(requestedHeight >= this.workspaceHeight());
+    const maxHeightWithWorkArea =
+      this.workspaceHeight() - this.config.workArea.minHeight - this.config.gap;
+
+    if (requestedHeight >= this.workspaceHeight()) {
+      this.workAreaCollapsed.set(true);
+      this.bottomPanelActualHeight.set(this.workspaceHeight());
+      return;
+    }
+
+    this.bottomPanelActualHeight.set(Math.min(requestedHeight, maxHeightWithWorkArea));
+    this.workAreaCollapsed.set(false);
   }
 
   protected finishBottomPanelResize(): void {
