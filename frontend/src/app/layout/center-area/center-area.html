@@ -7,6 +7,10 @@
     <app-work-area />
   }
 
+  @if (workAreaVisible() && bottomPanelVisible()) {
+    <div class="panel-gap"></div>
+  }
+
   <app-resizable-panel
     direction="top"
     [size]="bottomPanelSize()"
