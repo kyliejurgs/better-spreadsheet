@@ -6,9 +6,10 @@ import {
   ResizableContainer,
 } from '../../shared/resizable-container/resizable-container';
 import { ResizeHandle } from '../../shared/resizable-container/resize-handle';
+import { ResizablePanel } from '../resizable-panel/resizable-panel';
 
 @Component({
-  imports: [WorkArea, BottomPanel, ResizableContainer, ResizeHandle],
+  imports: [WorkArea, BottomPanel, ResizablePanel],
   selector: 'app-center-area',
   styleUrl: './center-area.css',
   templateUrl: './center-area.html',

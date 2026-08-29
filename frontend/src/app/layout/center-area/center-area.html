@@ -3,13 +3,11 @@
 
   <div class="panel-gap"></div>
 
-  <app-resizable-container
-    class="bottom-panel-resizable-container"
+  <app-resizable-panel
+    direction="top"
     [size]="{ height: bottomPanelHeight() }"
-    [style.height.px]="bottomPanelHeight()"
     (sizeChange)="bottomPanelHeightChange.emit($event)"
   >
     <app-bottom-panel />
-    <div resizeHandle="top" class="panel-resize-handle panel-resize-handle-top"></div>
-  </app-resizable-container>
+  </app-resizable-panel>
 </div>

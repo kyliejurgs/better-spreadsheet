@@ -12,6 +12,7 @@ import {
   ResizableContainer,
 } from '../../shared/resizable-container/resizable-container';
 import { ResizeHandle } from '../../shared/resizable-container/resize-handle';
+import { ResizablePanel } from '../resizable-panel/resizable-panel';
 
 @Component({
   imports: [
@@ -22,8 +23,7 @@ import { ResizeHandle } from '../../shared/resizable-container/resize-handle';
     CenterArea,
     RightPanel,
     StatusBar,
-    ResizableContainer,
-    ResizeHandle,
+    ResizablePanel,
   ],
   selector: 'app-application-layout',
   styleUrl: './application-layout.css',

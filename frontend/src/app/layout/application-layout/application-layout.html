@@ -9,15 +9,14 @@
 
     <div class="main-workspace">
       @if (leftPanelActualWidth() > 0) {
-        <app-resizable-container
-          class="panel-resizable-container"
+        <app-resizable-panel
+          direction="right"
           [size]="{ width: leftPanelActualWidth() }"
-          [style.width.px]="leftPanelActualWidth()"
           (sizeChange)="resizeLeftPanel($event)"
         >
           <app-left-panel />
-          <div resizeHandle="right" class="panel-resize-handle panel-resize-handle-right"></div>
-        </app-resizable-container>
+        </app-resizable-panel>
+
         <div class="panel-gap"></div>
       }
 
@@ -29,15 +28,13 @@
       @if (rightPanelActualWidth() > 0) {
         <div class="panel-gap"></div>
 
-        <app-resizable-container
-          class="panel-resizable-container"
+        <app-resizable-panel
+          direction="left"
           [size]="{ width: rightPanelActualWidth() }"
-          [style.width.px]="rightPanelActualWidth()"
           (sizeChange)="resizeRightPanel($event)"
         >
           <app-right-panel />
-          <div resizeHandle="left" class="panel-resize-handle panel-resize-handle-left"></div>
-        </app-resizable-container>
+        </app-resizable-panel>
       }
     </div>
   </div>
