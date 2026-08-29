@@ -7,35 +7,40 @@
   <div class="application-body">
     <app-activity-bar />
 
-    <div class="main-workspace">
-      @if (leftPanelActualWidth() > 0) {
-        <app-resizable-panel
-          direction="right"
-          [size]="{ width: leftPanelActualWidth() }"
-          (sizeChange)="resizeLeftPanel($event)"
-        >
+    <div #mainWorkspace class="main-workspace">
+      <app-resizable-panel
+        direction="right"
+        [size]="leftPanelSize()"
+        (sizeChange)="resizeSidePanel('left', $event)"
+      >
+        @if (leftPanelVisible()) {
           <app-left-panel />
-        </app-resizable-panel>
+        }
+      </app-resizable-panel>
 
+      @if (leftPanelVisible()) {
         <div class="panel-gap"></div>
       }
 
       <app-center-area
-        [bottomPanelHeight]="bottomPanelActualHeight()"
-        (bottomPanelHeightChange)="resizeBottomPanel($event)"
+        [bottomPanelSize]="bottomPanelSize()"
+        [bottomPanelVisible]="bottomPanelVisible()"
+        (bottomPanelSizeChange)="resizeBottomPanel($event)"
       />
 
-      @if (rightPanelActualWidth() > 0) {
+      @if (rightPanelVisible()) {
         <div class="panel-gap"></div>
-
-        <app-resizable-panel
-          direction="left"
-          [size]="{ width: rightPanelActualWidth() }"
-          (sizeChange)="resizeRightPanel($event)"
-        >
-          <app-right-panel />
-        </app-resizable-panel>
       }
+
+      <app-resizable-panel
+        direction="left"
+        [size]="rightPanelSize()"
+        (sizeChange)="resizeSidePanel('right', $event)"
+      >
+        @if (rightPanelVisible()) {
+          <app-right-panel />
+        }
+      </app-resizable-panel>
     </div>
   </div>
 

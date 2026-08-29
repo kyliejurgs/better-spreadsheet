@@ -1,13 +1,15 @@
 <div class="center-area">
   <app-work-area />
 
-  <div class="panel-gap"></div>
+  @if (bottomPanelVisible()) {
+    <div class="panel-gap"></div>
 
-  <app-resizable-panel
-    direction="top"
-    [size]="{ height: bottomPanelHeight() }"
-    (sizeChange)="bottomPanelHeightChange.emit($event)"
-  >
-    <app-bottom-panel />
-  </app-resizable-panel>
+    <app-resizable-panel
+      direction="top"
+      [size]="bottomPanelSize()"
+      (sizeChange)="bottomPanelSizeChange.emit($event)"
+    >
+      <app-bottom-panel />
+    </app-resizable-panel>
+  }
 </div>

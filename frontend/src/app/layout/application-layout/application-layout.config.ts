@@ -1,4 +1,6 @@
 export const APPLICATION_LAYOUT = {
+  gap: 4,
+
   leftPanel: {
     defaultWidth: 240,
     minWidth: 140,
