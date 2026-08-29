@@ -3,13 +3,14 @@
 
   @if (bottomPanelVisible()) {
     <div class="panel-gap"></div>
-
-    <app-resizable-panel
-      direction="top"
-      [size]="bottomPanelSize()"
-      (sizeChange)="bottomPanelSizeChange.emit($event)"
-    >
-      <app-bottom-panel />
-    </app-resizable-panel>
   }
+  <app-resizable-panel
+    direction="top"
+    [size]="bottomPanelSize()"
+    (sizeChange)="bottomPanelSizeChange.emit($event)"
+  >
+    @if (bottomPanelVisible()) {
+      <app-bottom-panel />
+    }
+  </app-resizable-panel>
 </div>
