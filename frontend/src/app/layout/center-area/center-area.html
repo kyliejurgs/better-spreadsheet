@@ -1,9 +1,12 @@
-<div class="center-area">
-  <app-work-area />
-
-  @if (bottomPanelVisible()) {
-    <div class="panel-gap"></div>
+<div
+  class="center-area"
+  [style.--work-area-min-height.px]="workAreaMinHeight()"
+  [style.--bottom-panel-height.px]="bottomPanelVisible() ? bottomPanelSize().height : 0"
+>
+  @if (workAreaVisible()) {
+    <app-work-area />
   }
+
   <app-resizable-panel
     direction="top"
     [size]="bottomPanelSize()"

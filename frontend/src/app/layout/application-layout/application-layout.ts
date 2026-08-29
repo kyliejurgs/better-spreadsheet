@@ -47,9 +47,10 @@ interface SidePanelState {
   templateUrl: './application-layout.html',
 })
 export class ApplicationLayout implements AfterViewInit, OnDestroy {
-  private readonly config = APPLICATION_LAYOUT;
+  protected readonly config = APPLICATION_LAYOUT;
   private readonly mainWorkspace = viewChild.required<ElementRef<HTMLElement>>('mainWorkspace');
   private readonly workspaceWidth = signal(0);
+  private readonly workspaceHeight = signal(0);
 
   private readonly leftPanelPreferredWidth = signal<number>(this.config.leftPanel.defaultWidth);
   private readonly leftPanelActualWidth = signal<number>(this.config.leftPanel.defaultWidth);
@@ -66,6 +67,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   );
   private readonly bottomPanelActualHeight = signal<number>(this.config.bottomPanel.defaultHeight);
   private readonly bottomPanelCollapsed = signal(false);
+  private readonly workAreaCollapsed = signal(false);
 
   private resizeObserver?: ResizeObserver;
 
@@ -86,16 +88,19 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected readonly bottomPanelSize = computed<ContainerSize>(() => ({
     height: this.bottomPanelVisible() ? this.bottomPanelActualHeight() : 0,
   }));
+  protected readonly workAreaVisible = computed(() => !this.workAreaCollapsed());
 
   ngAfterViewInit(): void {
     const workspace = this.mainWorkspace().nativeElement;
     this.resizeObserver = new ResizeObserver(([entry]) => {
       this.workspaceWidth.set(entry.contentRect.width);
+      this.workspaceHeight.set(entry.contentRect.height);
       this.applyViewportConstraints();
     });
 
     this.resizeObserver.observe(workspace);
     this.workspaceWidth.set(workspace.clientWidth);
+    this.workspaceHeight.set(workspace.clientHeight);
     this.applyViewportConstraints();
   }
 
@@ -166,16 +171,26 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       return;
     }
 
+    const requestedHeight = Math.max(0, size.height);
     const collapseThreshold = this.config.bottomPanel.minHeight - this.config.collapseBuffer;
 
-    if (size.height <= collapseThreshold) {
+    if (requestedHeight <= collapseThreshold) {
       this.bottomPanelCollapsed.set(true);
       this.bottomPanelActualHeight.set(0);
+      this.workAreaCollapsed.set(false);
       return;
     }
 
     this.bottomPanelCollapsed.set(false);
-    this.bottomPanelActualHeight.set(Math.max(this.config.bottomPanel.minHeight, size.height));
+
+    if (requestedHeight < this.config.bottomPanel.minHeight) {
+      this.bottomPanelActualHeight.set(this.config.bottomPanel.minHeight);
+      this.workAreaCollapsed.set(false);
+      return;
+    }
+
+    this.bottomPanelActualHeight.set(Math.min(requestedHeight, this.workspaceHeight()));
+    this.workAreaCollapsed.set(requestedHeight >= this.workspaceHeight());
   }
 
   protected finishBottomPanelResize(): void {

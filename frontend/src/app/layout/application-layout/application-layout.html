@@ -24,6 +24,8 @@
       }
 
       <app-center-area
+        [workAreaVisible]="workAreaVisible()"
+        [workAreaMinHeight]="config.workArea.minHeight"
         [bottomPanelSize]="bottomPanelSize()"
         [bottomPanelVisible]="bottomPanelVisible()"
         (bottomPanelSizeChange)="resizeBottomPanel($event)"

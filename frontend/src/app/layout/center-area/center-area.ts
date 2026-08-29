@@ -11,6 +11,9 @@ import { ResizablePanel } from '../resizable-panel/resizable-panel';
   templateUrl: './center-area.html',
 })
 export class CenterArea {
+  readonly workAreaVisible = input.required<boolean>();
+  readonly workAreaMinHeight = input.required<number>();
+
   readonly bottomPanelSize = input.required<ContainerSize>();
   readonly bottomPanelVisible = input.required<boolean>();
 
