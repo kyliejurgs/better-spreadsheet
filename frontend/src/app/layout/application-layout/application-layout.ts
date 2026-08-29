@@ -159,7 +159,6 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     if (!state.collapsed()) {
       state.preferredWidth.set(state.actualWidth());
     }
-    this.applyViewportConstraints();
   }
 
   protected resizeBottomPanel(size: ContainerSize): void {
