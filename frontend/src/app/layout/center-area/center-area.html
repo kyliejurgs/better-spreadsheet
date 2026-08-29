@@ -8,6 +8,7 @@
     direction="top"
     [size]="bottomPanelSize()"
     (sizeChange)="bottomPanelSizeChange.emit($event)"
+    (resizeEnd)="bottomPanelResizeEnd.emit()"
   >
     @if (bottomPanelVisible()) {
       <app-bottom-panel />

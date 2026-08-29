@@ -110,8 +110,9 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
     const active = this.getSidePanelState(panel);
     const opposite = this.getSidePanelState(panel === 'left' ? 'right' : 'left');
+    const collapseThreshold = active.minWidth - this.config.collapseBuffer;
 
-    if (size.width < active.minWidth) {
+    if (size.width <= collapseThreshold) {
       active.collapsed.set(true);
       active.constraintCollapsed.set(false);
       active.actualWidth.set(0);
@@ -122,29 +123,24 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     active.collapsed.set(false);
     active.constraintCollapsed.set(false);
 
-    const availableWidth = this.availablePanelWidth();
+    const requestedWidth = Math.max(active.minWidth, size.width);
+    const availableWidth =
+      this.workspaceWidth() - this.config.workArea.minWidth - this.visibleGapWidth();
     const oppositeMinWidth = opposite.collapsed() ? 0 : opposite.minWidth;
-    const oppositeAvailableWidth = availableWidth - size.width;
+    const oppositeAvailableWidth = availableWidth - requestedWidth;
 
-    if (size.width <= availableWidth - oppositeMinWidth) {
-      active.preferredWidth.set(size.width);
-      active.actualWidth.set(size.width);
+    if (requestedWidth <= availableWidth - oppositeMinWidth) {
+      active.actualWidth.set(requestedWidth);
 
-      if (opposite.collapsed()) {
+      if (!opposite.collapsed()) {
         opposite.constraintCollapsed.set(false);
-        opposite.actualWidth.set(0);
-        return;
+        opposite.actualWidth.set(Math.min(opposite.preferredWidth(), oppositeAvailableWidth));
       }
-
-      opposite.constraintCollapsed.set(false);
-      opposite.actualWidth.set(Math.min(opposite.preferredWidth(), oppositeAvailableWidth));
-
       return;
     }
 
     if (!opposite.collapsed() && oppositeAvailableWidth >= opposite.minWidth) {
-      active.preferredWidth.set(size.width);
-      active.actualWidth.set(size.width);
+      active.actualWidth.set(requestedWidth);
       opposite.constraintCollapsed.set(false);
       opposite.actualWidth.set(Math.min(opposite.preferredWidth(), oppositeAvailableWidth));
       return;
@@ -155,9 +151,15 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       opposite.actualWidth.set(0);
     }
 
-    const actualWidth = Math.min(size.width, availableWidth);
-    active.preferredWidth.set(actualWidth);
-    active.actualWidth.set(actualWidth);
+    active.actualWidth.set(Math.min(requestedWidth, availableWidth));
+  }
+
+  protected finishSidePanelResize(panel: SidePanel): void {
+    const state = this.getSidePanelState(panel);
+    if (!state.collapsed()) {
+      state.preferredWidth.set(state.actualWidth());
+    }
+    this.applyViewportConstraints();
   }
 
   protected resizeBottomPanel(size: ContainerSize): void {
@@ -165,39 +167,38 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
       return;
     }
 
-    if (size.height < this.config.bottomPanel.minHeight) {
+    const collapseThreshold = this.config.bottomPanel.minHeight - this.config.collapseBuffer;
+
+    if (size.height <= collapseThreshold) {
       this.bottomPanelCollapsed.set(true);
       this.bottomPanelActualHeight.set(0);
       return;
     }
 
     this.bottomPanelCollapsed.set(false);
-    this.bottomPanelPreferredHeight.set(size.height);
-    this.bottomPanelActualHeight.set(size.height);
+    this.bottomPanelActualHeight.set(Math.max(this.config.bottomPanel.minHeight, size.height));
+  }
+
+  protected finishBottomPanelResize(): void {
+    if (!this.bottomPanelCollapsed()) {
+      this.bottomPanelPreferredHeight.set(this.bottomPanelActualHeight());
+    }
   }
 
   protected toggleSidePanel(panel: SidePanel): void {
     const state = this.getSidePanelState(panel);
-    if (state.collapsed()) {
-      state.collapsed.set(false);
-    } else {
-      state.collapsed.set(true);
-      state.constraintCollapsed.set(false);
-      state.actualWidth.set(0);
-    }
+    state.collapsed.update((collapsed) => !collapsed);
+    state.constraintCollapsed.set(false);
+    state.actualWidth.set(state.collapsed() ? 0 : state.preferredWidth());
 
     this.applyViewportConstraints();
   }
 
   protected toggleBottomPanel(): void {
-    if (this.bottomPanelCollapsed()) {
-      this.bottomPanelCollapsed.set(false);
-      this.bottomPanelActualHeight.set(this.bottomPanelPreferredHeight());
-      return;
-    }
-
-    this.bottomPanelCollapsed.set(true);
-    this.bottomPanelActualHeight.set(0);
+    this.bottomPanelCollapsed.update((collapsed) => !collapsed);
+    this.bottomPanelActualHeight.set(
+      this.bottomPanelCollapsed() ? 0 : this.bottomPanelPreferredHeight(),
+    );
   }
 
   private applyViewportConstraints(): void {
@@ -205,23 +206,14 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     const right = this.getSidePanelState('right');
 
     left.constraintCollapsed.set(false);
+    left.actualWidth.set(left.collapsed() ? 0 : left.preferredWidth());
+
     right.constraintCollapsed.set(false);
-
-    if (left.collapsed()) {
-      left.actualWidth.set(0);
-    } else {
-      left.actualWidth.set(left.preferredWidth());
-    }
-
-    if (right.collapsed()) {
-      right.actualWidth.set(0);
-    } else {
-      right.actualWidth.set(right.preferredWidth());
-    }
+    right.actualWidth.set(right.collapsed() ? 0 : right.preferredWidth());
 
     let overflow = Math.max(
       0,
-      left.actualWidth() +
+      left.actualWidth() -
         right.actualWidth() +
         this.visibleGapWidth() -
         (this.workspaceWidth() - this.config.workArea.minWidth),
@@ -250,12 +242,6 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     const reduction = Math.min(Math.max(0, panel.actualWidth() - panel.minWidth), overflow);
     panel.actualWidth.update((width) => width - reduction);
     return overflow - reduction;
-  }
-
-  private availablePanelWidth(): number {
-    const freeSpace =
-      this.workspaceWidth() - this.config.workArea.minWidth - this.visibleGapWidth();
-    return Math.max(0, freeSpace);
   }
 
   private visibleGapWidth(): number {

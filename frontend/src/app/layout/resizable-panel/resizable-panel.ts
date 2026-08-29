@@ -17,4 +17,5 @@ export class ResizablePanel {
   readonly size = input.required<ContainerSize>();
 
   readonly sizeChange = output<ContainerSize>();
+  readonly resizeEnd = output<ContainerSize>();
 }

@@ -15,4 +15,5 @@ export class CenterArea {
   readonly bottomPanelVisible = input.required<boolean>();
 
   readonly bottomPanelSizeChange = output<ContainerSize>();
+  readonly bottomPanelResizeEnd = output<void>();
 }

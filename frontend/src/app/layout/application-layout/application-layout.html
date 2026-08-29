@@ -12,6 +12,7 @@
         direction="right"
         [size]="leftPanelSize()"
         (sizeChange)="resizeSidePanel('left', $event)"
+        (resizeEnd)="finishSidePanelResize('left')"
       >
         @if (leftPanelVisible()) {
           <app-left-panel />
@@ -26,6 +27,7 @@
         [bottomPanelSize]="bottomPanelSize()"
         [bottomPanelVisible]="bottomPanelVisible()"
         (bottomPanelSizeChange)="resizeBottomPanel($event)"
+        (bottomPanelResizeEnd)="finishBottomPanelResize()"
       />
 
       @if (rightPanelVisible()) {
@@ -36,6 +38,7 @@
         direction="left"
         [size]="rightPanelSize()"
         (sizeChange)="resizeSidePanel('right', $event)"
+        (resizeEnd)="finishSidePanelResize('right')"
       >
         @if (rightPanelVisible()) {
           <app-right-panel />

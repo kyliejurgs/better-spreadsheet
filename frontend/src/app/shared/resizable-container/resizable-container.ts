@@ -14,6 +14,7 @@ interface ResizeState {
   startX: number;
   startY: number;
   startSize: ContainerSize;
+  currentSize: ContainerSize;
   direction: ResizeDirection;
 }
 
@@ -27,17 +28,20 @@ export class ResizableContainer {
   readonly size = input.required<ContainerSize>();
 
   readonly sizeChange = output<ContainerSize>();
+  readonly resizeEnd = output<ContainerSize>();
 
   private resizeState: ResizeState | null = null;
 
   startResize(event: PointerEvent, direction: ResizeDirection): void {
     const handle = event.currentTarget as HTMLElement;
+    const startSize = this.size();
     this.resizeState = {
       handle,
       pointerId: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
-      startSize: this.size(),
+      startSize,
+      currentSize: startSize,
       direction,
     };
 
@@ -58,9 +62,8 @@ export class ResizableContainer {
     const deltaX = event.clientX - state.startX;
     const deltaY = event.clientY - state.startY;
 
-    const newSize = this.calculateNewSize(state.startSize, deltaX, deltaY, state.direction);
-
-    this.sizeChange.emit(newSize);
+    state.currentSize = this.calculateNewSize(state.startSize, deltaX, deltaY, state.direction);
+    this.sizeChange.emit(state.currentSize);
   };
 
   private readonly stopResize = (event: PointerEvent): void => {
@@ -76,6 +79,7 @@ export class ResizableContainer {
     state.handle.removeEventListener('pointercancel', this.stopResize);
 
     this.resizeState = null;
+    this.resizeEnd.emit(state.currentSize);
   };
 
   private calculateNewSize(

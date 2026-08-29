@@ -3,6 +3,7 @@
   [style.width.px]="size().width"
   [style.height.px]="size().height"
   (sizeChange)="sizeChange.emit($event)"
+  (resizeEnd)="resizeEnd.emit($event)"
 >
   <ng-content />
   <div

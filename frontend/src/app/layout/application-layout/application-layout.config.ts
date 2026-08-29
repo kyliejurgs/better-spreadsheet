@@ -1,5 +1,6 @@
 export const APPLICATION_LAYOUT = {
   gap: 4,
+  collapseBuffer: 30,
 
   leftPanel: {
     defaultWidth: 240,
