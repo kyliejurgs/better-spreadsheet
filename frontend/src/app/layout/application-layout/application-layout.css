@@ -51,21 +51,20 @@ app-center-area {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
-  width: 1px;
+  width: 4px;
   content: '';
   background-color: transparent;
-  transform: translateX(-50%);
+  border-radius: 2px;
   transition: background-color 0s;
 }
 
 .panel-resize-handle:hover::after {
-  background-color: blue;
+  background-color: var(--accent-color);
   transition-delay: 0.5s;
 }
 
 .panel-resize-handle.resize-handle-active::after {
-  background-color: blue;
+  background-color: var(--accent-color);
   transition-delay: 0s;
 }
 
@@ -73,8 +72,16 @@ app-center-area {
   left: -4px;
 }
 
+.panel-resize-handle-left::after {
+  left: 0;
+}
+
 .panel-resize-handle-right {
   right: -4px;
+}
+
+.panel-resize-handle-right::after {
+  left: 4px;
 }
 
 .panel-resizable-container {

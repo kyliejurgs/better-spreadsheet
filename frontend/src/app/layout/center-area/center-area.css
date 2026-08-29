@@ -34,23 +34,23 @@ app-work-area {
 
 .panel-resize-handle::after {
   position: absolute;
-  top: 50%;
+  top: 0;
   right: 0;
   left: 0;
-  height: 1px;
+  height: 4px;
   content: '';
   background-color: transparent;
-  transform: translateY(-50%);
+  border-radius: 2px;
   transition: background-color 0s;
 }
 
 .panel-resize-handle:hover::after {
-  background-color: blue;
+  background-color: var(--accent-color);
   transition-delay: 0.5s;
 }
 
 .panel-resize-handle.resize-handle-active::after {
-  background-color: blue;
+  background-color: var(--accent-color);
   transition-delay: 0s;
 }
 
