@@ -1,8 +1,12 @@
 .logo-area {
   width: var(--activity-bar-width);
   height: calc(var(--title-bar-height) + var(--menu-bar-height));
-  background: yellow;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-area__logo {
+  width: 42px;
+  height: 40px;
 }

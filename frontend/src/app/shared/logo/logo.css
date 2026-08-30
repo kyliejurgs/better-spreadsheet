@@ -1,0 +1,27 @@
+:host {
+  display: inline-flex;
+  color: var(--accent-color);
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.logo__grid {
+  fill: currentColor;
+  opacity: 0.32;
+}
+
+.logo__cover {
+  fill: currentColor;
+}
+
+.logo__monogram {
+  fill: white;
+  font-family: Inter, sans-serif;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
