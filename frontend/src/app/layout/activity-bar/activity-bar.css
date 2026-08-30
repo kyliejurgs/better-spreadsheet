@@ -1,8 +1,46 @@
 .activity-bar {
   width: var(--activity-bar-width);
   height: 100%;
-  background: green;
   display: flex;
-  justify-content: center;
-  padding-top: 8px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--tui-background-base);
+  color: var(--tui-text-primary);
+}
+
+.activity-bar__primary,
+.activity-bar__utilities {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-bar__item {
+  width: var(--activity-bar-width);
+  height: var(--activity-bar-width);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.activity-bar__item:hover {
+  color: var(--accent-color);
+}
+
+.activity-bar__item tui-icon {
+  font-size: calc(var(--activity-bar-width) * 0.5);
+}
+
+.activity-bar__item--active {
+  color: var(--accent-color);
+  outline: 2px solid var(--accent-color);
+  border-radius: 10px;
+  outline-offset: calc(-1 * var(--layout-gap));
+}
+
+.activity-bar__item--active tui-icon {
+  font-size: calc(var(--activity-bar-width) * 0.65);
 }
