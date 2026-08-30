@@ -13,6 +13,7 @@ The application shell consists of the following regions:
 - Application Header
   - Title Bar
   - Menu Bar
+- Command Bar
 - Activity Bar
 - Left Panel
 - Center Area
@@ -29,7 +30,9 @@ The shell is arranged as follows:
     │ LOGO   │ TITLE BAR                                                           │
     │ AREA   ├─────────────────────────────────────────────────────────────────────┤
     │        │ MENU BAR                                                            │
-    ├────────┼─────────────────┬─────────────────────────────┬─────────────────────┤
+    ├────────┴─────────────────────────────────────────────────────────────────────┤
+    │ COMMAND BAR                                                                  │
+    ├────────┬─────────────────┬─────────────────────────────┬─────────────────────┤
     │        │                 │ TAB BAR                     │                     │
     │        │                 ├─────────────────────────────┤                     │
     │ ACT.   │ LEFT PANEL      │                             │ RIGHT PANEL         │
@@ -41,7 +44,9 @@ The shell is arranged as follows:
     │ STATUS BAR                                                                   │
     └──────────────────────────────────────────────────────────────────────────────┘
 
-The Left Panel and Right Panel span the full body height between the Application Header and Status Bar.
+The Command Bar is positioned between the Application Header and the application body. When persistently visible, the Command Bar participates in the application layout and reduces the vertical space available to the application body. When not persistently visible, the Command Bar consumes no application layout space. Selecting a Menu Bar category may temporarily display the Command Bar as an overlay over the application body without resizing the regions beneath it.
+
+The Left Panel and Right Panel span the full available body height between the top shell regions and Status Bar. When the Command Bar is persistently visible, the body begins below the Command Bar. Otherwise, the body begins below the Application Header.
 
 The Bottom Panel belongs to the Center Area and spans only the width of the Center Area. It does not extend beneath the Activity Bar, Left Panel, or Right Panel.
 
@@ -55,6 +60,7 @@ The application shell defines the following independent fixed dimensions:
 
 - Title Bar height
 - Menu Bar height
+- Command Bar height
 - Activity Bar width
 - Status Bar height
 - Tab Bar height
@@ -62,6 +68,8 @@ The application shell defines the following independent fixed dimensions:
 The Application Header height is derived from its children:
 
     applicationHeaderHeight = titleBarHeight + menuBarHeight
+
+The Command Bar height is independent of the Application Header height. When the Command Bar is persistently visible, its configured height contributes to the vertical shell layout. When it is hidden or temporarily displayed as an overlay, its height does not contribute to the persistent shell layout.
 
 The Logo Area dimensions are derived from adjacent shell regions:
 
@@ -250,13 +258,24 @@ The Bottom Panel may contain multiple contextual panes. Its active pane is remem
 
 Application features such as status indicators may request that the Bottom Panel open to a specific pane.
 
-### 7.4 Shell Commands
+### 7.4 Command Bar
+
+The Command Bar provides an expanded presentation of commands associated with the active Menu Bar category. The Command Bar supports two user-selected display modes:
+
+- Always Visible
+- Menu Bar Only
+
+When configured as Always Visible, the Command Bar remains in the application layout directly below the Application Header. Selecting a Menu Bar category updates the commands presented in the Command Bar.
+
+When configured as Menu Bar Only, the Command Bar is normally absent from the application layout. Selecting a Menu Bar category temporarily displays the corresponding Command Bar over the application body without changing the underlying layout dimensions.The temporary Command Bar is dismissed when the temporary command interaction ends. Changing the Command Bar display mode represents user layout intent and is persisted.
+
+### 7.5 Shell Commands
 
 The application provides independent layout commands for toggling the left, right, and bottom panels.
 
 These commands may later be exposed through menus, keyboard shortcuts, command surfaces, or other application controls. The Application Layout does not depend on which interface invokes the command.
 
-### 7.5 Permanently Visible Shell Regions
+### 7.6 Permanently Visible Shell Regions
 
 The following regions are normally always visible:
 
@@ -266,6 +285,8 @@ The following regions are normally always visible:
 - Status Bar
 
 The Tab Bar and Work Surface are visible whenever the Work Area is visible. The Work Area may disappear only through the Bottom Panel resize behavior defined by this document.
+
+The Command Bar is not a permanently visible shell region. Its persistent visibility is determined by the user's selected Command Bar display mode. When temporarily displayed, the Command Bar overlays the application body and does not alter the effective dimensions of the body regions.
 
 ---
 
@@ -303,6 +324,9 @@ Constraint-driven effective collapse does not destroy the panel's preferred dime
 ### 8.4 Persisted Layout State
 
 The following user layout preferences should survive application reloads:
+
+    Command Bar
+    └── display mode
 
     Left Panel
     ├── preferred width
@@ -374,6 +398,9 @@ The application does not respond to insufficient space by arbitrarily shrinking:
 - Tab Bar
 - Status Bar
 
+When the Command Bar is configured as Always Visible, its height remains fixed under viewport constraints. A temporarily displayed Command Bar does not participate in viewport layout
+calculations.
+
 ---
 
 ## 10. Structural Responsibilities and State Ownership
@@ -383,6 +410,7 @@ The application does not respond to insufficient space by arbitrarily shrinking:
 The Application Layout owns shell geometry and coordination. Its responsibilities include:
 
 - Arranging top-level shell regions
+- Allocating vertical space for the persistent Command Bar
 - Calculating available layout space
 - Coordinating Left and Right Panel sizing
 - Coordinating Bottom Panel and Work Area sizing
@@ -422,7 +450,13 @@ The following fixed shell regions render within dimensions established by the ap
 
 These regions do not participate directly in resizing.
 
-### 10.5 Layout Configuration
+### 10.5 Command Bar
+
+The Command Bar owns the presentation of expanded commands associated with the active Menu Bar category.The Application Layout determines whether persistent Command Bar space is allocated based on the user's selected display mode.
+
+Temporary Command Bar presentation overlays the application body and does not participate in body sizing or cross-panel resize calculations. The Application Layout does not own the commands presented by the Command Bar or their feature-specific behavior.
+
+### 10.6 Layout Configuration
 
 Application layout configuration defines fixed dimensions, default resizable dimensions, and minimum dimensions.
 
@@ -431,9 +465,13 @@ Conceptually:
     Fixed
     ├── titleBarHeight
     ├── menuBarHeight
+    ├── commandBarHeight
     ├── activityBarWidth
     ├── statusBarHeight
     └── tabBarHeight
+
+    Command Bar
+    └── displayMode
 
     Left Panel
     ├── defaultWidth
@@ -458,7 +496,7 @@ The Logo Area dimensions are derived rather than independently configured:
 
 Maximum panel dimensions are not configured. They are calculated dynamically from the current available application space.
 
-### 10.6 Preferred and Effective Layout State
+### 10.7 Preferred and Effective Layout State
 
 User preference state and effective runtime layout state remain conceptually separate.
 
