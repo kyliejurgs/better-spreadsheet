@@ -29,6 +29,41 @@ The Logo Area is permanently visible and does not resize or collapse and does no
 
 ### 2.1 Title Bar
 
+#### Purpose
+
+The title bar provides persistent application and workspace identity alone with frequently used global actions. It follows the compact document-header pattern common to desktop productivity and spreadsheet applications.
+
+#### Content
+
+The title bar contains, from left to right:
+
+- Application name
+- Undo action
+- Redo action
+- Current workspace name
+- Workspace persistence/save status
+- Flexible space
+- Share action
+- User profile
+
+Additional global actions may be introduced when justified by application requirements.
+
+#### Layout
+
+All title bar content is presented on a single horizontal line. The application name appears first, followed by undo and redo actions. The current workspace name follows the editing actions and is visually more prominent than its persistence status, which appears immediately after the workspace name and may display information such as last update time or an active saving state.
+
+Flexible space separates workspace information from collaboration and account actions. Share and user profile controls are positioned at the right side of the title bar.
+
+#### Behavior
+
+Undo and redo operate on the application's current undo and redo state and reflect whether those actions are currently available.
+
+The workspace persistence status reflects the current persistence and may change as workspace changes are saved.
+
+The share action provides access to workspace sharing, exporting, and collaboration functionality.
+
+The user profile control provides access to account-related functionality.
+
 ### 2.2 Menu Bar
 
 ## 3. Activity Bar
