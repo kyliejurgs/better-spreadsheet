@@ -68,15 +68,31 @@ The user profile control provides access to account-related functionality.
 
 #### Purpose
 
-The menu bar provides persistent access to the application's primary command categories. Commands available through the menu bar may be presented either through dropdown menus or through the command bar.
+The menu bar provides persistent access to the application's primary command categories. It works together with the command bar to provide access to application commands.
+
+#### Content
+
+The menu bar contains:
+
+- Primary command categories
+- Flexible space
+- Command bar display control
+
+The specific command categories are defined by the application command design rather than the static application shell.
 
 #### Layout
 
-The menu bar is displayed as a single horizontal row directly below the title bar. Primary command categories are positioned from left to right. A command bar display control is positioned at the right side of the menu bar.
+The menu bar is displayed as a single horizontal row directly below the title bar. Primary command categories are positioned from left to right.
+
+Flexible space separates the command categories from the command bar display control, which is positioned at the right side of the menu bar.
 
 #### Behavior
 
-Selecting a menu category determines the commands presented for that category. When the command bar is configured to remain visible, selecting a category opens the corresponding command bar temporarily over the workspace. Commands remain accessible when the persistent command bar is hidden. The menu bar is permanently visible and does not collapse with the command bar.
+Selecting a menu category makes that category active.
+
+When the command bar is configured as always visible, selecting a menu category changes the commands presented by the persistent command bar. When the command bar is configured as menu bar only, selecting a menu category temporarily displays the corresponding command bar over the application body.
+
+The menu bar remains visible regardless of the command bar display mode. The command bar display control allows the user to change the command bar display mode.
 
 ## 3. Activity Bar
 
