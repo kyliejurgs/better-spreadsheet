@@ -66,6 +66,18 @@ The user profile control provides access to account-related functionality.
 
 ### 2.2 Menu Bar
 
+#### Purpose
+
+The menu bar provides persistent access to the application's primary command categories. Commands available through the menu bar may be presented either through dropdown menus or through the command bar.
+
+#### Layout
+
+The menu bar is displayed as a single horizontal row directly below the title bar. Primary command categories are positioned from left to right. A command bar display control is positioned at the right side of the menu bar.
+
+#### Behavior
+
+Selecting a menu category determines the commands presented for that category. When the command bar is configured to remain visible, selecting a category opens the corresponding command bar temporarily over the workspace. Commands remain accessible when the persistent command bar is hidden. The menu bar is permanently visible and does not collapse with the command bar.
+
 ## 3. Activity Bar
 
 ## 4. Status Bar
