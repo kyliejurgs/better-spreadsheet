@@ -18,5 +18,5 @@ app-resizable-panel {
 }
 
 .panel-gap {
-  flex: 0 0 4px;
+  flex: 0 0 var(--layout-gap);
 }
