@@ -55,20 +55,23 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   private readonly workspaceWidth = signal(0);
   private readonly workspaceHeight = signal(0);
 
+  // Preferred dimensions preserve the user's chosen size. Actual dimensions may
+  // temporarily change to satisfy the current workspace constraints.
   private readonly leftPanelPreferredWidth = signal<number>(this.config.leftPanel.defaultWidth);
   private readonly leftPanelActualWidth = signal<number>(this.config.leftPanel.defaultWidth);
-  private readonly leftPanelCollapsed = signal(false);
-  private readonly leftPanelConstraintCollapsed = signal(false);
-
   private readonly rightPanelPreferredWidth = signal<number>(this.config.rightPanel.defaultWidth);
   private readonly rightPanelActualWidth = signal<number>(this.config.rightPanel.defaultWidth);
-  private readonly rightPanelCollapsed = signal(false);
-  private readonly rightPanelConstraintCollapsed = signal(false);
-
   private readonly bottomPanelPreferredHeight = signal<number>(
     this.config.bottomPanel.defaultHeight,
   );
   private readonly bottomPanelActualHeight = signal<number>(this.config.bottomPanel.defaultHeight);
+
+  // A panel can be explicitly collapsed by the user or temporarily collapsed
+  // when the workspace cannot satisfy all minimum-width constraints.
+  private readonly leftPanelCollapsed = signal(false);
+  private readonly leftPanelConstraintCollapsed = signal(false);
+  private readonly rightPanelCollapsed = signal(false);
+  private readonly rightPanelConstraintCollapsed = signal(false);
   private readonly bottomPanelCollapsed = signal(false);
   private readonly workAreaCollapsed = signal(false);
 
@@ -162,6 +165,8 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
         return;
       }
 
+      // Hold both panels at their minimum supported layout until the drag exceeds
+      // the collapse buffer, preventing the opposite panel from collapsing too easily.
       const constraintCollapseThreshold =
         maxCombinedColumnWidth - opposite.minWidth + this.config.constraintCollapseBuffer;
 
@@ -205,6 +210,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     const centerHeight = this.workspaceHeight();
     const maxHeightWithWorkArea = centerHeight - this.config.workArea.minHeight - this.config.gap;
 
+    // Work area can be collapsed by intentional drag of bottom panel to take full workspace height
     if (requestedHeight >= centerHeight) {
       this.workAreaCollapsed.set(true);
       this.bottomPanelActualHeight.set(centerHeight);
@@ -255,6 +261,8 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
         (this.workspaceWidth() - this.config.workArea.minWidth),
     );
 
+    // Preserve work area minimum by shrinking right panel first, then left panel.
+    // If shrinking is insufficient, collapse in same order
     overflow = this.reduceSidePanelToMin(right, overflow);
     overflow = this.reduceSidePanelToMin(left, overflow);
 
