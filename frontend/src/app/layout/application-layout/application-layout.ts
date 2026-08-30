@@ -162,6 +162,15 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
         return;
       }
 
+      const constraintCollapseThreshold =
+        maxCombinedColumnWidth - opposite.minWidth + this.config.constraintCollapseBuffer;
+
+      if (requestedActualWidth < constraintCollapseThreshold) {
+        opposite.actualWidth.set(opposite.minWidth);
+        active.actualWidth.set(maxCombinedColumnWidth - opposite.minWidth);
+        return;
+      }
+
       opposite.constraintCollapsed.set(true);
       opposite.actualWidth.set(0);
     }

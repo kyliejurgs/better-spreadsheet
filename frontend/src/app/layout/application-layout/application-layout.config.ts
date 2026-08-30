@@ -1,5 +1,6 @@
 export const APPLICATION_LAYOUT = {
   gap: 4,
+  constraintCollapseBuffer: 160,
 
   fixed: {
     titleBarHeight: 32,
