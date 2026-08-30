@@ -12,11 +12,11 @@ app-work-area {
   min-height: 0;
 }
 
-.resize-handle-vertical {
-  flex: 0 0 4px;
-  cursor: ns-resize;
+app-resizable-panel {
+  flex: 0 0 auto;
+  min-height: 0;
 }
 
-.resize-handle-vertical:hover {
-  background: #0078d4;
+.panel-gap {
+  flex: 0 0 4px;
 }

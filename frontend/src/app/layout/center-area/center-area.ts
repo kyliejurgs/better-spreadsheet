@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { WorkArea } from './work-area/work-area';
 import { BottomPanel } from './bottom-panel/bottom-panel';
+import { ContainerSize } from '../../shared/resizable-container/resizable-container';
+import { ResizablePanel } from '../resizable-panel/resizable-panel';
 
 @Component({
-  imports: [WorkArea, BottomPanel],
+  imports: [WorkArea, BottomPanel, ResizablePanel],
   selector: 'app-center-area',
   styleUrl: './center-area.css',
   templateUrl: './center-area.html',
 })
-export class CenterArea {}
+export class CenterArea {
+  readonly workAreaVisible = input.required<boolean>();
+  readonly workAreaMinHeight = input.required<number>();
+
+  readonly bottomPanelSize = input.required<ContainerSize>();
+  readonly bottomPanelVisible = input.required<boolean>();
+
+  readonly bottomPanelSizeChange = output<ContainerSize>();
+  readonly bottomPanelResizeEnd = output<void>();
+}

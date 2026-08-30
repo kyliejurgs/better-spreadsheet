@@ -1,0 +1,17 @@
+<app-resizable-container
+  [size]="size()"
+  [style.width.px]="size().width"
+  [style.height.px]="size().height"
+  (sizeChange)="sizeChange.emit($event)"
+  (resizeEnd)="resizeEnd.emit($event)"
+>
+  <ng-content />
+  <div
+    class="panel-resize-handle"
+    [class.panel-resize-handle-left]="direction() === 'left'"
+    [class.panel-resize-handle-right]="direction() === 'right'"
+    [class.panel-resize-handle-top]="direction() === 'top'"
+    [class.panel-resize-handle-bottom]="direction() === 'bottom'"
+    [resizeHandle]="direction()"
+  ></div>
+</app-resizable-container>

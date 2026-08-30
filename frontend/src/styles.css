@@ -1,3 +1,7 @@
+:root {
+  --accent-color: #e51400;
+}
+
 html,
 body {
   height: 100%;

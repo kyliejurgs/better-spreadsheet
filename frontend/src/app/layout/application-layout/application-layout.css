@@ -22,6 +22,7 @@
 }
 
 .main-workspace {
+  position: relative;
   display: flex;
   flex: 1 1 auto;
   min-width: 0;
@@ -36,11 +37,6 @@ app-center-area {
   min-width: 0;
 }
 
-.resize-handle-horizontal {
+.panel-gap {
   flex: 0 0 4px;
-  cursor: ew-resize;
-}
-
-.resize-handle-horizontal:hover {
-  background: #0078d4;
 }

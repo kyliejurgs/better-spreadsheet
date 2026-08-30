@@ -7,16 +7,45 @@
   <div class="application-body">
     <app-activity-bar />
 
-    <div class="main-workspace">
-      <app-left-panel />
+    <div #mainWorkspace class="main-workspace">
+      <app-resizable-panel
+        direction="right"
+        [size]="leftPanelSize()"
+        (sizeChange)="resizeSidePanel('left', $event)"
+        (resizeEnd)="finishSidePanelResize('left')"
+      >
+        @if (leftPanelVisible()) {
+          <app-left-panel />
+        }
+      </app-resizable-panel>
 
-      <div class="resize-handle resize-handle-horizontal"></div>
+      @if (leftPanelVisible()) {
+        <div class="panel-gap"></div>
+      }
 
-      <app-center-area />
+      <app-center-area
+        [workAreaVisible]="workAreaVisible()"
+        [workAreaMinHeight]="config.workArea.minHeight"
+        [bottomPanelSize]="bottomPanelSize()"
+        [bottomPanelVisible]="bottomPanelVisible()"
+        (bottomPanelSizeChange)="resizeBottomPanel($event)"
+        (bottomPanelResizeEnd)="finishBottomPanelResize()"
+      />
 
-      <div class="resize-handle resize-handle-horizontal"></div>
+      @if (rightPanelVisible()) {
+        <div class="panel-gap"></div>
+      }
 
-      <app-right-panel />
+      <app-resizable-panel
+        direction="left"
+        [size]="rightPanelSize()"
+        (sizeChange)="resizeSidePanel('right', $event)"
+        (resizeEnd)="finishSidePanelResize('right')"
+      >
+        @if (rightPanelVisible()) {
+          <app-right-panel />
+        }
+      </app-resizable-panel>
     </div>
   </div>
 

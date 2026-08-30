@@ -1,5 +1,6 @@
 .bottom-panel {
-  height: 180px;
+  height: 100%;
+  box-sizing: border-box;
   padding: 8px;
   background: purple;
   border: 1px solid #afc8cf;

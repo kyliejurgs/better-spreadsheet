@@ -1,7 +1,24 @@
-<div class="center-area">
-  <app-work-area />
+<div
+  class="center-area"
+  [style.--work-area-min-height.px]="workAreaMinHeight()"
+  [style.--bottom-panel-height.px]="bottomPanelVisible() ? bottomPanelSize().height : 0"
+>
+  @if (workAreaVisible()) {
+    <app-work-area />
+  }
 
-  <div class="resize-handle resize-handle-vertical"></div>
+  @if (workAreaVisible() && bottomPanelVisible()) {
+    <div class="panel-gap"></div>
+  }
 
-  <app-bottom-panel />
+  <app-resizable-panel
+    direction="top"
+    [size]="bottomPanelSize()"
+    (sizeChange)="bottomPanelSizeChange.emit($event)"
+    (resizeEnd)="bottomPanelResizeEnd.emit()"
+  >
+    @if (bottomPanelVisible()) {
+      <app-bottom-panel />
+    }
+  </app-resizable-panel>
 </div>
