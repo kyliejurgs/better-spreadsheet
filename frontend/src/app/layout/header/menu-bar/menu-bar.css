@@ -1,5 +1,5 @@
 .menu-bar {
-  height: 28px;
+  height: var(--menu-bar-height);
   padding: 0 8px;
   background: orange;
   display: flex;

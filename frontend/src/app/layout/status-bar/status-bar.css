@@ -1,5 +1,5 @@
 .status-bar {
-  height: 24px;
+  height: var(--status-bar-height);
   padding: 0 8px;
   background: skyblue;
   display: flex;

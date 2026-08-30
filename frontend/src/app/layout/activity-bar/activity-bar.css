@@ -1,5 +1,5 @@
 .activity-bar {
-  width: 48px;
+  width: var(--activity-bar-width);
   height: 100%;
   background: green;
   display: flex;

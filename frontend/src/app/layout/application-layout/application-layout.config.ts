@@ -7,7 +7,7 @@ export const APPLICATION_LAYOUT = {
     menuBarHeight: 28,
     activityBarWidth: 48,
     statusBarHeight: 24,
-    tabBarHeight: 36,
+    tabBarHeight: 24,
   },
 
   leftPanel: {
