@@ -48,6 +48,9 @@ interface SidePanelState {
 })
 export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected readonly config = APPLICATION_LAYOUT;
+  protected readonly applicationHeaderHeight =
+    this.config.fixed.titleBarHeight + this.config.fixed.menuBarHeight;
+
   private readonly mainWorkspace = viewChild.required<ElementRef<HTMLElement>>('mainWorkspace');
   private readonly workspaceWidth = signal(0);
   private readonly workspaceHeight = signal(0);
