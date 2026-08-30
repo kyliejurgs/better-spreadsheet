@@ -115,48 +115,56 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
     const active = this.getSidePanelState(panel);
     const opposite = this.getSidePanelState(panel === 'left' ? 'right' : 'left');
-    const collapseThreshold = active.minWidth - this.config.collapseBuffer;
 
-    if (size.width <= collapseThreshold) {
+    const requestedWidth = Math.max(0, size.width);
+    if (requestedWidth === 0) {
       active.collapsed.set(true);
       active.constraintCollapsed.set(false);
       active.actualWidth.set(0);
-      this.applyViewportConstraints();
+
+      if (!opposite.collapsed()) {
+        opposite.constraintCollapsed.set(false);
+        opposite.actualWidth.set(opposite.preferredWidth());
+      }
       return;
     }
 
     active.collapsed.set(false);
     active.constraintCollapsed.set(false);
 
-    const requestedWidth = Math.max(active.minWidth, size.width);
-    const availableWidth =
-      this.workspaceWidth() - this.config.workArea.minWidth - this.visibleGapWidth();
-    const oppositeMinWidth = opposite.collapsed() ? 0 : opposite.minWidth;
-    const oppositeAvailableWidth = availableWidth - requestedWidth;
-
-    if (requestedWidth <= availableWidth - oppositeMinWidth) {
-      active.actualWidth.set(requestedWidth);
-
-      if (!opposite.collapsed()) {
-        opposite.constraintCollapsed.set(false);
-        opposite.actualWidth.set(Math.min(opposite.preferredWidth(), oppositeAvailableWidth));
-      }
-      return;
-    }
-
-    if (!opposite.collapsed() && oppositeAvailableWidth >= opposite.minWidth) {
-      active.actualWidth.set(requestedWidth);
-      opposite.constraintCollapsed.set(false);
-      opposite.actualWidth.set(Math.min(opposite.preferredWidth(), oppositeAvailableWidth));
-      return;
-    }
+    const requestedActualWidth = Math.max(active.minWidth, requestedWidth);
+    const workspaceWidth = this.workspaceWidth();
+    const workAreaMinWidth = this.config.workArea.minWidth;
 
     if (!opposite.collapsed()) {
+      opposite.constraintCollapsed.set(false);
+      opposite.actualWidth.set(opposite.preferredWidth());
+    }
+
+    const activeGap = this.config.gap;
+    const oppositeGap = opposite.collapsed() ? 0 : this.config.gap;
+    const maxCombinedColumnWidth = workspaceWidth - workAreaMinWidth - activeGap - oppositeGap;
+
+    if (!opposite.collapsed()) {
+      const availableOppositeWidth = maxCombinedColumnWidth - requestedActualWidth;
+      if (availableOppositeWidth >= opposite.preferredWidth()) {
+        opposite.actualWidth.set(opposite.preferredWidth());
+        active.actualWidth.set(requestedActualWidth);
+        return;
+      }
+
+      if (availableOppositeWidth >= opposite.minWidth) {
+        opposite.actualWidth.set(availableOppositeWidth);
+        active.actualWidth.set(requestedActualWidth);
+        return;
+      }
+
       opposite.constraintCollapsed.set(true);
       opposite.actualWidth.set(0);
     }
 
-    active.actualWidth.set(Math.min(requestedWidth, availableWidth));
+    const maxActiveWidth = workspaceWidth - workAreaMinWidth - this.config.gap;
+    active.actualWidth.set(Math.min(requestedActualWidth, maxActiveWidth));
   }
 
   protected finishSidePanelResize(panel: SidePanel): void {
@@ -172,9 +180,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     }
 
     const requestedHeight = Math.max(0, size.height);
-    const collapseThreshold = this.config.bottomPanel.minHeight - this.config.collapseBuffer;
-
-    if (requestedHeight <= collapseThreshold) {
+    if (requestedHeight === 0) {
       this.bottomPanelCollapsed.set(true);
       this.bottomPanelActualHeight.set(0);
       this.workAreaCollapsed.set(false);
@@ -182,24 +188,19 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
     }
 
     this.bottomPanelCollapsed.set(false);
+    const requestedActualHeight = Math.max(this.config.bottomPanel.minHeight, requestedHeight);
 
-    if (requestedHeight < this.config.bottomPanel.minHeight) {
-      this.bottomPanelActualHeight.set(this.config.bottomPanel.minHeight);
-      this.workAreaCollapsed.set(false);
-      return;
-    }
+    const centerHeight = this.workspaceHeight();
+    const maxHeightWithWorkArea = centerHeight - this.config.workArea.minHeight - this.config.gap;
 
-    const maxHeightWithWorkArea =
-      this.workspaceHeight() - this.config.workArea.minHeight - this.config.gap;
-
-    if (requestedHeight >= this.workspaceHeight()) {
+    if (requestedHeight >= centerHeight) {
       this.workAreaCollapsed.set(true);
-      this.bottomPanelActualHeight.set(this.workspaceHeight());
+      this.bottomPanelActualHeight.set(centerHeight);
       return;
     }
 
-    this.bottomPanelActualHeight.set(Math.min(requestedHeight, maxHeightWithWorkArea));
     this.workAreaCollapsed.set(false);
+    this.bottomPanelActualHeight.set(Math.min(requestedActualHeight, maxHeightWithWorkArea));
   }
 
   protected finishBottomPanelResize(): void {
