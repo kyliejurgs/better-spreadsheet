@@ -5,6 +5,7 @@ export const APPLICATION_LAYOUT = {
   fixed: {
     titleBarHeight: 32,
     menuBarHeight: 28,
+    commandBarHeight: 60,
     activityBarWidth: 48,
     statusBarHeight: 24,
     tabBarHeight: 24,
