@@ -96,4 +96,76 @@ The menu bar remains visible regardless of the command bar display mode. The com
 
 ## 3. Activity Bar
 
+### Purpose
+
+The activity bar provides persistent navigation between major workspace activities presented through the left panel and provides access to global application utilities.
+
+### Content
+
+Activity bar items are divided into two groups.
+
+Primary workspace activities are positioned from the top of the activity bar and initially include:
+
+- Explorer
+- Search
+
+Application utilities are positioned from the bottom of the activity bar and initially include:
+
+- Help
+- Settings
+
+Additional activities should be introduced only when they represent a major, frequently accessed application capability.
+
+### Layout
+
+The activity bar is displayed as a single vertical column. Primary workspace activities are aligned from the top of the activity bar. Application utilities are aligned from the bottom.
+
+Activity bar actions use compact icon-based controls with accessible labels and tooltips. The active workspace activity is visually distinguished using the application's standard selection and accent treatments.
+
+### Behavior
+
+Selecting a workspace activity makes that activity active and presents its corresponding content in the left panel. Selecting the currently active workspace activity may collapse the left panel. Selecting a workspace activity while the left panel is collapsed reopens the left panel with that activity active.
+
+Help and Settings provide access to their respective application-level functionality. Their final presentation surface is defined by the corresponding feature design rather than by the activity bar.
+
+The activity bar remains permanently visible regardless of left panel visibility.
+
 ## 4. Status Bar
+
+### Purpose
+
+The status bar provides persistent application status, problem indicators, and
+contextual summary information for the active work surface.
+
+### Content
+
+Status bar content is divided between application status on the left and contextual information on the right.
+
+Application status may include:
+
+- Online and offline status
+- Application problems, warnings, and errors
+
+Contextual summary information may include values such as:
+
+- Count
+- Sum
+- Average
+
+The exact summary information presented depends on the active work surface, current selection, and available data.
+
+### Layout
+
+The status bar is displayed as a single horizontal row across the bottom of the application shell. Application status and problem indicators are aligned to the left. Contextual summary information is aligned to the right.
+
+Status bar items use compact controls and indicators appropriate for the limited vertical space available.
+
+### Behavior
+
+The connectivity indicator reflects the application's current online or offline state.
+
+The problems indicator reflects currently known application problems, warnings, or errors. Selecting the problems indicator opens the bottom panel and activates the appropriate problems or errors content. If the bottom panel is collapsed, it is expanded as part of this action.
+
+Contextual summary information reflects the current selection or context of the active work surface. Available summaries depend on the selected data and may include values such as count, sum, and average.
+
+The status bar remains permanently visible.
