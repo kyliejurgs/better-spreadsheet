@@ -1,0 +1,46 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 67 64"
+  fill="none"
+>
+  <g fill="#e51400" opacity="0.32">
+    <rect x="42" y="12" width="9" height="9" rx="1.5" />
+    <rect x="53" y="12" width="9" height="9" rx="1.5" />
+    <rect x="42" y="23" width="9" height="9" rx="1.5" />
+    <rect x="53" y="23" width="9" height="9" rx="1.5" />
+    <rect x="42" y="34" width="9" height="9" rx="1.5" />
+    <rect x="53" y="34" width="9" height="9" rx="1.5" />
+    <rect x="42" y="45" width="9" height="9" rx="1.5" />
+    <rect x="53" y="45" width="9" height="9" rx="1.5" />
+  </g>
+
+  <path
+    d="
+      M9 9.7
+      L38 5.3
+      Q40 5 40 7
+      V57
+      Q40 59 38 58.7
+      L9 54.3
+      Q7 54 7 52
+      V12
+      Q7 10 9 9.7
+      Z
+    "
+    fill="#e51400"
+  />
+
+  <text
+    x="21.5"
+    y="32"
+    fill="#fff"
+    font-family="Inter, sans-serif"
+    font-size="21"
+    font-weight="900"
+    letter-spacing="-1"
+    text-anchor="middle"
+    dominant-baseline="central"
+  >
+    BS
+  </text>
+</svg>
