@@ -237,7 +237,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
     let overflow = Math.max(
       0,
-      left.actualWidth() -
+      left.actualWidth() +
         right.actualWidth() +
         this.visibleGapWidth() -
         (this.workspaceWidth() - this.config.workArea.minWidth),
