@@ -1,5 +1,14 @@
 export const APPLICATION_LAYOUT = {
   gap: 4,
+  constraintCollapseBuffer: 160,
+
+  fixed: {
+    titleBarHeight: 32,
+    menuBarHeight: 28,
+    activityBarWidth: 48,
+    statusBarHeight: 24,
+    tabBarHeight: 24,
+  },
 
   leftPanel: {
     defaultWidth: 240,

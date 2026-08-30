@@ -47,6 +47,7 @@ export class ResizableContainer {
 
     handle.classList.add('resize-handle-active');
 
+    // Keep receiving pointer events when cursor leaves handle while dragging
     handle.setPointerCapture(event.pointerId);
     handle.addEventListener('pointermove', this.resize);
     handle.addEventListener('pointerup', this.stopResize);
@@ -90,6 +91,7 @@ export class ResizableContainer {
   ): ContainerSize {
     const newSize: ContainerSize = {};
 
+    // Left/top invert pointer movement because dragging toward container increases size
     if (startSize.width !== undefined && this.resizableWidth(direction)) {
       const widthChange = direction.includes('left') ? -deltaX : deltaX;
       newSize.width = startSize.width + widthChange;

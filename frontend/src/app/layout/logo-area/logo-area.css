@@ -1,6 +1,6 @@
 .logo-area {
-  width: 48px;
-  height: 60px;
+  width: var(--activity-bar-width);
+  height: calc(var(--title-bar-height) + var(--menu-bar-height));
   background: yellow;
   display: flex;
   align-items: center;

@@ -51,8 +51,8 @@ app-resizable-container {
 .panel-resize-handle-left {
   top: 0;
   bottom: 0;
-  left: -4px;
-  width: 8px;
+  left: calc(-1 * var(--layout-gap));
+  width: calc(2 * var(--layout-gap));
   cursor: ew-resize;
 }
 
@@ -60,47 +60,57 @@ app-resizable-container {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 4px;
+  width: var(--layout-gap);
 }
 
 .panel-resize-handle-left::before {
   top: 50%;
-  left: 2px;
-  width: 2px;
-  height: 8px;
-  background: radial-gradient(circle, currentColor 1px, transparent 1px) center / 2px 3px;
+  left: calc(var(--layout-gap) / 2);
+  width: calc(var(--layout-gap) / 2);
+  height: calc(var(--layout-gap) * 2);
+  background: radial-gradient(
+      circle,
+      currentColor calc(var(--layout-gap) / 4),
+      transparent calc(var(--layout-gap) / 4)
+    )
+    center / calc(var(--layout-gap) / 2) calc(var(--layout-gap) * 0.75);
   transform: translate(-50%, -50%);
 }
 
 .panel-resize-handle-right {
   top: 0;
-  right: -4px;
+  right: calc(-1 * var(--layout-gap));
   bottom: 0;
-  width: 8px;
+  width: calc(2 * var(--layout-gap));
   cursor: ew-resize;
 }
 
 .panel-resize-handle-right::after {
   top: 0;
   bottom: 0;
-  left: 4px;
-  width: 4px;
+  left: var(--layout-gap);
+  width: var(--layout-gap);
 }
 
 .panel-resize-handle-right::before {
   top: 50%;
-  left: 6px;
-  width: 2px;
-  height: 8px;
-  background: radial-gradient(circle, currentColor 1px, transparent 1px) center / 2px 3px;
+  left: calc(var(--layout-gap) * 1.5);
+  width: calc(var(--layout-gap) / 2);
+  height: calc(var(--layout-gap) * 2);
+  background: radial-gradient(
+      circle,
+      currentColor calc(var(--layout-gap) / 4),
+      transparent calc(var(--layout-gap) / 4)
+    )
+    center / calc(var(--layout-gap) / 2) calc(var(--layout-gap) * 0.75);
   transform: translate(-50%, -50%);
 }
 
 .panel-resize-handle-top {
-  top: -4px;
+  top: calc(-1 * var(--layout-gap));
   right: 0;
   left: 0;
-  height: 8px;
+  height: calc(2 * var(--layout-gap));
   cursor: ns-resize;
 }
 
@@ -108,23 +118,28 @@ app-resizable-container {
   top: 0;
   right: 0;
   left: 0;
-  height: 4px;
+  height: var(--layout-gap);
 }
 
 .panel-resize-handle-top::before {
-  top: 2px;
+  top: calc(var(--layout-gap) / 2);
   left: 50%;
-  width: 8px;
-  height: 2px;
-  background: radial-gradient(circle, currentColor 1px, transparent 1px) center / 3px 2px;
+  width: calc(var(--layout-gap) * 2);
+  height: calc(var(--layout-gap) / 2);
+  background: radial-gradient(
+      circle,
+      currentColor calc(var(--layout-gap) / 4),
+      transparent calc(var(--layout-gap) / 4)
+    )
+    center / calc(var(--layout-gap) * 0.75) calc(var(--layout-gap) / 2);
   transform: translate(-50%, -50%);
 }
 
 .panel-resize-handle-bottom {
   right: 0;
-  bottom: -4px;
+  bottom: calc(-1 * var(--layout-gap));
   left: 0;
-  height: 8px;
+  height: calc(var(--layout-gap) * 2);
   cursor: ns-resize;
 }
 
@@ -132,14 +147,19 @@ app-resizable-container {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 4px;
+  height: var(--layout-gap);
 }
 
 .panel-resize-handle-bottom::before {
-  top: 6px;
+  top: calc(var(--layout-gap) * 1.5);
   left: 50%;
-  width: 8px;
-  height: 2px;
-  background: radial-gradient(circle, currentColor 1px, transparent 1px) center / 3px 2px;
+  width: calc(var(--layout-gap) * 2);
+  height: calc(var(--layout-gap) / 2);
+  background: radial-gradient(
+      circle,
+      currentColor calc(var(--layout-gap) / 4),
+      transparent calc(var(--layout-gap) / 4)
+    )
+    center / calc(var(--layout-gap) * 0.75) calc(var(--layout-gap) / 2);
   transform: translate(-50%, -50%);
 }

@@ -1,4 +1,13 @@
-<div class="application-layout">
+<div
+  class="application-layout"
+  [style.--layout-gap.px]="config.gap"
+  [style.--title-bar-height.px]="config.fixed.titleBarHeight"
+  [style.--menu-bar-height.px]="config.fixed.menuBarHeight"
+  [style.--activity-bar-width.px]="config.fixed.activityBarWidth"
+  [style.--status-bar-height.px]="config.fixed.statusBarHeight"
+  [style.--tab-bar-height.px]="config.fixed.tabBarHeight"
+  [style.--application-header-height.px]="applicationHeaderHeight"
+>
   <div class="application-header">
     <app-logo-area />
     <app-header />

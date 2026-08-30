@@ -28,7 +28,7 @@
   min-width: 0;
   min-height: 0;
   box-sizing: border-box;
-  padding: 4px;
+  padding: var(--layout-gap);
 }
 
 app-center-area {
@@ -38,5 +38,5 @@ app-center-area {
 }
 
 .panel-gap {
-  flex: 0 0 4px;
+  flex: 0 0 var(--layout-gap);
 }
