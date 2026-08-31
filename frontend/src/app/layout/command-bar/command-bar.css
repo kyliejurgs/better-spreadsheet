@@ -1,7 +1,15 @@
 .command-bar {
   height: var(--command-bar-height);
-  background: skyblue;
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  background: var(--tui-background-base);
+}
+
+.command-bar__content {
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  background: var(--tui-background-neutral-1);
+  border: 1px solid var(--tui-background-base-alt);
+  border-radius: 6px;
 }
