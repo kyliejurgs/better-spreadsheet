@@ -38,7 +38,7 @@
   color: var(--accent-color);
   outline: 2px solid var(--accent-color);
   border-radius: 10px;
-  outline-offset: calc(-1 * var(--layout-gap));
+  outline-offset: calc(-2 * var(--layout-gap));
 }
 
 .activity-bar__item--active tui-icon {
