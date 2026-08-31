@@ -27,7 +27,7 @@ The same seed dataset must produce the same application state every time it is l
 
 Seed data should represent states that Better Spreadsheet can legitimately persist. Incomplete records, validation failures, broken dependencies, archived objects, and other states supported by the KM may be represented.
 
-Structurally impossible states should not be introduced merely to test failure handing. Those belong in targeted automated test fixtures.
+Structurally impossible states should not be introduced merely to test failure handling. Those belong in targeted automated test fixtures.
 
 ### Realistic
 
@@ -49,7 +49,7 @@ Files in `development/seed/data` describe application-domain state. They must no
 
 ## Dataset Structure
 
-Seed datasets live under `development/seed/data `.
+Seed datasets live under `development/seed/data`.
 
 Datasets are separated by domain object so they can evolve with their corresponding application models and loading boundaries.
 
@@ -63,6 +63,8 @@ collections.json
 tables.json
 fields.json
 records.json
+views.json
+sections.json
 ```
 
 These datasets establish the core hierarchy and canonical table data.
@@ -72,8 +74,6 @@ These datasets establish the core hierarchy and canonical table data.
 Additional datasets will be introduced as their domain models and loading boundaries are implemented:
 
 ```text
-views.json
-sections.json
 queries.json
 dashboards.json
 widgets.json
@@ -132,7 +132,7 @@ Every table must remain owned by exactly one workspace.
 - generated fields;
 - required and optional fields;
 - static defaults;
-- dynamic defaults;
+- dynamic defaults when their domain model and serialization are implemented;
 - supported generated-field behaviors;
 - type-specific configuration;
 - select options;
@@ -168,7 +168,7 @@ At least one table should contain enough records to exercise scrolling, selectio
 
 ### Views
 
-`views.json` will represent table-owned saved views and should eventually include:
+`views.json` represents table-owned saved views and should include:
 
 - the required `All Data` view for every table;
 - multiple views of the same table;
@@ -184,7 +184,7 @@ Views must never own or duplicate table records.
 
 ### Sections
 
-`sections.json` will represent view-owned record grouping and should eventually include:
+`sections.json` represents view-owned record grouping and should include:
 
 - manual sections;
 - generated sections;
@@ -193,7 +193,6 @@ Views must never own or duplicate table records.
 - section-level summaries.
 
 Sections organize records for presentation without changing table ownership of those records.
-ons organize records for presentation without changing table ownership of those records.
 
 ### Queries
 
@@ -229,7 +228,7 @@ Dashboards must not own or duplicate their source table data.
 
 ### Widgets
 
-`widgets.json` will represent dashboard-owned widget and should eventually include:
+`widgets.json` will represent dashboard-owned widgets and should eventually include:
 
 - data-backed widgets;
 - non-data widgets;
