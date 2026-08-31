@@ -1,0 +1,214 @@
+[
+  {
+    "id": "section-003-002-001",
+    "viewId": "view-003-002",
+    "parentSectionId": null,
+    "name": "Current",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-003-002-002",
+    "viewId": "view-003-002",
+    "parentSectionId": null,
+    "name": "Coming Up",
+    "type": "manual",
+    "order": 2
+  },
+  {
+    "id": "section-003-002-003",
+    "viewId": "view-003-002",
+    "parentSectionId": null,
+    "name": "Someday",
+    "type": "manual",
+    "order": 3
+  },
+  {
+    "id": "section-008-002-001",
+    "viewId": "view-008-002",
+    "parentSectionId": null,
+    "name": "Planned",
+    "type": "generated",
+    "order": 1,
+    "grouping": {
+      "fieldId": "field-008-002",
+      "value": "option-008-002-001"
+    }
+  },
+  {
+    "id": "section-008-002-002",
+    "viewId": "view-008-002",
+    "parentSectionId": null,
+    "name": "Committed",
+    "type": "generated",
+    "order": 2,
+    "grouping": {
+      "fieldId": "field-008-002",
+      "value": "option-008-002-002"
+    }
+  },
+  {
+    "id": "section-008-002-003",
+    "viewId": "view-008-002",
+    "parentSectionId": null,
+    "name": "In Progress",
+    "type": "generated",
+    "order": 3,
+    "grouping": {
+      "fieldId": "field-008-002",
+      "value": "option-008-002-003"
+    }
+  },
+  {
+    "id": "section-008-002-004",
+    "viewId": "view-008-002",
+    "parentSectionId": null,
+    "name": "Released",
+    "type": "generated",
+    "order": 4,
+    "grouping": {
+      "fieldId": "field-008-002",
+      "value": "option-008-002-004"
+    }
+  },
+  {
+    "id": "section-009-002-001",
+    "viewId": "view-009-002",
+    "parentSectionId": null,
+    "name": "Open",
+    "type": "generated",
+    "order": 1,
+    "grouping": {
+      "fieldId": "field-009-003",
+      "value": "option-009-003-001"
+    }
+  },
+  {
+    "id": "section-009-002-002",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-001",
+    "name": "Focus",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-009-002-003",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-001",
+    "name": "Later",
+    "type": "manual",
+    "order": 2
+  },
+  {
+    "id": "section-009-002-004",
+    "viewId": "view-009-002",
+    "parentSectionId": null,
+    "name": "In Progress",
+    "type": "generated",
+    "order": 2,
+    "grouping": {
+      "fieldId": "field-009-003",
+      "value": "option-009-003-002"
+    }
+  },
+  {
+    "id": "section-009-002-005",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-004",
+    "name": "Focus",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-009-002-006",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-004",
+    "name": "Later",
+    "type": "manual",
+    "order": 2
+  },
+  {
+    "id": "section-009-002-007",
+    "viewId": "view-009-002",
+    "parentSectionId": null,
+    "name": "Blocked",
+    "type": "generated",
+    "order": 3,
+    "grouping": {
+      "fieldId": "field-009-003",
+      "value": "option-009-003-003"
+    }
+  },
+  {
+    "id": "section-009-002-008",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-007",
+    "name": "Focus",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-009-002-009",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-007",
+    "name": "Later",
+    "type": "manual",
+    "order": 2
+  },
+  {
+    "id": "section-009-002-010",
+    "viewId": "view-009-002",
+    "parentSectionId": null,
+    "name": "Resolved",
+    "type": "generated",
+    "order": 4,
+    "grouping": {
+      "fieldId": "field-009-003",
+      "value": "option-009-003-004"
+    }
+  },
+  {
+    "id": "section-009-002-011",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-010",
+    "name": "Focus",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-009-002-012",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-010",
+    "name": "Later",
+    "type": "manual",
+    "order": 2
+  },
+  {
+    "id": "section-009-002-013",
+    "viewId": "view-009-002",
+    "parentSectionId": null,
+    "name": "Closed",
+    "type": "generated",
+    "order": 5,
+    "grouping": {
+      "fieldId": "field-009-003",
+      "value": "option-009-003-005"
+    }
+  },
+  {
+    "id": "section-009-002-014",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-013",
+    "name": "Focus",
+    "type": "manual",
+    "order": 1
+  },
+  {
+    "id": "section-009-002-015",
+    "viewId": "view-009-002",
+    "parentSectionId": "section-009-002-013",
+    "name": "Later",
+    "type": "manual",
+    "order": 2
+  }
+]
