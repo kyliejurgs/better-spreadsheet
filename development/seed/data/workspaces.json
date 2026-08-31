@@ -2,15 +2,16 @@
   {
     "id": "workspace-001",
     "name": "Personal",
-    "cloudParticipation": "local-only",
-    "createdAt": "2026-08-01T14:00:00Z",
-    "updatedAt": "2026-08-23T18:30:00Z"
+    "cloudParticipation": "local-only"
   },
   {
     "id": "workspace-002",
     "name": "Work",
-    "cloudParticipation": "cloud-synchronized",
-    "createdAt": "2026-08-02T13:00:00Z",
-    "updatedAt": "2026-08-23T21:15:00Z"
+    "cloudParticipation": "cloud-synchronized"
+  },
+  {
+    "id": "workspace-003",
+    "name": "Sandbox",
+    "cloudParticipation": "local-only"
   }
 ]

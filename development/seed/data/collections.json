@@ -3,32 +3,54 @@
     "id": "collection-001",
     "workspaceId": "workspace-001",
     "name": "Household",
-    "lifecycleState": "active",
-    "createdAt": "2026-08-03T14:00:00Z",
-    "updatedAt": "2026-08-20T19:15:00Z"
+    "lifecycleState": "active"
   },
   {
     "id": "collection-002",
     "workspaceId": "workspace-001",
     "name": "Projects",
-    "lifecycleState": "active",
-    "createdAt": "2026-08-04T14:00:00Z",
-    "updatedAt": "2026-08-23T18:30:00Z"
+    "lifecycleState": "active"
   },
   {
     "id": "collection-003",
-    "workspaceId": "workspace-002",
-    "name": "Planning",
-    "lifecycleState": "active",
-    "createdAt": "2026-08-05T13:00:00Z",
-    "updatedAt": "2026-08-22T15:20:00Z"
+    "workspaceId": "workspace-001",
+    "name": "Empty Collection",
+    "lifecycleState": "active"
   },
   {
     "id": "collection-004",
     "workspaceId": "workspace-002",
+    "name": "Planning",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "collection-005",
+    "workspaceId": "workspace-002",
     "name": "Tracking",
-    "lifecycleState": "active",
-    "createdAt": "2026-08-06T13:00:00Z",
-    "updatedAt": "2026-08-23T21:15:00Z"
+    "lifecycleState": "active"
+  },
+  {
+    "id": "collection-006",
+    "workspaceId": "workspace-002",
+    "name": "Operations",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "collection-007",
+    "workspaceId": "workspace-002",
+    "name": "Archive",
+    "lifecycleState": "archived"
+  },
+  {
+    "id": "collection-008",
+    "workspaceId": "workspace-003",
+    "name": "Empty Collection",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "collection-009",
+    "workspaceId": "workspace-003",
+    "name": "Layout Tests",
+    "lifecycleState": "active"
   }
 ]

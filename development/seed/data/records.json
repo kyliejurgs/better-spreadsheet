@@ -4,10 +4,13 @@
     "tableId": "table-001",
     "values": {
       "field-001-001": "Apples",
-      "field-001-002": 6,
-      "field-001-003": "option-001-003-001",
-      "field-001-004": "2026-08-25",
-      "field-001-005": false
+      "field-001-002": "option-001-002-001",
+      "field-001-003": 6,
+      "field-001-007": false,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-001",
+      "field-001-006": "2026-09-02",
+      "field-001-008": ""
     }
   },
   {
@@ -15,10 +18,12 @@
     "tableId": "table-001",
     "values": {
       "field-001-001": "Milk",
-      "field-001-002": 2,
-      "field-001-003": "option-001-003-003",
-      "field-001-004": "2026-08-25",
-      "field-001-005": false
+      "field-001-002": "option-001-002-003",
+      "field-001-003": 2,
+      "field-001-007": false,
+      "field-001-004": 2,
+      "field-001-005": "option-001-005-005",
+      "field-001-006": "2026-09-01"
     }
   },
   {
@@ -26,10 +31,13 @@
     "tableId": "table-001",
     "values": {
       "field-001-001": "Chicken Breast",
-      "field-001-002": 2,
-      "field-001-003": "option-001-003-002",
-      "field-001-004": "2026-08-26",
-      "field-001-005": true
+      "field-001-002": "option-001-002-002",
+      "field-001-003": 2.5,
+      "field-001-007": true,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-002",
+      "field-001-006": "2026-09-03",
+      "field-001-008": "Freeze extra."
     }
   },
   {
@@ -37,10 +45,12 @@
     "tableId": "table-001",
     "values": {
       "field-001-001": "Rice",
-      "field-001-002": 1,
-      "field-001-003": "option-001-003-004",
-      "field-001-004": "2026-08-30",
-      "field-001-005": false
+      "field-001-002": "option-001-002-004",
+      "field-001-003": 1,
+      "field-001-007": false,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-006",
+      "field-001-006": "2026-09-06"
     }
   },
   {
@@ -48,68 +58,76 @@
     "tableId": "table-001",
     "values": {
       "field-001-001": "Bananas",
-      "field-001-002": 8,
-      "field-001-003": "option-001-003-001",
-      "field-001-004": "2026-08-25",
-      "field-001-005": true
+      "field-001-002": "option-001-002-001",
+      "field-001-003": 8,
+      "field-001-007": true,
+      "field-001-005": "option-001-005-001",
+      "field-001-006": "2026-09-02"
     }
   },
   {
     "id": "record-001-006",
     "tableId": "table-001",
     "values": {
-      "field-001-001": "Cheddar Cheese",
-      "field-001-002": 1,
-      "field-001-003": "option-001-003-003",
-      "field-001-004": "2026-08-27",
-      "field-001-005": false
+      "field-001-001": "Greek Yogurt",
+      "field-001-002": "option-001-002-003",
+      "field-001-003": 4,
+      "field-001-007": false,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-004",
+      "field-001-008": "Plain, full fat."
     }
   },
   {
     "id": "record-001-007",
     "tableId": "table-001",
     "values": {
-      "field-001-001": "Paper Towels",
-      "field-001-002": 1,
-      "field-001-003": "option-001-003-005",
-      "field-001-004": "2026-08-31",
-      "field-001-005": false
+      "field-001-001": "Dish Soap",
+      "field-001-002": "option-001-002-006",
+      "field-001-003": 1,
+      "field-001-007": false,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-005"
     }
   },
   {
     "id": "record-001-008",
     "tableId": "table-001",
     "values": {
-      "field-001-001": "Bread",
-      "field-001-002": 2,
-      "field-001-003": "option-001-003-004",
-      "field-001-004": "2026-08-26",
-      "field-001-005": true
+      "field-001-001": "Frozen Peas",
+      "field-001-002": "option-001-002-005",
+      "field-001-003": 2,
+      "field-001-007": false,
+      "field-001-004": 2,
+      "field-001-005": "option-001-005-004",
+      "field-001-006": "2026-09-05"
     }
   },
   {
     "id": "record-001-009",
     "tableId": "table-001",
     "values": {
-      "field-001-001": "Tomatoes",
-      "field-001-002": 4,
-      "field-001-003": "option-001-003-001",
-      "field-001-004": "2026-08-25",
-      "field-001-005": false
+      "field-001-001": "Ground Coffee",
+      "field-001-002": "option-001-002-004",
+      "field-001-003": 12,
+      "field-001-007": true,
+      "field-001-004": 1,
+      "field-001-005": "option-001-005-003",
+      "field-001-008": "Medium roast."
     }
   },
   {
     "id": "record-001-010",
     "tableId": "table-001",
     "values": {
-      "field-001-001": "Ground Beef",
-      "field-001-002": 2,
-      "field-001-003": "option-001-003-002",
-      "field-001-004": "2026-08-28",
-      "field-001-005": false
+      "field-001-001": "Limes",
+      "field-001-002": "option-001-002-001",
+      "field-001-003": 0,
+      "field-001-007": false,
+      "field-001-004": 0,
+      "field-001-005": "option-001-005-001"
     }
   },
-
   {
     "id": "record-002-001",
     "tableId": "table-002",
@@ -118,7 +136,9 @@
       "field-002-002": "option-002-002-001",
       "field-002-003": 2200,
       "field-002-004": 2200,
-      "field-002-005": 0
+      "field-002-005": 0,
+      "field-002-007": true,
+      "field-002-006": "2026-09-01"
     }
   },
   {
@@ -128,63 +148,72 @@
       "field-002-001": "Electric",
       "field-002-002": "option-002-002-002",
       "field-002-003": 180,
-      "field-002-004": 164.32,
-      "field-002-005": 15.68
+      "field-002-004": 164.22,
+      "field-002-005": 15.78,
+      "field-002-007": false,
+      "field-002-006": "2026-09-08"
     }
   },
   {
     "id": "record-002-003",
     "tableId": "table-002",
     "values": {
-      "field-002-001": "Water",
-      "field-002-002": "option-002-002-002",
-      "field-002-003": 90,
-      "field-002-004": 82.14,
-      "field-002-005": 7.86
+      "field-002-001": "Groceries",
+      "field-002-002": "option-002-002-003",
+      "field-002-003": 650,
+      "field-002-004": 702.38,
+      "field-002-005": -52.38,
+      "field-002-007": false
     }
   },
   {
     "id": "record-002-004",
     "tableId": "table-002",
     "values": {
-      "field-002-001": "Groceries",
-      "field-002-002": "option-002-002-003",
-      "field-002-003": 700,
-      "field-002-004": 742.56,
-      "field-002-005": -42.56
+      "field-002-001": "Gas",
+      "field-002-002": "option-002-002-004",
+      "field-002-003": 240,
+      "field-002-004": 198.41,
+      "field-002-005": 41.59,
+      "field-002-007": false
     }
   },
   {
     "id": "record-002-005",
     "tableId": "table-002",
     "values": {
-      "field-002-001": "Gas",
-      "field-002-002": "option-002-002-004",
-      "field-002-003": 250,
-      "field-002-004": 211.4,
-      "field-002-005": 38.6
+      "field-002-001": "Streaming Services",
+      "field-002-002": "option-002-002-005",
+      "field-002-003": 65,
+      "field-002-004": 65,
+      "field-002-005": 0,
+      "field-002-007": true,
+      "field-002-006": "2026-09-12"
     }
   },
   {
     "id": "record-002-006",
     "tableId": "table-002",
     "values": {
-      "field-002-001": "Internet",
-      "field-002-002": "option-002-002-002",
-      "field-002-003": 100,
-      "field-002-004": 89.99,
-      "field-002-005": 10.01
+      "field-002-001": "Prescriptions",
+      "field-002-002": "option-002-002-006",
+      "field-002-003": 75,
+      "field-002-004": 0,
+      "field-002-005": 75,
+      "field-002-007": false
     }
   },
   {
     "id": "record-002-007",
     "tableId": "table-002",
     "values": {
-      "field-002-001": "Streaming",
-      "field-002-002": "option-002-002-005",
-      "field-002-003": 80,
-      "field-002-004": 76.95,
-      "field-002-005": 3.05
+      "field-002-001": "Water",
+      "field-002-002": "option-002-002-002",
+      "field-002-003": 95,
+      "field-002-004": 91.17,
+      "field-002-005": 3.83,
+      "field-002-007": false,
+      "field-002-006": "2026-09-15"
     }
   },
   {
@@ -193,9 +222,10 @@
     "values": {
       "field-002-001": "Dining Out",
       "field-002-002": "option-002-002-005",
-      "field-002-003": 300,
-      "field-002-004": 286.22,
-      "field-002-005": 13.78
+      "field-002-003": 200,
+      "field-002-004": 247.65,
+      "field-002-005": -47.65,
+      "field-002-007": false
     }
   },
   {
@@ -204,9 +234,11 @@
     "values": {
       "field-002-001": "Car Insurance",
       "field-002-002": "option-002-002-004",
-      "field-002-003": 190,
-      "field-002-004": 184.5,
-      "field-002-005": 5.5
+      "field-002-003": 185,
+      "field-002-004": 185,
+      "field-002-005": 0,
+      "field-002-007": true,
+      "field-002-006": "2026-09-20"
     }
   },
   {
@@ -214,245 +246,234 @@
     "tableId": "table-002",
     "values": {
       "field-002-001": "Miscellaneous",
-      "field-002-002": "option-002-002-006",
-      "field-002-003": 200,
-      "field-002-004": 135.75,
-      "field-002-005": 64.25
+      "field-002-002": "option-002-002-007",
+      "field-002-003": 150,
+      "field-002-004": 72.5,
+      "field-002-005": 77.5,
+      "field-002-007": false
     }
   },
-
   {
     "id": "record-003-001",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Implement workspace switcher",
-      "field-003-002": "option-003-002-001",
-      "field-003-003": "option-003-003-005",
-      "field-003-004": "option-003-004-003",
-      "field-003-005": "2026-08-20"
+      "field-003-001": "Paint guest room",
+      "field-003-002": "option-003-002-002",
+      "field-003-003": "option-003-003-002",
+      "field-003-006": 180,
+      "field-003-007": false,
+      "field-003-004": "2026-08-22",
+      "field-003-005": "2026-09-06",
+      "field-003-008": "Patch nail holes, prime the dark wall, and repaint the room."
     }
   },
   {
     "id": "record-003-002",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Create seed data",
-      "field-003-002": "option-003-002-003",
+      "field-003-001": "Replace kitchen faucet",
+      "field-003-002": "option-003-002-001",
       "field-003-003": "option-003-003-003",
-      "field-003-004": "option-003-004-003",
-      "field-003-005": "2026-08-25"
+      "field-003-006": 240,
+      "field-003-007": false,
+      "field-003-005": "2026-09-12",
+      "field-003-008": ""
     }
   },
   {
     "id": "record-003-003",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Implement Explorer tree",
-      "field-003-002": "option-003-002-001",
-      "field-003-003": "option-003-003-002",
-      "field-003-004": "option-003-004-004",
-      "field-003-005": "2026-08-28"
+      "field-003-001": "Organize garage shelves",
+      "field-003-002": "option-003-002-003",
+      "field-003-003": "option-003-003-001",
+      "field-003-006": 0,
+      "field-003-007": true,
+      "field-003-004": "2026-08-10",
+      "field-003-005": "2026-08-17"
     }
   },
   {
     "id": "record-003-004",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Add IndexedDB persistence",
-      "field-003-002": "option-003-002-003",
-      "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-003",
-      "field-003-005": "2026-09-05"
+      "field-003-001": "Repair deck railing",
+      "field-003-002": "option-003-002-002",
+      "field-003-003": "option-003-003-004",
+      "field-003-006": 95,
+      "field-003-007": false,
+      "field-003-004": "2026-08-30",
+      "field-003-005": "2026-09-03",
+      "field-003-008": "Loose section near the back steps needs to be secured before staining."
     }
   },
   {
     "id": "record-003-005",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Build table grid",
+      "field-003-001": "Install closet lighting",
       "field-003-002": "option-003-002-001",
-      "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-004",
-      "field-003-005": "2026-09-10"
+      "field-003-003": "option-003-003-002",
+      "field-003-006": 120,
+      "field-003-007": false
     }
   },
   {
     "id": "record-003-006",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Implement field editor",
-      "field-003-002": "option-003-002-001",
+      "field-003-001": "Reseal driveway",
+      "field-003-002": "option-003-002-004",
       "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-002",
-      "field-003-005": "2026-09-15"
+      "field-003-006": 325,
+      "field-003-007": false,
+      "field-003-004": "2026-07-15",
+      "field-003-008": "Waiting for cooler weather."
     }
   },
   {
     "id": "record-003-007",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Add table views",
-      "field-003-002": "option-003-002-001",
-      "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-002",
-      "field-003-005": "2026-09-20"
+      "field-003-001": "Replace office blinds",
+      "field-003-002": "option-003-002-003",
+      "field-003-003": "option-003-003-002",
+      "field-003-006": 88,
+      "field-003-007": true,
+      "field-003-004": "2026-08-02",
+      "field-003-005": "2026-08-02"
     }
   },
   {
     "id": "record-003-008",
     "tableId": "table-003",
     "values": {
-      "field-003-001": "Implement filtering",
+      "field-003-001": "Build herb planter",
       "field-003-002": "option-003-002-001",
       "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-002",
-      "field-003-005": "2026-09-25"
+      "field-003-006": 75,
+      "field-003-007": false,
+      "field-003-005": "2026-09-20"
     }
   },
-  {
-    "id": "record-003-009",
-    "tableId": "table-003",
-    "values": {
-      "field-003-001": "Implement sorting",
-      "field-003-002": "option-003-002-001",
-      "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-002",
-      "field-003-005": "2026-09-28"
-    }
-  },
-  {
-    "id": "record-003-010",
-    "tableId": "table-003",
-    "values": {
-      "field-003-001": "Create dashboard system",
-      "field-003-002": "option-003-002-005",
-      "field-003-003": "option-003-003-001",
-      "field-003-004": "option-003-004-001",
-      "field-003-005": "2026-10-10"
-    }
-  },
-
   {
     "id": "record-004-001",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Paint living room",
-      "field-004-002": "option-004-002-002",
-      "field-004-003": 350,
-      "field-004-004": "2026-08-22",
-      "field-004-005": false
+      "field-004-001": "Project Hail Mary",
+      "field-004-002": "Andy Weir",
+      "field-004-003": "option-004-003-003",
+      "field-004-004": ["option-004-004-002"],
+      "field-004-008": true,
+      "field-004-005": 5,
+      "field-004-006": "2026-07-02",
+      "field-004-007": "2026-07-08",
+      "field-004-009": "Fast, funny, and hard to put down."
     }
   },
   {
     "id": "record-004-002",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Replace kitchen faucet",
-      "field-004-002": "option-004-002-001",
-      "field-004-003": 225,
-      "field-004-004": "2026-09-01",
-      "field-004-005": false
+      "field-004-001": "The Hobbit",
+      "field-004-002": "J.R.R. Tolkien",
+      "field-004-003": "option-004-003-003",
+      "field-004-004": ["option-004-004-001"],
+      "field-004-008": true,
+      "field-004-005": 5,
+      "field-004-006": "2026-06-10",
+      "field-004-007": "2026-06-18",
+      "field-004-009": ""
     }
   },
   {
     "id": "record-004-003",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Organize garage",
-      "field-004-002": "option-004-002-003",
-      "field-004-003": 100,
-      "field-004-004": "2026-08-10",
-      "field-004-005": true
+      "field-004-001": "The Only Good Indians",
+      "field-004-002": "Stephen Graham Jones",
+      "field-004-003": "option-004-003-002",
+      "field-004-004": ["option-004-004-008"],
+      "field-004-008": true,
+      "field-004-005": 4,
+      "field-004-006": "2026-08-27"
     }
   },
   {
     "id": "record-004-004",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Install shelves",
-      "field-004-002": "option-004-002-002",
-      "field-004-003": 180,
-      "field-004-004": "2026-08-24",
-      "field-004-005": false
+      "field-004-001": "The Wager",
+      "field-004-002": "David Grann",
+      "field-004-003": "option-004-003-001",
+      "field-004-004": ["option-004-004-005", "option-004-004-007"],
+      "field-004-008": false
     }
   },
   {
     "id": "record-004-005",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Replace bedroom fan",
-      "field-004-002": "option-004-002-001",
-      "field-004-003": 275,
-      "field-004-004": "2026-09-10",
-      "field-004-005": false
+      "field-004-001": "Dune",
+      "field-004-002": "Frank Herbert",
+      "field-004-003": "option-004-003-003",
+      "field-004-004": ["option-004-004-002"],
+      "field-004-008": true,
+      "field-004-005": 4,
+      "field-004-006": "2026-05-01",
+      "field-004-007": "2026-05-20"
     }
   },
   {
     "id": "record-004-006",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Repair fence gate",
-      "field-004-002": "option-004-002-004",
-      "field-004-003": 400,
-      "field-004-004": "2026-09-15",
-      "field-004-005": false
+      "field-004-001": "Gone Girl",
+      "field-004-002": "Gillian Flynn",
+      "field-004-003": "option-004-003-004",
+      "field-004-004": ["option-004-004-003", "option-004-004-004"],
+      "field-004-008": false,
+      "field-004-005": 2,
+      "field-004-006": "2026-04-05",
+      "field-004-009": "Stopped about halfway through."
     }
   },
   {
     "id": "record-004-007",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Power wash deck",
-      "field-004-002": "option-004-002-003",
-      "field-004-003": 75,
-      "field-004-004": "2026-08-05",
-      "field-004-005": true
+      "field-004-001": "Kitchen Confidential",
+      "field-004-002": "Anthony Bourdain",
+      "field-004-003": "option-004-003-003",
+      "field-004-004": ["option-004-004-006", "option-004-004-007"],
+      "field-004-008": true,
+      "field-004-005": 5,
+      "field-004-006": "2026-03-11",
+      "field-004-007": "2026-03-14",
+      "field-004-009": "Still one of the best food books."
     }
   },
   {
     "id": "record-004-008",
     "tableId": "table-004",
     "values": {
-      "field-004-001": "Replace hallway lights",
-      "field-004-002": "option-004-002-001",
-      "field-004-003": 160,
-      "field-004-004": "2026-09-20",
-      "field-004-005": false
+      "field-004-001": "The Fifth Season",
+      "field-004-002": "N. K. Jemisin",
+      "field-004-003": "option-004-003-001",
+      "field-004-004": ["option-004-004-001", "option-004-004-002"],
+      "field-004-008": false
     }
   },
-  {
-    "id": "record-004-009",
-    "tableId": "table-004",
-    "values": {
-      "field-004-001": "Landscape front yard",
-      "field-004-002": "option-004-002-001",
-      "field-004-003": 850,
-      "field-004-004": "2026-10-01",
-      "field-004-005": false
-    }
-  },
-  {
-    "id": "record-004-010",
-    "tableId": "table-004",
-    "values": {
-      "field-004-001": "Clean gutters",
-      "field-004-002": "option-004-002-001",
-      "field-004-003": 50,
-      "field-004-004": "2026-09-05",
-      "field-004-005": false
-    }
-  },
-
   {
     "id": "record-005-001",
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-001",
-      "field-005-002": "Schedule dentist appointment",
+      "field-005-002": "Schedule annual HVAC service",
       "field-005-003": "option-005-003-001",
-      "field-005-004": "2026-08-19T14:00:00Z",
+      "field-005-004": "2026-08-20T08:15:00",
       "field-005-005": true,
-      "field-005-006": 1
+      "field-005-006": ""
     }
   },
   {
@@ -460,11 +481,10 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-002",
-      "field-005-002": "Try new dinner recipe",
+      "field-005-002": "Try weekly meal planning view",
       "field-005-003": "option-005-003-002",
-      "field-005-004": "2026-08-19T14:05:00Z",
-      "field-005-005": false,
-      "field-005-006": 2
+      "field-005-004": "2026-08-22T19:42:00",
+      "field-005-005": false
     }
   },
   {
@@ -472,11 +492,11 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-003",
-      "field-005-002": "Renew library books",
+      "field-005-002": "Renew library card",
       "field-005-003": "option-005-003-003",
-      "field-005-004": "2026-08-19T14:10:00Z",
+      "field-005-004": "2026-08-24T10:05:00",
       "field-005-005": false,
-      "field-005-006": 3
+      "field-005-006": "Expires in September."
     }
   },
   {
@@ -484,11 +504,11 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-004",
-      "field-005-002": "Call plumber",
-      "field-005-003": "option-005-003-001",
-      "field-005-004": "2026-08-19T14:15:00Z",
+      "field-005-002": "Paint color from hardware store",
+      "field-005-003": "option-005-003-004",
+      "field-005-004": "2026-08-25T17:31:00",
       "field-005-005": true,
-      "field-005-006": 4
+      "field-005-006": "Warm white."
     }
   },
   {
@@ -496,11 +516,10 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-005",
-      "field-005-002": "Vacation ideas",
-      "field-005-003": "option-005-003-002",
-      "field-005-004": "2026-08-19T14:20:00Z",
-      "field-005-005": false,
-      "field-005-006": 5
+      "field-005-002": "Order replacement air filters",
+      "field-005-003": "option-005-003-001",
+      "field-005-004": "2026-08-27T07:55:00",
+      "field-005-005": false
     }
   },
   {
@@ -508,11 +527,10 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-006",
-      "field-005-002": "Buy birthday gift",
-      "field-005-003": "option-005-003-003",
-      "field-005-004": "2026-08-19T14:25:00Z",
-      "field-005-005": false,
-      "field-005-006": 6
+      "field-005-002": "Dashboard idea: monthly spending",
+      "field-005-003": "option-005-003-002",
+      "field-005-004": "2026-08-28T21:10:00",
+      "field-005-005": false
     }
   },
   {
@@ -520,11 +538,10 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-007",
-      "field-005-002": "Garage measurements",
-      "field-005-003": "option-005-003-004",
-      "field-005-004": "2026-08-19T14:30:00Z",
-      "field-005-005": true,
-      "field-005-006": 7
+      "field-005-002": "Call vet about appointment",
+      "field-005-003": "option-005-003-003",
+      "field-005-004": "2026-08-29T09:20:00",
+      "field-005-005": true
     }
   },
   {
@@ -532,644 +549,2973 @@
     "tableId": "table-005",
     "values": {
       "field-005-001": "IN-008",
-      "field-005-002": "Look into new desk chair",
-      "field-005-003": "option-005-003-002",
-      "field-005-004": "2026-08-19T14:35:00Z",
+      "field-005-002": "Recipe note for roasted salsa",
+      "field-005-003": "option-005-003-004",
+      "field-005-004": "2026-08-30T16:48:00",
       "field-005-005": false,
-      "field-005-006": 8
+      "field-005-006": "Use more lime next time."
     }
   },
-  {
-    "id": "record-005-009",
-    "tableId": "table-005",
-    "values": {
-      "field-005-001": "IN-009",
-      "field-005-002": "Cancel unused subscription",
-      "field-005-003": "option-005-003-001",
-      "field-005-004": "2026-08-19T14:40:00Z",
-      "field-005-005": false,
-      "field-005-006": 9
-    }
-  },
-  {
-    "id": "record-005-010",
-    "tableId": "table-005",
-    "values": {
-      "field-005-001": "IN-010",
-      "field-005-002": "Book car service",
-      "field-005-003": "option-005-003-003",
-      "field-005-004": "2026-08-19T14:45:00Z",
-      "field-005-005": false,
-      "field-005-006": 10
-    }
-  },
-
-  {
-    "id": "record-006-001",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Requirements complete",
-      "field-006-002": "Kylie",
-      "field-006-003": "2026-08-01",
-      "field-006-004": "2026-08-10",
-      "field-006-005": 100,
-      "field-006-006": "09:00"
-    }
-  },
-  {
-    "id": "record-006-002",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Architecture review",
-      "field-006-002": "Morgan",
-      "field-006-003": "2026-08-05",
-      "field-006-004": "2026-08-15",
-      "field-006-005": 100,
-      "field-006-006": "10:30"
-    }
-  },
-  {
-    "id": "record-006-003",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Prototype complete",
-      "field-006-002": "Jordan",
-      "field-006-003": "2026-08-12",
-      "field-006-004": "2026-08-25",
-      "field-006-005": 80,
-      "field-006-006": "13:00"
-    }
-  },
-  {
-    "id": "record-006-004",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Frontend implementation",
-      "field-006-002": "Taylor",
-      "field-006-003": "2026-08-20",
-      "field-006-004": "2026-09-10",
-      "field-006-005": 45,
-      "field-006-006": "14:00"
-    }
-  },
-  {
-    "id": "record-006-005",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Backend implementation",
-      "field-006-002": "Casey",
-      "field-006-003": "2026-08-20",
-      "field-006-004": "2026-09-12",
-      "field-006-005": 35,
-      "field-006-006": "14:30"
-    }
-  },
-  {
-    "id": "record-006-006",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Integration testing",
-      "field-006-002": "Riley",
-      "field-006-003": "2026-09-10",
-      "field-006-004": "2026-09-20",
-      "field-006-005": 10,
-      "field-006-006": "11:00"
-    }
-  },
-  {
-    "id": "record-006-007",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Security review",
-      "field-006-002": "Morgan",
-      "field-006-003": "2026-09-18",
-      "field-006-004": "2026-09-25",
-      "field-006-005": 0,
-      "field-006-006": "09:30"
-    }
-  },
-  {
-    "id": "record-006-008",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "User acceptance testing",
-      "field-006-002": "Avery",
-      "field-006-003": "2026-09-22",
-      "field-006-004": "2026-09-30",
-      "field-006-005": 0,
-      "field-006-006": "15:00"
-    }
-  },
-  {
-    "id": "record-006-009",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Production readiness",
-      "field-006-002": "Kylie",
-      "field-006-003": "2026-09-28",
-      "field-006-004": "2026-10-05",
-      "field-006-005": 0,
-      "field-006-006": "10:00"
-    }
-  },
-  {
-    "id": "record-006-010",
-    "tableId": "table-006",
-    "values": {
-      "field-006-001": "Production launch",
-      "field-006-002": "Kylie",
-      "field-006-003": "2026-10-06",
-      "field-006-004": "2026-10-10",
-      "field-006-005": 0,
-      "field-006-006": "08:30"
-    }
-  },
-
   {
     "id": "record-007-001",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Advanced search",
-      "field-007-002": "option-007-002-003",
-      "field-007-003": 5,
-      "field-007-004": "option-007-004-003",
-      "field-007-005": "2026-09-15",
-      "field-007-006": ["option-007-006-001", "option-007-006-002"]
+      "field-007-001": "Define repository interfaces",
+      "field-007-002": "option-007-002-005",
+      "field-007-003": "option-007-003-003",
+      "field-007-004": "Kylie",
+      "field-007-007": 100,
+      "field-007-008": 6,
+      "field-007-009": "09:00",
+      "field-007-005": "2026-08-10",
+      "field-007-006": "2026-08-12",
+      "field-007-010": "Persistence boundaries documented."
     }
   },
   {
     "id": "record-007-002",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Dashboard widgets",
+      "field-007-001": "Implement IndexedDB repository",
       "field-007-002": "option-007-002-003",
-      "field-007-003": 4,
-      "field-007-004": "option-007-004-002",
-      "field-007-005": "2026-09-30",
-      "field-007-006": ["option-007-006-001"]
+      "field-007-003": "option-007-003-004",
+      "field-007-004": "Kylie",
+      "field-007-007": 65,
+      "field-007-008": 28,
+      "field-007-009": "08:30",
+      "field-007-005": "2026-08-13",
+      "field-007-006": "2026-09-04",
+      "field-007-010": "Core local persistence work."
     }
   },
   {
     "id": "record-007-003",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "CSV import",
-      "field-007-002": "option-007-002-003",
-      "field-007-003": 4,
-      "field-007-004": "option-007-004-002",
-      "field-007-005": "2026-09-20",
-      "field-007-006": ["option-007-006-001", "option-007-006-002"]
+      "field-007-001": "Build workspace explorer",
+      "field-007-002": "option-007-002-002",
+      "field-007-003": "option-007-003-003",
+      "field-007-004": "Morgan",
+      "field-007-007": 0,
+      "field-007-008": 20,
+      "field-007-009": "09:30",
+      "field-007-005": "2026-09-01",
+      "field-007-006": "2026-09-11"
     }
   },
   {
     "id": "record-007-004",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Excel export",
-      "field-007-002": "option-007-002-004",
-      "field-007-003": 4,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-10-20",
-      "field-007-006": ["option-007-006-001", "option-007-006-002"]
+      "field-007-001": "Wire table selection",
+      "field-007-002": "option-007-002-001",
+      "field-007-003": "option-007-003-002",
+      "field-007-004": "Sam",
+      "field-007-007": 0,
+      "field-007-008": 10,
+      "field-007-009": "10:00",
+      "field-007-006": "2026-09-18"
     }
   },
   {
     "id": "record-007-005",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Template library",
-      "field-007-002": "option-007-002-004",
-      "field-007-003": 3,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-11-01",
-      "field-007-006": ["option-007-006-001"]
+      "field-007-001": "Add seed loader",
+      "field-007-002": "option-007-002-003",
+      "field-007-003": "option-007-003-004",
+      "field-007-004": "Kylie",
+      "field-007-007": 40,
+      "field-007-008": 12,
+      "field-007-009": "08:00",
+      "field-007-005": "2026-08-28",
+      "field-007-006": "2026-09-02",
+      "field-007-010": "Load through application persistence boundaries."
     }
   },
   {
     "id": "record-007-006",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Collaboration",
-      "field-007-002": "option-007-002-004",
-      "field-007-003": 5,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-11-15",
-      "field-007-006": [
-        "option-007-006-001",
-        "option-007-006-002",
-        "option-007-006-003"
-      ]
+      "field-007-001": "Design view model",
+      "field-007-002": "option-007-002-002",
+      "field-007-003": "option-007-003-003",
+      "field-007-004": "Morgan",
+      "field-007-007": 0,
+      "field-007-008": 16,
+      "field-007-009": "13:00",
+      "field-007-006": "2026-09-25",
+      "field-007-010": ""
     }
   },
   {
     "id": "record-007-007",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Mobile layout",
-      "field-007-002": "option-007-002-004",
-      "field-007-003": 2,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-12-01",
-      "field-007-006": ["option-007-006-003"]
+      "field-007-001": "Implement undo command stack",
+      "field-007-002": "option-007-002-001",
+      "field-007-003": "option-007-003-002",
+      "field-007-004": "Sam",
+      "field-007-007": 0,
+      "field-007-008": 24,
+      "field-007-009": "11:00"
     }
   },
   {
     "id": "record-007-008",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Formula fields",
-      "field-007-002": "option-007-002-003",
-      "field-007-003": 5,
-      "field-007-004": "option-007-004-003",
-      "field-007-005": "2026-09-25",
-      "field-007-006": ["option-007-006-001", "option-007-006-002"]
+      "field-007-001": "Accessibility keyboard pass",
+      "field-007-002": "option-007-002-001",
+      "field-007-003": "option-007-003-003",
+      "field-007-004": "Avery",
+      "field-007-007": 0,
+      "field-007-008": 18,
+      "field-007-009": "14:00"
     }
   },
   {
     "id": "record-007-009",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Reference fields",
+      "field-007-001": "Resolve IndexedDB migration issue",
       "field-007-002": "option-007-002-004",
-      "field-007-003": 4,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-10-15",
-      "field-007-006": ["option-007-006-001"]
+      "field-007-003": "option-007-003-004",
+      "field-007-004": "Kylie",
+      "field-007-007": 35,
+      "field-007-008": 8,
+      "field-007-009": "08:15",
+      "field-007-005": "2026-08-26",
+      "field-007-006": "2026-08-29",
+      "field-007-010": "Blocked pending schema decision."
     }
   },
   {
     "id": "record-007-010",
     "tableId": "table-007",
     "values": {
-      "field-007-001": "Audit history",
-      "field-007-002": "option-007-002-004",
-      "field-007-003": 3,
-      "field-007-004": "option-007-004-001",
-      "field-007-005": "2026-11-10",
-      "field-007-006": ["option-007-006-001", "option-007-006-002"]
+      "field-007-001": "Static application shell",
+      "field-007-002": "option-007-002-005",
+      "field-007-003": "option-007-003-002",
+      "field-007-004": "Kylie",
+      "field-007-007": 100,
+      "field-007-008": 30,
+      "field-007-009": "08:00",
+      "field-007-005": "2026-08-05",
+      "field-007-006": "2026-08-24",
+      "field-007-010": "Merged to main."
     }
   },
-
   {
     "id": "record-008-001",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Login redirect loop",
-      "field-008-002": "option-008-002-004",
-      "field-008-003": "option-008-003-002",
-      "field-008-004": "2026-08-19T13:00:00Z",
-      "field-008-005": "Users are redirected back to login after authentication.",
-      "field-008-006": "record-007-001"
+      "field-008-001": "Local persistence",
+      "field-008-002": "option-008-002-003",
+      "field-008-003": "option-008-003-004",
+      "field-008-004": ["option-008-004-001", "option-008-004-002"],
+      "field-008-005": "option-008-005-003",
+      "field-008-007": "2026-09-30",
+      "field-008-008": 70,
+      "field-008-009": "2026-07-20T09:00:00",
+      "field-008-010": "2026-08-30T14:20:00",
+      "field-008-006": "2026-08-01"
     }
   },
   {
     "id": "record-008-002",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Table header misaligned",
-      "field-008-002": "option-008-002-001",
+      "field-008-001": "Workspace explorer",
+      "field-008-002": "option-008-002-002",
       "field-008-003": "option-008-003-003",
-      "field-008-004": "2026-08-19T13:05:00Z",
-      "field-008-005": "Header shifts after resizing the left panel.",
-      "field-008-006": "record-007-002"
+      "field-008-004": ["option-008-004-001", "option-008-004-002"],
+      "field-008-005": "option-008-005-003",
+      "field-008-007": "2026-09-30",
+      "field-008-008": 35,
+      "field-008-009": "2026-07-22T10:00:00",
+      "field-008-010": "2026-08-29T11:45:00",
+      "field-008-006": "2026-08-20"
     }
   },
   {
     "id": "record-008-003",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Search misses archived records",
+      "field-008-001": "Table editing",
       "field-008-002": "option-008-002-002",
-      "field-008-003": "option-008-003-001",
-      "field-008-004": "2026-08-19T13:10:00Z",
-      "field-008-005": "Archived records do not appear when archive search is enabled.",
-      "field-008-006": "record-007-001"
+      "field-008-003": "option-008-003-004",
+      "field-008-004": ["option-008-004-001", "option-008-004-002"],
+      "field-008-005": "option-008-005-004",
+      "field-008-007": "2026-11-15",
+      "field-008-008": 10,
+      "field-008-009": "2026-07-25T08:30:00",
+      "field-008-010": "2026-08-28T16:00:00",
+      "field-008-006": "2026-09-01"
     }
   },
   {
     "id": "record-008-004",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Export drops date formatting",
-      "field-008-002": "option-008-002-003",
-      "field-008-003": "option-008-003-002",
-      "field-008-004": "2026-08-19T13:15:00Z",
-      "field-008-005": "Exported dates use raw values instead of configured display format.",
-      "field-008-006": "record-007-004"
+      "field-008-001": "Saved views",
+      "field-008-002": "option-008-002-001",
+      "field-008-003": "option-008-003-003",
+      "field-008-004": [
+        "option-008-004-001",
+        "option-008-004-002",
+        "option-008-004-003"
+      ],
+      "field-008-005": "option-008-005-004",
+      "field-008-007": "2026-12-01",
+      "field-008-008": 0,
+      "field-008-009": "2026-07-26T12:00:00",
+      "field-008-010": "2026-08-20T09:10:00"
     }
   },
   {
     "id": "record-008-005",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Status bar count stale",
-      "field-008-002": "option-008-002-002",
+      "field-008-001": "Query engine",
+      "field-008-002": "option-008-002-001",
       "field-008-003": "option-008-003-003",
-      "field-008-004": "2026-08-19T13:20:00Z",
-      "field-008-005": "Problem count does not refresh after resolving an issue.",
-      "field-008-006": "record-007-010"
+      "field-008-004": ["option-008-004-001", "option-008-004-002"],
+      "field-008-005": "option-008-005-001",
+      "field-008-007": "2027-02-15",
+      "field-008-008": 0,
+      "field-008-009": "2026-07-27T12:30:00",
+      "field-008-010": "2026-08-21T13:15:00"
     }
   },
   {
     "id": "record-008-006",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Duplicate tab opens",
-      "field-008-002": "option-008-002-002",
-      "field-008-003": "option-008-003-001",
-      "field-008-004": "2026-08-19T13:25:00Z",
-      "field-008-005": "Opening an existing table can create a second tab.",
-      "field-008-006": "record-007-002"
+      "field-008-001": "Dashboards",
+      "field-008-002": "option-008-002-001",
+      "field-008-003": "option-008-003-002",
+      "field-008-004": [
+        "option-008-004-001",
+        "option-008-004-002",
+        "option-008-004-003"
+      ],
+      "field-008-005": "option-008-005-001",
+      "field-008-007": "2027-03-31",
+      "field-008-008": 0,
+      "field-008-009": "2026-07-28T14:00:00",
+      "field-008-010": "2026-08-22T10:40:00"
     }
   },
   {
     "id": "record-008-007",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Panel width not restored",
+      "field-008-001": "Import and export",
       "field-008-002": "option-008-002-001",
-      "field-008-003": "option-008-003-004",
-      "field-008-004": "2026-08-19T13:30:00Z",
-      "field-008-005": "Right panel previously restored to the wrong width.",
-      "field-008-006": "record-007-007"
+      "field-008-003": "option-008-003-002",
+      "field-008-004": ["option-008-004-001", "option-008-004-002"],
+      "field-008-005": "option-008-005-002",
+      "field-008-007": "2027-05-15",
+      "field-008-008": 0,
+      "field-008-009": "2026-07-29T15:00:00",
+      "field-008-010": "2026-08-23T08:05:00"
     }
   },
   {
     "id": "record-008-008",
     "tableId": "table-008",
     "values": {
-      "field-008-001": "Filter chips overflow",
-      "field-008-002": "option-008-002-001",
-      "field-008-003": "option-008-003-001",
-      "field-008-004": "2026-08-19T13:35:00Z",
-      "field-008-005": "Large numbers of active filters overflow the toolbar.",
-      "field-008-006": "record-007-001"
-    }
-  },
-  {
-    "id": "record-008-009",
-    "tableId": "table-008",
-    "values": {
-      "field-008-001": "Undo skips field rename",
-      "field-008-002": "option-008-002-003",
+      "field-008-001": "Application shell",
+      "field-008-002": "option-008-002-004",
       "field-008-003": "option-008-003-002",
-      "field-008-004": "2026-08-19T13:40:00Z",
-      "field-008-005": "Undo restores cell edits but skips the preceding field rename.",
-      "field-008-006": "record-007-010"
+      "field-008-004": ["option-008-004-001"],
+      "field-008-005": "option-008-005-003",
+      "field-008-007": "2026-08-25",
+      "field-008-008": 100,
+      "field-008-009": "2026-07-15T08:00:00",
+      "field-008-010": "2026-08-25T17:30:00",
+      "field-008-006": "2026-07-15"
     }
   },
-  {
-    "id": "record-008-010",
-    "tableId": "table-008",
-    "values": {
-      "field-008-001": "Dashboard refresh flickers",
-      "field-008-002": "option-008-002-001",
-      "field-008-003": "option-008-003-001",
-      "field-008-004": "2026-08-19T13:45:00Z",
-      "field-008-005": "Widgets briefly disappear during data refresh.",
-      "field-008-006": "record-007-002"
-    }
-  },
-
   {
     "id": "record-009-001",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-17",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 7.5,
-      "field-009-004": true,
-      "field-009-005": "Application layout work"
+      "field-009-001": "ISS-001",
+      "field-009-002": "Seed loader should preserve stable IDs",
+      "field-009-003": "option-009-003-002",
+      "field-009-004": "option-009-004-004",
+      "field-009-005": "record-008-001",
+      "field-009-006": "2026-08-21T09:15:00",
+      "field-009-007": "Kylie",
+      "field-009-008": "Reloading seed data must not generate new identities.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-002",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-18",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 8,
-      "field-009-004": true,
-      "field-009-005": "Explorer design and implementation"
+      "field-009-001": "ISS-002",
+      "field-009-002": "Explorer selection lost after refresh",
+      "field-009-003": "option-009-003-001",
+      "field-009-004": "option-009-004-003",
+      "field-009-005": "record-008-002",
+      "field-009-006": "2026-08-22T11:20:00",
+      "field-009-007": "Morgan",
+      "field-009-008": "Selected table should restore when persistence is available.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-003",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-19",
-      "field-009-002": "Client Portal",
-      "field-009-003": 6.5,
-      "field-009-004": true,
-      "field-009-005": "API integration"
+      "field-009-001": "ISS-003",
+      "field-009-002": "Calculated currency displays extra precision",
+      "field-009-003": "option-009-003-004",
+      "field-009-004": "option-009-004-002",
+      "field-009-005": "record-008-003",
+      "field-009-006": "2026-08-23T14:05:00",
+      "field-009-007": "Sam",
+      "field-009-008": "Currency presentation should respect configured formatting.",
+      "field-009-009": true
     }
   },
   {
     "id": "record-009-004",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-19",
-      "field-009-002": "Internal",
-      "field-009-003": 1.5,
-      "field-009-004": false,
-      "field-009-005": "Team planning meeting"
+      "field-009-001": "ISS-004",
+      "field-009-002": "Wide tables need horizontal overflow",
+      "field-009-003": "option-009-003-002",
+      "field-009-004": "option-009-004-003",
+      "field-009-005": "record-008-003",
+      "field-009-006": "2026-08-24T08:50:00",
+      "field-009-007": "Avery",
+      "field-009-008": "Many Fields fixture exposes clipped columns.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-005",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-20",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 8,
-      "field-009-004": true,
-      "field-009-005": "Theme implementation"
+      "field-009-001": "ISS-005",
+      "field-009-002": "Archived collection visible in active tree",
+      "field-009-003": "option-009-003-003",
+      "field-009-004": "option-009-004-004",
+      "field-009-005": "record-008-002",
+      "field-009-006": "2026-08-25T10:30:00",
+      "field-009-007": "Kylie",
+      "field-009-008": "Archive filtering is waiting on lifecycle integration.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-006",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-21",
-      "field-009-002": "Client Portal",
-      "field-009-003": 7,
-      "field-009-004": true,
-      "field-009-005": "Bug fixes and review"
+      "field-009-001": "ISS-006",
+      "field-009-002": "Reference editor needs empty state",
+      "field-009-003": "option-009-003-001",
+      "field-009-004": "option-009-004-002",
+      "field-009-005": "record-008-003",
+      "field-009-006": "2026-08-26T13:45:00",
+      "field-009-007": "Morgan",
+      "field-009-008": "Allow a reference field to remain blank.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-007",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-21",
-      "field-009-002": "Internal",
-      "field-009-003": 1,
-      "field-009-004": false,
-      "field-009-005": "Architecture discussion"
+      "field-009-001": "ISS-007",
+      "field-009-002": "Menu and command bars overlap",
+      "field-009-003": "option-009-003-005",
+      "field-009-004": "option-009-004-003",
+      "field-009-005": "record-008-008",
+      "field-009-006": "2026-08-27T09:00:00",
+      "field-009-007": "Kylie",
+      "field-009-008": "Resolved during static layout formatting.",
+      "field-009-009": true
     }
   },
   {
     "id": "record-009-008",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-22",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 4,
-      "field-009-004": true,
-      "field-009-005": "Seed data planning"
+      "field-009-001": "ISS-008",
+      "field-009-002": "Modified timestamp not refreshed",
+      "field-009-003": "option-009-003-002",
+      "field-009-004": "option-009-004-003",
+      "field-009-005": "record-008-001",
+      "field-009-006": "2026-08-28T15:10:00",
+      "field-009-007": "Sam",
+      "field-009-008": "Generated modified metadata needs repository support.",
+      "field-009-009": false
     }
   },
   {
     "id": "record-009-009",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-23",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 3.5,
-      "field-009-004": true,
-      "field-009-005": "Data model review"
+      "field-009-001": "ISS-009",
+      "field-009-002": "Empty table shows stale rows",
+      "field-009-003": "option-009-003-004",
+      "field-009-004": "option-009-004-004",
+      "field-009-005": "record-008-003",
+      "field-009-006": "2026-08-29T12:00:00",
+      "field-009-007": "Avery",
+      "field-009-008": "Switching to an empty table must clear prior row data.",
+      "field-009-009": true
     }
   },
   {
     "id": "record-009-010",
     "tableId": "table-009",
     "values": {
-      "field-009-001": "2026-08-24",
-      "field-009-002": "Better Spreadsheet",
-      "field-009-003": 2,
-      "field-009-004": true,
-      "field-009-005": "Seed dataset creation"
+      "field-009-001": "ISS-010",
+      "field-009-002": "Long names push explorer actions offscreen",
+      "field-009-003": "option-009-003-001",
+      "field-009-004": "option-009-004-002",
+      "field-009-005": "record-008-002",
+      "field-009-006": "2026-08-30T16:25:00",
+      "field-009-007": "Morgan",
+      "field-009-008": "Use Sandbox long-name fixture for reproduction.",
+      "field-009-009": false
     }
   },
-
+  {
+    "id": "record-009-011",
+    "tableId": "table-009",
+    "values": {
+      "field-009-001": "ISS-011",
+      "field-009-002": "Keyboard selection skips first row",
+      "field-009-003": "option-009-003-001",
+      "field-009-004": "option-009-004-003",
+      "field-009-005": "record-008-003",
+      "field-009-006": "2026-08-31T08:05:00",
+      "field-009-007": "Kylie",
+      "field-009-008": "Occurs when focus enters the grid from the command bar.",
+      "field-009-009": false
+    }
+  },
+  {
+    "id": "record-009-012",
+    "tableId": "table-009",
+    "values": {
+      "field-009-001": "ISS-012",
+      "field-009-002": "Imported boolean false treated as blank",
+      "field-009-003": "option-009-003-003",
+      "field-009-004": "option-009-004-004",
+      "field-009-005": "record-008-007",
+      "field-009-006": "2026-08-31T08:30:00",
+      "field-009-007": "Sam",
+      "field-009-008": "False must remain distinct from blank.",
+      "field-009-009": false
+    }
+  },
   {
     "id": "record-010-001",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Sprint planning",
-      "field-010-002": "Review priorities and assign work for the next sprint.",
-      "field-010-003": ["option-010-003-001"],
-      "field-010-004": "2026-08-21T13:00:00Z",
-      "field-010-005": "2026-08-23T17:00:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c001"
+      "field-010-001": "TIME-0001",
+      "field-010-002": "record-009-001",
+      "field-010-003": "2026-08-24",
+      "field-010-004": "08:30",
+      "field-010-005": "10:00",
+      "field-010-006": 1.5,
+      "field-010-007": true,
+      "field-010-008": "Investigated seed identity behavior."
     }
   },
   {
     "id": "record-010-002",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "IndexedDB research",
-      "field-010-002": "Compare repository patterns for local-first persistence.",
-      "field-010-003": ["option-010-003-002", "option-010-003-004"],
-      "field-010-004": "2026-08-21T13:05:00Z",
-      "field-010-005": "2026-08-23T17:05:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c002"
+      "field-010-001": "TIME-0002",
+      "field-010-002": "record-009-001",
+      "field-010-003": "2026-08-24",
+      "field-010-004": "10:15",
+      "field-010-005": "12:00",
+      "field-010-006": 1.75,
+      "field-010-007": true,
+      "field-010-008": "Repository implementation."
     }
   },
   {
     "id": "record-010-003",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Dashboard idea",
-      "field-010-002": "Allow dashboard widgets to consume table views and query outputs.",
-      "field-010-003": ["option-010-003-003"],
-      "field-010-004": "2026-08-21T13:10:00Z",
-      "field-010-005": "2026-08-23T17:10:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c003"
+      "field-010-001": "TIME-0003",
+      "field-010-002": "record-009-002",
+      "field-010-003": "2026-08-25",
+      "field-010-004": "09:00",
+      "field-010-005": "10:30",
+      "field-010-006": 1.5,
+      "field-010-007": true,
+      "field-010-008": "Reproduced explorer restore issue."
     }
   },
   {
     "id": "record-010-004",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Architecture review notes",
-      "field-010-002": "Keep persistence concerns behind repository boundaries.",
-      "field-010-003": ["option-010-003-001", "option-010-003-004"],
-      "field-010-004": "2026-08-21T13:15:00Z",
-      "field-010-005": "2026-08-23T17:15:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c004"
+      "field-010-001": "TIME-0004",
+      "field-010-002": "record-009-004",
+      "field-010-003": "2026-08-25",
+      "field-010-004": "13:00",
+      "field-010-005": "15:15",
+      "field-010-006": 2.25,
+      "field-010-007": true,
+      "field-010-008": "Horizontal overflow work."
     }
   },
   {
     "id": "record-010-005",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Search design",
-      "field-010-002": "Search should support workspace-wide and table-local scopes.",
-      "field-010-003": ["option-010-003-003"],
-      "field-010-004": "2026-08-21T13:20:00Z",
-      "field-010-005": "2026-08-23T17:20:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c005"
+      "field-010-001": "TIME-0005",
+      "field-010-002": "record-009-007",
+      "field-010-003": "2026-08-27",
+      "field-010-004": "08:00",
+      "field-010-005": "11:30",
+      "field-010-006": 3.5,
+      "field-010-007": true,
+      "field-010-008": "Static layout formatting."
     }
   },
   {
     "id": "record-010-006",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Import behavior",
-      "field-010-002": "Imported values should use the same conversion rules as normal edits.",
-      "field-010-003": ["option-010-003-002", "option-010-003-004"],
-      "field-010-004": "2026-08-21T13:25:00Z",
-      "field-010-005": "2026-08-23T17:25:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c006"
+      "field-010-001": "TIME-0006",
+      "field-010-002": "record-009-008",
+      "field-010-003": "2026-08-28",
+      "field-010-004": "09:30",
+      "field-010-005": "11:00",
+      "field-010-006": 1.5,
+      "field-010-007": true,
+      "field-010-008": "Generated metadata investigation."
     }
   },
   {
     "id": "record-010-007",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Template thoughts",
-      "field-010-002": "Templates should preserve structure without live workspace identity.",
-      "field-010-003": ["option-010-003-003"],
-      "field-010-004": "2026-08-21T13:30:00Z",
-      "field-010-005": "2026-08-23T17:30:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c007"
+      "field-010-001": "TIME-0007",
+      "field-010-002": "record-009-009",
+      "field-010-003": "2026-08-29",
+      "field-010-004": "14:00",
+      "field-010-005": "15:00",
+      "field-010-006": 1.0,
+      "field-010-007": false,
+      "field-010-008": "Regression verification."
     }
   },
   {
     "id": "record-010-008",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Performance research",
-      "field-010-002": "Investigate virtualization thresholds for large tables.",
-      "field-010-003": ["option-010-003-002"],
-      "field-010-004": "2026-08-21T13:35:00Z",
-      "field-010-005": "2026-08-23T17:35:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c008"
+      "field-010-001": "TIME-0008",
+      "field-010-002": "record-009-010",
+      "field-010-003": "2026-08-30",
+      "field-010-004": "10:00",
+      "field-010-005": "12:30",
+      "field-010-006": 2.5,
+      "field-010-007": true,
+      "field-010-008": "Explorer overflow behavior."
     }
   },
   {
     "id": "record-010-009",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Keyboard navigation",
-      "field-010-002": "Grid navigation should feel natural without requiring mouse interaction.",
-      "field-010-003": ["option-010-003-003"],
-      "field-010-004": "2026-08-21T13:40:00Z",
-      "field-010-005": "2026-08-23T17:40:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c009"
+      "field-010-001": "TIME-0009",
+      "field-010-002": "record-009-011",
+      "field-010-003": "2026-08-31",
+      "field-010-004": "08:00",
+      "field-010-005": "09:45",
+      "field-010-006": 1.75,
+      "field-010-007": true,
+      "field-010-008": "Keyboard navigation reproduction."
     }
   },
   {
     "id": "record-010-010",
     "tableId": "table-010",
     "values": {
-      "field-010-001": "Release checklist",
-      "field-010-002": "Build, tests, accessibility, migration, and deployment verification.",
-      "field-010-003": ["option-010-003-004"],
-      "field-010-004": "2026-08-21T13:45:00Z",
-      "field-010-005": "2026-08-23T17:45:00Z",
-      "field-010-006": [],
-      "field-010-007": "9b4e6c55-34dd-4b61-a621-44d1ab79c010"
+      "field-010-001": "TIME-0010",
+      "field-010-002": "record-009-012",
+      "field-010-003": "2026-08-31",
+      "field-010-004": "10:00",
+      "field-010-005": "12:00",
+      "field-010-006": 2.0,
+      "field-010-007": true,
+      "field-010-008": "Boolean import analysis."
+    }
+  },
+  {
+    "id": "record-010-011",
+    "tableId": "table-010",
+    "values": {
+      "field-010-001": "TIME-0011",
+      "field-010-002": "record-009-003",
+      "field-010-003": "2026-08-26",
+      "field-010-004": "15:00",
+      "field-010-005": "15:00",
+      "field-010-006": 0.0,
+      "field-010-007": false,
+      "field-010-008": "Zero-duration fixture."
+    }
+  },
+  {
+    "id": "record-010-012",
+    "tableId": "table-010",
+    "values": {
+      "field-010-001": "TIME-0012",
+      "field-010-002": "record-009-006",
+      "field-010-003": "2026-08-27",
+      "field-010-004": "13:30",
+      "field-010-005": "14:15",
+      "field-010-006": 0.75,
+      "field-010-007": true,
+      "field-010-008": ""
+    }
+  },
+  {
+    "id": "record-011-001",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000001",
+      "field-011-002": "Maya A.",
+      "field-011-003": "Northstar",
+      "field-011-004": "Engineer",
+      "field-011-005": "maya@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": true,
+      "field-011-009": "2026-08-01",
+      "field-011-006": "301-555-1001",
+      "field-011-010": ""
+    }
+  },
+  {
+    "id": "record-011-002",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000002",
+      "field-011-002": "Jordan B.",
+      "field-011-003": "Blue Ridge",
+      "field-011-004": "Product Manager",
+      "field-011-005": "jordan@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": true,
+      "field-011-009": "2026-08-02",
+      "field-011-006": "301-555-1002"
+    }
+  },
+  {
+    "id": "record-011-003",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000003",
+      "field-011-002": "Priya C.",
+      "field-011-003": "Harbor",
+      "field-011-004": "Designer",
+      "field-011-005": "priya@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": true,
+      "field-011-009": "2026-08-03",
+      "field-011-006": "301-555-1003"
+    }
+  },
+  {
+    "id": "record-011-004",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000004",
+      "field-011-002": "Theo D.",
+      "field-011-003": "Cedar",
+      "field-011-004": "Analyst",
+      "field-011-005": "theo@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": true,
+      "field-011-009": "2026-08-04"
+    }
+  },
+  {
+    "id": "record-011-005",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000005",
+      "field-011-002": "Nina E.",
+      "field-011-003": "Atlas",
+      "field-011-004": "Program Manager",
+      "field-011-005": "nina@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-05",
+      "field-011-006": "301-555-1005",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-011-006",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000006",
+      "field-011-002": "Marcus F.",
+      "field-011-003": "Juniper",
+      "field-011-004": "Support Lead",
+      "field-011-005": "marcus@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": true,
+      "field-011-009": "2026-08-06",
+      "field-011-006": "301-555-1006"
+    }
+  },
+  {
+    "id": "record-011-007",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000007",
+      "field-011-002": "Elena G.",
+      "field-011-003": "Northstar",
+      "field-011-004": "Engineer",
+      "field-011-005": "elena@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": false,
+      "field-011-009": "2026-08-07",
+      "field-011-006": "301-555-1007"
+    }
+  },
+  {
+    "id": "record-011-008",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000008",
+      "field-011-002": "Drew H.",
+      "field-011-003": "Blue Ridge",
+      "field-011-004": "Product Manager",
+      "field-011-005": "drew@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": true,
+      "field-011-009": "2026-08-08"
+    }
+  },
+  {
+    "id": "record-011-009",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000009",
+      "field-011-002": "Talia I.",
+      "field-011-003": "Harbor",
+      "field-011-004": "Designer",
+      "field-011-005": "talia@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": true,
+      "field-011-009": "2026-08-09",
+      "field-011-006": "301-555-1009"
+    }
+  },
+  {
+    "id": "record-011-010",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000010",
+      "field-011-002": "Owen J.",
+      "field-011-003": "Cedar",
+      "field-011-004": "Analyst",
+      "field-011-005": "owen@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-10",
+      "field-011-006": "301-555-1010",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-011-011",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000011",
+      "field-011-002": "Rina K.",
+      "field-011-003": "Atlas",
+      "field-011-004": "Program Manager",
+      "field-011-005": "rina@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": true,
+      "field-011-009": "2026-08-11",
+      "field-011-006": "301-555-1011"
+    }
+  },
+  {
+    "id": "record-011-012",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000012",
+      "field-011-002": "Caleb L.",
+      "field-011-003": "Juniper",
+      "field-011-004": "Support Lead",
+      "field-011-005": "caleb@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": true,
+      "field-011-009": "2026-08-12"
+    }
+  },
+  {
+    "id": "record-011-013",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000013",
+      "field-011-002": "Sofia M.",
+      "field-011-003": "Northstar",
+      "field-011-004": "Engineer",
+      "field-011-005": "sofia@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": true,
+      "field-011-009": "2026-08-13",
+      "field-011-006": "301-555-1013"
+    }
+  },
+  {
+    "id": "record-011-014",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000014",
+      "field-011-002": "Miles N.",
+      "field-011-003": "Blue Ridge",
+      "field-011-004": "Product Manager",
+      "field-011-005": "miles@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": false,
+      "field-011-009": "2026-08-14",
+      "field-011-006": "301-555-1014"
+    }
+  },
+  {
+    "id": "record-011-015",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000015",
+      "field-011-002": "Imani O.",
+      "field-011-003": "Harbor",
+      "field-011-004": "Designer",
+      "field-011-005": "imani@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-15",
+      "field-011-006": "301-555-1015",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-011-016",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000016",
+      "field-011-002": "Noah P.",
+      "field-011-003": "Cedar",
+      "field-011-004": "Analyst",
+      "field-011-005": "noah@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": true,
+      "field-011-009": "2026-08-16"
+    }
+  },
+  {
+    "id": "record-011-017",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000017",
+      "field-011-002": "Leah Q.",
+      "field-011-003": "Atlas",
+      "field-011-004": "Program Manager",
+      "field-011-005": "leah@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": true,
+      "field-011-009": "2026-08-17",
+      "field-011-006": "301-555-1017"
+    }
+  },
+  {
+    "id": "record-011-018",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000018",
+      "field-011-002": "Evan R.",
+      "field-011-003": "Juniper",
+      "field-011-004": "Support Lead",
+      "field-011-005": "evan@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": true,
+      "field-011-009": "2026-08-18",
+      "field-011-006": "301-555-1018"
+    }
+  },
+  {
+    "id": "record-011-019",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000019",
+      "field-011-002": "Zoe S.",
+      "field-011-003": "Northstar",
+      "field-011-004": "Engineer",
+      "field-011-005": "zoe@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": true,
+      "field-011-009": "2026-08-19",
+      "field-011-006": "301-555-1019"
+    }
+  },
+  {
+    "id": "record-011-020",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000020",
+      "field-011-002": "Adrian T.",
+      "field-011-003": "Blue Ridge",
+      "field-011-004": "Product Manager",
+      "field-011-005": "adrian@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-20",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-011-021",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000021",
+      "field-011-002": "Camille U.",
+      "field-011-003": "Harbor",
+      "field-011-004": "Designer",
+      "field-011-005": "camille@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": false,
+      "field-011-009": "2026-08-21",
+      "field-011-006": "301-555-1021"
+    }
+  },
+  {
+    "id": "record-011-022",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000022",
+      "field-011-002": "Jonah V.",
+      "field-011-003": "Cedar",
+      "field-011-004": "Analyst",
+      "field-011-005": "jonah@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": true,
+      "field-011-009": "2026-08-22",
+      "field-011-006": "301-555-1022"
+    }
+  },
+  {
+    "id": "record-011-023",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000023",
+      "field-011-002": "Mei W.",
+      "field-011-003": "Atlas",
+      "field-011-004": "Program Manager",
+      "field-011-005": "mei@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": true,
+      "field-011-009": "2026-08-23",
+      "field-011-006": "301-555-1023"
+    }
+  },
+  {
+    "id": "record-011-024",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000024",
+      "field-011-002": "Isaac X.",
+      "field-011-003": "Juniper",
+      "field-011-004": "Support Lead",
+      "field-011-005": "isaac@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": true,
+      "field-011-009": "2026-08-24"
+    }
+  },
+  {
+    "id": "record-011-025",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000025",
+      "field-011-002": "Lena Y.",
+      "field-011-003": "Northstar",
+      "field-011-004": "Engineer",
+      "field-011-005": "lena@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-25",
+      "field-011-006": "301-555-1025",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-011-026",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000026",
+      "field-011-002": "Andre Z.",
+      "field-011-003": "Blue Ridge",
+      "field-011-004": "Product Manager",
+      "field-011-005": "andre@example.com",
+      "field-011-007": "option-011-007-001",
+      "field-011-008": true,
+      "field-011-009": "2026-08-26",
+      "field-011-006": "301-555-1026"
+    }
+  },
+  {
+    "id": "record-011-027",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000027",
+      "field-011-002": "Hannah A.",
+      "field-011-003": "Harbor",
+      "field-011-004": "Designer",
+      "field-011-005": "hannah@example.com",
+      "field-011-007": "option-011-007-002",
+      "field-011-008": true,
+      "field-011-009": "2026-08-27",
+      "field-011-006": "301-555-1027"
+    }
+  },
+  {
+    "id": "record-011-028",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000028",
+      "field-011-002": "Mateo B.",
+      "field-011-003": "Cedar",
+      "field-011-004": "Analyst",
+      "field-011-005": "mateo@example.com",
+      "field-011-007": "option-011-007-003",
+      "field-011-008": false,
+      "field-011-009": "2026-08-28"
+    }
+  },
+  {
+    "id": "record-011-029",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000029",
+      "field-011-002": "Aisha C.",
+      "field-011-003": "Atlas",
+      "field-011-004": "Program Manager",
+      "field-011-005": "aisha@example.com",
+      "field-011-007": "option-011-007-004",
+      "field-011-008": true,
+      "field-011-009": "2026-08-01",
+      "field-011-006": "301-555-1029"
+    }
+  },
+  {
+    "id": "record-011-030",
+    "tableId": "table-011",
+    "values": {
+      "field-011-001": "10000000-0000-4000-8000-000000000030",
+      "field-011-002": "Grant D.",
+      "field-011-003": "Juniper",
+      "field-011-004": "Support Lead",
+      "field-011-005": "grant@example.com",
+      "field-011-007": "option-011-007-005",
+      "field-011-008": true,
+      "field-011-009": "2026-08-02",
+      "field-011-006": "301-555-1030",
+      "field-011-010": "Prefers email for non-urgent follow-up."
+    }
+  },
+  {
+    "id": "record-012-001",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-001",
+      "field-012-002": "2026-08-01T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-002",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-002",
+      "field-012-002": "2026-08-01T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-003",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-003",
+      "field-012-002": "2026-08-01T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-004",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-004",
+      "field-012-002": "2026-08-02T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-005",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-005",
+      "field-012-002": "2026-08-02T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-006",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-006",
+      "field-012-002": "2026-08-02T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-007",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-007",
+      "field-012-002": "2026-08-02T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-008",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-008",
+      "field-012-002": "2026-08-03T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-009",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-009",
+      "field-012-002": "2026-08-03T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-010",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-010",
+      "field-012-002": "2026-08-03T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-011",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-011",
+      "field-012-002": "2026-08-03T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-012",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-012",
+      "field-012-002": "2026-08-04T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-013",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-013",
+      "field-012-002": "2026-08-04T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-014",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-014",
+      "field-012-002": "2026-08-04T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-015",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-015",
+      "field-012-002": "2026-08-04T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-016",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-016",
+      "field-012-002": "2026-08-05T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-017",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-017",
+      "field-012-002": "2026-08-05T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Attempt to created Project Plan did not complete successfully.",
+      "field-012-007": false
+    }
+  },
+  {
+    "id": "record-012-018",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-018",
+      "field-012-002": "2026-08-05T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-019",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-019",
+      "field-012-002": "2026-08-05T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-020",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-020",
+      "field-012-002": "2026-08-06T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-021",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-021",
+      "field-012-002": "2026-08-06T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-022",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-022",
+      "field-012-002": "2026-08-06T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-023",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-023",
+      "field-012-002": "2026-08-06T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-024",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-024",
+      "field-012-002": "2026-08-07T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-025",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-025",
+      "field-012-002": "2026-08-07T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-026",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-026",
+      "field-012-002": "2026-08-07T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-027",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-027",
+      "field-012-002": "2026-08-07T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-028",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-028",
+      "field-012-002": "2026-08-08T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-029",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-029",
+      "field-012-002": "2026-08-08T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-030",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-030",
+      "field-012-002": "2026-08-08T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-031",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-031",
+      "field-012-002": "2026-08-08T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-032",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-032",
+      "field-012-002": "2026-08-09T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-033",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-033",
+      "field-012-002": "2026-08-09T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-034",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-034",
+      "field-012-002": "2026-08-09T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Attempt to updated Roadmap did not complete successfully.",
+      "field-012-007": false
+    }
+  },
+  {
+    "id": "record-012-035",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-035",
+      "field-012-002": "2026-08-09T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-036",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-036",
+      "field-012-002": "2026-08-10T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-037",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-037",
+      "field-012-002": "2026-08-10T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-038",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-038",
+      "field-012-002": "2026-08-10T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-039",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-039",
+      "field-012-002": "2026-08-10T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-040",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-040",
+      "field-012-002": "2026-08-11T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-041",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-041",
+      "field-012-002": "2026-08-11T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-042",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-042",
+      "field-012-002": "2026-08-11T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-043",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-043",
+      "field-012-002": "2026-08-11T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-044",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-044",
+      "field-012-002": "2026-08-12T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-045",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-045",
+      "field-012-002": "2026-08-12T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-046",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-046",
+      "field-012-002": "2026-08-12T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-047",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-047",
+      "field-012-002": "2026-08-12T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-048",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-048",
+      "field-012-002": "2026-08-13T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-049",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-049",
+      "field-012-002": "2026-08-13T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-050",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-050",
+      "field-012-002": "2026-08-13T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-051",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-051",
+      "field-012-002": "2026-08-13T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Attempt to changed status for Issue Tracker did not complete successfully.",
+      "field-012-007": false
+    }
+  },
+  {
+    "id": "record-012-052",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-052",
+      "field-012-002": "2026-08-14T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-053",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-053",
+      "field-012-002": "2026-08-14T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-054",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-054",
+      "field-012-002": "2026-08-14T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-055",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-055",
+      "field-012-002": "2026-08-14T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-056",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-056",
+      "field-012-002": "2026-08-15T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-057",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-057",
+      "field-012-002": "2026-08-15T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-058",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-058",
+      "field-012-002": "2026-08-15T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-059",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-059",
+      "field-012-002": "2026-08-15T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-060",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-060",
+      "field-012-002": "2026-08-16T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-061",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-061",
+      "field-012-002": "2026-08-16T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-062",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-062",
+      "field-012-002": "2026-08-16T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-063",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-063",
+      "field-012-002": "2026-08-16T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-064",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-064",
+      "field-012-002": "2026-08-17T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-065",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-065",
+      "field-012-002": "2026-08-17T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-066",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-066",
+      "field-012-002": "2026-08-17T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-067",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-067",
+      "field-012-002": "2026-08-17T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-068",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-068",
+      "field-012-002": "2026-08-18T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Attempt to commented on Time Tracking did not complete successfully.",
+      "field-012-007": false
+    }
+  },
+  {
+    "id": "record-012-069",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-069",
+      "field-012-002": "2026-08-18T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-070",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-070",
+      "field-012-002": "2026-08-18T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-071",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-071",
+      "field-012-002": "2026-08-18T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-072",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-072",
+      "field-012-002": "2026-08-19T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-073",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-073",
+      "field-012-002": "2026-08-19T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-074",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-074",
+      "field-012-002": "2026-08-19T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-075",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-075",
+      "field-012-002": "2026-08-19T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-076",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-076",
+      "field-012-002": "2026-08-20T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-077",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-077",
+      "field-012-002": "2026-08-20T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-078",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-078",
+      "field-012-002": "2026-08-20T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-079",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-079",
+      "field-012-002": "2026-08-20T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-080",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-080",
+      "field-012-002": "2026-08-21T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-081",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-081",
+      "field-012-002": "2026-08-21T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-082",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-082",
+      "field-012-002": "2026-08-21T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-083",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-083",
+      "field-012-002": "2026-08-21T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-084",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-084",
+      "field-012-002": "2026-08-22T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-085",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-085",
+      "field-012-002": "2026-08-22T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Attempt to assigned Contacts did not complete successfully.",
+      "field-012-007": false
+    }
+  },
+  {
+    "id": "record-012-086",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-086",
+      "field-012-002": "2026-08-22T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-087",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-087",
+      "field-012-002": "2026-08-22T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-088",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-088",
+      "field-012-002": "2026-08-23T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-089",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-089",
+      "field-012-002": "2026-08-23T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-090",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-090",
+      "field-012-002": "2026-08-23T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-091",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-091",
+      "field-012-002": "2026-08-23T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-092",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-092",
+      "field-012-002": "2026-08-24T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-093",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-093",
+      "field-012-002": "2026-08-24T08:00:00",
+      "field-012-003": "option-012-003-005",
+      "field-012-004": "Kylie",
+      "field-012-005": "Contacts",
+      "field-012-006": "Kylie assigned Contacts.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-094",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-094",
+      "field-012-002": "2026-08-24T14:00:00",
+      "field-012-003": "option-012-003-006",
+      "field-012-004": "Morgan",
+      "field-012-005": "Workspace Explorer",
+      "field-012-006": "Morgan completed Workspace Explorer.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-095",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-095",
+      "field-012-002": "2026-08-24T20:00:00",
+      "field-012-003": "option-012-003-007",
+      "field-012-004": "Sam",
+      "field-012-005": "Seed Data",
+      "field-012-006": "Sam imported Seed Data.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-096",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-096",
+      "field-012-002": "2026-08-25T02:00:00",
+      "field-012-003": "option-012-003-008",
+      "field-012-004": "Avery",
+      "field-012-005": "Application Shell",
+      "field-012-006": "Avery exported Application Shell.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-097",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-097",
+      "field-012-002": "2026-08-25T08:00:00",
+      "field-012-003": "option-012-003-001",
+      "field-012-004": "Kylie",
+      "field-012-005": "Project Plan",
+      "field-012-006": "Kylie created Project Plan.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-098",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-098",
+      "field-012-002": "2026-08-25T14:00:00",
+      "field-012-003": "option-012-003-002",
+      "field-012-004": "Morgan",
+      "field-012-005": "Roadmap",
+      "field-012-006": "Morgan updated Roadmap.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-099",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-099",
+      "field-012-002": "2026-08-25T20:00:00",
+      "field-012-003": "option-012-003-003",
+      "field-012-004": "Sam",
+      "field-012-005": "Issue Tracker",
+      "field-012-006": "Sam changed status for Issue Tracker.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-012-100",
+    "tableId": "table-012",
+    "values": {
+      "field-012-001": "ACT-100",
+      "field-012-002": "2026-08-26T02:00:00",
+      "field-012-003": "option-012-003-004",
+      "field-012-004": "Avery",
+      "field-012-005": "Time Tracking",
+      "field-012-006": "Avery commented on Time Tracking.",
+      "field-012-007": true
+    }
+  },
+  {
+    "id": "record-013-001",
+    "tableId": "table-013",
+    "values": {
+      "field-013-001": "Prototype toolbar layout",
+      "field-013-002": "option-013-002-001",
+      "field-013-003": "Kylie",
+      "field-013-005": true,
+      "field-013-004": "2026-05-12"
+    }
+  },
+  {
+    "id": "record-013-002",
+    "tableId": "table-013",
+    "values": {
+      "field-013-001": "Evaluate first icon library",
+      "field-013-002": "option-013-002-003",
+      "field-013-003": "Morgan",
+      "field-013-005": true,
+      "field-013-004": "2026-05-20"
+    }
+  },
+  {
+    "id": "record-013-003",
+    "tableId": "table-013",
+    "values": {
+      "field-013-001": "Draft initial persistence spike",
+      "field-013-002": "option-013-002-003",
+      "field-013-003": "Sam",
+      "field-013-005": true,
+      "field-013-004": "2026-06-03"
+    }
+  },
+  {
+    "id": "record-013-004",
+    "tableId": "table-013",
+    "values": {
+      "field-013-001": "Old landing page experiment",
+      "field-013-002": "option-013-002-002",
+      "field-013-003": "Avery",
+      "field-013-005": false,
+      "field-013-004": "2026-06-10"
+    }
+  },
+  {
+    "id": "record-013-005",
+    "tableId": "table-013",
+    "values": {
+      "field-013-001": "Review deprecated panel concept",
+      "field-013-002": "option-013-002-002",
+      "field-013-003": "Kylie",
+      "field-013-005": false
+    }
+  },
+  {
+    "id": "record-014-001",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000001",
+      "field-014-002": "Seed data decisions",
+      "field-014-003": "Keep seed identities deterministic and relationships resolvable.",
+      "field-014-004": "option-014-004-003",
+      "field-014-006": "2026-08-20T09:00:00",
+      "field-014-007": "2026-08-30T13:30:00"
+    }
+  },
+  {
+    "id": "record-014-002",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000002",
+      "field-014-002": "Explorer ideas",
+      "field-014-003": "Collections do not nest. Root tables remain visible beside collections.",
+      "field-014-004": "option-014-004-001",
+      "field-014-006": "2026-08-21T10:15:00",
+      "field-014-007": "2026-08-29T15:10:00"
+    }
+  },
+  {
+    "id": "record-014-003",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000003",
+      "field-014-002": "Planning meeting",
+      "field-014-003": "Prioritize local persistence before richer view configuration.",
+      "field-014-004": "option-014-004-002",
+      "field-014-006": "2026-08-22T14:00:00",
+      "field-014-007": "2026-08-22T15:45:00"
+    }
+  },
+  {
+    "id": "record-014-004",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000004",
+      "field-014-002": "Canvas research",
+      "field-014-003": "Track keyboard navigation, selection, resizing, and virtualization separately.",
+      "field-014-004": "option-014-004-004",
+      "field-014-006": "2026-08-23T08:30:00",
+      "field-014-007": "2026-08-28T11:20:00"
+    }
+  },
+  {
+    "id": "record-014-005",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000005",
+      "field-014-002": "Reference syntax",
+      "field-014-003": "References use stable identities rather than display names.",
+      "field-014-004": "option-014-004-005",
+      "field-014-006": "2026-08-24T12:10:00",
+      "field-014-007": "2026-08-24T12:10:00"
+    }
+  },
+  {
+    "id": "record-014-006",
+    "tableId": "table-014",
+    "values": {
+      "field-014-001": "20000000-0000-4000-8000-000000000006",
+      "field-014-002": "Long-form layout note",
+      "field-014-003": "This deliberately longer note exists to exercise wrapping and row-height behavior when a cell contains substantially more text than the surrounding records. The underlying value should remain intact even when the table chooses to truncate or visually constrain it.",
+      "field-014-004": "option-014-004-001",
+      "field-014-006": "2026-08-25T16:00:00",
+      "field-014-007": "2026-08-31T07:50:00"
+    }
+  },
+  {
+    "id": "record-015-001",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 1",
+      "field-015-002": "Layout stress record 1.",
+      "field-015-003": "option-015-003-001",
+      "field-015-004": "option-015-004-001",
+      "field-015-005": "option-015-005-001",
+      "field-015-006": "Morgan",
+      "field-015-007": "Product",
+      "field-015-008": "Central",
+      "field-015-009": "2026-08-01",
+      "field-015-010": "2026-09-06",
+      "field-015-011": "2026-08-01T08:00:00",
+      "field-015-012": "2026-08-11T16:30:00",
+      "field-015-013": 2.5,
+      "field-015-014": 14.25,
+      "field-015-015": 35.62,
+      "field-015-016": 10,
+      "field-015-017": 1,
+      "field-015-018": true,
+      "field-015-019": false,
+      "field-015-020": ["option-015-020-001", "option-015-020-002"],
+      "field-015-021": "REF-0001",
+      "field-015-022": "EXT-10001",
+      "field-015-023": 1,
+      "field-015-024": "Wide-table note 1.",
+      "field-015-025": "2026-08-21",
+      "field-015-026": "Alpha"
+    }
+  },
+  {
+    "id": "record-015-002",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 2",
+      "field-015-002": "Layout stress record 2.",
+      "field-015-003": "option-015-003-002",
+      "field-015-004": "option-015-004-002",
+      "field-015-005": "option-015-005-002",
+      "field-015-006": "Sam",
+      "field-015-007": "Design",
+      "field-015-008": "West",
+      "field-015-009": "2026-08-02",
+      "field-015-010": "2026-09-07",
+      "field-015-011": "2026-08-02T08:00:00",
+      "field-015-012": "2026-08-12T16:30:00",
+      "field-015-013": 5.0,
+      "field-015-014": 16.0,
+      "field-015-015": 80.0,
+      "field-015-016": 20,
+      "field-015-017": 2,
+      "field-015-018": true,
+      "field-015-019": false,
+      "field-015-020": [
+        "option-015-020-001",
+        "option-015-020-002",
+        "option-015-020-003"
+      ],
+      "field-015-021": "REF-0002",
+      "field-015-022": "EXT-10002",
+      "field-015-023": 2,
+      "field-015-024": "",
+      "field-015-025": "2026-08-22",
+      "field-015-026": "Beta"
+    }
+  },
+  {
+    "id": "record-015-003",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 3",
+      "field-015-002": "A deliberately descriptive value used to exercise a wide table layout.",
+      "field-015-003": "option-015-003-003",
+      "field-015-004": "option-015-004-003",
+      "field-015-005": "option-015-005-003",
+      "field-015-006": "Avery",
+      "field-015-007": "Engineering",
+      "field-015-008": "East",
+      "field-015-009": "2026-08-03",
+      "field-015-010": "2026-09-08",
+      "field-015-011": "2026-08-03T08:00:00",
+      "field-015-012": "2026-08-13T16:30:00",
+      "field-015-013": 7.5,
+      "field-015-014": 17.75,
+      "field-015-015": 133.12,
+      "field-015-016": 30,
+      "field-015-017": 3,
+      "field-015-018": true,
+      "field-015-019": true,
+      "field-015-020": [
+        "option-015-020-001",
+        "option-015-020-002",
+        "option-015-020-003",
+        "option-015-020-004"
+      ],
+      "field-015-021": "REF-0003",
+      "field-015-022": "EXT-10003",
+      "field-015-023": 3,
+      "field-015-024": "Wide-table note 3.",
+      "field-015-025": "2026-08-23",
+      "field-015-026": "Gamma"
+    }
+  },
+  {
+    "id": "record-015-004",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 4",
+      "field-015-002": "Layout stress record 4.",
+      "field-015-003": "option-015-003-004",
+      "field-015-004": "option-015-004-004",
+      "field-015-005": "option-015-005-001",
+      "field-015-006": "Kylie",
+      "field-015-007": "Product",
+      "field-015-008": "Central",
+      "field-015-009": "2026-08-04",
+      "field-015-010": "2026-09-09",
+      "field-015-011": "2026-08-04T08:00:00",
+      "field-015-012": "2026-08-14T16:30:00",
+      "field-015-013": 10.0,
+      "field-015-014": 19.5,
+      "field-015-015": 195.0,
+      "field-015-016": 40,
+      "field-015-017": 4,
+      "field-015-018": false,
+      "field-015-019": false,
+      "field-015-020": ["option-015-020-001"],
+      "field-015-021": "REF-0004",
+      "field-015-022": "EXT-10004",
+      "field-015-023": 4,
+      "field-015-024": "Wide-table note 4.",
+      "field-015-025": "2026-08-24",
+      "field-015-026": "Alpha"
+    }
+  },
+  {
+    "id": "record-015-005",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 5",
+      "field-015-002": "Layout stress record 5.",
+      "field-015-003": "option-015-003-001",
+      "field-015-004": "option-015-004-001",
+      "field-015-005": "option-015-005-002",
+      "field-015-006": "Morgan",
+      "field-015-007": "Design",
+      "field-015-008": "West",
+      "field-015-009": "2026-08-05",
+      "field-015-010": "2026-09-10",
+      "field-015-011": "2026-08-05T08:00:00",
+      "field-015-012": "2026-08-15T16:30:00",
+      "field-015-013": 12.5,
+      "field-015-014": 21.25,
+      "field-015-015": 265.62,
+      "field-015-016": 50,
+      "field-015-017": 5,
+      "field-015-018": true,
+      "field-015-019": false,
+      "field-015-020": ["option-015-020-001", "option-015-020-002"],
+      "field-015-021": "REF-0005",
+      "field-015-022": "EXT-10005",
+      "field-015-023": 5,
+      "field-015-024": "Wide-table note 5.",
+      "field-015-025": "2026-08-25",
+      "field-015-026": "Beta"
+    }
+  },
+  {
+    "id": "record-015-006",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 6",
+      "field-015-002": "Layout stress record 6.",
+      "field-015-003": "option-015-003-002",
+      "field-015-004": "option-015-004-002",
+      "field-015-005": "option-015-005-003",
+      "field-015-006": "Sam",
+      "field-015-007": "Engineering",
+      "field-015-008": "East",
+      "field-015-009": "2026-08-06",
+      "field-015-010": "2026-09-11",
+      "field-015-011": "2026-08-06T08:00:00",
+      "field-015-012": "2026-08-16T16:30:00",
+      "field-015-013": 15.0,
+      "field-015-014": 23.0,
+      "field-015-015": 345.0,
+      "field-015-016": 60,
+      "field-015-017": 1,
+      "field-015-018": true,
+      "field-015-019": true,
+      "field-015-020": [
+        "option-015-020-001",
+        "option-015-020-002",
+        "option-015-020-003"
+      ],
+      "field-015-021": "REF-0006",
+      "field-015-022": "EXT-10006",
+      "field-015-023": 6,
+      "field-015-024": "Wide-table note 6.",
+      "field-015-025": "2026-08-26",
+      "field-015-026": "Gamma"
+    }
+  },
+  {
+    "id": "record-015-007",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 7",
+      "field-015-002": "Layout stress record 7.",
+      "field-015-003": "option-015-003-003",
+      "field-015-004": "option-015-004-003",
+      "field-015-005": "option-015-005-001",
+      "field-015-006": "Avery",
+      "field-015-007": "Product",
+      "field-015-008": "Central",
+      "field-015-009": "2026-08-07",
+      "field-015-010": "2026-09-12",
+      "field-015-011": "2026-08-07T08:00:00",
+      "field-015-012": "2026-08-17T16:30:00",
+      "field-015-013": 17.5,
+      "field-015-014": 24.75,
+      "field-015-015": 433.12,
+      "field-015-016": 70,
+      "field-015-017": 2,
+      "field-015-018": true,
+      "field-015-019": false,
+      "field-015-020": [
+        "option-015-020-001",
+        "option-015-020-002",
+        "option-015-020-003",
+        "option-015-020-004"
+      ],
+      "field-015-021": "REF-0007",
+      "field-015-022": "EXT-10007",
+      "field-015-023": 7,
+      "field-015-024": "Wide-table note 7.",
+      "field-015-025": "2026-08-27",
+      "field-015-026": "Alpha"
+    }
+  },
+  {
+    "id": "record-015-008",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 8",
+      "field-015-002": "Layout stress record 8.",
+      "field-015-003": "option-015-003-004",
+      "field-015-004": "option-015-004-004",
+      "field-015-005": "option-015-005-002",
+      "field-015-006": "Kylie",
+      "field-015-007": "Design",
+      "field-015-008": "West",
+      "field-015-009": "2026-08-08",
+      "field-015-010": "2026-09-13",
+      "field-015-011": "2026-08-08T08:00:00",
+      "field-015-012": "2026-08-18T16:30:00",
+      "field-015-013": 20.0,
+      "field-015-014": 26.5,
+      "field-015-015": 530.0,
+      "field-015-016": 80,
+      "field-015-017": 3,
+      "field-015-018": false,
+      "field-015-019": false,
+      "field-015-020": ["option-015-020-001"],
+      "field-015-021": "REF-0008",
+      "field-015-022": "EXT-10008",
+      "field-015-023": 8,
+      "field-015-024": "Wide-table note 8.",
+      "field-015-025": "2026-08-28",
+      "field-015-026": "Beta"
+    }
+  },
+  {
+    "id": "record-015-009",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 9",
+      "field-015-002": "Layout stress record 9.",
+      "field-015-003": "option-015-003-001",
+      "field-015-004": "option-015-004-001",
+      "field-015-005": "option-015-005-003",
+      "field-015-006": "Morgan",
+      "field-015-007": "Engineering",
+      "field-015-008": "East",
+      "field-015-009": "2026-08-09",
+      "field-015-010": "2026-09-14",
+      "field-015-011": "2026-08-09T08:00:00",
+      "field-015-012": "2026-08-19T16:30:00",
+      "field-015-013": 22.5,
+      "field-015-014": 28.25,
+      "field-015-015": 635.62,
+      "field-015-016": 90,
+      "field-015-017": 4,
+      "field-015-018": true,
+      "field-015-019": true,
+      "field-015-020": ["option-015-020-001", "option-015-020-002"],
+      "field-015-021": "REF-0009",
+      "field-015-022": "EXT-10009",
+      "field-015-023": 9,
+      "field-015-024": "Wide-table note 9.",
+      "field-015-025": "2026-08-29",
+      "field-015-026": "Gamma"
+    }
+  },
+  {
+    "id": "record-015-010",
+    "tableId": "table-015",
+    "values": {
+      "field-015-001": "Wide Record 10",
+      "field-015-002": "Layout stress record 10.",
+      "field-015-003": "option-015-003-002",
+      "field-015-004": "option-015-004-002",
+      "field-015-005": "option-015-005-001",
+      "field-015-006": "Sam",
+      "field-015-007": "Product",
+      "field-015-008": "Central",
+      "field-015-009": "2026-08-10",
+      "field-015-010": "2026-09-15",
+      "field-015-011": "2026-08-10T08:00:00",
+      "field-015-012": "2026-08-20T16:30:00",
+      "field-015-013": 25.0,
+      "field-015-014": 30.0,
+      "field-015-015": 750.0,
+      "field-015-016": 100,
+      "field-015-017": 5,
+      "field-015-018": true,
+      "field-015-019": false,
+      "field-015-020": [
+        "option-015-020-001",
+        "option-015-020-002",
+        "option-015-020-003"
+      ],
+      "field-015-021": "REF-0010",
+      "field-015-022": "EXT-10010",
+      "field-015-023": 10,
+      "field-015-024": "Wide-table note 10.",
+      "field-015-025": "2026-08-30",
+      "field-015-026": "Alpha"
+    }
+  },
+  {
+    "id": "record-016-001",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "All blank optionals"
+    }
+  },
+  {
+    "id": "record-016-002",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Explicit zero",
+      "field-016-003": 0
+    }
+  },
+  {
+    "id": "record-016-003",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Explicit false",
+      "field-016-005": false
+    }
+  },
+  {
+    "id": "record-016-004",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Empty text",
+      "field-016-002": ""
+    }
+  },
+  {
+    "id": "record-016-005",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Ordinary values",
+      "field-016-002": "Hello",
+      "field-016-003": 42.5,
+      "field-016-004": "2026-08-31",
+      "field-016-005": true,
+      "field-016-006": "option-016-006-001",
+      "field-016-007": 5,
+      "field-016-008": "Fully populated."
+    }
+  },
+  {
+    "id": "record-016-006",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Negative number",
+      "field-016-003": -12.75,
+      "field-016-006": "option-016-006-002"
+    }
+  },
+  {
+    "id": "record-016-007",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Low rating",
+      "field-016-007": 1
+    }
+  },
+  {
+    "id": "record-016-008",
+    "tableId": "table-016",
+    "values": {
+      "field-016-001": "Text only",
+      "field-016-002": "Only one optional value is present."
+    }
+  },
+  {
+    "id": "record-017-001",
+    "tableId": "table-017",
+    "values": {
+      "field-017-001": "Navigation overflow example",
+      "field-017-002": "option-017-002-001",
+      "field-017-003": "The table name is intentionally much longer than its data."
+    }
+  },
+  {
+    "id": "record-017-002",
+    "tableId": "table-017",
+    "values": {
+      "field-017-001": "Second row",
+      "field-017-002": "option-017-002-002",
+      "field-017-003": "Used to confirm the table itself still behaves normally."
+    }
+  },
+  {
+    "id": "record-017-003",
+    "tableId": "table-017",
+    "values": {
+      "field-017-001": "Completed example",
+      "field-017-002": "option-017-002-003",
+      "field-017-003": ""
+    }
+  },
+  {
+    "id": "record-017-004",
+    "tableId": "table-017",
+    "values": {
+      "field-017-001": "Short value",
+      "field-017-002": "option-017-002-001"
+    }
+  },
+  {
+    "id": "record-017-005",
+    "tableId": "table-017",
+    "values": {
+      "field-017-001": "Another ordinary record",
+      "field-017-002": "option-017-002-001",
+      "field-017-003": "No special domain behavior is required here."
     }
   }
 ]
