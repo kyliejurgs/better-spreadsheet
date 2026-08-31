@@ -234,6 +234,16 @@ Icons used together should maintain consistent:
 
 Avoid mixing visually incompatible icon styles within the same control group unless a required icon is unavailable and the alternative remains visually appropriate.
 
+### 11.1 Icon Library
+
+Lucide is the primary icon library for Better Spreadsheet. It is provided through the application's Taiga UI integration and should be used for application icons whenever an appropriate icon exists.
+
+Icons from other libraries may be used when Lucide does not provide an appropriate icon or when another icon better communicates the intended concept.
+
+When icons from multiple libraries are used together, they should remain visually compatible in apparent size, weight, alignment, and overall style.
+
+Custom icons may be used for Better Spreadsheet branding, application-specific concepts, or concepts not adequately represented by available icon libraries.
+
 ---
 
 ## 12. Controls

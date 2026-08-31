@@ -1,7 +1,8 @@
 .status-bar {
   height: var(--status-bar-height);
   padding: 0 8px;
-  background: skyblue;
   display: flex;
   align-items: center;
+  background: var(--tui-background-base);
+  color: var(--tui-text-primary);
 }

@@ -1,7 +1,53 @@
 .menu-bar {
   height: var(--menu-bar-height);
-  padding: 0 8px;
-  background: orange;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background: var(--tui-background-base);
+  color: var(--tui-text-primary);
+}
+
+.menu-bar__categories,
+.menu-bar__controls {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar__category {
+  height: 100%;
+  padding: 0 10px;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: calc(var(--menu-bar-height) / 2);
+  cursor: pointer;
+}
+
+.menu-bar__category:hover {
+  box-shadow: inset 0 -2px var(--accent-color);
+}
+
+.menu-bar__category--active {
+  color: var(--accent-color);
+  font-weight: bold;
+  box-shadow: inset 0 -2px var(--accent-color);
+}
+
+.menu-bar__control {
+  height: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.menu-bar__control:hover {
+  color: var(--accent-color);
+}
+
+.menu-bar__control tui-icon {
+  font-size: calc(var(--menu-bar-height) / 2);
 }

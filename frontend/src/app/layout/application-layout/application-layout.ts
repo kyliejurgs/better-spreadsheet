@@ -19,6 +19,7 @@ import { StatusBar } from '../status-bar/status-bar';
 import { APPLICATION_LAYOUT } from './application-layout.config';
 import { ContainerSize } from '../../shared/resizable-container/resizable-container';
 import { ResizablePanel } from '../resizable-panel/resizable-panel';
+import { CommandBar } from '../command-bar/command-bar';
 
 type SidePanel = 'left' | 'right';
 
@@ -41,6 +42,7 @@ interface SidePanelState {
     RightPanel,
     StatusBar,
     ResizablePanel,
+    CommandBar,
   ],
   selector: 'app-application-layout',
   styleUrl: './application-layout.css',

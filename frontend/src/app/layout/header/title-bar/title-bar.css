@@ -1,7 +1,11 @@
 .title-bar {
   height: var(--title-bar-height);
-  padding: 0 8px;
-  background: red;
+  padding: var(--layout-gap) 8px;
   display: flex;
   align-items: center;
+}
+
+.title-bar__title {
+  font: inherit;
+  font-size: calc(var(--title-bar-height) * 0.65);
 }
