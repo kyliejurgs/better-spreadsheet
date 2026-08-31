@@ -21,6 +21,13 @@
     "required": true
   },
   {
+    "id": "view-003-002",
+    "tableId": "table-003",
+    "name": "Project Schedule",
+    "lifecycleState": "active",
+    "required": false
+  },
+  {
     "id": "view-004-001",
     "tableId": "table-004",
     "name": "All Data",
@@ -56,11 +63,25 @@
     "required": true
   },
   {
+    "id": "view-008-002",
+    "tableId": "table-008",
+    "name": "Roadmap by Status",
+    "lifecycleState": "active",
+    "required": false
+  },
+  {
     "id": "view-009-001",
     "tableId": "table-009",
     "name": "All Data",
     "lifecycleState": "active",
     "required": true
+  },
+  {
+    "id": "view-009-002",
+    "tableId": "table-009",
+    "name": "Issue Board",
+    "lifecycleState": "active",
+    "required": false
   },
   {
     "id": "view-010-001",
