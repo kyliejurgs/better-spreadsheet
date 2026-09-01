@@ -30,7 +30,7 @@
         (resizeEnd)="finishSidePanelResize('left')"
       >
         @if (leftPanelVisible()) {
-          <app-left-panel />
+          <app-left-panel [activeView]="activeLeftPanelView()" />
         }
       </app-resizable-panel>
 
