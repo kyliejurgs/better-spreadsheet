@@ -13,9 +13,16 @@ export const STORES = {
   sections: 'sections',
 } as const;
 
+export const INDEXES = {
+  workspaceId: 'workspaceId',
+  tableId: 'tableId',
+  viewId: 'viewId',
+} as const;
+
+// Reuse same open operation rather than new IndexedDB connection for every request
 let databasePromise: Promise<IDBDatabase> | null = null;
 
-export function openData(): Promise<IDBDatabase> {
+export function openDatabase(): Promise<IDBDatabase> {
   databasePromise ??= createDatabase();
   return databasePromise;
 }
@@ -23,6 +30,7 @@ export function openData(): Promise<IDBDatabase> {
 function createDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
+
     request.onupgradeneeded = () => {
       resolve(request.result);
     };
@@ -39,19 +47,27 @@ function createDatabase(): Promise<IDBDatabase> {
 
 function createSchema(database: IDBDatabase): void {
   createStore(database, STORES.workspaces);
-  createStore(database, STORES.collections);
-  createStore(database, STORES.tables);
-  createStore(database, STORES.fields);
-  createStore(database, STORES.records);
-  createStore(database, STORES.records);
-  createStore(database, STORES.views);
-  createStore(database, STORES.sections);
+  createIndexedStore(database, STORES.collections, INDEXES.workspaceId);
+  createIndexedStore(database, STORES.tables, INDEXES.workspaceId);
+  createIndexedStore(database, STORES.fields, INDEXES.tableId);
+  createIndexedStore(database, STORES.records, INDEXES.tableId);
+  createIndexedStore(database, STORES.views, INDEXES.tableId);
+  createIndexedStore(database, STORES.sections, INDEXES.viewId);
 }
 
-function createStore(database: IDBDatabase, name: string): void {
+function createStore(database: IDBDatabase, name: string): IDBObjectStore | null {
   if (database.objectStoreNames.contains(name)) {
+    return null;
+  }
+
+  return database.createObjectStore(name, { keyPath: 'id' });
+}
+
+function createIndexedStore(database: IDBDatabase, storeName: string, indexName: string): void {
+  const store = createStore(database, storeName);
+  if (store === null) {
     return;
   }
 
-  database.createObjectStore(name, { keyPath: 'id' });
+  store.createIndex(indexName, indexName, { unique: false });
 }
