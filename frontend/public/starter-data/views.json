@@ -1,0 +1,149 @@
+[
+  {
+    "id": "view-001-001",
+    "tableId": "table-001",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-002-001",
+    "tableId": "table-002",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-003-001",
+    "tableId": "table-003",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-003-002",
+    "tableId": "table-003",
+    "name": "Project Schedule",
+    "lifecycleState": "active",
+    "required": false
+  },
+  {
+    "id": "view-004-001",
+    "tableId": "table-004",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-005-001",
+    "tableId": "table-005",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-006-001",
+    "tableId": "table-006",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-007-001",
+    "tableId": "table-007",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-008-001",
+    "tableId": "table-008",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-008-002",
+    "tableId": "table-008",
+    "name": "Roadmap by Status",
+    "lifecycleState": "active",
+    "required": false
+  },
+  {
+    "id": "view-009-001",
+    "tableId": "table-009",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-009-002",
+    "tableId": "table-009",
+    "name": "Issue Board",
+    "lifecycleState": "active",
+    "required": false
+  },
+  {
+    "id": "view-010-001",
+    "tableId": "table-010",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-011-001",
+    "tableId": "table-011",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-012-001",
+    "tableId": "table-012",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-013-001",
+    "tableId": "table-013",
+    "name": "All Data",
+    "lifecycleState": "archived",
+    "required": true
+  },
+  {
+    "id": "view-014-001",
+    "tableId": "table-014",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-015-001",
+    "tableId": "table-015",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-016-001",
+    "tableId": "table-016",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-017-001",
+    "tableId": "table-017",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  },
+  {
+    "id": "view-018-001",
+    "tableId": "table-018",
+    "name": "All Data",
+    "lifecycleState": "active",
+    "required": true
+  }
+]

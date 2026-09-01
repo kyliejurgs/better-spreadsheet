@@ -1,0 +1,128 @@
+[
+  {
+    "id": "table-001",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-001",
+    "name": "Grocery List",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-002",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-001",
+    "name": "Household Budget",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-003",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-002",
+    "name": "Home Projects",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-004",
+    "workspaceId": "workspace-001",
+    "collectionId": "collection-002",
+    "name": "Reading List",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-005",
+    "workspaceId": "workspace-001",
+    "collectionId": null,
+    "name": "Inbox",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-006",
+    "workspaceId": "workspace-001",
+    "collectionId": null,
+    "name": "Scratchpad",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-007",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-004",
+    "name": "Project Plan",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-008",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-004",
+    "name": "Roadmap",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-009",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-005",
+    "name": "Issue Tracker",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-010",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-005",
+    "name": "Time Tracking",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-011",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-006",
+    "name": "Contacts",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-012",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-006",
+    "name": "Activity Log",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-013",
+    "workspaceId": "workspace-002",
+    "collectionId": "collection-007",
+    "name": "Legacy Tasks",
+    "lifecycleState": "archived"
+  },
+  {
+    "id": "table-014",
+    "workspaceId": "workspace-002",
+    "collectionId": null,
+    "name": "Notes",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-015",
+    "workspaceId": "workspace-003",
+    "collectionId": "collection-009",
+    "name": "Many Fields",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-016",
+    "workspaceId": "workspace-003",
+    "collectionId": "collection-009",
+    "name": "Sparse Data",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-017",
+    "workspaceId": "workspace-003",
+    "collectionId": "collection-009",
+    "name": "Very Long Table Name Used to Exercise Navigation Overflow Behavior",
+    "lifecycleState": "active"
+  },
+  {
+    "id": "table-018",
+    "workspaceId": "workspace-003",
+    "collectionId": null,
+    "name": "Empty Table",
+    "lifecycleState": "active"
+  }
+]

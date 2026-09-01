@@ -1,0 +1,17 @@
+[
+  {
+    "id": "workspace-001",
+    "name": "Personal",
+    "cloudParticipation": "local-only"
+  },
+  {
+    "id": "workspace-002",
+    "name": "Work",
+    "cloudParticipation": "cloud-synchronized"
+  },
+  {
+    "id": "workspace-003",
+    "name": "Sandbox",
+    "cloudParticipation": "local-only"
+  }
+]
