@@ -1,5 +1,3 @@
-import { tuiCreateKeyStepsTransformer } from '@taiga-ui/core';
-
 const DATABASE_NAME = 'better-spreadsheet';
 const DATABASE_VERSION = 1;
 
