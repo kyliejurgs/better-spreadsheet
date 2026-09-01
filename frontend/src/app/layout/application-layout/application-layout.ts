@@ -12,7 +12,7 @@ import {
 import { LogoArea } from '../logo-area/logo-area';
 import { Header } from '../header/header';
 import { ActivityBar } from '../activity-bar/activity-bar';
-import { LeftPanel } from '../left-panel/left-panel';
+import { LeftPanel, LeftPanelView } from '../left-panel/left-panel';
 import { CenterArea } from '../center-area/center-area';
 import { RightPanel } from '../right-panel/right-panel';
 import { StatusBar } from '../status-bar/status-bar';
@@ -52,6 +52,11 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
   protected readonly config = APPLICATION_LAYOUT;
   protected readonly applicationHeaderHeight =
     this.config.fixed.titleBarHeight + this.config.fixed.menuBarHeight;
+
+  protected readonly activeLeftPanelView = signal<LeftPanelView>('explorer');
+  protected selectLeftPanelView(view: LeftPanelView): void {
+    this.activeLeftPanelView.set(view);
+  }
 
   private readonly mainWorkspace = viewChild.required<ElementRef<HTMLElement>>('mainWorkspace');
   private readonly workspaceWidth = signal(0);

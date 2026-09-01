@@ -40,7 +40,3 @@
   border-radius: 10px;
   outline-offset: calc(-2 * var(--layout-gap));
 }
-
-.activity-bar__item--active tui-icon {
-  font-size: calc(var(--activity-bar-width) * 0.65);
-}

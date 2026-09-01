@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+export type LeftPanelView = 'explorer' | 'search';
+
 @Component({
   imports: [],
   selector: 'app-left-panel',

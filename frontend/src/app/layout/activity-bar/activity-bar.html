@@ -1,14 +1,23 @@
 <div class="activity-bar">
   <div class="activity-bar__primary">
     <button
-      class="activity-bar__item activity-bar__item--active"
+      class="activity-bar__item"
       type="button"
       aria-label="Explorer"
+      type="button"
+      [class.activity-bar__item--active]="activeView() === 'explorer'"
+      (click)="selectView('explorer')"
     >
       <tui-icon icon="@tui.library-big" />
     </button>
 
-    <button class="activity-bar__item" type="button" aria-label="Search">
+    <button
+      class="activity-bar__item"
+      type="button"
+      aria-label="Search"
+      [class.activity-bar__item--active]="activeView() === 'search'"
+      (click)="selectView('search')"
+    >
       <tui-icon icon="@tui.search" />
     </button>
   </div>
