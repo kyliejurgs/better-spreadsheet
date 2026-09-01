@@ -6,13 +6,17 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { WorkspaceService } from './services/workspace.service';
+import { ApplicationService } from './services/application.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideTaiga(),
-    provideAppInitializer(() => {
-      return inject(WorkspaceService).initialize();
+    provideAppInitializer(async () => {
+      const applicationService = inject(ApplicationService);
+      const workspaceService = inject(WorkspaceService);
+      await applicationService.initialize();
+      await workspaceService.initialize();
     }),
   ],
 };

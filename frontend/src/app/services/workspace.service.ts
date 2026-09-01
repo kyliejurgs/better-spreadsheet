@@ -2,14 +2,13 @@ import { computed, Injectable, signal } from '@angular/core';
 import { Workspace } from '../models/workspace';
 import { WorkspaceData } from '../models/workspace-data';
 import { getWorkspaceData, getWorkspaces } from '../data/workspace-data';
+import { getApplicationMetadata, saveApplicationMetadata } from '../data/application-data';
 
 export type WorkspaceLoadState = 'idle' | 'loading' | 'ready' | 'error';
 
 /**
- * Owns live application state for the current workspace.
- *
- * Components consume this service rather than reading IndexedDB directly. Signals represent the
- * live interface state; IndexedDB remains the durable source of truth
+ * Owns live state for the currently selected workspace. Signals are the reactive interface state
+ * while IndexedDB remains the durable source of truth.
  */
 @Injectable({ providedIn: 'root' })
 export class WorkspaceService {
@@ -46,21 +45,30 @@ export class WorkspaceService {
     return this.workspaceDataState()?.sections ?? [];
   });
 
-  // Loads workspace list and selects first available on initialization
-  // Selection persistence can be added when navigation state is implemented
+  /**
+   * Restores the last valid selected workspace. If workspace no longer exists, first available
+   * workspace becomes the new fallback.
+   */
   async initialize(): Promise<void> {
     this.beginLoad();
-    try {
-      const workspaces = await getWorkspaces();
-      this.workspaceStates.set(workspaces);
 
+    try {
+      const [workspaces, metadata] = await Promise.all([getWorkspaces(), getApplicationMetadata()]);
+
+      this.workspaceStates.set(workspaces);
       if (workspaces.length === 0) {
         this.workspaceDataState.set(null);
+        await this.persistSelectedWorkspace(null);
         this.loadStateValue.set('ready');
         return;
       }
 
-      await this.loadWorkspace(workspaces[0].id);
+      const selectedWorkspaceId = this.resolveSelectedWorkspaceId(
+        workspaces,
+        metadata?.selectedWorkspaceId ?? null,
+      );
+      await this.loadWorkspace(selectedWorkspaceId);
+      await this.persistSelectedWorkspace(selectedWorkspaceId);
     } catch (error) {
       this.failLoad(error);
     }
@@ -76,9 +84,41 @@ export class WorkspaceService {
 
     try {
       await this.loadWorkspace(workspaceId);
+      await this.persistSelectedWorkspace(workspaceId);
     } catch (error) {
       this.failLoad(error);
     }
+  }
+
+  private resolveSelectedWorkspaceId(
+    workspaces: readonly Workspace[],
+    selectedWorkspaceId: string | null,
+  ): string {
+    const selectedStillExists = workspaces.some((workspace) => {
+      return workspace.id === selectedWorkspaceId;
+    });
+
+    if (selectedWorkspaceId !== null && selectedStillExists) {
+      return selectedWorkspaceId;
+    }
+
+    return workspaces[0].id;
+  }
+
+  private async persistSelectedWorkspace(workspaceId: string | null): Promise<void> {
+    const metadata = await getApplicationMetadata();
+    if (metadata === null) {
+      throw new Error('Application metadata has not been initialized.');
+    }
+
+    if (metadata.selectedWorkspaceId === workspaceId) {
+      return;
+    }
+
+    await saveApplicationMetadata({
+      ...metadata,
+      selectedWorkspaceId: workspaceId,
+    });
   }
 
   private async loadWorkspace(workspaceId: string): Promise<void> {

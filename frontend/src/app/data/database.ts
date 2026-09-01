@@ -4,6 +4,7 @@ const DATABASE_NAME = 'better-spreadsheet';
 const DATABASE_VERSION = 1;
 
 export const STORES = {
+  application: 'application',
   workspaces: 'workspaces',
   collections: 'collections',
   tables: 'tables',
@@ -19,7 +20,7 @@ export const INDEXES = {
   viewId: 'viewId',
 } as const;
 
-// Reuse same open operation rather than new IndexedDB connection for every request
+// Reuse one open operation rather than creating a connection per request.
 let databasePromise: Promise<IDBDatabase> | null = null;
 
 export function openDatabase(): Promise<IDBDatabase> {
@@ -32,7 +33,7 @@ function createDatabase(): Promise<IDBDatabase> {
     const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
 
     request.onupgradeneeded = () => {
-      resolve(request.result);
+      createSchema(request.result);
     };
 
     request.onsuccess = () => {
@@ -69,5 +70,6 @@ function createIndexedStore(database: IDBDatabase, storeName: string, indexName:
     return;
   }
 
+  // Ownership indexes are non-unique because parents may own many children.
   store.createIndex(indexName, indexName, { unique: false });
 }
