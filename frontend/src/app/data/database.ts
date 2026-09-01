@@ -47,6 +47,7 @@ function createDatabase(): Promise<IDBDatabase> {
 }
 
 function createSchema(database: IDBDatabase): void {
+  createStore(database, STORES.application);
   createStore(database, STORES.workspaces);
   createIndexedStore(database, STORES.collections, INDEXES.workspaceId);
   createIndexedStore(database, STORES.tables, INDEXES.workspaceId);
