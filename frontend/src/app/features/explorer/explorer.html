@@ -1,1 +1,40 @@
-<p>explorer works!</p>
+<div class="explorer">
+  <header class="explorer-header">
+    <span class="explorer-title">Explorer</span>
+  </header>
+
+  <div class="explorer-content">
+    @if (currentWorkspace(); as workspace) {
+      <section class="explorer-section">
+        <div class="section-header">
+          <tui-icon icon="@tui.globe" />
+          <span class="section-title">{{ workspace.name }}</span>
+        </div>
+
+        @if (tree().length) {
+          @for (node of tree(); track node.id) {
+            <tui-tree
+              [childrenHandler]="childrenHandler"
+              [content]="nodeContent"
+              [tuiTreeController]="true"
+              [value]="node"
+            />
+          }
+        }
+      </section>
+    }
+
+    <section class="explorer-section">
+      <div class="section-header">
+        <span class="section-title">Files</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ng-template #nodeContent let-node="node" let-value>
+  <div class="tree-row">
+    <tui-icon class="tree-icon" [icon]="value.icon" />
+    <span class="tree-label">{{ value.name }}</span>
+  </div>
+</ng-template>
