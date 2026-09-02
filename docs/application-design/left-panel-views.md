@@ -228,11 +228,95 @@ Additional hover actions should be introduced only when the corresponding operat
 
 ### Contextual Actions
 
-Workspace tree objects support right-click context menus.
+Workspace tree objects support right-click context menus.Right-clicking an object makes that object the context target before opening its menu. Context-menu commands are determined by the object type.
 
-The available commands are determined by the object type and functionality available within the application. Specific context-menu commands are defined alongside their corresponding features rather than by the Explorer design.
+#### Workspace
 
-Individual tree nodes do not require an ellipsis control for access to their context menus.
+The Workspace context menu provides:
+
+- New Collection
+- New Table
+- New Query
+- New Dashboard
+- Switch Workspace
+- Duplicate
+- Import
+- Export
+- Rename
+
+#### Collection
+
+The Collection context menu provides:
+
+- New Table
+- New Query
+- New Dashboard
+- Rename
+- Duplicate
+- Export
+- Archive
+- Move to Trash
+
+#### Table
+
+The Table context menu provides:
+
+- New View
+- Rename
+- Duplicate
+- Move
+- Export
+- Archive
+- Move to Trash
+
+Move allows the Table to move between the Workspace root and a Collection.
+
+#### View
+
+A normal View context menu provides:
+
+- Rename
+- Duplicate
+- Archive
+- Move to Trash
+
+Views remain owned by their Table and do not expose a Move action.
+
+#### All Data View
+
+`All Data` is the required base View of every Table and uses a restricted context menu containing:
+
+- Duplicate
+
+`All Data` cannot be renamed, archived, or moved to Trash. Duplicating `All Data` creates a normal View belonging to the same Table.
+
+#### Query
+
+The Query context menu provides:
+
+- Rename
+- Duplicate
+- Move
+- Export
+- Archive
+- Move to Trash
+
+Move allows the Query to move between the Workspace root and a Collection.
+
+#### Dashboard
+
+The Dashboard context menu provides:
+
+- Rename
+- Duplicate
+- Move
+- Export
+- Archive
+- Move to Trash
+
+Move allows the Dashboard to move between the Workspace root and a Collection.
+
+Context menus should visually group related commands using separators where appropriate. Individual Workspace tree nodes do not require an ellipsis control for access to their context menus.
 
 ---
 
@@ -258,11 +342,10 @@ The initial Files section does not introduce folders or another file organizatio
 
 ### Behavior
 
-Individual Files support right-click contextual actions.
+File opening, preview, and contextual actions are defined alongside
+File-management functionality.
 
-Specific File context-menu commands and File opening or preview behavior are defined alongside File-management functionality.
-
-Future functionality may provide grouping or filtering based on where Files are used without changing their Workspace-level ownership.
+Explorer does not assume that the structural operations available to Workspace tree objects also apply to Files.
 
 ---
 
@@ -286,16 +369,15 @@ Detailed Search layout, filtering, result presentation, and navigation behavior 
 
 The following behavior is intentionally deferred until its corresponding functionality is designed:
 
-- Workspace tree context-menu commands
-- File context-menu commands
-- File opening and preview behavior
+- File opening, preview, and contextual actions
 - Rename workflows
 - Move workflows
 - Duplication workflows
 - Archive and Trash workflows
+- Import and export workflows
 - Drag-and-drop behavior
 - Advanced File grouping and filtering
 - Detailed Search behavior
 - Feature-specific loading, error, and empty states
 
-These behaviors should be defined alongside their associated application functionality rather than being constrained by the initial Left Panel implementation.
+The availability of an action may be defined by this document while the detailed workflow for performing that action remains the responsibility of its associated feature design.
