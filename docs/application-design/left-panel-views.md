@@ -57,9 +57,11 @@ Explorer initially contains two vertically stacked sections that may be independ
 
 ### Layout
 
-The Explorer header displays the Explorer title and any Explorer-level contextual actions. Below the header, Explorer sections occupy the available vertical space.
+The Workspace section contains the hierarchical Workspace navigation. The Files section provides a separate presentation of Workspace-owned Files.
 
-The Workspace section contains the workspace navigation tree. The tree is implemented using Taiga UI Tree. The Files section provides a separate presentation of Workspace-owned Files.
+Workspace and Files are presented as full-width collapsible section rows. Each section row contains a disclosure control, an object-specific icon, and its label. The active Workspace name is used as the Workspace section label.
+
+Workspace content is presented using compact, indented navigation rows beneath the Workspace section header. Explorer owns the layout and interaction behavior of these rows rather than delegating navigation presentation to a generic tree component.
 
 Collapsing an Explorer section does not collapse the Left Panel itself.
 
@@ -104,11 +106,22 @@ Widgets do not appear as Explorer nodes because they belong to and are managed t
 
 ### Layout
 
-The Workspace name is displayed in the Workspace section header. The Workspace section header also acts as the control for expanding and collapsing the section.
+The active Workspace name is displayed in the Workspace section header. The Workspace section header also acts as the control for expanding and collapsing the section.
 
-Workspace actions are displayed on the right side of the section header when the header is hovered or focused. The action area takes priority over the available workspace-name display width. The workspace name may therefore truncate when necessary to keep the actions accessible.
+The Workspace section header contains:
 
-The tree uses object-specific icons to distinguish Collections, Tables, Views, Queries, and Dashboards.
+- Expand/collapse disclosure control
+- Workspace icon
+- Active Workspace name
+- Contextual actions when applicable
+
+Workspace actions are displayed on the right side of the section header when the header is hovered or focused. The action area takes priority over the available Workspace-name display width. The Workspace name may therefore truncate when necessary to keep the actions accessible.
+
+Workspace navigation uses compact hierarchical rows. Collections, Tables, Views, Queries, and Dashboards use object-specific icons. Expandable objects display a disclosure control before their object icon. Non-expandable objects preserve alignment with expandable objects.
+
+Child objects are indented according to their hierarchy level. Typography remains consistent throughout Workspace navigation; hierarchy is communicated primarily through indentation, disclosure controls, icons, and object relationships rather than changes in font size.
+
+Workspace section headers use stronger typographic emphasis than individual navigation objects.
 
 ### Ordering
 
@@ -119,7 +132,7 @@ Workspace tree content uses automatic case-insensitive alphabetical ordering. At
 
 Inside a Collection, Tables, Queries, and Dashboards are sorted together alphabetically. Inside a Table, `All Data` always appears first. Remaining Views are sorted alphabetically.
 
-Object type does not otherwise affect ordering.
+Object type does not otherwise affect ordering. Empty Collections are omitted from Explorer navigation. The Collection remains part of the Workspace data model but is not displayed in Explorer until it contains at least one object that would appear in Workspace navigation.
 
 ---
 
@@ -338,7 +351,16 @@ The Files section contains the Files owned by the active Workspace. Files are so
 
 Files are presented within their own collapsible Explorer section.
 
-The initial Files section does not introduce folders or another file organization hierarchy. The Files section header may expose an Add File action when File-management functionality is available.
+The Files section header follows the same visual structure as the Workspace section header and contains:
+
+- Expand/collapse disclosure control
+- Files icon
+- Files label
+- Contextual actions when applicable
+
+The initial Files section does not introduce folders or another file organization hierarchy. Individual Files may use type-specific icons when File-management functionality is implemented.
+
+The Files section header may expose an Add File action when File-management functionality is available.
 
 ### Behavior
 
