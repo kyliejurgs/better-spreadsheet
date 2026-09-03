@@ -19,12 +19,35 @@
         @if (workspaceExpanded()) {
           <div class="section-content">
             @for (node of tree(); track node.id) {
-              <tui-tree
-                [childrenHandler]="childrenHandler"
-                [content]="nodeContent"
-                [tuiTreeController]="true"
-                [value]="node"
-              />
+              @if (node.type === 'collection') {
+                <button
+                  class="tree-row tree-row--level-0"
+                  type="button"
+                  (click)="toggleCollection(node.id)"
+                >
+                  <tui-icon
+                    class="tree-chevron"
+                    [icon]="
+                      isCollectionExpanded(node.id) ? '@tui.chevron-down' : '@tui.chevron-right'
+                    "
+                  />
+
+                  <tui-icon class="tree-icon" [icon]="node.icon" />
+                  <span class="tree-label">{{ node.name }}</span>
+                </button>
+
+                @if (isCollectionExpanded(node.id)) {
+                  @for (table of node.children; track table.id) {
+                    <ng-container
+                      *ngTemplateOutlet="tableRow; context: { $implicit: table, level: 1 }"
+                    />
+                  }
+                }
+              } @else {
+                <ng-container
+                  *ngTemplateOutlet="tableRow; context: { $implicit: node, level: 0 }"
+                />
+              }
             }
           </div>
         }
@@ -43,15 +66,44 @@
       </button>
 
       @if (filesExpanded()) {
-        <div class="section-content">No Existing Files</div>
+        <div class="section-content"></div>
       }
     </section>
   </div>
-
-  <ng-template #nodeContent let-node="node" let-value>
-    <div class="tree-row">
-      <tui-icon class="tree-icon" [icon]="value.icon" />
-      <span class="tree-label">{{ value.name }}</span>
-    </div>
-  </ng-template>
 </div>
+
+<ng-template #tableRow let-table let-level="level">
+  <button
+    class="tree-row"
+    type="button"
+    [class.tree-row--level-0]="level === 0"
+    [class.tree-row--level-1]="level === 1"
+    (click)="toggleTable(table.id)"
+  >
+    <tui-icon
+      class="tree-chevron"
+      [icon]="isTableExpanded(table.id) ? '@tui.chevron-down' : '@tui.chevron-right'"
+    />
+
+    <tui-icon class="tree-icon" [icon]="table.icon" />
+
+    <span class="tree-label">{{ table.name }}</span>
+  </button>
+
+  @if (isTableExpanded(table.id)) {
+    @for (view of table.children; track view.id) {
+      <button
+        class="tree-row"
+        type="button"
+        [class.tree-row--level-1]="level === 0"
+        [class.tree-row--level-2]="level === 1"
+      >
+        <span class="tree-chevron-spacer"></span>
+
+        <tui-icon class="tree-icon" [icon]="view.icon" />
+
+        <span class="tree-label">{{ view.name }}</span>
+      </button>
+    }
+  }
+</ng-template>

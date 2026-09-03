@@ -1,8 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { WorkspaceService } from '../../services/workspace.service';
-import { TuiHandler } from '@taiga-ui/cdk';
 import { TuiIcon } from '@taiga-ui/core';
-import { TuiTree } from '@taiga-ui/kit';
+import { NgTemplateOutlet } from '@angular/common';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
 
@@ -15,7 +14,7 @@ interface ExplorerNode {
 }
 
 @Component({
-  imports: [TuiIcon, TuiTree],
+  imports: [TuiIcon, NgTemplateOutlet],
   selector: 'app-explorer',
   styleUrl: './explorer.css',
   templateUrl: './explorer.html',
@@ -28,19 +27,13 @@ export class Explorer {
   readonly workspaceExpanded = signal(true);
   readonly filesExpanded = signal(false);
 
-  toggleWorkspace(): void {
-    this.workspaceExpanded.update((expanded) => !expanded);
-  }
-
-  toggleFiles(): void {
-    this.filesExpanded.update((expanded) => !expanded);
-  }
+  readonly expandedCollections = signal<ReadonlySet<string>>(new Set());
+  readonly expandedTables = signal<ReadonlySet<string>>(new Set());
 
   readonly tree = computed<readonly ExplorerNode[]>(() => {
     const collections = this.workspaceService
       .collections()
       .filter((collection) => collection.lifecycleState === 'active')
-      .sort((a, b) => this.compareNames(a.name, b.name))
       .map((collection): ExplorerNode => ({
         id: collection.id,
         name: collection.name,
@@ -54,8 +47,29 @@ export class Explorer {
     return [...collections, ...this.buildTables(null)];
   });
 
-  readonly childrenHandler: TuiHandler<ExplorerNode, readonly ExplorerNode[]> = (item) =>
-    item.children;
+  toggleWorkspace(): void {
+    this.workspaceExpanded.update((expanded) => !expanded);
+  }
+
+  toggleFiles(): void {
+    this.filesExpanded.update((expanded) => !expanded);
+  }
+
+  toggleCollection(id: string): void {
+    this.expandedCollections.update((expanded) => this.toggleSetValue(expanded, id));
+  }
+
+  toggleTable(id: string): void {
+    this.expandedTables.update((expanded) => this.toggleSetValue(expanded, id));
+  }
+
+  isCollectionExpanded(id: string): boolean {
+    return this.expandedCollections().has(id);
+  }
+
+  isTableExpanded(id: string): boolean {
+    return this.expandedTables().has(id);
+  }
 
   private buildTables(collectionId: string | null): ExplorerNode[] {
     return this.workspaceService
@@ -64,7 +78,7 @@ export class Explorer {
         return table.collectionId === collectionId && table.lifecycleState === 'active';
       })
       .sort((a, b) => this.compareNames(a.name, b.name))
-      .map((table) => ({
+      .map((table): ExplorerNode => ({
         id: table.id,
         name: table.name,
         type: 'table',
@@ -92,6 +106,16 @@ export class Explorer {
         icon: '@tui.eye',
         children: [],
       }));
+  }
+
+  private toggleSetValue(values: ReadonlySet<string>, id: string): ReadonlySet<string> {
+    const updated = new Set(values);
+    if (updated.has(id)) {
+      updated.delete(id);
+    } else {
+      updated.add(id);
+    }
+    return updated;
   }
 
   private compareNames(a: string, b: string): number {
