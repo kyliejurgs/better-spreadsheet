@@ -6,35 +6,52 @@
   <div class="explorer-content">
     @if (currentWorkspace(); as workspace) {
       <section class="explorer-section">
-        <div class="section-header">
-          <tui-icon icon="@tui.globe" />
-          <span class="section-title">{{ workspace.name }}</span>
-        </div>
+        <button class="section-header" type="button" (click)="toggleWorkspace()">
+          <tui-icon
+            class="section-chevron"
+            [icon]="workspaceExpanded() ? '@tui.chevron-down' : '@tui.chevron-right'"
+          />
 
-        @if (tree().length) {
-          @for (node of tree(); track node.id) {
-            <tui-tree
-              [childrenHandler]="childrenHandler"
-              [content]="nodeContent"
-              [tuiTreeController]="true"
-              [value]="node"
-            />
-          }
+          <tui-icon class="section-icon" icon="@tui.globe" />
+          <span class="section-title">{{ workspace.name }}</span>
+        </button>
+
+        @if (workspaceExpanded()) {
+          <div class="section-content">
+            @for (node of tree(); track node.id) {
+              <tui-tree
+                [childrenHandler]="childrenHandler"
+                [content]="nodeContent"
+                [tuiTreeController]="true"
+                [value]="node"
+              />
+            }
+          </div>
         }
       </section>
     }
 
     <section class="explorer-section">
-      <div class="section-header">
+      <button class="section-header" type="button" (click)="toggleFiles()">
+        <tui-icon
+          class="section-chevron"
+          [icon]="filesExpanded() ? '@tui.chevron-down' : '@tui.chevron-right'"
+        />
+
+        <tui-icon class="section-icon" icon="@tui.folder" />
         <span class="section-title">Files</span>
-      </div>
+      </button>
+
+      @if (filesExpanded()) {
+        <div class="section-content">No Existing Files</div>
+      }
     </section>
   </div>
-</div>
 
-<ng-template #nodeContent let-node="node" let-value>
-  <div class="tree-row">
-    <tui-icon class="tree-icon" [icon]="value.icon" />
-    <span class="tree-label">{{ value.name }}</span>
-  </div>
-</ng-template>
+  <ng-template #nodeContent let-node="node" let-value>
+    <div class="tree-row">
+      <tui-icon class="tree-icon" [icon]="value.icon" />
+      <span class="tree-label">{{ value.name }}</span>
+    </div>
+  </ng-template>
+</div>

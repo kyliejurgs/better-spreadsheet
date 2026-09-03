@@ -1,6 +1,6 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { WorkspaceService } from '../../services/workspace.service';
-import { TuiHandler } from '@taiga-ui/cdk/types';
+import { TuiHandler } from '@taiga-ui/cdk';
 import { TuiIcon } from '@taiga-ui/core';
 import { TuiTree } from '@taiga-ui/kit';
 
@@ -25,6 +25,17 @@ export class Explorer {
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
 
+  readonly workspaceExpanded = signal(true);
+  readonly filesExpanded = signal(false);
+
+  toggleWorkspace(): void {
+    this.workspaceExpanded.update((expanded) => !expanded);
+  }
+
+  toggleFiles(): void {
+    this.filesExpanded.update((expanded) => !expanded);
+  }
+
   readonly tree = computed<readonly ExplorerNode[]>(() => {
     const collections = this.workspaceService
       .collections()
@@ -34,12 +45,13 @@ export class Explorer {
         id: collection.id,
         name: collection.name,
         type: 'collection',
-        icon: '@tui.boxes',
+        icon: '@tui.package',
         children: this.buildTables(collection.id),
-      }));
+      }))
+      .filter((collection) => collection.children.length > 0)
+      .sort((a, b) => this.compareNames(a.name, b.name));
 
-    const rootTables = this.buildTables(null);
-    return [...collections, ...rootTables];
+    return [...collections, ...this.buildTables(null)];
   });
 
   readonly childrenHandler: TuiHandler<ExplorerNode, readonly ExplorerNode[]> = (item) =>
