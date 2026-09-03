@@ -5,18 +5,24 @@
 
   <div class="explorer-content">
     @if (currentWorkspace(); as workspace) {
-      <section class="explorer-section">
-        <button class="section-header" type="button" (click)="toggleWorkspace()">
+      <section
+        class="explorer-section"
+        data-explorer-section="workspace"
+        [class.explorer-section--expanded]="isSectionExpanded('workspace')"
+        [style.flex-grow]="sectionWeight('workspace')"
+      >
+        <button class="section-header" type="button" (click)="toggleSection('workspace')">
           <tui-icon
             class="section-chevron"
-            [icon]="workspaceExpanded() ? '@tui.chevron-down' : '@tui.chevron-right'"
+            [icon]="isSectionExpanded('workspace') ? '@tui.chevron-down' : '@tui.chevron-right'"
           />
 
           <tui-icon class="section-icon" icon="@tui.globe" />
+
           <span class="section-title">{{ workspace.name }}</span>
         </button>
 
-        @if (workspaceExpanded()) {
+        @if (isSectionExpanded('workspace')) {
           <div class="section-content">
             @for (node of tree(); track node.id) {
               @if (node.type === 'collection') {
@@ -33,42 +39,81 @@
                   />
 
                   <tui-icon class="tree-icon" [icon]="node.icon" />
+
                   <span class="tree-label">{{ node.name }}</span>
                 </button>
 
                 @if (isCollectionExpanded(node.id)) {
                   @for (table of node.children; track table.id) {
                     <ng-container
-                      *ngTemplateOutlet="tableRow; context: { $implicit: table, level: 1 }"
+                      *ngTemplateOutlet="
+                        tableRow;
+                        context: {
+                          $implicit: table,
+                          level: 1,
+                        }
+                      "
                     />
                   }
                 }
               } @else {
                 <ng-container
-                  *ngTemplateOutlet="tableRow; context: { $implicit: node, level: 0 }"
+                  *ngTemplateOutlet="
+                    tableRow;
+                    context: {
+                      $implicit: node,
+                      level: 0,
+                    }
+                  "
                 />
               }
             }
           </div>
         }
       </section>
+
+      @if (hasResizeHandleAfter('workspace')) {
+        <div
+          class="section-resize-handle"
+          role="separator"
+          aria-label="Resize Explorer sections"
+          aria-orientation="horizontal"
+          (pointerdown)="startSectionResize($event, 'workspace')"
+        ></div>
+      }
     }
 
-    <section class="explorer-section">
-      <button class="section-header" type="button" (click)="toggleFiles()">
+    <section
+      class="explorer-section"
+      data-explorer-section="files"
+      [class.explorer-section--expanded]="isSectionExpanded('files')"
+      [style.flex-grow]="sectionWeight('files')"
+    >
+      <button class="section-header" type="button" (click)="toggleSection('files')">
         <tui-icon
           class="section-chevron"
-          [icon]="filesExpanded() ? '@tui.chevron-down' : '@tui.chevron-right'"
+          [icon]="isSectionExpanded('files') ? '@tui.chevron-down' : '@tui.chevron-right'"
         />
 
         <tui-icon class="section-icon" icon="@tui.folder" />
+
         <span class="section-title">Files</span>
       </button>
 
-      @if (filesExpanded()) {
+      @if (isSectionExpanded('files')) {
         <div class="section-content"></div>
       }
     </section>
+
+    @if (hasResizeHandleAfter('files')) {
+      <div
+        class="section-resize-handle"
+        role="separator"
+        aria-label="Resize Explorer sections"
+        aria-orientation="horizontal"
+        (pointerdown)="startSectionResize($event, 'files')"
+      ></div>
+    }
   </div>
 </div>
 
