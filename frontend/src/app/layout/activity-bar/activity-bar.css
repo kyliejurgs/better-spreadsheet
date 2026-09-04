@@ -31,7 +31,7 @@
 }
 
 .activity-bar__item tui-icon {
-  font-size: calc(var(--activity-bar-width) * 0.5);
+  font-size: calc(var(--activity-bar-width) * 0.6);
 }
 
 .activity-bar__item--active {
