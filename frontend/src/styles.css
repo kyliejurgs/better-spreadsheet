@@ -1,10 +1,10 @@
 :root {
   --accent-color: #e51400;
-  --tui-font-icon: 'Material Symbols Outlined';
+  --tui-font-icon: 'Material Symbols Rounded';
 }
 
-.material-rounded {
-  --tui-font-icon: 'Material Symbols Rounded';
+.material-outlined {
+  --tui-font-icon: 'Material Symbols Outlined';
 }
 
 html,
