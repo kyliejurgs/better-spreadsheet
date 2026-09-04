@@ -17,7 +17,10 @@
   <app-command-bar />
 
   <div class="application-body">
-    <app-activity-bar />
+    <app-activity-bar
+      [activeView]="activeLeftPanelView()"
+      (viewSelected)="selectLeftPanelView($event)"
+    />
 
     <div #mainWorkspace class="main-workspace">
       <app-resizable-panel
@@ -27,7 +30,7 @@
         (resizeEnd)="finishSidePanelResize('left')"
       >
         @if (leftPanelVisible()) {
-          <app-left-panel />
+          <app-left-panel [activeView]="activeLeftPanelView()" />
         }
       </app-resizable-panel>
 

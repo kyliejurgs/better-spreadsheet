@@ -1,25 +1,33 @@
 <div class="activity-bar">
   <div class="activity-bar__primary">
     <button
-      class="activity-bar__item activity-bar__item--active"
+      class="activity-bar__item"
       type="button"
       aria-label="Explorer"
+      [class.activity-bar__item--active]="activeView() === 'explorer'"
+      (click)="selectView('explorer')"
     >
-      <tui-icon icon="@tui.library-big" />
+      <tui-icon icon="@font.account_tree" />
     </button>
 
-    <button class="activity-bar__item" type="button" aria-label="Search">
-      <tui-icon icon="@tui.search" />
+    <button
+      class="activity-bar__item"
+      type="button"
+      aria-label="Search"
+      [class.activity-bar__item--active]="activeView() === 'search'"
+      (click)="selectView('search')"
+    >
+      <tui-icon icon="@font.search" />
     </button>
   </div>
 
   <div class="activity-bar__utilities">
     <button class="activity-bar__item" type="button" aria-label="Help">
-      <tui-icon icon="@tui.circle-question-mark" />
+      <tui-icon icon="@font.help" />
     </button>
 
     <button class="activity-bar__item" type="button" aria-label="Settings">
-      <tui-icon icon="@tui.settings" />
+      <tui-icon icon="@font.settings" />
     </button>
   </div>
 </div>

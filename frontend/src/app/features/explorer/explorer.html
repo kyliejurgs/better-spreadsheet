@@ -1,0 +1,164 @@
+<div class="explorer">
+  <header class="explorer-header">
+    <span class="explorer-title">Explorer</span>
+  </header>
+
+  <div class="explorer-content">
+    @if (currentWorkspace(); as workspace) {
+      <section
+        class="explorer-section"
+        data-explorer-section="workspace"
+        [class.explorer-section--expanded]="isSectionExpanded('workspace')"
+        [style.flex-grow]="sectionWeight('workspace')"
+      >
+        <button class="section-header" type="button" (click)="toggleSection('workspace')">
+          <tui-icon
+            class="section-chevron"
+            [icon]="
+              isSectionExpanded('workspace')
+                ? '@font.keyboard_arrow_down'
+                : '@font.keyboard_arrow_right'
+            "
+          />
+
+          <tui-icon class="section-icon" icon="@font.workspaces" />
+
+          <span class="section-title">{{ workspace.name }}</span>
+        </button>
+
+        @if (isSectionExpanded('workspace')) {
+          <div class="section-content">
+            @for (node of tree(); track node.id) {
+              @if (node.type === 'collection') {
+                <button
+                  class="tree-row tree-row--level-0"
+                  type="button"
+                  (click)="toggleCollection(node.id)"
+                >
+                  <tui-icon
+                    class="tree-chevron"
+                    [icon]="
+                      isCollectionExpanded(node.id)
+                        ? '@font.keyboard_arrow_down'
+                        : '@font.keyboard_arrow_right'
+                    "
+                  />
+
+                  <tui-icon class="tree-icon" [icon]="node.icon" />
+
+                  <span class="tree-label">{{ node.name }}</span>
+                </button>
+
+                @if (isCollectionExpanded(node.id)) {
+                  @for (table of node.children; track table.id) {
+                    <ng-container
+                      *ngTemplateOutlet="
+                        tableRow;
+                        context: {
+                          $implicit: table,
+                          level: 1,
+                        }
+                      "
+                    />
+                  }
+                }
+              } @else {
+                <ng-container
+                  *ngTemplateOutlet="
+                    tableRow;
+                    context: {
+                      $implicit: node,
+                      level: 0,
+                    }
+                  "
+                />
+              }
+            }
+          </div>
+        }
+      </section>
+
+      @if (hasResizeHandleAfter('workspace')) {
+        <div
+          class="section-resize-handle"
+          role="separator"
+          aria-label="Resize Explorer sections"
+          aria-orientation="horizontal"
+          (pointerdown)="startSectionResize($event, 'workspace')"
+        ></div>
+      }
+    }
+
+    <section
+      class="explorer-section"
+      data-explorer-section="files"
+      [class.explorer-section--expanded]="isSectionExpanded('files')"
+      [style.flex-grow]="sectionWeight('files')"
+    >
+      <button class="section-header" type="button" (click)="toggleSection('files')">
+        <tui-icon
+          class="section-chevron"
+          [icon]="
+            isSectionExpanded('files') ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'
+          "
+        />
+
+        <tui-icon class="section-icon" icon="@font.folder_open" />
+
+        <span class="section-title">Files</span>
+      </button>
+
+      @if (isSectionExpanded('files')) {
+        <div class="section-content"></div>
+      }
+    </section>
+
+    @if (hasResizeHandleAfter('files')) {
+      <div
+        class="section-resize-handle"
+        role="separator"
+        aria-label="Resize Explorer sections"
+        aria-orientation="horizontal"
+        (pointerdown)="startSectionResize($event, 'files')"
+      ></div>
+    }
+  </div>
+</div>
+
+<ng-template #tableRow let-table let-level="level">
+  <button
+    class="tree-row"
+    type="button"
+    [class.tree-row--level-0]="level === 0"
+    [class.tree-row--level-1]="level === 1"
+    (click)="toggleTable(table.id)"
+  >
+    <tui-icon
+      class="tree-chevron"
+      [icon]="
+        isTableExpanded(table.id) ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'
+      "
+    />
+
+    <tui-icon class="tree-icon" [icon]="table.icon" />
+
+    <span class="tree-label">{{ table.name }}</span>
+  </button>
+
+  @if (isTableExpanded(table.id)) {
+    @for (view of table.children; track view.id) {
+      <button
+        class="tree-row"
+        type="button"
+        [class.tree-row--level-1]="level === 0"
+        [class.tree-row--level-2]="level === 1"
+      >
+        <span class="tree-chevron-spacer"></span>
+
+        <tui-icon class="tree-icon" [icon]="view.icon" />
+
+        <span class="tree-label">{{ view.name }}</span>
+      </button>
+    }
+  }
+</ng-template>

@@ -1,0 +1,118 @@
+<div class="search">
+  <header class="search-header">
+    <span class="search-title">Search</span>
+  </header>
+
+  <div class="search-content">
+    <div class="search-fields">
+      <button
+        class="replace-toggle"
+        type="button"
+        aria-label="Toggle replace"
+        [attr.aria-expanded]="replaceExpanded()"
+        [class.replace-toggle--expanded]="replaceExpanded()"
+        (click)="toggleReplace()"
+      >
+        <tui-icon
+          [icon]="replaceExpanded() ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'"
+        />
+      </button>
+
+      <div class="search-row">
+        <tui-textfield class="search-textfield" tuiTextfieldSize="s" [tuiTextfieldCleaner]="false">
+          <input
+            tuiInput
+            type="text"
+            placeholder="Search"
+            aria-label="Search workspace"
+            [ngModel]="searchText()"
+            (ngModelChange)="searchText.set($event)"
+          />
+
+          <div class="search-options">
+            <button
+              class="search-option"
+              type="button"
+              title="Match Case"
+              aria-label="Match case"
+              [class.search-option--active]="matchCase()"
+              (click)="toggleMatchCase()"
+            >
+              <tui-icon icon="@font.match_case" />
+            </button>
+
+            <button
+              class="search-option"
+              type="button"
+              title="Match Whole Word"
+              aria-label="Match whole word"
+              [class.search-option--active]="matchWholeValue()"
+              (click)="toggleMatchWholeValue()"
+            >
+              <tui-icon icon="@font.match_word" />
+            </button>
+
+            @if (searchText()) {
+              <button
+                class="search-option"
+                type="button"
+                title="Clear Search"
+                aria-label="Clear search"
+                (click)="clearSearch()"
+              >
+                <tui-icon icon="@font.close" />
+              </button>
+            }
+          </div>
+        </tui-textfield>
+
+        <button class="field-action" type="button" title="Filters" aria-label="Filters">
+          <tui-icon icon="@font.filter_list" />
+        </button>
+      </div>
+
+      @if (replaceExpanded()) {
+        <div class="replace-row">
+          <tui-textfield
+            class="search-textfield"
+            tuiTextfieldSize="s"
+            [tuiTextfieldCleaner]="false"
+          >
+            <input
+              tuiInput
+              type="text"
+              placeholder="Replace"
+              aria-label="Replace"
+              [ngModel]="replaceText()"
+              (ngModelChange)="replaceText.set($event)"
+            />
+
+            @if (replaceText()) {
+              <button
+                class="search-option"
+                type="button"
+                title="Clear Replace"
+                aria-label="Clear replace"
+                (click)="clearReplace()"
+              >
+                <tui-icon icon="@font.close" />
+              </button>
+            }
+          </tui-textfield>
+
+          <button
+            class="field-action"
+            type="button"
+            title="Replace All"
+            aria-label="Replace all"
+            [disabled]="!searchText() || !replaceText()"
+          >
+            <tui-icon icon="@tui.replace-all" />
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="search-results"></div>
+  </div>
+</div>
