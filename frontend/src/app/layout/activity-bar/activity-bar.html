@@ -7,7 +7,7 @@
       [class.activity-bar__item--active]="activeView() === 'explorer'"
       (click)="selectView('explorer')"
     >
-      <tui-icon icon="@tui.list-tree" />
+      <tui-icon icon="@font.account_tree" />
     </button>
 
     <button
@@ -17,17 +17,17 @@
       [class.activity-bar__item--active]="activeView() === 'search'"
       (click)="selectView('search')"
     >
-      <tui-icon icon="@tui.search" />
+      <tui-icon icon="@font.search" />
     </button>
   </div>
 
   <div class="activity-bar__utilities">
     <button class="activity-bar__item" type="button" aria-label="Help">
-      <tui-icon icon="@tui.circle-question-mark" />
+      <tui-icon icon="@font.help" />
     </button>
 
     <button class="activity-bar__item" type="button" aria-label="Settings">
-      <tui-icon icon="@tui.settings" />
+      <tui-icon icon="@font.settings" />
     </button>
   </div>
 </div>
