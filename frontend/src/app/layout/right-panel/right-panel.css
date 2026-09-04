@@ -10,7 +10,7 @@
   height: 100%;
   box-sizing: border-box;
   padding: 8px;
-  background: lavender;
-  border: 1px solid #c7adc4;
+  background: var(--tui-background-base);
+  border: 1px solid var(--tui-border-normal);
   border-radius: 6px;
 }
