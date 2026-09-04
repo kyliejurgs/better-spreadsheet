@@ -14,10 +14,14 @@
         <button class="section-header" type="button" (click)="toggleSection('workspace')">
           <tui-icon
             class="section-chevron"
-            [icon]="isSectionExpanded('workspace') ? '@tui.chevron-down' : '@tui.chevron-right'"
+            [icon]="
+              isSectionExpanded('workspace')
+                ? '@font.keyboard_arrow_down'
+                : '@font.keyboard_arrow_right'
+            "
           />
 
-          <tui-icon class="section-icon" icon="@tui.globe" />
+          <tui-icon class="section-icon" icon="@font.workspaces" />
 
           <span class="section-title">{{ workspace.name }}</span>
         </button>
@@ -34,7 +38,9 @@
                   <tui-icon
                     class="tree-chevron"
                     [icon]="
-                      isCollectionExpanded(node.id) ? '@tui.chevron-down' : '@tui.chevron-right'
+                      isCollectionExpanded(node.id)
+                        ? '@font.keyboard_arrow_down'
+                        : '@font.keyboard_arrow_right'
                     "
                   />
 
@@ -92,10 +98,12 @@
       <button class="section-header" type="button" (click)="toggleSection('files')">
         <tui-icon
           class="section-chevron"
-          [icon]="isSectionExpanded('files') ? '@tui.chevron-down' : '@tui.chevron-right'"
+          [icon]="
+            isSectionExpanded('files') ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'
+          "
         />
 
-        <tui-icon class="section-icon" icon="@tui.folder" />
+        <tui-icon class="section-icon" icon="@font.folder_open" />
 
         <span class="section-title">Files</span>
       </button>
@@ -127,7 +135,9 @@
   >
     <tui-icon
       class="tree-chevron"
-      [icon]="isTableExpanded(table.id) ? '@tui.chevron-down' : '@tui.chevron-right'"
+      [icon]="
+        isTableExpanded(table.id) ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'
+      "
     />
 
     <tui-icon class="tree-icon" [icon]="table.icon" />

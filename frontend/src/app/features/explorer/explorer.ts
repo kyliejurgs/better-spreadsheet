@@ -49,7 +49,7 @@ export class Explorer {
         id: collection.id,
         name: collection.name,
         type: 'collection',
-        icon: '@tui.package',
+        icon: '@font.package_2',
         children: this.buildTables(collection.id),
       }))
       .filter((collection) => collection.children.length > 0)
@@ -161,7 +161,7 @@ export class Explorer {
         id: table.id,
         name: table.name,
         type: 'table',
-        icon: '@tui.table',
+        icon: '@font.table',
         children: this.buildViews(table.id),
       }));
   }
@@ -182,7 +182,7 @@ export class Explorer {
         id: view.id,
         name: view.name,
         type: 'view',
-        icon: '@tui.eye',
+        icon: '@font.visibility',
         children: [],
       }));
   }
