@@ -22,7 +22,7 @@ interface ExplorerNode {
 })
 export class Explorer {
   private readonly workspaceService = inject(WorkspaceService);
-  private readonly minSectionHeight = 200;
+  private readonly minSectionHeight = 100;
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
   readonly sectionOrder: readonly ExplorerSectionId[] = ['workspace', 'files'];
@@ -71,7 +71,7 @@ export class Explorer {
   }
 
   hasResizeHandleAfter(id: ExplorerSectionId): boolean {
-    if (this.isSectionExpanded(id)) {
+    if (!this.isSectionExpanded(id)) {
       return false;
     }
     const index = this.expandedSectionIds().indexOf(id);
