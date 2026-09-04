@@ -31,7 +31,6 @@
   flex: 1 1 auto;
   flex-direction: column;
   min-height: 0;
-  padding: 0 8px 8px;
   overflow: hidden;
 }
 
@@ -68,7 +67,7 @@
 }
 
 .search-option tui-icon {
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .filter-button {
@@ -88,7 +87,7 @@
 }
 
 .filter-button tui-icon {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .search-results {

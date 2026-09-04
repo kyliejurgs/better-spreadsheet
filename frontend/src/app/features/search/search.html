@@ -4,7 +4,7 @@
   </header>
 
   <div class="search-content">
-    <tui-textfield class="search-textfield" tuiTextfieldSize="s">
+    <tui-textfield class="search-textfield" tuiTextfieldSize="s" [tuiTextfieldCleaner]="false">
       <input
         tuiInput
         type="text"
@@ -23,7 +23,7 @@
           [class.search-option--active]="matchCase()"
           (click)="toggleMatchCase()"
         >
-          <tui-icon icon="@tui.case-sensitive" />
+          <tui-icon icon="@font.match_case" />
         </button>
 
         <button
@@ -34,7 +34,7 @@
           [class.search-option--active]="matchWholeWord()"
           (click)="toggleMatchWholeWord()"
         >
-          <tui-icon icon="@tui.whole-word" />
+          <tui-icon icon="@font.match_word" />
         </button>
 
         @if (searchText()) {
@@ -45,7 +45,7 @@
             aria-label="Clear search"
             (click)="clearSearch()"
           >
-            <tui-icon icon="@tui.x" />
+            <tui-icon icon="@font.close" />
           </button>
         }
       </div>
