@@ -67,7 +67,13 @@ export class Explorer {
   }
 
   sectionWeight(id: ExplorerSectionId): number {
-    return this.isSectionExpanded(id) ? this.sectionWeights()[id] : 0;
+    if (!this.isSectionExpanded(id)) {
+      return 0;
+    }
+    if (this.expandedSectionIds().length === 1) {
+      return 1;
+    }
+    return this.sectionWeights()[id];
   }
 
   hasResizeHandleAfter(id: ExplorerSectionId): boolean {
