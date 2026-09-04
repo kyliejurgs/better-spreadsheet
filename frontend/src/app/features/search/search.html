@@ -1,1 +1,63 @@
-<p>search works!</p>
+<div class="search">
+  <header class="search-header">
+    <span class="search-title">Search</span>
+  </header>
+
+  <div class="search-content">
+    <tui-textfield class="search-textfield" tuiTextfieldSize="s">
+      <input
+        tuiInput
+        type="text"
+        placeholder="Search"
+        aria-label="Search workspace"
+        [ngModel]="searchText()"
+        (ngModelChange)="searchText.set($event)"
+      />
+
+      <div class="search-options">
+        <button
+          class="search-option"
+          type="button"
+          title="Match Case"
+          aria-label="Match case"
+          [class.search-option--active]="matchCase()"
+          (click)="toggleMatchCase()"
+        >
+          <tui-icon icon="@tui.case-sensitive" />
+        </button>
+
+        <button
+          class="search-option"
+          type="button"
+          title="Match Whole Word"
+          aria-label="Match whole word"
+          [class.search-option--active]="matchWholeWord()"
+          (click)="toggleMatchWholeWord()"
+        >
+          <tui-icon icon="@tui.whole-word" />
+        </button>
+
+        @if (searchText()) {
+          <button
+            class="search-option"
+            type="button"
+            title="Clear Search"
+            aria-label="Clear search"
+            (click)="clearSearch()"
+          >
+            <tui-icon icon="@tui.x" />
+          </button>
+        }
+      </div>
+    </tui-textfield>
+
+    <button class="filter-button" type="button" disabled>
+      <tui-icon icon="@tui.list-filter" />
+      <span>Filters</span>
+    </button>
+
+    <div class="search-results">
+      <span class="search-empty"> Enter a search term to search the workspace. </span>
+    </div>
+  </div>
+</div>
