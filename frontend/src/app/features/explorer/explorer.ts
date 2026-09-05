@@ -2,9 +2,9 @@ import { Component, computed, ElementRef, inject, signal, viewChild } from '@ang
 import { WorkspaceService } from '../../services/workspace.service';
 import { TuiIcon } from '@taiga-ui/core';
 import { NgTemplateOutlet } from '@angular/common';
+import { ExplorerSectionId } from '../../models/application-ui-state';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
-type ExplorerSectionId = 'workspace' | 'files';
 
 interface ExplorerNode {
   id: string;

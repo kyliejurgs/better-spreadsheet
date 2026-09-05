@@ -1,8 +1,7 @@
 import { Component, input } from '@angular/core';
 import { Explorer } from '../../features/explorer/explorer';
 import { Search } from '../../features/search/search';
-
-export type LeftPanelView = 'explorer' | 'search';
+import { LeftPanelView } from '../../models/application-ui-state';
 
 @Component({
   imports: [Explorer, Search],

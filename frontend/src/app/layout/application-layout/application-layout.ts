@@ -12,7 +12,7 @@ import {
 import { LogoArea } from '../logo-area/logo-area';
 import { Header } from '../header/header';
 import { ActivityBar } from '../activity-bar/activity-bar';
-import { LeftPanel, LeftPanelView } from '../left-panel/left-panel';
+import { LeftPanel } from '../left-panel/left-panel';
 import { CenterArea } from '../center-area/center-area';
 import { RightPanel } from '../right-panel/right-panel';
 import { StatusBar } from '../status-bar/status-bar';
@@ -20,6 +20,7 @@ import { APPLICATION_LAYOUT } from './application-layout.config';
 import { ContainerSize } from '../../shared/resizable-container/resizable-container';
 import { ResizablePanel } from '../resizable-panel/resizable-panel';
 import { CommandBar } from '../command-bar/command-bar';
+import { LeftPanelView } from '../../models/application-ui-state';
 
 type SidePanel = 'left' | 'right';
 
