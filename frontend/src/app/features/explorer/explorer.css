@@ -82,20 +82,20 @@
 .section-chevron,
 .tree-chevron {
   flex: 0 0 auto;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .section-icon {
   flex: 0 0 auto;
-  font-size: 13px;
+  font-size: 18px;
   margin-right: 4px;
 }
 
 .section-title {
   min-width: 0;
   overflow: hidden;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -155,14 +155,14 @@
 
 .tree-icon {
   flex: 0 0 auto;
-  font-size: 14px;
+  font-size: 18px;
   margin-right: 4px;
 }
 
 .tree-label {
   min-width: 0;
   overflow: hidden;
-  font-size: 12px;
+  font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

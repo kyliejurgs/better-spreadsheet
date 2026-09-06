@@ -1,10 +1,11 @@
-import { Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { WorkspaceService } from '../../services/workspace.service';
 import { TuiIcon } from '@taiga-ui/core';
 import { NgTemplateOutlet } from '@angular/common';
+import { ExplorerSectionId } from '../../models/application-ui-state';
+import { ApplicationUiStateService } from '../../services/application-ui-state.service';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
-type ExplorerSectionId = 'workspace' | 'files';
 
 interface ExplorerNode {
   id: string;
@@ -22,22 +23,18 @@ interface ExplorerNode {
 })
 export class Explorer {
   private readonly workspaceService = inject(WorkspaceService);
+  private readonly uiState = inject(ApplicationUiStateService);
   private readonly minSectionHeight = 100;
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
   readonly sectionOrder: readonly ExplorerSectionId[] = ['workspace', 'files'];
 
-  readonly sectionWeights = signal<Record<ExplorerSectionId, number>>({
-    workspace: 1,
-    files: 1,
-  });
+  readonly sectionWeights = this.uiState.sectionWeights;
 
-  readonly expandedSections = signal<ReadonlySet<ExplorerSectionId>>(new Set(['workspace']));
-  readonly expandedCollections = signal<ReadonlySet<string>>(new Set());
-  readonly expandedTables = signal<ReadonlySet<string>>(new Set());
+  readonly expandedExplorerSections = this.uiState.expandedExplorerSections;
 
   readonly expandedSectionIds = computed<readonly ExplorerSectionId[]>(() => {
-    const expanded = this.expandedSections();
+    const expanded = this.expandedExplorerSections();
     return this.sectionOrder.filter((id) => expanded.has(id));
   });
 
@@ -58,12 +55,13 @@ export class Explorer {
     return [...collections, ...this.buildTables(null)];
   });
 
-  toggleSection(id: ExplorerSectionId): void {
-    this.expandedSections.update((expanded) => this.toggleSetValue(expanded, id));
+  async toggleSection(id: ExplorerSectionId): Promise<void> {
+    this.expandedExplorerSections.update((expanded) => this.toggleSetValue(expanded, id));
+    await this.uiState.save();
   }
 
   isSectionExpanded(id: ExplorerSectionId): boolean {
-    return this.expandedSections().has(id);
+    return this.expandedExplorerSections().has(id);
   }
 
   sectionWeight(id: ExplorerSectionId): number {
@@ -126,26 +124,55 @@ export class Explorer {
     const onPointerUp = (): void => {
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
+      void this.uiState.save();
     };
 
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
   }
 
-  toggleCollection(id: string): void {
-    this.expandedCollections.update((expanded) => this.toggleSetValue(expanded, id));
+  async toggleCollection(id: string): Promise<void> {
+    const workspaceId = this.currentWorkspace()?.id;
+    if (!workspaceId) {
+      return;
+    }
+
+    this.uiState.expandedCollections.update((state) => ({
+      ...state,
+      [workspaceId]: this.toggleArrayValue(state[workspaceId] ?? [], id),
+    }));
+    await this.uiState.save();
   }
 
-  toggleTable(id: string): void {
-    this.expandedTables.update((expanded) => this.toggleSetValue(expanded, id));
+  async toggleTable(id: string): Promise<void> {
+    const workspaceId = this.currentWorkspace()?.id;
+    if (!workspaceId) {
+      return;
+    }
+
+    this.uiState.expandedTables.update((state) => ({
+      ...state,
+      [workspaceId]: this.toggleArrayValue(state[workspaceId] ?? [], id),
+    }));
+    await this.uiState.save();
   }
 
   isCollectionExpanded(id: string): boolean {
-    return this.expandedCollections().has(id);
+    const workspaceId = this.currentWorkspace()?.id;
+    if (!workspaceId) {
+      return false;
+    }
+
+    return (this.uiState.expandedCollections()[workspaceId] ?? []).includes(id);
   }
 
   isTableExpanded(id: string): boolean {
-    return this.expandedTables().has(id);
+    const workspaceId = this.currentWorkspace()?.id;
+    if (!workspaceId) {
+      return false;
+    }
+
+    return (this.uiState.expandedTables()[workspaceId] ?? []).includes(id);
   }
 
   private getSectionElement(id: ExplorerSectionId): HTMLElement | null {
@@ -202,6 +229,11 @@ export class Explorer {
     }
     return updated;
   }
+
+  private toggleArrayValue(values: readonly string[], value: string): readonly string[] {
+    return values.includes(value) ? values.filter((id) => id !== value) : [...values, value];
+  }
+
   private compareNames(a: string, b: string): number {
     return a.localeCompare(b, undefined, { sensitivity: 'base' });
   }
