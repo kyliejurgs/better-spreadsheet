@@ -320,6 +320,32 @@ Frontend and backend development tooling should translate seed data through the 
 
 Production application code must not require `development/seed/` to exist. Loading seed data should be explicit and limited to development or test workflows.
 
+### Frontend Starter Data
+
+`development/seed/data` is the canonical development seed dataset.
+
+The Angular development application loads its bundled starter data from `frontend/public/starter-data`. That directory is a generated copy of the canonical seed dataset and should not be edited directly.
+
+Synchronize the frontend copy with:
+
+```bash
+cd frontend
+npm run seed:sync
+```
+
+The frontend start, build, and watch scripts synchronize starter data before running Angular so development builds use the current canonical dataset.
+
+That reinforces the README's existing rule that the seed files represent domain state independently from Angular and that development tooling is responsible for loading them.
+
+### Verify this chunk
+
+From `frontend/`:
+
+```bash
+npm run seed:sync
+git status
+```
+
 ## Evolution
 
 Seed data should evolve when:
@@ -330,3 +356,7 @@ Seed data should evolve when:
 - development reveals an important boundary case missing from the existing dataset.
 
 New seed data should extend the coherent application state rather than accumulating unrelated one-off test records. When a planned dataset receives an implemented domain model, define its serialized seed format at that time and update this document from planned to current.
+
+```
+
+```
