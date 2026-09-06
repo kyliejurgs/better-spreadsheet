@@ -20,19 +20,19 @@
   {
     "id": "collection-004",
     "workspaceId": "workspace-002",
-    "name": "Planning",
+    "name": "Inventory",
     "lifecycleState": "active"
   },
   {
     "id": "collection-005",
     "workspaceId": "workspace-002",
-    "name": "Tracking",
+    "name": "Purchasing",
     "lifecycleState": "active"
   },
   {
     "id": "collection-006",
     "workspaceId": "workspace-002",
-    "name": "Operations",
+    "name": "Menu",
     "lifecycleState": "active"
   },
   {
