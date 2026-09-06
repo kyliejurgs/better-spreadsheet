@@ -73,7 +73,7 @@ export class ApplicationUiStateService {
       },
       explorer: {
         sectionWeights: this.sectionWeights(),
-        expandedExplorerSections: { ...this.expandedExplorerSections() },
+        expandedExplorerSections: this.expandedExplorerSections(),
         expandedCollections: this.expandedCollections(),
         expandedTables: this.expandedTables(),
       },
