@@ -454,7 +454,7 @@
     "id": "field-004-005",
     "tableId": "table-004",
     "name": "Rating",
-    "dataType": "rating",
+    "dataType": "integer",
     "valueModel": "normal",
     "validation": {
       "required": false,
@@ -790,7 +790,7 @@
     },
     "reference": {
       "tableId": "table-008",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -978,7 +978,7 @@
     },
     "reference": {
       "tableId": "table-008",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1076,7 +1076,7 @@
     },
     "reference": {
       "tableId": "table-009",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1090,7 +1090,7 @@
     },
     "reference": {
       "tableId": "table-007",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1229,7 +1229,7 @@
     },
     "reference": {
       "tableId": "table-011",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1243,7 +1243,7 @@
     },
     "reference": {
       "tableId": "table-007",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1603,7 +1603,7 @@
     },
     "reference": {
       "tableId": "table-016",
-      "multiple": false
+      "cardinality": "single"
     }
   },
   {
@@ -1618,7 +1618,7 @@
     },
     "reference": {
       "tableId": "table-016",
-      "multiple": true
+      "cardinality": "multiple"
     }
   },
   {
