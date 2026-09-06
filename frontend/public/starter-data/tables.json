@@ -45,56 +45,56 @@
     "id": "table-007",
     "workspaceId": "workspace-002",
     "collectionId": "collection-004",
-    "name": "Project Plan",
+    "name": "Inventory",
     "lifecycleState": "active"
   },
   {
     "id": "table-008",
     "workspaceId": "workspace-002",
     "collectionId": "collection-004",
-    "name": "Roadmap",
+    "name": "Suppliers",
     "lifecycleState": "active"
   },
   {
     "id": "table-009",
     "workspaceId": "workspace-002",
     "collectionId": "collection-005",
-    "name": "Issue Tracker",
+    "name": "Purchase Orders",
     "lifecycleState": "active"
   },
   {
     "id": "table-010",
     "workspaceId": "workspace-002",
     "collectionId": "collection-005",
-    "name": "Time Tracking",
+    "name": "Purchase Order Items",
     "lifecycleState": "active"
   },
   {
     "id": "table-011",
     "workspaceId": "workspace-002",
     "collectionId": "collection-006",
-    "name": "Contacts",
+    "name": "Menu Items",
     "lifecycleState": "active"
   },
   {
     "id": "table-012",
     "workspaceId": "workspace-002",
     "collectionId": "collection-006",
-    "name": "Activity Log",
+    "name": "Recipe Ingredients",
     "lifecycleState": "active"
   },
   {
     "id": "table-013",
     "workspaceId": "workspace-002",
     "collectionId": "collection-007",
-    "name": "Legacy Tasks",
+    "name": "Legacy Inventory",
     "lifecycleState": "archived"
   },
   {
     "id": "table-014",
     "workspaceId": "workspace-002",
     "collectionId": null,
-    "name": "Notes",
+    "name": "Operations Notes",
     "lifecycleState": "active"
   },
   {

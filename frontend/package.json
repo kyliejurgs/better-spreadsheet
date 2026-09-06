@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "seed:sync": "node ../scripts/sync-seed-data.mjs",
+    "start": "npm run seed:sync && ng serve",
+    "build": "npm run seed:sync && ng build",
+    "watch": "npm run seed:sync && ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
