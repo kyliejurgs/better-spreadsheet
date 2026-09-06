@@ -11,20 +11,58 @@
         [class.explorer-section--expanded]="isSectionExpanded('workspace')"
         [style.flex-grow]="sectionWeight('workspace')"
       >
-        <button class="section-header" type="button" (click)="toggleSection('workspace')">
-          <tui-icon
-            class="section-chevron"
-            [icon]="
-              isSectionExpanded('workspace')
-                ? '@font.keyboard_arrow_down'
-                : '@font.keyboard_arrow_right'
-            "
-          />
+        <div
+          class="section-header section-header--workspace"
+          [class.section-header--actions-visible]="workspaceSwitcherOpen()"
+        >
+          <button class="section-header-main" type="button" (click)="toggleSection('workspace')">
+            <tui-icon
+              class="section-chevron"
+              [icon]="
+                isSectionExpanded('workspace')
+                  ? '@font.keyboard_arrow_down'
+                  : '@font.keyboard_arrow_right'
+              "
+            />
 
-          <tui-icon class="section-icon" icon="@font.workspaces" />
+            <tui-icon class="section-icon" icon="@font.workspaces" />
+            <span class="section-title">{{ workspace.name }}</span>
+          </button>
 
-          <span class="section-title">{{ workspace.name }}</span>
-        </button>
+          <div class="section-actions">
+            <button
+              class="section-action"
+              type="button"
+              aria-label="Switch workspace"
+              [tuiDropdown]="workspaceMenu"
+              [tuiDropdownManual]="workspaceSwitcherOpen()"
+              (click)="toggleWorkspaceSwitcher($event)"
+            >
+              <tui-icon icon="@font.swap_vert" />
+            </button>
+
+            <ng-template #workspaceMenu>
+              <tui-data-list class="workspace-menu">
+                @for (workspace of workspaces(); track workspace.id) {
+                  <button
+                    tuiOption
+                    type="button"
+                    class="workspace-menu-item"
+                    (click)="selectWorkspace(workspace.id)"
+                  >
+                    <span class="workspace-menu-check">
+                      @if (workspace.id === currentWorkspace()?.id) {
+                        <tui-icon icon="@font.check" />
+                      }
+                    </span>
+
+                    <span>{{ workspace.name }}</span>
+                  </button>
+                }
+              </tui-data-list>
+            </ng-template>
+          </div>
+        </div>
 
         @if (isSectionExpanded('workspace')) {
           <div class="section-content">
