@@ -1,6 +1,11 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { WorkspaceService } from '../../services/workspace.service';
-import { TuiIcon } from '@taiga-ui/core';
+import {
+  TuiIcon,
+  TuiDropdownDirective,
+  TuiDropdownManual,
+  TuiDataListComponent,
+} from '@taiga-ui/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { ExplorerSectionId } from '../../models/application-ui-state';
 import { ApplicationUiStateService } from '../../services/application-ui-state.service';
@@ -16,7 +21,13 @@ interface ExplorerNode {
 }
 
 @Component({
-  imports: [TuiIcon, NgTemplateOutlet],
+  imports: [
+    TuiIcon,
+    NgTemplateOutlet,
+    TuiDropdownDirective,
+    TuiDropdownManual,
+    TuiDataListComponent,
+  ],
   selector: 'app-explorer',
   styleUrl: './explorer.css',
   templateUrl: './explorer.html',
@@ -27,10 +38,11 @@ export class Explorer {
   private readonly minSectionHeight = 100;
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
+  readonly workspaces = this.workspaceService.workspaces;
+  readonly workspaceSwitcherOpen = signal(false);
+
   readonly sectionOrder: readonly ExplorerSectionId[] = ['workspace', 'files'];
-
   readonly sectionWeights = this.uiState.sectionWeights;
-
   readonly expandedExplorerSections = this.uiState.expandedExplorerSections;
 
   readonly expandedSectionIds = computed<readonly ExplorerSectionId[]>(() => {
@@ -162,7 +174,6 @@ export class Explorer {
     if (!workspaceId) {
       return false;
     }
-
     return (this.uiState.expandedCollections()[workspaceId] ?? []).includes(id);
   }
 
@@ -171,8 +182,21 @@ export class Explorer {
     if (!workspaceId) {
       return false;
     }
-
     return (this.uiState.expandedTables()[workspaceId] ?? []).includes(id);
+  }
+
+  toggleWorkspaceSwitcher(event: MouseEvent): void {
+    event.stopPropagation();
+    this.workspaceSwitcherOpen.update((open) => !open);
+  }
+
+  async selectWorkspace(workspaceId: string): Promise<void> {
+    if (workspaceId === this.currentWorkspace()?.id) {
+      this.workspaceSwitcherOpen.set(false);
+      return;
+    }
+    await this.workspaceService.selectWorkspace(workspaceId);
+    this.workspaceSwitcherOpen.set(false);
   }
 
   private getSectionElement(id: ExplorerSectionId): HTMLElement | null {
