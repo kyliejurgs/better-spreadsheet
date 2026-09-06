@@ -237,15 +237,15 @@
 }
 
 .tree-row--level-0 {
-  padding-left: 12px;
+  padding-left: 20px;
 }
 
 .tree-row--level-1 {
-  padding-left: 28px;
+  padding-left: 36px;
 }
 
 .tree-row--level-2 {
-  padding-left: 44px;
+  padding-left: 50px;
 }
 
 .tree-chevron,

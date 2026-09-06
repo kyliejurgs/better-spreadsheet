@@ -133,18 +133,20 @@
       [class.explorer-section--expanded]="isSectionExpanded('files')"
       [style.flex-grow]="sectionWeight('files')"
     >
-      <button class="section-header" type="button" (click)="toggleSection('files')">
-        <tui-icon
-          class="section-chevron"
-          [icon]="
-            isSectionExpanded('files') ? '@font.keyboard_arrow_down' : '@font.keyboard_arrow_right'
-          "
-        />
-
-        <tui-icon class="section-icon" icon="@font.folder_open" />
-
-        <span class="section-title">Files</span>
-      </button>
+      <div class="section-header">
+        <button class="section-header-main" type="button" (click)="toggleSection('files')">
+          <tui-icon
+            class="section-chevron"
+            [icon]="
+              isSectionExpanded('files')
+                ? '@font.keyboard_arrow_down'
+                : '@font.keyboard_arrow_right'
+            "
+          />
+          <tui-icon class="section-icon" icon="@font.folder_open" />
+          <span class="section-title">Files</span>
+        </button>
+      </div>
 
       @if (isSectionExpanded('files')) {
         <div class="section-content"></div>
