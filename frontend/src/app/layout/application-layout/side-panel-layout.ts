@@ -41,114 +41,79 @@ export function calculateSidePanelLayout(input: SidePanelLayoutInput): SidePanel
   };
 
   if (input.activePanel === 'left') {
-    return calculateActiveLayout(input, left, right, 'left');
+    return calculateLayout(input, left, right, 'left');
   }
 
   if (input.activePanel === 'right') {
-    return calculateActiveLayout(input, right, left, 'right');
+    return calculateLayout(input, right, left, 'right');
   }
 
-  return calculateViewportLayout(input, left, right);
+  return calculateLayout(input, left, right, 'left');
 }
 
-function calculateActiveLayout(
+function calculateLayout(
   input: SidePanelLayoutInput,
-  active: PanelValues,
-  opposite: PanelValues,
-  activeSide: SidePanel,
+  primary: PanelValues,
+  secondary: PanelValues,
+  primarySide: SidePanel,
 ): SidePanelLayout {
-  const activeGap = active.collapsed ? 0 : input.gap;
-  const oppositeGap = opposite.collapsed ? 0 : input.gap;
+  const primaryGap = primary.collapsed ? 0 : input.gap;
+  const secondaryGap = secondary.collapsed ? 0 : input.gap;
 
-  const availableWidth = input.workspaceWidth - input.workAreaMinWidth - activeGap - oppositeGap;
-  let activeWidth = active.collapsed ? 0 : active.preferredWidth;
-  let oppositeWidth = opposite.collapsed ? 0 : opposite.preferredWidth;
+  const availableWidth = input.workspaceWidth - input.workAreaMinWidth - primaryGap - secondaryGap;
 
-  let oppositeConstraintCollapsed = false;
+  let primaryWidth = primary.collapsed ? 0 : primary.preferredWidth;
 
-  if (!opposite.collapsed) {
-    const availableOppositeWidth = availableWidth - activeWidth;
-    if (availableOppositeWidth < opposite.preferredWidth) {
-      oppositeWidth = Math.max(opposite.minWidth, availableOppositeWidth);
-    }
+  let secondaryWidth = secondary.collapsed ? 0 : secondary.preferredWidth;
 
-    const collapseThreshold = availableWidth - opposite.minWidth + input.collapseBuffer;
-    if (activeWidth >= collapseThreshold) {
-      oppositeWidth = 0;
-      oppositeConstraintCollapsed = true;
-      activeWidth = Math.min(
-        activeWidth,
-        input.workspaceWidth - input.workAreaMinWidth - activeGap,
+  let primaryConstraintCollapsed = false;
+  let secondaryConstraintCollapsed = false;
+
+  if (!primary.collapsed && !secondary.collapsed) {
+    const availableSecondaryWidth = availableWidth - primaryWidth;
+
+    const collapseThreshold = secondary.minWidth - input.collapseBuffer;
+
+    if (availableSecondaryWidth < collapseThreshold) {
+      secondaryWidth = 0;
+      secondaryConstraintCollapsed = true;
+
+      primaryWidth = Math.min(
+        primaryWidth,
+        input.workspaceWidth - input.workAreaMinWidth - primaryGap,
       );
-    } else if (availableOppositeWidth < opposite.minWidth) {
-      activeWidth = availableWidth - opposite.minWidth;
+    } else if (availableSecondaryWidth < secondary.preferredWidth) {
+      secondaryWidth = Math.max(secondary.minWidth, availableSecondaryWidth);
+
+      if (availableSecondaryWidth < secondary.minWidth) {
+        primaryWidth = availableWidth - secondary.minWidth;
+      }
     }
-  } else {
-    activeWidth = Math.min(activeWidth, input.workspaceWidth - input.workAreaMinWidth - activeGap);
+  } else if (!primary.collapsed) {
+    primaryWidth = Math.min(
+      primaryWidth,
+      input.workspaceWidth - input.workAreaMinWidth - primaryGap,
+    );
   }
 
-  if (activeSide === 'left') {
+  if (!primary.collapsed && primaryWidth < primary.minWidth) {
+    primaryWidth = 0;
+    primaryConstraintCollapsed = true;
+  }
+
+  if (primarySide === 'left') {
     return {
-      leftWidth: Math.max(0, activeWidth),
-      rightWidth: Math.max(0, oppositeWidth),
-      leftConstraintCollapsed: false,
-      rightConstraintCollapsed: oppositeConstraintCollapsed,
+      leftWidth: Math.max(0, primaryWidth),
+      rightWidth: Math.max(0, secondaryWidth),
+      leftConstraintCollapsed: primaryConstraintCollapsed,
+      rightConstraintCollapsed: secondaryConstraintCollapsed,
     };
   }
 
   return {
-    leftWidth: Math.max(0, oppositeWidth),
-    rightWidth: Math.max(0, activeWidth),
-    leftConstraintCollapsed: oppositeConstraintCollapsed,
-    rightConstraintCollapsed: false,
-  };
-}
-
-function calculateViewportLayout(
-  input: SidePanelLayoutInput,
-  left: PanelValues,
-  right: PanelValues,
-): SidePanelLayout {
-  let leftWidth = left.collapsed ? 0 : left.preferredWidth;
-  let rightWidth = right.collapsed ? 0 : right.preferredWidth;
-
-  let leftConstraintCollapsed = false;
-  let rightConstraintCollapsed = false;
-
-  const gapWidth = Number(!left.collapsed) * input.gap + Number(!right.collapsed) * input.gap;
-
-  let overflow = Math.max(
-    0,
-    leftWidth + rightWidth + gapWidth - (input.workspaceWidth - input.workAreaMinWidth),
-  );
-
-  if (!right.collapsed) {
-    const reduction = Math.min(Math.max(0, rightWidth - right.minWidth), overflow);
-    rightWidth -= reduction;
-    overflow -= reduction;
-  }
-
-  if (!left.collapsed) {
-    const reduction = Math.min(Math.max(0, leftWidth - left.minWidth), overflow);
-    leftWidth -= reduction;
-    overflow -= reduction;
-  }
-
-  if (overflow > 0 && !right.collapsed) {
-    overflow = Math.max(0, overflow - rightWidth);
-    rightWidth = 0;
-    rightConstraintCollapsed = true;
-  }
-
-  if (overflow > 0 && !left.collapsed) {
-    leftWidth = 0;
-    leftConstraintCollapsed = true;
-  }
-
-  return {
-    leftWidth,
-    rightWidth,
-    leftConstraintCollapsed,
-    rightConstraintCollapsed,
+    leftWidth: Math.max(0, secondaryWidth),
+    rightWidth: Math.max(0, primaryWidth),
+    leftConstraintCollapsed: secondaryConstraintCollapsed,
+    rightConstraintCollapsed: primaryConstraintCollapsed,
   };
 }
