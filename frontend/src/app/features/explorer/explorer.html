@@ -192,6 +192,7 @@
         type="button"
         [class.tree-row--level-1]="level === 0"
         [class.tree-row--level-2]="level === 1"
+        (click)="openView(view.id)"
       >
         <span class="tree-chevron-spacer"></span>
 

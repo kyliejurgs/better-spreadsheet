@@ -9,6 +9,7 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { ExplorerSectionId } from '../../models/application-ui-state';
 import { ApplicationUiStateService } from '../../services/application-ui-state.service';
+import { WorkAreaService } from '../../services/work-area.service';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
 
@@ -35,6 +36,7 @@ interface ExplorerNode {
 export class Explorer {
   private readonly workspaceService = inject(WorkspaceService);
   private readonly uiState = inject(ApplicationUiStateService);
+  private readonly workAreaService = inject(WorkAreaService);
   private readonly minSectionHeight = 100;
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
@@ -197,6 +199,15 @@ export class Explorer {
     }
     await this.workspaceService.selectWorkspace(workspaceId);
     this.workspaceSwitcherOpen.set(false);
+  }
+
+  openView(viewId: string): void {
+    const view = this.workspaceService.views().find((candidate) => candidate.id === viewId);
+    if (view === undefined || view.lifecycleState !== 'active') {
+      return;
+    }
+
+    this.workAreaService.openTab({ resourceId: view.id, resourceType: 'view' });
   }
 
   private getSectionElement(id: ExplorerSectionId): HTMLElement | null {
