@@ -9,6 +9,7 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { ExplorerSectionId } from '../../models/application-ui-state';
 import { ApplicationUiStateService } from '../../services/application-ui-state.service';
+import { WorkAreaService } from '../../services/work-area.service';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
 
@@ -35,6 +36,7 @@ interface ExplorerNode {
 export class Explorer {
   private readonly workspaceService = inject(WorkspaceService);
   private readonly uiState = inject(ApplicationUiStateService);
+  private readonly workAreaService = inject(WorkAreaService);
   private readonly minSectionHeight = 100;
 
   readonly currentWorkspace = this.workspaceService.currentWorkspace;
@@ -196,7 +198,53 @@ export class Explorer {
       return;
     }
     await this.workspaceService.selectWorkspace(workspaceId);
+    const selectedWorkspaceId = this.currentWorkspace()?.id;
+
+    if (selectedWorkspaceId === undefined) {
+      this.workAreaService.clearWorkspace();
+    } else {
+      await this.workAreaService.loadWorkspace(selectedWorkspaceId);
+    }
+
     this.workspaceSwitcherOpen.set(false);
+  }
+
+  previewView(viewId: string): void {
+    const view = this.workspaceService.views().find((candidate) => candidate.id === viewId);
+    if (view === undefined || view.lifecycleState !== 'active') {
+      return;
+    }
+
+    this.workAreaService.openPreview({ resourceId: view.id, resourceType: 'view' });
+    this.workAreaService.recordViewedView(view.tableId, view.id);
+  }
+
+  openView(viewId: string): void {
+    const view = this.workspaceService.views().find((candidate) => candidate.id === viewId);
+    if (view === undefined || view.lifecycleState !== 'active') {
+      return;
+    }
+
+    this.workAreaService.openPermanent({ resourceId: view.id, resourceType: 'view' });
+    this.workAreaService.recordViewedView(view.tableId, view.id);
+  }
+
+  openTable(tableId: string): void {
+    const views = this.workspaceService
+      .views()
+      .filter((view) => view.tableId === tableId && view.lifecycleState === 'active');
+    if (views.length === 0) {
+      return;
+    }
+
+    const lastViewedViewId = this.workAreaService.lastViewedView(tableId);
+    const lastViewedView = views.find((view) => view.id === lastViewedViewId);
+    const view = lastViewedView ?? views.find((candidate) => candidate.required) ?? views[0];
+    if (view === undefined) {
+      return;
+    }
+
+    this.openView(view.id);
   }
 
   private getSectionElement(id: ExplorerSectionId): HTMLElement | null {

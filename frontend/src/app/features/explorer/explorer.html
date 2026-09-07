@@ -172,6 +172,7 @@
     [class.tree-row--level-0]="level === 0"
     [class.tree-row--level-1]="level === 1"
     (click)="toggleTable(table.id)"
+    (dblclick)="openTable(table.id)"
   >
     <tui-icon
       class="tree-chevron"
@@ -192,6 +193,8 @@
         type="button"
         [class.tree-row--level-1]="level === 0"
         [class.tree-row--level-2]="level === 1"
+        (click)="previewView(view.id)"
+        (dblclick)="openView(view.id)"
       >
         <span class="tree-chevron-spacer"></span>
 

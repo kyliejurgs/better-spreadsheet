@@ -1,1 +1,5 @@
-<div class="work-surface">Work Surface</div>
+<div class="work-surface">
+  @if (activeResourceName(); as name) {
+    <span>{{ name }}</span>
+  }
+</div>

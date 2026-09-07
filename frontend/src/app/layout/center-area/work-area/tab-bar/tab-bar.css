@@ -1,7 +1,68 @@
 .tab-bar {
-  height: var(--tab-bar-height);
-  padding: 0 8px;
-  background: blue;
   display: flex;
   align-items: center;
+  gap: 4px;
+  min-width: 0;
+  height: 28px;
+  padding: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: var(--tui-background-base);
+}
+
+.tab {
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 4px;
+  min-width: 96px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--tui-text-secondary);
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: var(--tui-background-neutral-1-hover);
+  color: var(--tui-text-primary);
+}
+
+.tab--active {
+  border-color: var(--tui-border-normal);
+  background: var(--tui-background-neutral-1);
+  color: var(--tui-text-primary);
+}
+
+.tab-icon {
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+
+.tab-label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-close {
+  flex: 0 0 auto;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.tab-close:hover {
+  background: var(--tui-background-neutral-1-hover);
+}
+
+.tab--preview .tab-label {
+  color: var(--tui-text-secondary);
+  font-style: italic;
 }
