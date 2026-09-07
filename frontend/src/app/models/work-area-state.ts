@@ -10,3 +10,8 @@ export interface WorkAreaState {
   activeTabId: string | null;
   activationHistory: readonly string[];
 }
+
+export interface PersistedWorkAreaState extends WorkAreaState {
+  id: string;
+  workspaceId: string;
+}

@@ -198,6 +198,14 @@ export class Explorer {
       return;
     }
     await this.workspaceService.selectWorkspace(workspaceId);
+    const selectedWorkspaceId = this.currentWorkspace()?.id;
+
+    if (selectedWorkspaceId === undefined) {
+      this.workAreaService.clearWorkspace();
+    } else {
+      await this.workAreaService.loadWorkspace(selectedWorkspaceId);
+    }
+
     this.workspaceSwitcherOpen.set(false);
   }
 
