@@ -1,1 +1,14 @@
-<div class="tab-bar">Tab Bar</div>
+<div class="tab-bar">
+  @for (tab of tabs(); track tab.resourceId) {
+    <button
+      class="tab"
+      type="button"
+      [class.tab--active]="tab.resourceId === activeTabId()"
+      (click)="activateTab(tab.resourceId)"
+      (auxclick)="middleClickTab($event, tab.resourceId)"
+    >
+      <span class="tab-label">{{ tab.name }}</span>
+      <tui-icon class="tab-close" icon="@font.close" (click)="closeTab($event, tab.resourceId)" />
+    </button>
+  }
+</div>

@@ -1,7 +1,35 @@
 .tab-bar {
-  height: var(--tab-bar-height);
-  padding: 0 8px;
-  background: blue;
   display: flex;
+  min-width: 0;
+  background: var(--tui-background-base);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tab {
+  display: flex;
+  flex: 0 1 12rem;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 6rem;
+  max-width: 12rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.tab--active {
+  font-weight: 600;
+}
+
+.tab-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-close {
+  flex: 0 0 auto;
 }
