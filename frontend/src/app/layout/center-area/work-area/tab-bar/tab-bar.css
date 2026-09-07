@@ -61,3 +61,8 @@
 .tab-close:hover {
   background: var(--tui-background-neutral-1-hover);
 }
+
+.tab--preview .tab-label {
+  color: var(--tui-text-secondary);
+  font-style: italic;
+}

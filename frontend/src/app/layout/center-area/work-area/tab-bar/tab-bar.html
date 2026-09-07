@@ -4,6 +4,7 @@
       class="tab"
       type="button"
       [class.tab--active]="tab.resourceId === activeTabId()"
+      [class.tab--preview]="tab.preview"
       (click)="activateTab(tab.resourceId)"
       (auxclick)="middleClickTab($event, tab.resourceId)"
     >

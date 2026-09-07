@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, Injectable, resource, signal } from '@angular/core';
 import { PersistedWorkAreaState, WorkAreaState, WorkAreaTab } from '../models/work-area-state';
 import {
   getWorkAreaState,
@@ -10,6 +10,7 @@ const EMPTY_WORK_AREA_STATE: WorkAreaState = {
   openTabs: [],
   activeTabId: null,
   activationHistory: [],
+  lastViewByTable: {},
 };
 
 @Injectable({ providedIn: 'root' })
@@ -39,16 +40,17 @@ export class WorkAreaService {
             openTabs: persistedState.openTabs,
             activeTabId: persistedState.activeTabId,
             activationHistory: persistedState.activationHistory,
+            lastViewByTable: persistedState.lastViewByTable ?? {},
           },
     );
   }
 
   clearWorkspace(): void {
-    this.workspaceId === null;
+    this.workspaceId = null;
     this.state.set(EMPTY_WORK_AREA_STATE);
   }
 
-  openTab(tab: WorkAreaTab): void {
+  openPreview(tab: Omit<WorkAreaTab, 'preview'>): void {
     const state = this.state();
     const existingTab = state.openTabs.find(
       (openTab) =>
@@ -60,15 +62,72 @@ export class WorkAreaService {
       return;
     }
 
+    const previewIndex = state.openTabs.findIndex((openTab) => openTab.preview);
+    const previewTab: WorkAreaTab = { ...tab, preview: true };
+
+    let openTabs: WorkAreaTab[];
+
+    if (previewIndex >= 0) {
+      openTabs = [...state.openTabs];
+      openTabs.splice(previewIndex, 1, previewTab);
+    } else {
+      openTabs = [...state.openTabs];
+      const activeIndex =
+        state.activeTabId === null
+          ? -1
+          : openTabs.findIndex((openTab) => openTab.resourceId === state.activeTabId);
+      const insertIndex = activeIndex >= 0 ? activeIndex + 1 : openTabs.length;
+
+      openTabs.splice(insertIndex, 0, previewTab);
+    }
+
+    const validActivationHistory = state.activationHistory.filter((resourceId) =>
+      openTabs.some((openTab) => openTab.resourceId === resourceId),
+    );
+
+    this.setState({
+      ...state,
+      openTabs,
+      activeTabId: tab.resourceId,
+      activationHistory: this.recordActivation(validActivationHistory, tab.resourceId),
+    });
+  }
+
+  openPermanent(tab: Omit<WorkAreaTab, 'preview'>): void {
+    const state = this.state();
+    const existingIndex = state.openTabs.findIndex(
+      (openTab) =>
+        openTab.resourceId === tab.resourceId && openTab.resourceType === tab.resourceType,
+    );
+
+    if (existingIndex >= 0) {
+      const existingTab = state.openTabs[existingIndex];
+      if (existingTab?.preview) {
+        const openTabs = [...state.openTabs];
+        openTabs[existingIndex] = { ...existingTab, preview: false };
+        this.setState({
+          ...state,
+          openTabs,
+          activeTabId: tab.resourceId,
+          activationHistory: this.recordActivation(state.activationHistory, tab.resourceId),
+        });
+        return;
+      }
+
+      this.activateTab(tab.resourceId);
+      return;
+    }
+
     const openTabs = [...state.openTabs];
     const activeIndex =
       state.activeTabId === null
         ? -1
         : openTabs.findIndex((openTab) => openTab.resourceId === state.activeTabId);
-    const insertionIndex = activeIndex >= 0 ? activeIndex + 1 : openTabs.length;
+    const insertIndex = activeIndex >= 0 ? activeIndex + 1 : openTabs.length;
 
-    openTabs.splice(insertionIndex, 0, tab);
+    openTabs.splice(insertIndex, 0, { ...tab, preview: false });
     this.setState({
+      ...state,
       openTabs,
       activeTabId: tab.resourceId,
       activationHistory: this.recordActivation(state.activationHistory, tab.resourceId),
@@ -101,20 +160,26 @@ export class WorkAreaService {
         ? this.resolveNextActiveTab(openTabs, activationHistory, closingIndex)
         : state.activeTabId;
 
-    this.setState({ openTabs, activeTabId, activationHistory });
+    this.setState({ ...state, openTabs, activeTabId, activationHistory });
   }
 
   closeOtherTabs(resourceId: string): void {
-    const tab = this.state().openTabs.find((openTab) => openTab.resourceId === resourceId);
+    const state = this.state();
+    const tab = state.openTabs.find((openTab) => openTab.resourceId === resourceId);
     if (tab === undefined) {
       return;
     }
 
-    this.setState({ openTabs: [tab], activeTabId: resourceId, activationHistory: [resourceId] });
+    this.setState({
+      ...state,
+      openTabs: [tab],
+      activeTabId: resourceId,
+      activationHistory: [resourceId],
+    });
   }
 
   closeAllTabs(): void {
-    this.setState(EMPTY_WORK_AREA_STATE);
+    this.setState({ ...EMPTY_WORK_AREA_STATE, lastViewByTable: this.state().lastViewByTable });
   }
 
   reorderTab(resourceId: string, targetIndex: number): void {
@@ -135,6 +200,22 @@ export class WorkAreaService {
     this.setState({ ...state, openTabs });
   }
 
+  lastViewedView(tableId: string): string | null {
+    return this.state().lastViewByTable[tableId] ?? null;
+  }
+
+  recordViewedView(tableId: string, viewId: string): void {
+    const state = this.state();
+    if (state.lastViewByTable[tableId] === viewId) {
+      return;
+    }
+
+    this.setState({
+      ...state,
+      lastViewByTable: { ...state.lastViewByTable, [tableId]: viewId },
+    });
+  }
+
   private setState(state: WorkAreaState): void {
     this.state.set(state);
     void this.persistState(state);
@@ -148,7 +229,10 @@ export class WorkAreaService {
     const persistedState: PersistedWorkAreaState = {
       id: getWorkAreaStateId(this.workspaceId),
       workspaceId: this.workspaceId,
-      ...state,
+      openTabs: state.openTabs,
+      activeTabId: state.activeTabId,
+      activationHistory: state.activationHistory,
+      lastViewByTable: state.lastViewByTable,
     };
 
     await saveWorkAreaState(persistedState);
