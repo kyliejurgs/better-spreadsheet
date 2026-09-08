@@ -3,6 +3,5 @@
   padding: 0 8px;
   display: flex;
   align-items: center;
-  background: var(--tui-background-base);
-  color: var(--tui-text-primary);
+  color: var(--app-text-primary);
 }

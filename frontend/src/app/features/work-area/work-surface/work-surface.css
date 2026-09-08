@@ -1,6 +1,7 @@
 .work-surface {
   height: 100%;
   padding: 8px;
-  background: var(--tui-background-base);
+  background: var(--app-surface);
+  color: var(--app-text-primary);
   box-sizing: border-box;
 }

@@ -7,7 +7,7 @@
   padding: 2px;
   overflow-x: auto;
   overflow-y: hidden;
-  background: var(--tui-background-base);
+  background: var(--app-surface);
 }
 
 .tab {
@@ -22,20 +22,20 @@
   border: 1px solid transparent;
   border-radius: 6px;
   background: transparent;
-  color: var(--tui-text-secondary);
+  color: var(--app-text-secondary);
   font: inherit;
   cursor: pointer;
 }
 
 .tab:hover {
-  background: var(--tui-background-neutral-1-hover);
-  color: var(--tui-text-primary);
+  background: var(--app-surface-hover);
+  color: var(--app-text-primary);
 }
 
 .tab--active {
-  border-color: var(--tui-border-normal);
-  background: var(--tui-background-neutral-1);
-  color: var(--tui-text-primary);
+  border-color: var(--app-border-normal);
+  background: var(--app-surface-active);
+  color: var(--app-text-primary);
 }
 
 .tab-icon {
@@ -59,10 +59,10 @@
 }
 
 .tab-close:hover {
-  background: var(--tui-background-neutral-1-hover);
+  background: var(--app-surface-hover);
 }
 
 .tab--preview .tab-label {
-  color: var(--tui-text-secondary);
+  color: var(--app-text-muted);
   font-style: italic;
 }

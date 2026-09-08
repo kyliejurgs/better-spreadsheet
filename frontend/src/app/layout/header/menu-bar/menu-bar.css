@@ -3,8 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--tui-background-base);
-  color: var(--tui-text-primary);
+  color: var(--app-text-primary);
 }
 
 .menu-bar__categories,

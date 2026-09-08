@@ -2,7 +2,6 @@
   height: 100%;
   box-sizing: border-box;
   padding: 8px;
-  background: var(--tui-background-base);
-  border: 1px solid var(--tui-border-normal);
+  border: 1px solid var(--app-border-subtle);
   border-radius: 6px;
 }

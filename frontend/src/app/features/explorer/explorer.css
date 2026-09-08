@@ -42,7 +42,7 @@
   flex-direction: column;
   min-height: 24px;
   overflow: hidden;
-  border-top: 1px solid var(--tui-border-normal);
+  border-top: 1px solid var(--app-border-normal);
 }
 
 .explorer-section:first-child {
@@ -92,7 +92,7 @@
 .section-header:focus-within,
 .section-header-main--standalone:hover,
 .tree-row:hover {
-  background: var(--tui-background-neutral-1-hover);
+  background: var(--app-surface-hover);
 }
 
 .section-chevron,
@@ -148,7 +148,7 @@
 
 .section-action:hover,
 .section-action:focus-visible {
-  background: var(--tui-background-neutral-1-hover);
+  background: var(--app-surface-hover);
 }
 
 .section-action tui-icon {
@@ -179,7 +179,7 @@
 
 .workspace-menu-item:hover,
 .workspace-menu-item:focus-visible {
-  background: var(--tui-background-neutral-1-hover);
+  background: var(--app-surface-hover);
 }
 
 .workspace-menu-item--selected {
@@ -226,7 +226,7 @@
   right: 0;
   left: 0;
   height: 1px;
-  background: var(--tui-border-normal);
+  background: var(--app-border-normal);
   content: '';
 }
 
