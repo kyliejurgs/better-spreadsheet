@@ -1,6 +1,6 @@
-import { APPLICATION_UI_STATE_ID, ApplicationUiState } from '../models/application-ui-state';
-import { openDatabase, STORES } from './database';
-import { getById, transactionComplete } from './indexed-db';
+import { APPLICATION_UI_STATE_ID, ApplicationUiState } from './application-ui-state.model';
+import { openDatabase, STORES } from '../persistence/database';
+import { getById, transactionComplete } from '../persistence/indexed-db';
 
 export async function getApplicationUiState(): Promise<ApplicationUiState | null> {
   const database = await openDatabase();

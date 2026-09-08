@@ -5,10 +5,10 @@ import {
   provideAppInitializer,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { WorkspaceService } from './services/workspace.service';
-import { ApplicationService } from './services/application.service';
-import { ApplicationUiStateService } from './services/application-ui-state.service';
-import { WorkAreaService } from './services/work-area.service';
+import { WorkspaceService } from './features/workspace/workspace.service';
+import { ApplicationService } from './core/application/application.service';
+import { ApplicationUiStateService } from './core/ui-state/application-ui-state.service';
+import { WorkAreaService } from './features/work-area/work-area.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

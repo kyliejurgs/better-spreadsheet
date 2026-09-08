@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ApplicationMetadata } from '../models/application-metadata';
-import { getApplicationMetadata, saveApplicationMetadata } from '../data/application-data';
-import { getWorkspaces, importApplicationData } from '../data/workspace-data';
-import { loadStarterData } from '../data/starter-data';
+import { ApplicationMetadata } from './application-metadata.model';
+import { getApplicationMetadata, saveApplicationMetadata } from './application.repository';
+import {
+  getWorkspaces,
+  importApplicationData,
+} from '../../features/workspace/workspace.repository';
+import { loadStarterData } from '../../features/workspace/starter-data.repository';
 
 /**
  * Coordinates application-level startup behavior before workspace state is loaded into interface.

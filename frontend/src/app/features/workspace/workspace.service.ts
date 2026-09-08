@@ -1,8 +1,11 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { Workspace } from '../models/workspace';
-import { WorkspaceData } from '../models/workspace-data';
-import { getWorkspaceData, getWorkspaces } from '../data/workspace-data';
-import { getApplicationMetadata, saveApplicationMetadata } from '../data/application-data';
+import { Workspace } from './workspace.model';
+import { WorkspaceData } from './workspace-data.model';
+import { getWorkspaceData, getWorkspaces } from './workspace.repository';
+import {
+  getApplicationMetadata,
+  saveApplicationMetadata,
+} from '../../core/application/application.repository';
 
 export type WorkspaceLoadState = 'idle' | 'loading' | 'ready' | 'error';
 

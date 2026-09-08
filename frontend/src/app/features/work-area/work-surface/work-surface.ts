@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
-import { WorkAreaService } from '../../../../services/work-area.service';
-import { WorkspaceService } from '../../../../services/workspace.service';
+import { WorkAreaService } from '../work-area.service';
+import { WorkspaceService } from '../../workspace/workspace.service';
 
 @Component({
   imports: [],

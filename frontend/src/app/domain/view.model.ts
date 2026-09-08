@@ -1,4 +1,4 @@
-import { LifecycleState } from './common';
+import { LifecycleState } from './common.model';
 
 export interface View {
   id: string;

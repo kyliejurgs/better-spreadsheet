@@ -1,6 +1,6 @@
-import { PersistedWorkAreaState } from '../models/work-area-state';
-import { openDatabase, STORES } from './database';
-import { getById, transactionComplete } from './indexed-db';
+import { PersistedWorkAreaState } from './work-area-state.model';
+import { openDatabase, STORES } from '../../core/persistence/database';
+import { getById, transactionComplete } from '../../core/persistence/indexed-db';
 
 const WORK_AREA_STATE_PREFIX = 'work-area:';
 

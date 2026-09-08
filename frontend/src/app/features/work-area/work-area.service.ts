@@ -1,10 +1,10 @@
 import { computed, Injectable, resource, signal } from '@angular/core';
-import { PersistedWorkAreaState, WorkAreaState, WorkAreaTab } from '../models/work-area-state';
+import { PersistedWorkAreaState, WorkAreaState, WorkAreaTab } from './work-area-state.model';
 import {
   getWorkAreaState,
   getWorkAreaStateId,
   saveWorkAreaState,
-} from '../data/work-area-state-data';
+} from './work-area-state.repository';
 
 const EMPTY_WORK_AREA_STATE: WorkAreaState = {
   openTabs: [],

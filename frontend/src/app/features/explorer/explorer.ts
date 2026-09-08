@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { WorkspaceService } from '../../services/workspace.service';
+import { WorkspaceService } from '../workspace/workspace.service';
 import {
   TuiIcon,
   TuiDropdownDirective,
@@ -7,9 +7,9 @@ import {
   TuiDataListComponent,
 } from '@taiga-ui/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { ExplorerSectionId } from '../../models/application-ui-state';
-import { ApplicationUiStateService } from '../../services/application-ui-state.service';
-import { WorkAreaService } from '../../services/work-area.service';
+import { ExplorerSectionId } from '../../core/ui-state/application-ui-state.model';
+import { ApplicationUiStateService } from '../../core/ui-state/application-ui-state.service';
+import { WorkAreaService } from '../work-area/work-area.service';
 
 type ExplorerNodeType = 'collection' | 'table' | 'view';
 

@@ -1,13 +1,18 @@
-import { Collection } from '../models/collection';
-import { Field } from '../models/field';
-import { RecordData } from '../models/record';
-import { Section } from '../models/section';
-import { Table } from '../models/table';
-import { View } from '../models/view';
-import { Workspace } from '../models/workspace';
-import { WorkspaceData } from '../models/workspace-data';
-import { INDEXES, openDatabase, STORES } from './database';
-import { getAll, getById, requestResult, transactionComplete } from './indexed-db';
+import { Collection } from '../../domain/collection.model';
+import { Field } from '../../domain/field.model';
+import { RecordData } from '../../domain/record.model';
+import { Section } from '../../domain/section.model';
+import { Table } from '../../domain/table.model';
+import { View } from '../../domain/view.model';
+import { Workspace } from './workspace.model';
+import { WorkspaceData } from './workspace-data.model';
+import { INDEXES, openDatabase, STORES } from '../../core/persistence/database';
+import {
+  getAll,
+  getById,
+  requestResult,
+  transactionComplete,
+} from '../../core/persistence/indexed-db';
 
 /**
  * Represents a complete set of core workspace data being imported into local persistence. Layer

@@ -1,6 +1,6 @@
-import { APPLICATION_METADATA_ID, ApplicationMetadata } from '../models/application-metadata';
-import { openDatabase, STORES } from './database';
-import { getById, transactionComplete } from './indexed-db';
+import { APPLICATION_METADATA_ID, ApplicationMetadata } from './application-metadata.model';
+import { openDatabase, STORES } from '../persistence/database';
+import { getById, transactionComplete } from '../persistence/indexed-db';
 
 /**
  * Loads durable application-level state. Missing metadata indicates that this browser has never

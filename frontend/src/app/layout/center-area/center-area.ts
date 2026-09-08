@@ -1,8 +1,8 @@
 import { Component, input, output } from '@angular/core';
-import { WorkArea } from './work-area/work-area';
+import { WorkArea } from '../../features/work-area/work-area';
 import { BottomPanel } from './bottom-panel/bottom-panel';
 import { ContainerSize } from '../../shared/resizable-container/resizable-container';
-import { ResizablePanel } from '../resizable-panel/resizable-panel';
+import { ResizablePanel } from '../../shared/resizable-panel/resizable-panel';
 
 @Component({
   imports: [WorkArea, BottomPanel, ResizablePanel],

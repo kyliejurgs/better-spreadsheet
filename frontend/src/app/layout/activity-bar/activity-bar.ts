@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { TuiIcon } from '@taiga-ui/core';
-import { LeftPanelView } from '../../models/application-ui-state';
+import { LeftPanelView } from '../../core/ui-state/application-ui-state.model';
 
 @Component({
   imports: [TuiIcon],

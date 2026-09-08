@@ -17,12 +17,11 @@ import { RightPanel } from '../right-panel/right-panel';
 import { StatusBar } from '../status-bar/status-bar';
 import { APPLICATION_LAYOUT } from './application-layout.config';
 import { ContainerSize } from '../../shared/resizable-container/resizable-container';
-import { ResizablePanel } from '../resizable-panel/resizable-panel';
 import { CommandBar } from '../command-bar/command-bar';
-import { LeftPanelView } from '../../models/application-ui-state';
+import { LeftPanelView } from '../../core/ui-state/application-ui-state.model';
 import { calculateSidePanelLayout, SidePanel } from './side-panel-layout';
-import { ApplicationUiStateService } from '../../services/application-ui-state.service';
-
+import { ApplicationUiStateService } from '../../core/ui-state/application-ui-state.service';
+import { ResizablePanel } from '../../shared/resizable-panel/resizable-panel';
 
 @Component({
   imports: [
@@ -124,7 +123,7 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
   protected async selectLeftPanelView(view: LeftPanelView): Promise<void> {
     this.activeLeftPanelView.set(view);
-    await this.uiState.save()
+    await this.uiState.save();
   }
 
   protected resizeSidePanel(panel: SidePanel, size: ContainerSize): void {
@@ -210,10 +209,12 @@ export class ApplicationLayout implements AfterViewInit, OnDestroy {
 
     const maxHeight = this.workspaceHeight() - this.config.workArea.minHeight - this.config.gap;
 
-    this.bottomPanelActualHeight.set(Math.min(
-      this.bottomPanelPreferredHeight(),
-      Math.max(this.config.bottomPanel.minHeight, maxHeight)
-    ));
+    this.bottomPanelActualHeight.set(
+      Math.min(
+        this.bottomPanelPreferredHeight(),
+        Math.max(this.config.bottomPanel.minHeight, maxHeight),
+      ),
+    );
 
     this.workAreaCollapsed.set(false);
   }

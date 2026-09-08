@@ -1,12 +1,12 @@
 import { Injectable, signal } from '@angular/core';
-import { APPLICATION_LAYOUT } from '../layout/application-layout/application-layout.config';
+import { APPLICATION_LAYOUT } from '../../layout/application-layout/application-layout.config';
 import {
   APPLICATION_UI_STATE_ID,
   ApplicationUiState,
   ExplorerSectionId,
   LeftPanelView,
-} from '../models/application-ui-state';
-import { getApplicationUiState, saveApplicationUiState } from '../data/application-ui-state-data';
+} from './application-ui-state.model';
+import { getApplicationUiState, saveApplicationUiState } from './application-ui-state.repository';
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationUiStateService {

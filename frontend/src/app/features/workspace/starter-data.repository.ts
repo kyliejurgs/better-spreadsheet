@@ -1,11 +1,11 @@
-import { Collection } from '../models/collection';
-import { Field } from '../models/field';
-import { RecordData } from '../models/record';
-import { Section } from '../models/section';
-import { Table } from '../models/table';
-import { View } from '../models/view';
-import { Workspace } from '../models/workspace';
-import { ApplicationData } from './workspace-data';
+import { Collection } from '../../domain/collection.model';
+import { Field } from '../../domain/field.model';
+import { RecordData } from '../../domain/record.model';
+import { Section } from '../../domain/section.model';
+import { Table } from '../../domain/table.model';
+import { View } from '../../domain/view.model';
+import { Workspace } from './workspace.model';
+import { ApplicationData } from './workspace.repository';
 
 /**
  * Loads starter dataset bundled with Better Spreadsheet. Only application code that knows starter

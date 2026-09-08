@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { Explorer } from '../../features/explorer/explorer';
 import { Search } from '../../features/search/search';
-import { LeftPanelView } from '../../models/application-ui-state';
+import { LeftPanelView } from '../../core/ui-state/application-ui-state.model';
 
 @Component({
   imports: [Explorer, Search],
