@@ -18,22 +18,18 @@
   font-size: calc(var(--activity-bar-width) * 0.6);
 }
 
-.settings-menu__popup {
-  width: 240px;
-}
-
-.settings-menu__theme-popup {
-  width: 200px;
-}
-
 .settings-menu__check {
   display: inline-flex;
   width: 20px;
-  flex: 0 0 20px;
+  min-width: 20px;
   align-items: center;
   justify-content: center;
 }
 
 .settings-menu__check tui-icon {
   font-size: 16px;
+}
+
+.settings-menu__theme-popup button {
+  text-transform: capitalize;
 }

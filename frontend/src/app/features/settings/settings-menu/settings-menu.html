@@ -2,6 +2,8 @@
   class="settings-menu__trigger"
   type="button"
   aria-label="Settings"
+  tuiDropdownAlign="end"
+  tuiDropdownSided
   [tuiDropdown]="settingsMenu"
   [(tuiDropdownOpen)]="open"
 >
@@ -9,7 +11,7 @@
 </button>
 
 <ng-template #settingsMenu>
-  <tui-data-list class="settings-menu__popup" role="menu" tuiDataListDropdownManager>
+  <tui-data-list class="settings-menu__popup" role="menu" tuiDataListDropdownManager size="s">
     <button tuiOption type="button" iconStart="@font.settings">Settings</button>
     <button tuiOption type="button" iconStart="@font.keyboard">Keyboard Shortcuts</button>
 
@@ -30,7 +32,7 @@
 </ng-template>
 
 <ng-template #themeMenu>
-  <tui-data-list class="settings-menu__theme-popup" role="menu" tuiDataListDropdownManager>
+  <tui-data-list class="settings-menu__theme-popup" role="menu" tuiDataListDropdownManager size="s">
     @for (item of themes; track item) {
       <button tuiOption type="button" (click)="setTheme(item)">
         <span class="settings-menu__check">
