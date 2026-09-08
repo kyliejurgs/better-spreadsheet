@@ -1,0 +1,61 @@
+<button
+  class="settings-menu__trigger"
+  type="button"
+  aria-label="Settings"
+  [tuiDropdown]="settingsMenu"
+  [(tuiDropdownOpen)]="open"
+>
+  <tui-icon icon="@font.settings" />
+</button>
+
+<ng-template #settingsMenu>
+  <tui-data-list class="settings-menu__popup" role="menu" tuiDataListDropdownManager>
+    <button tuiOption type="button" iconStart="@font.settings">Settings</button>
+    <button tuiOption type="button" iconStart="@font.keyboard">Keyboard Shortcuts</button>
+
+    <hr />
+
+    <button
+      tuiOption
+      type="button"
+      iconStart="@font.palette"
+      iconEnd="@font.chevron_right"
+      tuiDropdownAlign="end"
+      tuiDropdownSided
+      [tuiDropdown]="themeMenu"
+    >
+      Themes
+    </button>
+  </tui-data-list>
+</ng-template>
+
+<ng-template #themeMenu>
+  <tui-data-list class="settings-menu__theme-popup" role="menu" tuiDataListDropdownManager>
+    <button tuiOption type="button" (click)="setTheme('system')">
+      <span class="settings-menu__check">
+        @if (theme() === 'system') {
+          <tui-icon icon="@font.check" />
+        }
+      </span>
+      System
+    </button>
+
+    <button tuiOption type="button" (click)="setTheme('light')">
+      <span class="settings-menu__check">
+        @if (theme() === 'light') {
+          <tui-icon icon="@font.check" />
+        }
+      </span>
+      Light
+    </button>
+
+    <button tuiOption type="button" (click)="setTheme('dark')">
+      <span class="settings-menu__check">
+        @if (theme() === 'dark') {
+          <tui-icon icon="@font.check" />
+        }
+      </span>
+      Dark
+    </button>
+  </tui-data-list>
+</ng-template>
