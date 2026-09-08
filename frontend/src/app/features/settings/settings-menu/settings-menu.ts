@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { ThemeService } from '../../../core/theme/theme.service';
 import { ApplicationUiStateService } from '../../../core/ui-state/application-ui-state.service';
-import { Theme } from '../../../core/theme/theme.model';
+import { Theme, THEMES } from '../../../core/theme/theme.model';
 import { TuiDropdown, TuiIcon, TuiDataList } from '@taiga-ui/core';
+import { TuiDataListDropdownManager } from '@taiga-ui/kit';
 
 @Component({
-  imports: [TuiDropdown, TuiIcon, TuiDataList],
+  imports: [TuiDropdown, TuiIcon, TuiDataList, TuiDataListDropdownManager],
   selector: 'app-settings-menu',
   styleUrl: './settings-menu.css',
   templateUrl: './settings-menu.html',
@@ -13,6 +14,8 @@ import { TuiDropdown, TuiIcon, TuiDataList } from '@taiga-ui/core';
 export class SettingsMenu {
   private readonly themeService = inject(ThemeService);
   private readonly uiState = inject(ApplicationUiStateService);
+
+  protected readonly themes = THEMES;
 
   protected readonly open = signal(false);
   protected readonly theme = this.uiState.theme;
