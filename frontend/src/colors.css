@@ -1,1 +1,39 @@
 /* Global color and theme tokens for Better Spreadsheet. */
+
+:root {
+  --app-surface: #ffffff;
+  --app-surface-primary: #eeeeee;
+  --app-surface-secondary: #dddddd;
+  --app-surface-overlay: #cccccc;
+  --app-surface-hover: #bbbbbb;
+  --app-surface-active: #bbbbbb;
+
+  --app-text-primary: #000000;
+  --app-text-secondary: #111111;
+  --app-text-muted: #222222;
+  --app-text-disabled: #333333;
+
+  --app-border-normal: #999999;
+  --app-border-subtle: #bbbbbb;
+  --app-border-strong: #666666;
+  --app-border-focus: #666666;
+}
+
+:root[data-theme='dark'] {
+  --app-surface: #000000;
+  --app-surface-primary: #111111;
+  --app-surface-secondary: #222222;
+  --app-surface-overlay: #333333;
+  --app-surface-hover: #444444;
+  --app-surface-active: #444444;
+
+  --app-text-primary: #ffffff;
+  --app-text-secondary: #eeeeee;
+  --app-text-muted: #dddddd;
+  --app-text-disabled: #cccccc;
+
+  --app-border-normal: #666666;
+  --app-border-subtle: #444444;
+  --app-border-strong: #999999;
+  --app-border-focus: #999999;
+}
