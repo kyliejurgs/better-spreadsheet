@@ -1,3 +1,5 @@
+import { Theme } from '../theme/theme.model';
+
 export const APPLICATION_UI_STATE_ID = 'ui-state';
 
 export type LeftPanelView = 'explorer' | 'search';
@@ -5,6 +7,7 @@ export type ExplorerSectionId = 'workspace' | 'files';
 
 export interface ApplicationUiState {
   id: typeof APPLICATION_UI_STATE_ID;
+  theme: Theme;
   layout: ApplicationLayoutState;
   explorer: ExplorerState;
 }

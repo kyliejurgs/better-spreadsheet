@@ -7,9 +7,12 @@ import {
   LeftPanelView,
 } from './application-ui-state.model';
 import { getApplicationUiState, saveApplicationUiState } from './application-ui-state.repository';
+import { Theme } from '../theme/theme.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationUiStateService {
+  readonly theme = signal<Theme>('system');
+
   readonly leftPanelPreferredWidth = signal<number>(APPLICATION_LAYOUT.leftPanel.defaultWidth);
   readonly rightPanelPreferredWidth = signal<number>(APPLICATION_LAYOUT.rightPanel.defaultWidth);
   readonly bottomPanelPreferredHeight = signal<number>(
@@ -39,6 +42,8 @@ export class ApplicationUiStateService {
       return;
     }
 
+    this.theme.set(state.theme ?? 'system');
+
     this.leftPanelPreferredWidth.set(state.layout.leftPanelPreferredWidth);
     this.rightPanelPreferredWidth.set(state.layout.rightPanelPreferredWidth);
     this.bottomPanelPreferredHeight.set(state.layout.bottomPanelPreferredHeight);
@@ -62,6 +67,7 @@ export class ApplicationUiStateService {
   private createPersistedState(): ApplicationUiState {
     return {
       id: APPLICATION_UI_STATE_ID,
+      theme: this.theme(),
       layout: {
         leftPanelPreferredWidth: this.leftPanelPreferredWidth(),
         rightPanelPreferredWidth: this.rightPanelPreferredWidth(),
